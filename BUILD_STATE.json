@@ -2,7 +2,7 @@
   "schema_version": 1,
   "project": "Directive Crypto Intelligence",
   "repository": "oluadegbu/Codex--DSV-",
-  "updated_at": "2026-10-12T20:37:43.305169+00:00",
+  "updated_at": "2026-10-12T20:39:40.778030+00:00",
   "milestone": "dmb-github-publication-certified",
   "status": "github_publication_pass_full_dmb_certification_blocked",
   "mode": "SHADOW",
@@ -144,7 +144,6 @@
     "No streaming worker or Temporal deployment",
     "No validated wallet independence or predictive performance",
     "SQLite single-host O(n) journal recovery; no distributed scheduling",
-    "GitHub publication blocked by integration write authorization",
     "Windows remote is Administrator/high integrity; workspace access EPERM",
     "Codex exec cannot initialize in read-only runtime storage",
     "Live ChatGPT and provider/approval identity certification absent"
@@ -173,7 +172,7 @@
     "remote_import_commit": "ec0c8313f9b42bce879243b83bc4d914367bdf81",
     "remote_verified_tree": "91dd4bbd222f324e1c4c8594da4eb90c430b19a4",
     "certificate": "docs/evidence/publication/CERTIFICATION.json",
-    "ci": "PASS on verified import commit; documentation follow-up CI checked separately"
+    "ci": "PASS verified import ec0c8313 and certificate follow-up aa23aaae; subsequent documentation commits retain same tested source"
   },
   "completed_follow_on_tasks": [
     "Durable SQLite paper journal, retry idempotency, restart and rollback tests",
@@ -226,7 +225,8 @@
     ],
     "implementation_commit": "74bf88edd4a23edfa1e161b5e0aa09f904d36e0e",
     "certified_source_commit": "74bf88edd4a23edfa1e161b5e0aa09f904d36e0e",
-    "source_hash_evidence": "docs/evidence/BHB_CERTIFICATION.json#tested_source_sha256"
+    "source_hash_evidence": "docs/evidence/BHB_CERTIFICATION.json#tested_source_sha256",
+    "snapshot_context": "Historical milestone snapshot at its recorded source commit. Original certificate bytes remain unchanged. Current GitHub publication status is PASS in github_publication_certification and docs/evidence/publication/CERTIFICATION.json."
   },
   "dmb": {
     "mode": "SHADOW",
@@ -275,7 +275,8 @@
     "implementation_commit": "a3d85e45de16231e7cfcea092abbe21c6dcc0a1b",
     "protected_milestone": "DAT Temporal Integration approval preserved; implementation unverified",
     "certified_source_commit": "a3d85e45de16231e7cfcea092abbe21c6dcc0a1b",
-    "source_hashes_match_git_commit": true
+    "source_hashes_match_git_commit": true,
+    "snapshot_context": "Historical milestone snapshot at its recorded source commit. Original certificate bytes remain unchanged. Current GitHub publication status is PASS in github_publication_certification and docs/evidence/publication/CERTIFICATION.json."
   },
   "phase8": {
     "mode": "SHADOW",
@@ -315,7 +316,8 @@
       "PASS": 21,
       "BLOCKED": 9,
       "NOT_TESTED": 12
-    }
+    },
+    "snapshot_context": "Historical milestone snapshot at its recorded source commit. Original certificate bytes remain unchanged. Current GitHub publication status is PASS in github_publication_certification and docs/evidence/publication/CERTIFICATION.json."
   },
   "phase8_continuation": {
     "date": "2026-10-12 America/New_York",
@@ -347,7 +349,8 @@
     "credentials_changed_or_exposed": false,
     "production_changes": false,
     "implementation_commit": "f752bcebe4d7186691c39048da09705903c498c2",
-    "source_certification": "docs/evidence/phase8-20261012/SOURCE_CERTIFICATION.json"
+    "source_certification": "docs/evidence/phase8-20261012/SOURCE_CERTIFICATION.json",
+    "snapshot_context": "Historical milestone snapshot at its recorded source commit. Original certificate bytes remain unchanged. Current GitHub publication status is PASS in github_publication_certification and docs/evidence/publication/CERTIFICATION.json."
   },
   "github_publication_certification": {
     "effective_connector_write": "PASS branch/blob/tree/commit/ref/PR APIs",
@@ -368,7 +371,10 @@
     "github_actions": "PASS",
     "github_actions_url": "https://github.com/oluadegbu/Codex--DSV-/actions/runs/38305161935",
     "main_ref_unchanged": true,
-    "certificate": "docs/evidence/publication/CERTIFICATION.json"
+    "certificate": "docs/evidence/publication/CERTIFICATION.json",
+    "followup_commit": "aa23aaae8d106afca72d7a3af3f6bb53f8912171",
+    "followup_ci_url": "https://github.com/oluadegbu/Codex--DSV-/actions/runs/38305510223",
+    "followup_files_verified": 168
   },
   "resolved_decisions": [
     {

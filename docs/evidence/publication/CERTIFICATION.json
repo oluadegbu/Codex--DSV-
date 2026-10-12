@@ -116,5 +116,16 @@
   "production_changes": false,
   "live_trading": false,
   "services_installed": false,
-  "note": "This certificate binds the verified import commit. A follow-up documentation commit records this successful publication; its own SHA is verified separately."
+  "note": "This certificate binds the verified import commit. A follow-up documentation commit records this successful publication; its own SHA is verified separately.",
+  "certificate_followup": {
+    "commit": "aa23aaae8d106afca72d7a3af3f6bb53f8912171",
+    "tree": "82372f85aeaafcb889ecb2550ab833c6fb3007c1",
+    "verified_file_count": 168,
+    "ci_run_id": 38305510223,
+    "ci_url": "https://github.com/oluadegbu/Codex--DSV-/actions/runs/38305510223",
+    "ci_conclusion": "success",
+    "pr_head_readback": "PASS",
+    "certificate_bytes_readback": "PASS",
+    "main_ref_unchanged": true
+  }
 }
