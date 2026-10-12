@@ -1,0 +1,38 @@
+{
+  "observed_on": "2026-10-11",
+  "cloud": {
+    "workspace": "/workspace/dci",
+    "identity": "agent",
+    "uid": 1000,
+    "privileged": false,
+    "baseline_commit": "69bb12ebc8075560a9e27a2c1082088898a3ac8e",
+    "baseline_tests": 28
+  },
+  "windows": {
+    "workspace": "C:\\Directive\\DCI\\Codex--DSV-",
+    "observed_identity": "Administrator",
+    "integrity": "High",
+    "status": "BLOCKED",
+    "mutations_performed": false,
+    "access_errors": [
+      "git: not a git repository",
+      "Desktop Commander realpath: EPERM"
+    ]
+  },
+  "codex": {
+    "version": "0.159.0-alpha.3",
+    "auth_mode": "ChatGPT (status only; exact account uncertified)",
+    "execution_status": "BLOCKED",
+    "error": "failed to initialize in-process app-server client: Read-only file system (os error 30)",
+    "attempt_artifacts": "artifacts/hands/15bf104b-f84f-4971-984f-d6e22a38c73e"
+  },
+  "github": {
+    "login": "oluadegbu",
+    "remote_main": "0af1f4208da6d5f799ec68d48aab5fb4800159d0",
+    "read_status": "PASS",
+    "write_status": "BLOCKED",
+    "error": "HTTP 403 Resource not accessible by integration (create_tree)"
+  },
+  "live_chatgpt": "BLOCKED: no DCI authenticated MCP/plugin connection",
+  "live_notifications": "BLOCKED: provider activation not authorized/certified"
+}

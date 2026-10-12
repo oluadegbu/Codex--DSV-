@@ -1,0 +1,31 @@
+{
+  "schema_version": 1,
+  "status": "BLOCKED",
+  "interface": "supported codex exec",
+  "argv": [
+    "codex",
+    "exec",
+    "--sandbox",
+    "read-only",
+    "--json",
+    "--ephemeral",
+    "-C",
+    "/workspace/dci",
+    "-"
+  ],
+  "sandbox": "read-only",
+  "timeout_seconds": 15,
+  "duration_seconds": 0.065,
+  "exit_code": 1,
+  "turn_completed": false,
+  "timed_out": false,
+  "git_before": "2adcf00c3d8ed991eaf16668762a97f78355c2e3",
+  "git_after": "2adcf00c3d8ed991eaf16668762a97f78355c2e3",
+  "error_summary": "Read-only runtime filesystem during in-process app-server initialization",
+  "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stderr_sha256": "8e3330eeb312ddb37b9da73c3ece4a8aa7e2ade4b7bb255573aa487bc89f0f58",
+  "raw_logs": "artifacts/phase8/b0664a77-30c8-47e9-973e-be55c1d96438",
+  "auth_reconfigured": false,
+  "automatic_retry": false,
+  "live_retry_cancellation_certification": "NOT TESTED; invocation failed before a completed turn"
+}

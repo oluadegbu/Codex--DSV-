@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "os_boundary_gate": "BLOCKED",
+  "scope": "same-UID subprocess filesystem access between distinct temporary roots; synthetic canary only",
+  "source_workspace": "/tmp/dmb-p8-denial-1ok2y7eq/A",
+  "target_workspace": "/tmp/dmb-p8-denial-1ok2y7eq/B",
+  "uid": 1000,
+  "different_workspaces": true,
+  "cross_workspace_read_denied": false,
+  "exit_code": 0,
+  "interpretation": "Cross-workspace read succeeded; distinct paths do not enforce OS isolation",
+  "codex_sandbox_probe": "NOT TESTED because standalone Codex cannot initialize",
+  "production_data_accessed": false,
+  "secret_data_accessed": false
+}

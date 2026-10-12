@@ -1,0 +1,157 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "$id": "urn:directive:dmb:registry:v1",
+  "required": [
+    "schema_version",
+    "registry_version",
+    "updated_at",
+    "authority",
+    "mode",
+    "projects",
+    "protected_milestone",
+    "discovery"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": 1
+    },
+    "registry_version": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9_-]{1,64}$"
+    },
+    "updated_at": {
+      "type": "string"
+    },
+    "authority": {
+      "type": "string"
+    },
+    "mode": {
+      "const": "SHADOW"
+    },
+    "projects": {
+      "type": "array",
+      "items": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "project_id",
+          "name",
+          "verified_state",
+          "verified_scope",
+          "objectives",
+          "dependencies",
+          "blockers",
+          "approval_gates",
+          "workspace",
+          "git_repository",
+          "assigned_worker",
+          "next_safe_action",
+          "evidence"
+        ],
+        "properties": {
+          "project_id": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9_-]{1,64}$"
+          },
+          "name": {
+            "type": "string"
+          },
+          "verified_state": {
+            "enum": [
+              "VERIFIED_LOCAL_SHADOW",
+              "VERIFIED_LOCAL_SIMULATION",
+              "UNVERIFIED",
+              "INTERFACE_ONLY",
+              "PLANNED_UNVERIFIED",
+              "GATED_NOT_AUTHORIZED",
+              "IN_DEVELOPMENT_LOCAL_SHADOW"
+            ]
+          },
+          "verified_scope": {
+            "type": "string"
+          },
+          "objectives": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "dependencies": {
+            "type": "array",
+            "items": {
+              "$schema": "https://json-schema.org/draft/2020-12/schema",
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "project_id",
+                "kind",
+                "blocks_shadow_lab"
+              ],
+              "properties": {
+                "project_id": {
+                  "type": "string",
+                  "pattern": "^[A-Za-z0-9_-]{1,64}$"
+                },
+                "kind": {
+                  "type": "string"
+                },
+                "blocks_shadow_lab": {
+                  "type": "boolean"
+                }
+              }
+            }
+          },
+          "blockers": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "approval_gates": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "next_safe_action": {
+            "type": "string"
+          },
+          "evidence": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "workspace": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "git_repository": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "assigned_worker": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        }
+      },
+      "minItems": 1
+    },
+    "protected_milestone": {
+      "type": "object"
+    },
+    "discovery": {
+      "type": "object"
+    }
+  }
+}

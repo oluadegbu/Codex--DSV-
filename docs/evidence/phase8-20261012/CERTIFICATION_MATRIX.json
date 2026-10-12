@@ -1,0 +1,677 @@
+{
+  "schema_version": 1,
+  "mode": "SHADOW",
+  "generated_at": "2026-10-12T18:51:17.550391+00:00",
+  "outcome": "DMB LOCAL SHADOW PASS / FULL CERTIFICATION BLOCKED",
+  "target_fully_certified": false,
+  "status_vocabulary": [
+    "PASS",
+    "BLOCKED",
+    "NOT TESTED"
+  ],
+  "classification_rule": "PASS is scoped by evidence_scope. LOCAL,SYNTHETIC,HISTORICAL or DOCUMENTED_ONLY PASS never releases an external gate. External reads certify only the listed read identity/resource.",
+  "gates": [
+    {
+      "gate": "baseline_git_and_bundle_integrity",
+      "status": "PASS",
+      "evidence_scope": "LOCAL",
+      "evidence": [
+        {
+          "path": "docs/evidence/phase8/BASELINE.json",
+          "sha256": "de41b558bc6fb8d81e88ef246e83aa4b11c02b7ca184f4fc0d1b4cdc765b40ed"
+        }
+      ],
+      "finding": "Clean baseline head and complete original bundle verify; bundle unchanged",
+      "observation_provenance": "Retained prior assessment; scopes and original evidence hashes unchanged"
+    },
+    {
+      "gate": "baseline_artifact_and_source_hashes",
+      "status": "PASS",
+      "evidence_scope": "LOCAL",
+      "evidence": [
+        {
+          "path": "docs/evidence/phase8/BASELINE.json",
+          "sha256": "de41b558bc6fb8d81e88ef246e83aa4b11c02b7ca184f4fc0d1b4cdc765b40ed"
+        }
+      ],
+      "finding": "35 original source files match exact certified commit and current bytes; registry/graph/report/certification retained",
+      "observation_provenance": "Retained prior assessment; scopes and original evidence hashes unchanged"
+    },
+    {
+      "gate": "prior_test_cycle_provenance",
+      "status": "PASS",
+      "evidence_scope": "PRESERVED_HISTORICAL_LOCAL",
+      "evidence": [
+        {
+          "path": "docs/evidence/phase8/BASELINE.json",
+          "sha256": "de41b558bc6fb8d81e88ef246e83aa4b11c02b7ca184f4fc0d1b4cdc765b40ed"
+        }
+      ],
+      "finding": "84 tests, 100 verifier cycles, 1099 worker test executions retained with evidence hashes; not relabeled external",
+      "observation_provenance": "Retained prior assessment; scopes and original evidence hashes unchanged"
+    },
+    {
+      "gate": "current_regression_suite",
+      "status": "PASS",
+      "evidence_scope": "LOCAL",
+      "evidence": [
+        {
+          "path": "docs/evidence/phase8-20261012/LOCAL_VERIFICATION.json",
+          "sha256": "a1db84270f506bf14a6d275876c9b9b1ff65b69ad1ec51212b269f14cdc5b667"
+        }
+      ],
+      "finding": "Fresh100 existing tests plus17 separate authorization-policy fixtures pass; prior suites/source hashes retained",
+      "observation_provenance": "Fresh October12 local verification"
+    },
+    {
+      "gate": "github_authenticated_identity",
+      "status": "PASS",
+      "evidence_scope": "EXTERNAL_READ_ONLY",
+      "evidence": [
+        {
+          "path": "docs/evidence/phase8-20261012/EXTERNAL_RECHECK.json",
+          "sha256": "2c662b37c400e0a515b2a35f4fbf883e029025c615320283eceee1d3dbdbca39"
+        }
+      ],
+      "finding": "Authenticated connected account oluadegbu; repository ID1409360122 exact match",
+      "observation_provenance": "Fresh October12 supported probe"
+    },
+    {
+      "gate": "github_repository_read_access",
+      "status": "PASS",
+      "evidence_scope": "EXTERNAL_READ_ONLY",
+      "evidence": [
+        {
+          "path": "docs/evidence/phase8-20261012/EXTERNAL_RECHECK.json",
+          "sha256": "2c662b37c400e0a515b2a35f4fbf883e029025c615320283eceee1d3dbdbca39"
+        }
+      ],
+      "finding": "Fresh repository metadata read succeeds; prior README read retained separately",
+      "observation_provenance": "Fresh October12 supported probe"
+    },
+    {
+      "gate": "github_chatgpt_action_permission_check",
+      "status": "PASS",
+      "evidence_scope": "EXTERNAL_SETTINGS_READ_ONLY",
+      "evidence": [
+        {
+          "path": "docs/evidence/phase8/GITHUB_AUTHORIZATION.json",
+          "sha256": "f3790e8d3a11619f455b8e1fee12748972389f286a3f9ef07ec0a1c404927b02"
+        }
+      ],
+      "finding": "GitHub action setting already Allow all actions; not an installation grant",
+      "observation_provenance": "Retained prior assessment; scopes and original evidence hashes unchanged"
+    },
+    {
+      "gate": "github_collaborator_permission_endpoint",
+      "status": "BLOCKED",
+      "evidence_scope": "EXTERNAL_DENIAL",
+      "evidence": [
+        {
+          "path": "docs/evidence/phase8/GITHUB_AUTHORIZATION.json",
+          "sha256": "f3790e8d3a11619f455b8e1fee12748972389f286a3f9ef07ec0a1c404927b02"
+        }
+      ],
+      "finding": "Supported check returns403; account-level push metadata is available separately",
+      "observation_provenance": "Retained prior assessment; scopes and original evidence hashes unchanged"
+    },
+    {
+      "gate": "github_installation_scope_and_grant_introspection",
+      "status": "NOT TESTED",
+      "evidence_scope": "UNAVAILABLE_SUPPORTED_INTERFACE",
+      "evidence": [
+        {
+          "path": "docs/evidence/phase8/GITHUB_AUTHORIZATION.json",
+          "sha256": "f3790e8d3a11619f455b8e1fee12748972389f286a3f9ef07ec0a1c404927b02"
+        }
+      ],
+      "finding": "Installation endpoint and accepted-permissions response headers not exposed; no credentials inspected",
+      "observation_provenance": "Retained prior assessment; scopes and original evidence hashes unchanged"
+    },
+    {
+      "gate": "github_write_authorization",
+      "status": "BLOCKED",
+      "evidence_scope": "EXTERNAL_DENIAL",
+      "evidence": [
+        {
+          "path": "docs/evidence/phase8-20261012/EXTERNAL_RECHECK.json",
+          "sha256": "2c662b37c400e0a515b2a35f4fbf883e029025c615320283eceee1d3dbdbca39"
+        }
+      ],
+      "finding": "Fresh create branch codex/dmb-phase8-recheck-20261012 from main returns integration403",
+      "observation_provenance": "Fresh October12 supported probe"
+    },
+    {
+      "gate": "github_publication_and_readback",
+      "status": "NOT TESTED",
+      "evidence_scope": "DEPENDENCY_BLOCKED",
+      "evidence": [
+        {
+          "path": "docs/evidence/phase8/GITHUB_AUTHORIZATION.json",
+          "sha256": "f3790e8d3a11619f455b8e1fee12748972389f286a3f9ef07ec0a1c404927b02"
+        }
+      ],
+      "finding": "No successful write or branch creation; verified local history/bundle preserved",
+      "observation_provenance": "Retained prior assessment; scopes and original evidence hashes unchanged"
+    },
+    {
+      "gate": "codex_supported_cli_available",
+      "status": "PASS",
+      "evidence_scope": "LOCAL_INTERFACE",
+      "evidence": [
+        {
+          "path": "docs/evidence/phase8-20261012/CODEX_INVOCATION.json",
+          "sha256": "a4c40002366017d4c4091469743cf4976cb98a46882eb1099a451087b10e8a02"
+        }
+      ],
+      "finding": "Official exec argv and CLI0.159.0-alpha.3 recognized; normal login reports ChatGPT",
+      "observation_provenance": "Fresh October12 supported probe"
+    },
+    {
+      "gate": "codex_standalone_turn_completion",
+      "status": "BLOCKED",
+      "evidence_scope": "ACTUAL_INVOCATION",
+      "evidence": [
+        {
+          "path": "docs/evidence/phase8-20261012/CODEX_INVOCATION.json",
+          "sha256": "a4c40002366017d4c4091469743cf4976cb98a46882eb1099a451087b10e8a02"
+        }
+      ],
+      "finding": "Read-only in-process app-server startup fails; no completed turn",
+      "observation_provenance": "Fresh October12 supported probe"
+    },
+    {
+      "gate": "codex_live_bounded_development_task",
+      "status": "NOT TESTED",
+      "evidence_scope": "DEPENDENCY_BLOCKED",
+      "evidence": [
+        {
+          "path": "docs/evidence/phase8/CODEX_INVOCATION.json",
+          "sha256": "22697a287b6ee08691de627fed182b7c7e6057095bd647d2696980277a73bee6"
+        }
+      ],
+      "finding": "Fixed bounded launcher attempted; actual agent task execution cannot be certified",
+      "observation_provenance": "Retained prior assessment; scopes and original evidence hashes unchanged"
+    },
+    {
+      "gate": "codex_live_retry_and_cancellation",
+      "status": "NOT TESTED",
+      "evidence_scope": "DEPENDENCY_BLOCKED",
+      "evidence": [
+        {
+          "path": "docs/evidence/phase8/CODEX_INVOCATION.json",
+          "sha256": "22697a287b6ee08691de627fed182b7c7e6057095bd647d2696980277a73bee6"
+        }
+      ],
+      "finding": "No live initialized Codex task to retry/cancel; local launcher/execution tests do not count",
+      "observation_provenance": "Retained prior assessment; scopes and original evidence hashes unchanged"
+    },
+    {
+      "gate": "cloud_non_admin_identity",
+      "status": "PASS",
+      "evidence_scope": "LOCAL",
+      "evidence": [
+        {
+          "path": "docs/evidence/phase8/RUNTIME_IDENTITY.json",
+          "sha256": "ebf3438b49bf01e627d23f7b5830c42cee39d8ab3cca254ae00736101ca4e9b5"
+        }
+      ],
+      "finding": "agent uid1000/groups1000; no elevation",
+      "observation_provenance": "Retained prior assessment; scopes and original evidence hashes unchanged"
+    },
+    {
+      "gate": "windows_directivecodex_non_admin_identity",
+      "status": "BLOCKED",
+      "evidence_scope": "EXTERNAL_IDENTITY_PROBE",
+      "evidence": [
+        {
+          "path": "docs/evidence/phase8-20261012/EXTERNAL_RECHECK.json",
+          "sha256": "2c662b37c400e0a515b2a35f4fbf883e029025c615320283eceee1d3dbdbca39"
+        }
+      ],
+      "finding": "Administrator with enabled Administrators SID and High integrity",
+      "observation_provenance": "Fresh October12 supported probe"
+    },
+    {
+      "gate": "windows_dci_workspace_access",
+      "status": "BLOCKED",
+      "evidence_scope": "EXTERNAL_TOOL_POLICY",
+      "evidence": [
+        {
+          "path": "docs/evidence/phase8/RUNTIME_IDENTITY.json",
+          "sha256": "ebf3438b49bf01e627d23f7b5830c42cee39d8ab3cca254ae00736101ca4e9b5"
+        }
+      ],
+      "finding": "Exact README read failsEPERM; no development through elevated identity",
+      "observation_provenance": "Retained prior assessment; scopes and original evidence hashes unchanged"
+    },
+    {
+      "gate": "distinct_worker_workspaces_and_git_traceability",
+      "status": "PASS",
+      "evidence_scope": "LOCAL",
+      "evidence": [
+        {
+          "path": "docs/evidence/phase8/BASELINE.json",
+          "sha256": "de41b558bc6fb8d81e88ef246e83aa4b11c02b7ca184f4fc0d1b4cdc765b40ed"
+        }
+      ],
+      "finding": "Three reviewed distinct sibling roots and exact clean pinned Git commits/bundle hashes",
+      "observation_provenance": "Retained prior assessment; scopes and original evidence hashes unchanged"
+    },
+    {
+      "gate": "os_cross_workspace_access_denial",
+      "status": "BLOCKED",
+      "evidence_scope": "ACTUAL_NEGATIVE_PROBE",
+      "evidence": [
+        {
+          "path": "docs/evidence/phase8-20261012/LOCAL_VERIFICATION.json",
+          "sha256": "a1db84270f506bf14a6d275876c9b9b1ff65b69ad1ec51212b269f14cdc5b667"
+        }
+      ],
+      "finding": "Fresh synthetic neighboring read AND write both succeed; no OS isolation certified",
+      "observation_provenance": "Fresh October12 supported probe"
+    },
+    {
+      "gate": "codex_sandbox_access_denial",
+      "status": "NOT TESTED",
+      "evidence_scope": "DEPENDENCY_BLOCKED",
+      "evidence": [
+        {
+          "path": "docs/evidence/phase8/ISOLATION_PROBE.json",
+          "sha256": "a0bba6ebf217f6eea43c57839aab90b200de9a5f7319085caf51054a856c5c1f"
+        }
+      ],
+      "finding": "Standalone Codex initialization blocked; no authenticated sandbox probe",
+      "observation_provenance": "Retained prior assessment; scopes and original evidence hashes unchanged"
+    },
+    {
+      "gate": "external_project_reconciliation",
+      "status": "PASS",
+      "evidence_scope": "EVIDENCE_RECORDING_ONLY",
+      "evidence": [
+        {
+          "path": "portfolio/RECONCILIATION.phase8.v1.json",
+          "sha256": "e71a604498867b3fa555fe63e0448c63ec2e3e3ff6e44cf5281d0fe6271123ef"
+        }
+      ],
+      "finding": "Explicit VERIFIED/HISTORICAL/UNKNOWN/BLOCKED assessments; unknown target locations not invented",
+      "observation_provenance": "Retained prior assessment; scopes and original evidence hashes unchanged"
+    },
+    {
+      "gate": "actual_dat_dpm_dsv_pulse_vma_temporal_integration",
+      "status": "NOT TESTED",
+      "evidence_scope": "NO_AUTHORIZED_ARTIFACT_LOCATIONS",
+      "evidence": [
+        {
+          "path": "portfolio/RECONCILIATION.phase8.v1.json",
+          "sha256": "e71a604498867b3fa555fe63e0448c63ec2e3e3ff6e44cf5281d0fe6271123ef"
+        }
+      ],
+      "finding": "Real project implementations unknown; synthetic labs are not external integration evidence",
+      "observation_provenance": "Retained prior assessment; scopes and original evidence hashes unchanged"
+    },
+    {
+      "gate": "supported_remote_brain_path_identification",
+      "status": "PASS",
+      "evidence_scope": "DOCUMENTED_ONLY",
+      "evidence": [
+        {
+          "path": "docs/DMB_PHASE8.md",
+          "sha256": "7e1288d82eabf712d9f910dd348b0258104074f37b5edc155162f0f5c172c017"
+        }
+      ],
+      "finding": "Official Streamable HTTP MCP/OAuth2.1 plus MCP Events path identified; no ordinary chat self-wake assumed",
+      "observation_provenance": "Retained prior assessment; scopes and original evidence hashes unchanged"
+    },
+    {
+      "gate": "remote_brain_oauth_and_client_identity",
+      "status": "BLOCKED",
+      "evidence_scope": "MISSING_EXTERNAL_CONFIGURATION",
+      "evidence": [
+        {
+          "path": "docs/DMB_PHASE8.md",
+          "sha256": "7e1288d82eabf712d9f910dd348b0258104074f37b5edc155162f0f5c172c017"
+        }
+      ],
+      "finding": "No DCI endpoint, issuer/audience, authenticated client or active subscription supplied",
+      "observation_provenance": "Retained prior assessment; scopes and original evidence hashes unchanged"
+    },
+    {
+      "gate": "real_remote_inbox_outbox_delivery",
+      "status": "NOT TESTED",
+      "evidence_scope": "DEPENDENCY_BLOCKED",
+      "evidence": [
+        {
+          "path": "docs/DMB_PHASE8.md",
+          "sha256": "7e1288d82eabf712d9f910dd348b0258104074f37b5edc155162f0f5c172c017"
+        }
+      ],
+      "finding": "No real callback/task delivery or remote OAuth interaction performed",
+      "observation_provenance": "Retained prior assessment; scopes and original evidence hashes unchanged"
+    },
+    {
+      "gate": "signed_event_identity_scope_and_tamper_rejection",
+      "status": "PASS",
+      "evidence_scope": "LOCAL_EPHEMERAL_CONTRACT",
+      "evidence": [
+        {
+          "path": "docs/evidence/phase8/LOCAL_RESILIENCE.json",
+          "sha256": "610cf402b64b40c9bf56c6aae306bcf58959b1f67a7d907b1dbdc1a9e00320ac"
+        },
+        {
+          "path": "docs/evidence/phase8/TESTS.log",
+          "sha256": "07e581918856738af9f17dc56445b79d7b20495d9e0b50bd914c8708a826b100"
+        }
+      ],
+      "finding": "Standard Webhooks v1 formula, exact bytes, scope/principal/expiry checks pass; not real identity",
+      "observation_provenance": "Retained prior assessment; scopes and original evidence hashes unchanged"
+    },
+    {
+      "gate": "event_dedup_audit_retry_and_offline_recovery",
+      "status": "PASS",
+      "evidence_scope": "LOCAL_EPHEMERAL_CONTRACT",
+      "evidence": [
+        {
+          "path": "docs/evidence/phase8/LOCAL_RESILIENCE.json",
+          "sha256": "610cf402b64b40c9bf56c6aae306bcf58959b1f67a7d907b1dbdc1a9e00320ac"
+        },
+        {
+          "path": "docs/evidence/phase8/TESTS.log",
+          "sha256": "07e581918856738af9f17dc56445b79d7b20495d9e0b50bd914c8708a826b100"
+        }
+      ],
+      "finding": "Durable dedup, independent subscription queues, bounded retries,410/413 stops, reopen and uncertainty quarantine pass",
+      "observation_provenance": "Retained prior assessment; scopes and original evidence hashes unchanged"
+    },
+    {
+      "gate": "heg_whatsapp_primary_activation_approval",
+      "status": "BLOCKED",
+      "evidence_scope": "APPROVAL_NOT_PRESENT",
+      "evidence": [
+        {
+          "path": "docs/DMB_PHASE8.md",
+          "sha256": "7e1288d82eabf712d9f910dd348b0258104074f37b5edc155162f0f5c172c017"
+        }
+      ],
+      "finding": "No provider, approved destination/consent or independently certified primary route",
+      "observation_provenance": "Retained prior assessment; scopes and original evidence hashes unchanged"
+    },
+    {
+      "gate": "heg_independent_email_activation_approval",
+      "status": "BLOCKED",
+      "evidence_scope": "APPROVAL_NOT_PRESENT",
+      "evidence": [
+        {
+          "path": "docs/DMB_PHASE8.md",
+          "sha256": "7e1288d82eabf712d9f910dd348b0258104074f37b5edc155162f0f5c172c017"
+        }
+      ],
+      "finding": "No approved backup route; available Gmail plugin is unconnected; no provider activated",
+      "observation_provenance": "Retained prior assessment; scopes and original evidence hashes unchanged"
+    },
+    {
+      "gate": "heg_real_authenticated_supervisor_approval",
+      "status": "NOT TESTED",
+      "evidence_scope": "NO_AUTHENTICATED_LIVE_IDENTITY",
+      "evidence": [
+        {
+          "path": "docs/DMB_PHASE8.md",
+          "sha256": "7e1288d82eabf712d9f910dd348b0258104074f37b5edc155162f0f5c172c017"
+        }
+      ],
+      "finding": "Synthetic session or signed shadow receipt cannot authorize real action",
+      "observation_provenance": "Retained prior assessment; scopes and original evidence hashes unchanged"
+    },
+    {
+      "gate": "heg_receipt_is_not_approval",
+      "status": "PASS",
+      "evidence_scope": "LOCAL_SYNTHETIC",
+      "evidence": [
+        {
+          "path": "docs/evidence/phase8/LOCAL_RESILIENCE.json",
+          "sha256": "610cf402b64b40c9bf56c6aae306bcf58959b1f67a7d907b1dbdc1a9e00320ac"
+        },
+        {
+          "path": "docs/evidence/phase8/TESTS.log",
+          "sha256": "07e581918856738af9f17dc56445b79d7b20495d9e0b50bd914c8708a826b100"
+        }
+      ],
+      "finding": "Signed/acknowledged notification leaves gated taskNEEDS_HUMAN; wrong type is rejected",
+      "observation_provenance": "Retained prior assessment; scopes and original evidence hashes unchanged"
+    },
+    {
+      "gate": "heg_independent_fallback_and_channel_dedup",
+      "status": "PASS",
+      "evidence_scope": "LOCAL_SYNTHETIC",
+      "evidence": [
+        {
+          "path": "docs/evidence/phase8/LOCAL_RESILIENCE.json",
+          "sha256": "610cf402b64b40c9bf56c6aae306bcf58959b1f67a7d907b1dbdc1a9e00320ac"
+        },
+        {
+          "path": "docs/evidence/phase8/TESTS.log",
+          "sha256": "07e581918856738af9f17dc56445b79d7b20495d9e0b50bd914c8708a826b100"
+        }
+      ],
+      "finding": "WhatsApp failure/email fallback and different synthetic channel signing keys/queues pass",
+      "observation_provenance": "Retained prior assessment; scopes and original evidence hashes unchanged"
+    },
+    {
+      "gate": "isolated_process_restart_and_worker_crash",
+      "status": "PASS",
+      "evidence_scope": "ACTUAL_LOCAL_FAULT",
+      "evidence": [
+        {
+          "path": "docs/evidence/phase8/LOCAL_RESILIENCE.json",
+          "sha256": "610cf402b64b40c9bf56c6aae306bcf58959b1f67a7d907b1dbdc1a9e00320ac"
+        }
+      ],
+      "finding": "New synthetic child SIGKILL exit-9; restart retains blocked task/lock; unrelated safe work succeeds",
+      "observation_provenance": "Retained prior assessment; scopes and original evidence hashes unchanged"
+    },
+    {
+      "gate": "local_task_retry_resource_fencing_and_cancellation",
+      "status": "PASS",
+      "evidence_scope": "LOCAL",
+      "evidence": [
+        {
+          "path": "docs/evidence/phase8/LOCAL_RESILIENCE.json",
+          "sha256": "610cf402b64b40c9bf56c6aae306bcf58959b1f67a7d907b1dbdc1a9e00320ac"
+        },
+        {
+          "path": "docs/evidence/phase8/TESTS.log",
+          "sha256": "07e581918856738af9f17dc56445b79d7b20495d9e0b50bd914c8708a826b100"
+        }
+      ],
+      "finding": "Original84 tests preserved, including bounded pre-start retries, uncertain resource retention and group timeout cleanup",
+      "observation_provenance": "Retained prior assessment; scopes and original evidence hashes unchanged"
+    },
+    {
+      "gate": "combined_controlplane_absence_continuation",
+      "status": "PASS",
+      "evidence_scope": "LOCAL_ABSENCE_FIXTURE",
+      "evidence": [
+        {
+          "path": "docs/evidence/phase8/LOCAL_RESILIENCE.json",
+          "sha256": "610cf402b64b40c9bf56c6aae306bcf58959b1f67a7d907b1dbdc1a9e00320ac"
+        }
+      ],
+      "finding": "Standalone minimal-environment process completes3 jobs with no configured DSV/OpenClaw/ChatGPT clients",
+      "observation_provenance": "Retained prior assessment; scopes and original evidence hashes unchanged"
+    },
+    {
+      "gate": "dsv_connected_service_outage",
+      "status": "NOT TESTED",
+      "evidence_scope": "NO_CERTIFIED_CONNECTED_ROUTE",
+      "evidence": [
+        {
+          "path": "docs/evidence/phase8/LOCAL_RESILIENCE.json",
+          "sha256": "610cf402b64b40c9bf56c6aae306bcf58959b1f67a7d907b1dbdc1a9e00320ac"
+        }
+      ],
+      "finding": "No production service was interrupted; combined absence fixture is separately classified",
+      "observation_provenance": "Retained prior assessment; scopes and original evidence hashes unchanged"
+    },
+    {
+      "gate": "openclaw_connected_service_outage",
+      "status": "NOT TESTED",
+      "evidence_scope": "NO_CERTIFIED_CONNECTED_ROUTE",
+      "evidence": [
+        {
+          "path": "docs/evidence/phase8/LOCAL_RESILIENCE.json",
+          "sha256": "610cf402b64b40c9bf56c6aae306bcf58959b1f67a7d907b1dbdc1a9e00320ac"
+        }
+      ],
+      "finding": "No production service was interrupted; combined absence fixture is separately classified",
+      "observation_provenance": "Retained prior assessment; scopes and original evidence hashes unchanged"
+    },
+    {
+      "gate": "chatgpt_live_delivery_disconnect",
+      "status": "NOT TESTED",
+      "evidence_scope": "NO_CERTIFIED_CONNECTED_ROUTE",
+      "evidence": [
+        {
+          "path": "docs/evidence/phase8/LOCAL_RESILIENCE.json",
+          "sha256": "610cf402b64b40c9bf56c6aae306bcf58959b1f67a7d907b1dbdc1a9e00320ac"
+        }
+      ],
+      "finding": "No production service was interrupted; combined absence fixture is separately classified",
+      "observation_provenance": "Retained prior assessment; scopes and original evidence hashes unchanged"
+    },
+    {
+      "gate": "temporal_contract_and_dat_milestone_preservation",
+      "status": "PASS",
+      "evidence_scope": "LOCAL_INTERFACE_AND_HISTORICAL_APPROVAL",
+      "evidence": [
+        {
+          "path": "docs/evidence/phase8/BASELINE.json",
+          "sha256": "de41b558bc6fb8d81e88ef246e83aa4b11c02b7ca184f4fc0d1b4cdc765b40ed"
+        },
+        {
+          "path": "portfolio/RECONCILIATION.phase8.v1.json",
+          "sha256": "e71a604498867b3fa555fe63e0448c63ec2e3e3ff6e44cf5281d0fe6271123ef"
+        }
+      ],
+      "finding": "Original workflow contracts unchanged; separate approved DAT Temporal milestone preserved without deployment claim",
+      "observation_provenance": "Retained prior assessment; scopes and original evidence hashes unchanged"
+    },
+    {
+      "gate": "temporal_live_server_integration",
+      "status": "NOT TESTED",
+      "evidence_scope": "NO_AUTHORIZED_DEPLOYMENT",
+      "evidence": [
+        {
+          "path": "portfolio/RECONCILIATION.phase8.v1.json",
+          "sha256": "e71a604498867b3fa555fe63e0448c63ec2e3e3ff6e44cf5281d0fe6271123ef"
+        }
+      ],
+      "finding": "SDK/server deployment and real DAT Temporal execution unavailable/unverified",
+      "observation_provenance": "Retained prior assessment; scopes and original evidence hashes unchanged"
+    },
+    {
+      "gate": "no_live_trading_elevation_or_provider_service_activation",
+      "status": "PASS",
+      "evidence_scope": "CURRENT_WORK_SCOPE",
+      "evidence": [
+        {
+          "path": "docs/evidence/phase8/RUNTIME_IDENTITY.json",
+          "sha256": "ebf3438b49bf01e627d23f7b5830c42cee39d8ab3cca254ae00736101ca4e9b5"
+        },
+        {
+          "path": "docs/DMB_PHASE8.md",
+          "sha256": "7e1288d82eabf712d9f910dd348b0258104074f37b5edc155162f0f5c172c017"
+        }
+      ],
+      "finding": "Read-only remote probes and isolated synthetic tests only; no credentials/privileges/accounts/services changed",
+      "observation_provenance": "Retained prior assessment; scopes and original evidence hashes unchanged"
+    },
+    {
+      "gate": "prior_certificates_and_bundles_retained",
+      "status": "PASS",
+      "evidence_scope": "LOCAL_HASH_VERIFICATION",
+      "evidence": [
+        {
+          "path": "docs/evidence/phase8-20261012/LOCAL_VERIFICATION.json",
+          "sha256": "a1db84270f506bf14a6d275876c9b9b1ff65b69ad1ec51212b269f14cdc5b667"
+        }
+      ],
+      "finding": "18 prior artifact hashes,38 prior source files and two bundle verifications retained",
+      "observation_provenance": "New continuation evidence"
+    },
+    {
+      "gate": "offline_oauth_resource_policy",
+      "status": "PASS",
+      "evidence_scope": "SYNTHETIC_POLICY_ONLY",
+      "evidence": [
+        {
+          "path": "docs/evidence/phase8-20261012/LOCAL_VERIFICATION.json",
+          "sha256": "a1db84270f506bf14a6d275876c9b9b1ff65b69ad1ec51212b269f14cdc5b667"
+        }
+      ],
+      "finding": "17 new policy fixtures pass; no token/signature validation, OAuth flow or remote identity certified",
+      "observation_provenance": "New continuation evidence"
+    },
+    {
+      "gate": "fixture_policy_result_not_human_authorization",
+      "status": "PASS",
+      "evidence_scope": "SYNTHETIC_POLICY_ONLY",
+      "evidence": [
+        {
+          "path": "docs/evidence/phase8-20261012/AUTHORIZATION_TESTS.log",
+          "sha256": "ed8f786b4c5e78ddd9394b3b78ee577e511f3ed86de971da03a2b5fce63424f8"
+        }
+      ],
+      "finding": "Existing HEG rejects fixture policy object; successful fixture checks cannot authorize real actions",
+      "observation_provenance": "New continuation evidence"
+    },
+    {
+      "gate": "github_standalone_cli_identity",
+      "status": "BLOCKED",
+      "evidence_scope": "SUPPORTED_READ_ONLY_PROBE",
+      "evidence": [
+        {
+          "path": "docs/evidence/phase8-20261012/GITHUB_CLI_IDENTITY.json",
+          "sha256": "47a135de35e90b56c6629fcdc07d964dae60b4f74cab7c660796bf07f9335566"
+        }
+      ],
+      "finding": "Normal gh identity API fails; no alternate intended CLI identity inferred, no auth changes",
+      "observation_provenance": "New continuation evidence"
+    }
+  ],
+  "counts": {
+    "PASS": 24,
+    "BLOCKED": 10,
+    "NOT TESTED": 12
+  },
+  "human_required": [
+    {
+      "id": "github_single_repository_write",
+      "minimum_action": "Inspect existing GitHub app installation for exact repository and Contents write; approve pending update/reauthorize only if required; no other grants or tokens",
+      "decision": "decisions/REQUEST-0002.md"
+    },
+    {
+      "id": "windows_supported_non_admin_runtime",
+      "minimum_action": "Provide existing non-admin DirectiveCodex remote session, accessible DCI workspace and supported runtime without relaxing sandbox or auth",
+      "decision": "decisions/REQUEST-0003.md"
+    },
+    {
+      "id": "worker_boundary_denial_probes",
+      "minimum_action": "Provide existing enforced worker boundary and authorize exact synthetic cross-boundary read/write probes; no elevation or production modification",
+      "decision": "decisions/REQUEST-0005.md"
+    },
+    {
+      "id": "brain_heg_external_shadow_scope",
+      "minimum_action": "Provide approved endpoint/identity/subscription references and approve exact bounded shadow provider test destination/consent/scope/expiry; persistent installation and costs require separate explicit approval",
+      "decision": "decisions/REQUEST-0006.md"
+    }
+  ],
+  "next_safe_actions": [
+    "Offline OAuth claim/audience/scope fixtures; no new identity service",
+    "Read-only review of exact authorized external project artifact references when supplied",
+    "Scoped shadow reconciliation contracts with observed worker termination",
+    "After restored integration grant, compare current remote tree and publish history-preserving branch"
+  ],
+  "assessment_date": "2026-10-12 America/New_York",
+  "prior_matrix": "docs/evidence/phase8/CERTIFICATION_MATRIX.json",
+  "source_note": "Prior checks retain their original observation provenance. Fresh checks are explicitly tagged. No fixture PASS releases external authorization."
+}

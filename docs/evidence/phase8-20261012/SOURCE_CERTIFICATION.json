@@ -1,0 +1,31 @@
+{
+  "schema_version": 1,
+  "captured_at": "2026-10-12T18:53:29.364349+00:00",
+  "source_commit": "f752bcebe4d7186691c39048da09705903c498c2",
+  "outcome": "DMB LOCAL SHADOW PASS / FULL CERTIFICATION BLOCKED",
+  "source_hashes_match_git_commit": true,
+  "source_sha256": {
+    "src/dci/master/authorization_contract.py": "8b4833f994be3778ac810b2670955901e56d92c434486331035859f1f80013c2",
+    "certification_tests/test_authorization_contract.py": "129522130daba9b23e173dd015a8d186704968d156225a7d408bb0d40ed2fd3f",
+    "tools/verify_phase8_authorization.py": "d381e7bb9b7734890e04ee82454d4ff99271d96ab245f6669d082c33da41ebf5"
+  },
+  "tests": {
+    "existing_suite_passed": 100,
+    "new_fixture_suite_passed": 17,
+    "failures": 0,
+    "total_passed": 117
+  },
+  "matrix": {
+    "path": "docs/evidence/phase8-20261012/CERTIFICATION_MATRIX.json",
+    "sha256": "084649bf5fdb5dcf533c42e10dd58999abae98f98a5f15d68c872895aede4a76",
+    "gates": 46,
+    "counts": {
+      "PASS": 24,
+      "BLOCKED": 10,
+      "NOT TESTED": 12
+    }
+  },
+  "prior_artifacts_and_bundles_preserved": true,
+  "new_remote_certifications": [],
+  "publication": "BLOCKED integration403; no push claimed"
+}

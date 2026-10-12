@@ -1,0 +1,198 @@
+{
+  "schema_version": 1,
+  "mode": "SHADOW",
+  "generated_at": "2026-10-11T20:17:06.306876+00:00",
+  "overall": "BLOCKED",
+  "synthetic_certification": "PASS",
+  "target_fully_certified": false,
+  "tests_run": 57,
+  "test_failures": 0,
+  "test_errors": 0,
+  "git_head_at_test": "74bf88edd4a23edfa1e161b5e0aa09f904d36e0e",
+  "tested_source_sha256": {
+    "schemas/bridge/ack.v1.schema.json": "1a44f5a4ec1c84a5b449f770fa3f19ee485d046e9c31100ee1721d42a4431dc6",
+    "schemas/bridge/approval_request.v1.schema.json": "811e4c2ccd69c691d9f27e200ba67bce117713d482e5a70dd1b38ca2ab762b7e",
+    "schemas/bridge/event.v1.schema.json": "932df3b80f9dd730594878f2badddae8dc9470d859ec4785fc68947ae071f6f6",
+    "schemas/bridge/result.v1.schema.json": "efca89110aed4813de6355ab98b6b03e954496307eec193db3a13a768ab07c54",
+    "schemas/bridge/status.v1.schema.json": "31f750003d76ff2f303932c32d048cdfc67c17dfd5e91f9c106a2f6c1554741f",
+    "schemas/bridge/task.v1.schema.json": "f784c7e2fb3e6e963fb3f875f2442b10c63380f71f8d6b48f16aae0f86c2a62f",
+    "src/dci/bridge/__init__.py": "9ea5a679f9c43377a34864d35e33fcc20a40d380850022c90feca643b3ca322d",
+    "src/dci/bridge/__main__.py": "523ec95d25de92c3c8cb767e9d0894a33b923478f4b4035c2f3fccc515705821",
+    "src/dci/bridge/brain.py": "1cc6c996780ef5c2f4500ff33e1a873c3109700d12624492c5d64c48d438f14b",
+    "src/dci/bridge/hands.py": "986f504a2043aa05dcbe5aaee8f1520fdac34aa4f9cea6ec374e9d31fd93c7d0",
+    "src/dci/bridge/heg.py": "b365d5bfb6da4c500b16ced994f79272f78f40cfae1d46fed8eebd4b568460e5",
+    "src/dci/bridge/identity.py": "1e15d8edd3a9d54f9d8a0b900f6d921c2d9dd932ae318f280bc0d3468c267f69",
+    "src/dci/bridge/protocol.py": "73c72ec1389515f767e4bc4820523b790c9ed62d7991a0cd4e287f0fbc6f30ad",
+    "src/dci/bridge/runner.py": "c8acfec1db6dc434edb5a17552f3f4676aa94441981e452fc9cac1fe35f271f1",
+    "src/dci/bridge/store.py": "cfd174016b2fa04402b28dd9a7fb0860f19e369d67d42217a1e2c80a550bad99",
+    "src/dci/bridge/workflows.py": "e35cc9509f57bd1a1f185f8e527634122aba60d54911c805545a5151d486b427",
+    "tests/test_bridge.py": "fa5cd4e63db754f874dad72e6497dba2c6c190884ab805d676ab7b6f680fcf19",
+    "tools/certify_bridge.py": "e21fba8f48120701c12fad851aae7a6615ba78db2226ec8238707731fc81953f"
+  },
+  "synthetic_gates": [
+    {
+      "name": "100 cycles: zero lost/duplicate committed synthetic executions",
+      "result": "PASS",
+      "scope": "local synthetic shadow",
+      "test_evidence": [
+        "test_100_cycles_zero_lost_or_duplicate_executions"
+      ]
+    },
+    {
+      "name": "schemas, writer/route/scope/replay rejection",
+      "result": "PASS",
+      "scope": "local synthetic shadow",
+      "test_evidence": [
+        "test_all_six_schemas_are_versioned_and_match_runtime_envelope",
+        "test_wrong_route_writer_and_operation_rejected",
+        "test_replay_conflict_out_of_order_and_task_reuse"
+      ]
+    },
+    {
+      "name": "atomicity, single execution and Brain response-loss retry",
+      "result": "PASS",
+      "scope": "local synthetic shadow",
+      "test_evidence": [
+        "test_mailbox_atomicity_and_single_execution_across_connections",
+        "test_brain_response_loss_retry_preserves_task_and_correlation"
+      ]
+    },
+    {
+      "name": "pause, timeout and bounded proven-prestart retry",
+      "result": "PASS",
+      "scope": "local synthetic shadow",
+      "test_evidence": [
+        "test_pause_resume_and_task_timeout",
+        "test_prestart_retry_is_bounded_and_audited",
+        "test_expired_execution_fails_closed"
+      ]
+    },
+    {
+      "name": "crash/restart, fencing and ambiguous outcome fail-closed",
+      "result": "PASS",
+      "scope": "local synthetic shadow",
+      "test_evidence": [
+        "test_real_process_crash_after_claim_is_not_reexecuted",
+        "test_crash_restart_recovery_and_stale_completion_fence",
+        "test_ambiguous_external_outcome_not_retried",
+        "test_codex_runtime_fault_is_control_degradation_not_routine_failure"
+      ]
+    },
+    {
+      "name": "standalone operation without ChatGPT/OpenClaw/DSV",
+      "result": "PASS",
+      "scope": "local synthetic shadow",
+      "test_evidence": [
+        "test_standalone_runner_without_conversational_control_plane"
+      ]
+    },
+    {
+      "name": "Brain tool delivery/result return (local MCP only)",
+      "result": "PASS",
+      "scope": "local synthetic shadow",
+      "test_evidence": [
+        "test_mcp_brain_task_and_result_roundtrip",
+        "test_standalone_mcp_protocol_roundtrip"
+      ]
+    },
+    {
+      "name": "HEG simulated approve/reject/timeout and identity/scope binding",
+      "result": "PASS",
+      "scope": "local synthetic shadow",
+      "test_evidence": [
+        "test_human_approval_exact_identity_scope_expiry_and_replay",
+        "test_human_rejection_and_timeout",
+        "test_control_degradation_cannot_be_blindly_approved"
+      ]
+    },
+    {
+      "name": "WhatsApp simulation failure and independent email fallback",
+      "result": "PASS",
+      "scope": "local synthetic shadow",
+      "test_evidence": [
+        "test_whatsapp_failure_independent_email_ack_is_not_approval",
+        "test_simulated_provider_ack_dedup_survives_restart"
+      ]
+    },
+    {
+      "name": "failed notification keeps task blocked; unrelated work proceeds",
+      "result": "PASS",
+      "scope": "local synthetic shadow",
+      "test_evidence": [
+        "test_both_notifications_fail_keep_task_blocked_unrelated_proceeds"
+      ]
+    },
+    {
+      "name": "fixed Hands verification, no arbitrary shell or provider activation",
+      "result": "PASS",
+      "scope": "local synthetic shadow",
+      "test_evidence": [
+        "test_hands_fixed_fixture_task_and_no_arbitrary_commands",
+        "test_external_provider_activation_rejected",
+        "test_non_admin_and_workspace_guard"
+      ]
+    }
+  ],
+  "live_gates": [
+    {
+      "name": "non-admin DirectiveCodex Windows identity/workspace",
+      "result": "FAIL",
+      "state": "BLOCKED",
+      "evidence": {
+        "workspace": "C:\\Directive\\DCI\\Codex--DSV-",
+        "observed_identity": "Administrator",
+        "integrity": "High",
+        "status": "BLOCKED",
+        "mutations_performed": false,
+        "access_errors": [
+          "git: not a git repository",
+          "Desktop Commander realpath: EPERM"
+        ]
+      }
+    },
+    {
+      "name": "actual Codex execution",
+      "result": "FAIL",
+      "state": "BLOCKED",
+      "evidence": {
+        "version": "0.159.0-alpha.3",
+        "auth_mode": "ChatGPT (status only; exact account uncertified)",
+        "execution_status": "BLOCKED",
+        "error": "failed to initialize in-process app-server client: Read-only file system (os error 30)",
+        "attempt_artifacts": "artifacts/hands/15bf104b-f84f-4971-984f-d6e22a38c73e"
+      },
+      "bridge_gate_evidence": "docs/evidence/BHB_CODEX_GATE.json"
+    },
+    {
+      "name": "GitHub write certification",
+      "result": "FAIL",
+      "state": "BLOCKED",
+      "evidence": {
+        "login": "oluadegbu",
+        "remote_main": "0af1f4208da6d5f799ec68d48aab5fb4800159d0",
+        "read_status": "PASS",
+        "write_status": "BLOCKED",
+        "error": "HTTP 403 Resource not accessible by integration (create_tree)"
+      }
+    },
+    {
+      "name": "actual ChatGPT bidirectional bridge",
+      "result": "FAIL",
+      "state": "BLOCKED",
+      "evidence": "BLOCKED: no DCI authenticated MCP/plugin connection"
+    },
+    {
+      "name": "live HEG identity and WhatsApp/Pulse/email providers",
+      "result": "FAIL",
+      "state": "BLOCKED",
+      "evidence": "BLOCKED: provider activation not authorized/certified"
+    }
+  ],
+  "limits": [
+    "No Windows implementation performed",
+    "No live ChatGPT task delivery claimed",
+    "No services or scheduled tasks installed",
+    "No live providers, credentials, trading or account/risk changes",
+    "External process exactly-once execution is not claimed"
+  ]
+}

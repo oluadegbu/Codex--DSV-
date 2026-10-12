@@ -1,0 +1,17 @@
+test_fixed_initial_exposures_known_drawdown (test_workstream.SyntheticResearchTests.test_fixed_initial_exposures_known_drawdown) ... ok
+test_input_not_mutated (test_workstream.SyntheticResearchTests.test_input_not_mutated) ... ok
+test_reject_live_and_order_intent (test_workstream.SyntheticResearchTests.test_reject_live_and_order_intent) ... ok
+test_reject_malformed_series_and_weights (test_workstream.SyntheticResearchTests.test_reject_malformed_series_and_weights) ... ok
+test_reject_nonfinite_and_unbounded_numeric (test_workstream.SyntheticResearchTests.test_reject_nonfinite_and_unbounded_numeric) ... ok
+test_reject_out_of_order_or_boolean_periods (test_workstream.SyntheticResearchTests.test_reject_out_of_order_or_boolean_periods) ... ok
+test_reject_version_unknown_fields_and_duplicates (test_workstream.SyntheticResearchTests.test_reject_version_unknown_fields_and_duplicates) ... ok
+test_repeat_and_ambient_precision_independence (test_workstream.SyntheticResearchTests.test_repeat_and_ambient_precision_independence) ... ok
+test_resource_limits (test_workstream.SyntheticResearchTests.test_resource_limits) ... ok
+test_total_loss_stays_zero (test_workstream.SyntheticResearchTests.test_total_loss_stays_zero) ... ok
+test_total_sample_limit (test_workstream.SyntheticResearchTests.test_total_sample_limit) ... ok
+test_valid_max_periods_and_multiple_scenarios (test_workstream.SyntheticResearchTests.test_valid_max_periods_and_multiple_scenarios) ... ok
+
+----------------------------------------------------------------------
+Ran 12 tests in 0.065s
+
+OK

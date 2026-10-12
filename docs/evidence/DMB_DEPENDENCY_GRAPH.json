@@ -1,0 +1,122 @@
+{
+  "registry_version": "dmb-portfolio-v1",
+  "nodes": [
+    "DCI",
+    "BHB",
+    "HEG",
+    "DSV",
+    "PULSE",
+    "DAT_FUTURES",
+    "DAT_MT5",
+    "DPM",
+    "TEMPORAL",
+    "VMA_DAR",
+    "CRYPTO_RESEARCH",
+    "CRYPTO_EXECUTION_PLANNED",
+    "DMB"
+  ],
+  "edges": [
+    {
+      "from": "DCI",
+      "requires": "BHB",
+      "kind": "target_integration",
+      "blocks_shadow_lab": false
+    },
+    {
+      "from": "DCI",
+      "requires": "HEG",
+      "kind": "target_integration",
+      "blocks_shadow_lab": false
+    },
+    {
+      "from": "DCI",
+      "requires": "TEMPORAL",
+      "kind": "target_integration",
+      "blocks_shadow_lab": false
+    },
+    {
+      "from": "BHB",
+      "requires": "HEG",
+      "kind": "target_integration",
+      "blocks_shadow_lab": false
+    },
+    {
+      "from": "DSV",
+      "requires": "BHB",
+      "kind": "target_integration",
+      "blocks_shadow_lab": false
+    },
+    {
+      "from": "PULSE",
+      "requires": "HEG",
+      "kind": "target_integration",
+      "blocks_shadow_lab": false
+    },
+    {
+      "from": "DAT_FUTURES",
+      "requires": "TEMPORAL",
+      "kind": "target_integration",
+      "blocks_shadow_lab": false
+    },
+    {
+      "from": "DAT_FUTURES",
+      "requires": "VMA_DAR",
+      "kind": "target_integration",
+      "blocks_shadow_lab": false
+    },
+    {
+      "from": "DAT_MT5",
+      "requires": "TEMPORAL",
+      "kind": "target_integration",
+      "blocks_shadow_lab": false
+    },
+    {
+      "from": "DAT_MT5",
+      "requires": "VMA_DAR",
+      "kind": "target_integration",
+      "blocks_shadow_lab": false
+    },
+    {
+      "from": "DPM",
+      "requires": "TEMPORAL",
+      "kind": "target_integration",
+      "blocks_shadow_lab": false
+    },
+    {
+      "from": "CRYPTO_RESEARCH",
+      "requires": "DCI",
+      "kind": "target_integration",
+      "blocks_shadow_lab": false
+    },
+    {
+      "from": "CRYPTO_EXECUTION_PLANNED",
+      "requires": "DCI",
+      "kind": "target_integration",
+      "blocks_shadow_lab": false
+    },
+    {
+      "from": "CRYPTO_EXECUTION_PLANNED",
+      "requires": "HEG",
+      "kind": "target_integration",
+      "blocks_shadow_lab": false
+    },
+    {
+      "from": "CRYPTO_EXECUTION_PLANNED",
+      "requires": "TEMPORAL",
+      "kind": "target_integration",
+      "blocks_shadow_lab": false
+    },
+    {
+      "from": "DMB",
+      "requires": "BHB",
+      "kind": "target_integration",
+      "blocks_shadow_lab": false
+    },
+    {
+      "from": "DMB",
+      "requires": "HEG",
+      "kind": "target_integration",
+      "blocks_shadow_lab": false
+    }
+  ]
+}

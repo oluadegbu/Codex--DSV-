@@ -1,0 +1,23 @@
+name: DCI deterministic checks
+on: [push, pull_request]
+permissions:
+  contents: read
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: PYTHONPATH=src python -m unittest discover -s tests -v
+      - run: PYTHONPATH=src python -m unittest discover -s certification_tests -v
+      - run: PYTHONPATH=src python -m dci tests/fixtures/synthetic.json
+      - run: python -m compileall -q src tests
+      - run: PYTHONPATH=src python tools/certify_bridge.py
+      - run: python tools/prepare_dmb_labs.py --destination /tmp/dmb-ci-labs --manifest /tmp/dmb-ci-workers.json
+      - run: python tools/certify_dmb.py --workers /tmp/dmb-ci-workers.json --output /tmp/dmb-ci-evidence
+      - uses: actions/upload-artifact@v4
+        with:
+          name: dmb-shadow-evidence
+          path: /tmp/dmb-ci-evidence

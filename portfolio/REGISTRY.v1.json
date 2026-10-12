@@ -1,0 +1,453 @@
+{
+  "schema_version": 1,
+  "registry_version": "dmb-portfolio-v1",
+  "updated_at": "2026-10-11T20:50:23.304429+00:00",
+  "authority": "Versioned Git registry; observed evidence overrides historical assertions",
+  "mode": "SHADOW",
+  "projects": [
+    {
+      "project_id": "DCI",
+      "name": "Directive Crypto Intelligence",
+      "verified_state": "VERIFIED_LOCAL_SHADOW",
+      "verified_scope": "local synthetic/interface evidence only",
+      "objectives": [
+        "Synthetic core and paper research"
+      ],
+      "dependencies": [
+        {
+          "project_id": "BHB",
+          "kind": "target_integration",
+          "blocks_shadow_lab": false
+        },
+        {
+          "project_id": "HEG",
+          "kind": "target_integration",
+          "blocks_shadow_lab": false
+        },
+        {
+          "project_id": "TEMPORAL",
+          "kind": "target_integration",
+          "blocks_shadow_lab": false
+        }
+      ],
+      "blockers": [
+        "GitHub publication previously rejected; remote source not updated",
+        "Windows non-admin runtime and live Codex/ChatGPT/provider certification blocked"
+      ],
+      "approval_gates": [
+        "production activation",
+        "privileged/shared infrastructure modifications",
+        "persistent installation",
+        "paid services",
+        "credential/security changes"
+      ],
+      "workspace": "/workspace/dci",
+      "git_repository": "oluadegbu/Codex--DSV-",
+      "assigned_worker": "root",
+      "next_safe_action": "Run isolated bounded shadow checks; review supplied non-secret project evidence",
+      "evidence": [
+        "docs/evidence/BHB_CERTIFICATION.json",
+        "BUILD_STATE.json"
+      ]
+    },
+    {
+      "project_id": "BHB",
+      "name": "Brain\u2013Hands Bridge",
+      "verified_state": "VERIFIED_LOCAL_SHADOW",
+      "verified_scope": "local synthetic/interface evidence only",
+      "objectives": [
+        "Durable task/result communication"
+      ],
+      "dependencies": [
+        {
+          "project_id": "HEG",
+          "kind": "target_integration",
+          "blocks_shadow_lab": false
+        }
+      ],
+      "blockers": [
+        "GitHub publication previously rejected; remote source not updated",
+        "Windows non-admin runtime and live Codex/ChatGPT/provider certification blocked"
+      ],
+      "approval_gates": [
+        "production activation",
+        "privileged/shared infrastructure modifications",
+        "persistent installation",
+        "paid services",
+        "credential/security changes"
+      ],
+      "workspace": "/workspace/dci",
+      "git_repository": "oluadegbu/Codex--DSV-",
+      "assigned_worker": "dmb_bhb_worker",
+      "next_safe_action": "Run isolated bounded shadow checks; review supplied non-secret project evidence",
+      "evidence": [
+        "docs/evidence/BHB_CERTIFICATION.json",
+        "BUILD_STATE.json"
+      ]
+    },
+    {
+      "project_id": "HEG",
+      "name": "Human Escalation Gateway",
+      "verified_state": "VERIFIED_LOCAL_SIMULATION",
+      "verified_scope": "local synthetic/interface evidence only",
+      "objectives": [
+        "Scoped approvals and independently delivered notifications"
+      ],
+      "dependencies": [],
+      "blockers": [
+        "GitHub publication previously rejected; remote source not updated",
+        "Windows non-admin runtime and live Codex/ChatGPT/provider certification blocked"
+      ],
+      "approval_gates": [
+        "production activation",
+        "privileged/shared infrastructure modifications",
+        "persistent installation",
+        "paid services",
+        "credential/security changes"
+      ],
+      "workspace": "/workspace/dci",
+      "git_repository": "oluadegbu/Codex--DSV-",
+      "assigned_worker": "dmb_bhb_worker",
+      "next_safe_action": "Run isolated bounded shadow checks; review supplied non-secret project evidence",
+      "evidence": [
+        "docs/evidence/BHB_CERTIFICATION.json",
+        "BUILD_STATE.json"
+      ]
+    },
+    {
+      "project_id": "DSV",
+      "name": "Directive supervisory control plane",
+      "verified_state": "UNVERIFIED",
+      "verified_scope": "No production PASS inferred",
+      "objectives": [
+        "Optional operator control plane"
+      ],
+      "dependencies": [
+        {
+          "project_id": "BHB",
+          "kind": "target_integration",
+          "blocks_shadow_lab": false
+        }
+      ],
+      "blockers": [
+        "Current project repository/workspace/certification artifacts not supplied or independently verified"
+      ],
+      "approval_gates": [
+        "production activation",
+        "privileged/shared infrastructure modifications",
+        "persistent installation",
+        "paid services",
+        "credential/security changes"
+      ],
+      "workspace": null,
+      "git_repository": null,
+      "assigned_worker": null,
+      "next_safe_action": "Run isolated bounded shadow checks; review supplied non-secret project evidence",
+      "evidence": []
+    },
+    {
+      "project_id": "PULSE",
+      "name": "Pulse notifications",
+      "verified_state": "UNVERIFIED",
+      "verified_scope": "No production PASS inferred",
+      "objectives": [
+        "Certified WhatsApp notification route"
+      ],
+      "dependencies": [
+        {
+          "project_id": "HEG",
+          "kind": "target_integration",
+          "blocks_shadow_lab": false
+        }
+      ],
+      "blockers": [
+        "Current project repository/workspace/certification artifacts not supplied or independently verified"
+      ],
+      "approval_gates": [
+        "production activation",
+        "privileged/shared infrastructure modifications",
+        "persistent installation",
+        "paid services",
+        "credential/security changes"
+      ],
+      "workspace": null,
+      "git_repository": null,
+      "assigned_worker": null,
+      "next_safe_action": "Run isolated bounded shadow checks; review supplied non-secret project evidence",
+      "evidence": []
+    },
+    {
+      "project_id": "DAT_FUTURES",
+      "name": "DAT Futures",
+      "verified_state": "UNVERIFIED",
+      "verified_scope": "No production PASS inferred",
+      "objectives": [
+        "Non-trading development; preserve approved DAT Temporal milestone"
+      ],
+      "dependencies": [
+        {
+          "project_id": "TEMPORAL",
+          "kind": "target_integration",
+          "blocks_shadow_lab": false
+        },
+        {
+          "project_id": "VMA_DAR",
+          "kind": "target_integration",
+          "blocks_shadow_lab": false
+        }
+      ],
+      "blockers": [
+        "Current project repository/workspace/certification artifacts not supplied or independently verified"
+      ],
+      "approval_gates": [
+        "production activation",
+        "privileged/shared infrastructure modifications",
+        "persistent installation",
+        "paid services",
+        "credential/security changes"
+      ],
+      "workspace": null,
+      "git_repository": null,
+      "assigned_worker": "dmb_dat_worker",
+      "next_safe_action": "Run isolated bounded shadow checks; review supplied non-secret project evidence",
+      "evidence": []
+    },
+    {
+      "project_id": "DAT_MT5",
+      "name": "DAT MT5",
+      "verified_state": "UNVERIFIED",
+      "verified_scope": "No production PASS inferred",
+      "objectives": [
+        "Non-trading development; no broker orders"
+      ],
+      "dependencies": [
+        {
+          "project_id": "TEMPORAL",
+          "kind": "target_integration",
+          "blocks_shadow_lab": false
+        },
+        {
+          "project_id": "VMA_DAR",
+          "kind": "target_integration",
+          "blocks_shadow_lab": false
+        }
+      ],
+      "blockers": [
+        "Current project repository/workspace/certification artifacts not supplied or independently verified"
+      ],
+      "approval_gates": [
+        "production activation",
+        "privileged/shared infrastructure modifications",
+        "persistent installation",
+        "paid services",
+        "credential/security changes"
+      ],
+      "workspace": null,
+      "git_repository": null,
+      "assigned_worker": "dmb_dat_worker",
+      "next_safe_action": "Run isolated bounded shadow checks; review supplied non-secret project evidence",
+      "evidence": []
+    },
+    {
+      "project_id": "DPM",
+      "name": "Directive Portfolio Management",
+      "verified_state": "UNVERIFIED",
+      "verified_scope": "No production PASS inferred",
+      "objectives": [
+        "Research and simulation only"
+      ],
+      "dependencies": [
+        {
+          "project_id": "TEMPORAL",
+          "kind": "target_integration",
+          "blocks_shadow_lab": false
+        }
+      ],
+      "blockers": [
+        "Current project repository/workspace/certification artifacts not supplied or independently verified"
+      ],
+      "approval_gates": [
+        "production activation",
+        "privileged/shared infrastructure modifications",
+        "persistent installation",
+        "paid services",
+        "credential/security changes"
+      ],
+      "workspace": null,
+      "git_repository": null,
+      "assigned_worker": "dmb_dpm_worker",
+      "next_safe_action": "Run isolated bounded shadow checks; review supplied non-secret project evidence",
+      "evidence": []
+    },
+    {
+      "project_id": "TEMPORAL",
+      "name": "Temporal orchestration",
+      "verified_state": "INTERFACE_ONLY",
+      "verified_scope": "No production PASS inferred",
+      "objectives": [
+        "Durable orchestration; DAT integration previously approved but implementation unverified"
+      ],
+      "dependencies": [],
+      "blockers": [
+        "Current project repository/workspace/certification artifacts not supplied or independently verified"
+      ],
+      "approval_gates": [
+        "production activation",
+        "privileged/shared infrastructure modifications",
+        "persistent installation",
+        "paid services",
+        "credential/security changes"
+      ],
+      "workspace": null,
+      "git_repository": null,
+      "assigned_worker": null,
+      "next_safe_action": "Run isolated bounded shadow checks; review supplied non-secret project evidence",
+      "evidence": []
+    },
+    {
+      "project_id": "VMA_DAR",
+      "name": "VMA/DAR",
+      "verified_state": "UNVERIFIED",
+      "verified_scope": "No production PASS inferred",
+      "objectives": [
+        "Routing and validation integration contracts"
+      ],
+      "dependencies": [],
+      "blockers": [
+        "Current project repository/workspace/certification artifacts not supplied or independently verified"
+      ],
+      "approval_gates": [
+        "production activation",
+        "privileged/shared infrastructure modifications",
+        "persistent installation",
+        "paid services",
+        "credential/security changes"
+      ],
+      "workspace": null,
+      "git_repository": null,
+      "assigned_worker": null,
+      "next_safe_action": "Run isolated bounded shadow checks; review supplied non-secret project evidence",
+      "evidence": []
+    },
+    {
+      "project_id": "CRYPTO_RESEARCH",
+      "name": "Planned crypto research initiatives",
+      "verified_state": "PLANNED_UNVERIFIED",
+      "verified_scope": "No production PASS inferred",
+      "objectives": [
+        "Define evidence-backed research cohorts"
+      ],
+      "dependencies": [
+        {
+          "project_id": "DCI",
+          "kind": "target_integration",
+          "blocks_shadow_lab": false
+        }
+      ],
+      "blockers": [
+        "Current project repository/workspace/certification artifacts not supplied or independently verified"
+      ],
+      "approval_gates": [
+        "production activation",
+        "privileged/shared infrastructure modifications",
+        "persistent installation",
+        "paid services",
+        "credential/security changes"
+      ],
+      "workspace": null,
+      "git_repository": null,
+      "assigned_worker": null,
+      "next_safe_action": "Run isolated bounded shadow checks; review supplied non-secret project evidence",
+      "evidence": []
+    },
+    {
+      "project_id": "CRYPTO_EXECUTION_PLANNED",
+      "name": "Planned crypto execution initiatives",
+      "verified_state": "GATED_NOT_AUTHORIZED",
+      "verified_scope": "No production PASS inferred",
+      "objectives": [
+        "No execution pathway authorized"
+      ],
+      "dependencies": [
+        {
+          "project_id": "DCI",
+          "kind": "target_integration",
+          "blocks_shadow_lab": false
+        },
+        {
+          "project_id": "HEG",
+          "kind": "target_integration",
+          "blocks_shadow_lab": false
+        },
+        {
+          "project_id": "TEMPORAL",
+          "kind": "target_integration",
+          "blocks_shadow_lab": false
+        }
+      ],
+      "blockers": [
+        "Current project repository/workspace/certification artifacts not supplied or independently verified"
+      ],
+      "approval_gates": [
+        "production activation",
+        "privileged/shared infrastructure modifications",
+        "persistent installation",
+        "paid services",
+        "credential/security changes"
+      ],
+      "workspace": null,
+      "git_repository": null,
+      "assigned_worker": null,
+      "next_safe_action": "Run isolated bounded shadow checks; review supplied non-secret project evidence",
+      "evidence": []
+    },
+    {
+      "project_id": "DMB",
+      "name": "Directive Master Brain",
+      "verified_state": "VERIFIED_LOCAL_SHADOW",
+      "verified_scope": "100 real trusted local lab cycles and simulated HEG only; overall DMB SHADOW CERTIFIED remains BLOCKED",
+      "objectives": [
+        "Central portfolio registry, planning and reporting"
+      ],
+      "dependencies": [
+        {
+          "project_id": "BHB",
+          "kind": "target_integration",
+          "blocks_shadow_lab": false
+        },
+        {
+          "project_id": "HEG",
+          "kind": "target_integration",
+          "blocks_shadow_lab": false
+        }
+      ],
+      "blockers": [
+        "Current project repository/workspace/certification artifacts not supplied or independently verified"
+      ],
+      "approval_gates": [
+        "production activation",
+        "privileged/shared infrastructure modifications",
+        "persistent installation",
+        "paid services",
+        "credential/security changes"
+      ],
+      "workspace": "/workspace/dci",
+      "git_repository": "oluadegbu/Codex--DSV-",
+      "assigned_worker": "root",
+      "next_safe_action": "Extend durable shadow reconciliation and review supplied external project certification artifacts; retain all live gates",
+      "evidence": [
+        "docs/evidence/DMB_CERTIFICATION.json",
+        "docs/evidence/DMB_TESTS.log"
+      ]
+    }
+  ],
+  "protected_milestone": {
+    "name": "DAT Temporal Integration",
+    "approval": "Previously approved according to user directive",
+    "implementation": "UNVERIFIED",
+    "policy": "Preserve milestone; no DAT changes or production integration inferred"
+  },
+  "discovery": {
+    "github_list_repositories": "returned empty inventory; does not prove absence or authorize repository invention"
+  }
+}
