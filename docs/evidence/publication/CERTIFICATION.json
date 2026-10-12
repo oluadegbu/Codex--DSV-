@@ -1,0 +1,120 @@
+{
+  "schema_version": 1,
+  "mode": "SHADOW",
+  "publication_certification": "PASS",
+  "full_dmb_certification": "BLOCKED",
+  "captured_at": "2026-10-12T20:37:42.381Z",
+  "authentication_boundary": {
+    "verified": "This chat's authenticated GitHub connector, acting as oluadegbu, independently proved Git database/ref/PR write access",
+    "executor": "Existing /workspace/dci managed runtime; no ready outbound Git identity or secret bindings reported",
+    "codex_cloud_authorization": "Operator-reported read/environment initialization; not assumed to authorize this executor or establish standalone Codex runtime certification",
+    "credentials_inspected_copied_or_reconfigured": false
+  },
+  "repository": {
+    "full_name": "oluadegbu/Codex--DSV-",
+    "id": 1409360122
+  },
+  "branch": "codex/dmb-shadow-publication-20261012-fd92f06",
+  "pr": {
+    "url": "https://github.com/oluadegbu/Codex--DSV-/pull/1",
+    "number": 1,
+    "draft": true,
+    "base": "main"
+  },
+  "remote_base": "0af1f4208da6d5f799ec68d48aab5fb4800159d0",
+  "import_commit": "ec0c8313f9b42bce879243b83bc4d914367bdf81",
+  "import_tree": "91dd4bbd222f324e1c4c8594da4eb90c430b19a4",
+  "local_publication_snapshot": "e5585c7e35cd76053f04a663634afbca40298e0d",
+  "original_local_implementation": "fd92f0668cd2c035c5cf56dff4f40020eff781ee",
+  "original_history_preserved_at": "docs/evidence/publication/ORIGINAL_LOCAL_HISTORY.bundle",
+  "all_imported_files_verified": 165,
+  "verification": "Remote recursive tree modes/Git blob SHA match local snapshot; selected source/provenance Contents API read-back matches exact bytes",
+  "main_ref_unchanged": true,
+  "main_ref_sha": "0af1f4208da6d5f799ec68d48aab5fb4800159d0",
+  "force_push": false,
+  "merged": false,
+  "github_actions": {
+    "run_id": 38305161935,
+    "url": "https://github.com/oluadegbu/Codex--DSV-/actions/runs/38305161935",
+    "event": "pull_request",
+    "head_sha": "ec0c8313f9b42bce879243b83bc4d914367bdf81",
+    "conclusion": "success",
+    "jobs": [
+      {
+        "id": 114997311137,
+        "conclusion": "success",
+        "steps": [
+          {
+            "name": "Set up job",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run actions/checkout@v4",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run actions/setup-python@v5",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run PYTHONPATH=src python -m unittest discover -s tests -v",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run PYTHONPATH=src python -m unittest discover -s certification_tests -v",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run PYTHONPATH=src python -m dci tests/fixtures/synthetic.json",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run python -m compileall -q src tests",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run PYTHONPATH=src python tools/certify_bridge.py",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run python tools/prepare_dmb_labs.py --destination /tmp/dmb-ci-labs --manifest /tmp/dmb-ci-workers.json",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run python tools/certify_dmb.py --workers /tmp/dmb-ci-workers.json --output /tmp/dmb-ci-evidence",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run actions/upload-artifact@v4",
+            "conclusion": "success"
+          },
+          {
+            "name": "Post Run actions/setup-python@v5",
+            "conclusion": "success"
+          },
+          {
+            "name": "Post Run actions/checkout@v4",
+            "conclusion": "success"
+          },
+          {
+            "name": "Complete job",
+            "conclusion": "success"
+          }
+        ]
+      }
+    ]
+  },
+  "remaining_blockers": [
+    "non-admin Windows identity",
+    "standalone Codex runtime execution/cancellation",
+    "OS-enforced worker isolation",
+    "authenticated remote Brain/HEG delivery",
+    "actual external project integration"
+  ],
+  "sensitive_runtime_files_excluded": true,
+  "raw_ci_or_runtime_logs_committed": false,
+  "production_changes": false,
+  "live_trading": false,
+  "services_installed": false,
+  "note": "This certificate binds the verified import commit. A follow-up documentation commit records this successful publication; its own SHA is verified separately."
+}

@@ -2,9 +2,9 @@
   "schema_version": 1,
   "project": "Directive Crypto Intelligence",
   "repository": "oluadegbu/Codex--DSV-",
-  "updated_at": "2026-10-12T19:31:17.761447+00:00",
-  "milestone": "dmb-github-publication-certification",
-  "status": "github_write_authorized_publication_in_progress_full_dmb_blocked",
+  "updated_at": "2026-10-12T20:37:43.305169+00:00",
+  "milestone": "dmb-github-publication-certified",
+  "status": "github_publication_pass_full_dmb_certification_blocked",
   "mode": "SHADOW",
   "synthetic_only": true,
   "hard_gates": {
@@ -96,7 +96,7 @@
       "synthetic": true
     },
     "compileall": "passed",
-    "github_ci": "Configured for DCI/BHB plus reproducible DMB labs and certification; remote execution not run because GitHub write access is blocked",
+    "github_ci": "PASS externally on import commit ec0c8313f9b42bce879243b83bc4d914367bdf81; both test suites, fixture, BHB and relocated DMB certification succeed",
     "security_review": "No credentials, signing, submission, live execution or cross-project integration in source; RPC method allowlist tested",
     "durable_replay": {
       "status": "passed",
@@ -133,7 +133,6 @@
   },
   "open_decisions": [
     "decisions/REQUEST-0001.md",
-    "decisions/REQUEST-0002.md",
     "decisions/REQUEST-0003.md",
     "decisions/REQUEST-0004.md",
     "decisions/REQUEST-0005.md",
@@ -151,24 +150,30 @@
     "Live ChatGPT and provider/approval identity certification absent"
   ],
   "next_safe_tasks": [
-    "Offline callback/subscription authorization and revocation fixtures; no external provider activation",
-    "Scoped reconciliation contracts using observed worker termination evidence; never blind retry",
-    "Read-only review of exact supplied authorized external project evidence",
-    "After operator restores existing single-repository integration authorization, inspect current remote tree and publish a history-preserving branch"
+    "Continue offline callback/subscription and revocation authorization fixtures; no external provider activation",
+    "Review draft GitHub PR and exact scoped certification evidence without merging main",
+    "Prepare scoped reconciliation with observed worker termination; retain uncertain execution locks",
+    "Review exact supplied authorized project artifacts; no inferred external access"
   ],
   "publication": {
     "method": "authenticated GitHub connector Git database APIs",
     "note": "Remote main is preserved. Original local and remote roots differ; publication uses remote-parent import with exact original local commits retained in the verified Git bundle. Current runtime outbound Git identity is not configured; connector write authorization is independently proven.",
-    "status": "write_authorized_publication_in_progress",
+    "status": "passed_dedicated_branch_and_draft_pr",
     "error": null,
     "local_bootstrap_commit": "2800b3c",
     "remote_base_commit": "0af1f4208da6d5f799ec68d48aab5fb4800159d0",
     "last_recheck": "2026-10-12 America/New_York",
-    "remote_modified": false,
+    "remote_modified": true,
     "dedicated_branch": "codex/dmb-shadow-publication-20261012-fd92f06",
     "original_local_source_commit": "fd92f0668cd2c035c5cf56dff4f40020eff781ee",
     "provenance": "docs/evidence/publication/PROVENANCE.json",
-    "history_bundle": "docs/evidence/publication/ORIGINAL_LOCAL_HISTORY.bundle"
+    "history_bundle": "docs/evidence/publication/ORIGINAL_LOCAL_HISTORY.bundle",
+    "main_ref_unchanged": true,
+    "pr_url": "https://github.com/oluadegbu/Codex--DSV-/pull/1",
+    "remote_import_commit": "ec0c8313f9b42bce879243b83bc4d914367bdf81",
+    "remote_verified_tree": "91dd4bbd222f324e1c4c8594da4eb90c430b19a4",
+    "certificate": "docs/evidence/publication/CERTIFICATION.json",
+    "ci": "PASS on verified import commit; documentation follow-up CI checked separately"
   },
   "completed_follow_on_tasks": [
     "Durable SQLite paper journal, retry idempotency, restart and rollback tests",
@@ -345,13 +350,13 @@
     "source_certification": "docs/evidence/phase8-20261012/SOURCE_CERTIFICATION.json"
   },
   "github_publication_certification": {
-    "effective_connector_write": "PASS branch creation",
+    "effective_connector_write": "PASS branch/blob/tree/commit/ref/PR APIs",
     "repository_identity": "oluadegbu/Codex--DSV- ID1409360122",
     "connector_user": "oluadegbu",
     "runtime_outbound_git_identity": "NOT CONFIGURED; no credential copying or auth bypass",
     "user_reported_codex_cloud_read_and_init": "HISTORICAL USER REPORT; not assumed to apply to this executor",
-    "tree_commit_and_readback": "PENDING",
-    "pull_request": "PENDING",
+    "tree_commit_and_readback": "PASS all165 imported blob hashes and exact selected file contents",
+    "pull_request": "https://github.com/oluadegbu/Codex--DSV-/pull/1",
     "main_updates_authorized": false,
     "full_dmb_certification": "BLOCKED",
     "provenance": {
@@ -359,6 +364,17 @@
       "sha256": "1de9ed13ac1209a415d558e76db71d64b534935000c88a4712e7e8f7eb863300",
       "bytes": 255723,
       "original_commit_objects_preserved": true
+    },
+    "github_actions": "PASS",
+    "github_actions_url": "https://github.com/oluadegbu/Codex--DSV-/actions/runs/38305161935",
+    "main_ref_unchanged": true,
+    "certificate": "docs/evidence/publication/CERTIFICATION.json"
+  },
+  "resolved_decisions": [
+    {
+      "request": "decisions/REQUEST-0002.md",
+      "resolution": "decisions/RESOLUTION-0002-publication.json",
+      "scope": "effective write/readback and PR publication through the current connector only; historical request remains unchanged"
     }
-  }
+  ]
 }

@@ -53,9 +53,10 @@ dedicated DCI database; unrelated databases are rejected. Journal files stay out
 of GitHub. This standalone CLI works without ChatGPT or an operator browser;
 continuous ingestion and Temporal scheduling are still pending.
 
-Publication status is recorded in BUILD_STATE.json. The current integration
-rejects write operations with GitHub 403; local commits are preserved for later
-publication. No claim of a successful push is made.
+Publication status is recorded in BUILD_STATE.json. The current authenticated
+GitHub connector has independently passed write/readback certification. The
+implementation is published on a development branch in draft PR #1; historical
+403 evidence remains unchanged. The main branch has not been updated.
 
 ## Brain–Hands Bridge and Human Escalation Gateway
 
@@ -71,7 +72,7 @@ PYTHONPATH=src python tools/certify_bridge.py
 ```
 
 Synthetic gates can pass independently of live gates. Windows DirectiveCodex,
-live Codex execution, GitHub write, actual ChatGPT delivery and real notification
+live Codex execution, actual ChatGPT delivery and real notification
 providers remain BLOCKED. The Windows remote currently runs as Administrator;
 no implementation was performed there. No continuous service is installed.
 
@@ -92,7 +93,7 @@ python tools/certify_dmb.py --output /tmp/dmb-evidence
 Local shadow verification passes 100 real verifier cycles with no lost/duplicate
 execution and three overlapping processes. **Full DMB SHADOW CERTIFIED remains
 BLOCKED** by live interfaces, authenticated delivery, stronger OS worker isolation,
-actual external project access and GitHub write authorization. DAT/DPM lab results
+actual external project access. GitHub publication now passes independently. DAT/DPM lab results
 are synthetic research, not certification of their production repositories.
 
 ## DMB Phase 8
@@ -124,9 +125,17 @@ These fixtures provide no real OAuth authentication or human approval.
 
 ## GitHub publication
 
-The current authenticated GitHub connector has independently passed branch-write
-authorization. Publication proceeds on a dedicated development branch and PR;
-`main` is preserved. [Original commit provenance](docs/evidence/publication/PROVENANCE.json)
-and the verified original Git-history bundle retain the exact local commits.
-Historical certificate failures remain unchanged; current publication status is
-recorded in BUILD_STATE.json. Full DMB external certification remains blocked.
+[Draft PR #1](https://github.com/oluadegbu/Codex--DSV-/pull/1) publishes the verified
+implementation on a dedicated development branch. Main is unchanged.
+[GitHub Actions](https://github.com/oluadegbu/Codex--DSV-/actions/runs/38305161935)
+passes on the verified import commit.
+
+[Publication certificate](docs/evidence/publication/CERTIFICATION.json),
+[original commit provenance](docs/evidence/publication/PROVENANCE.json), and the
+verified original Git-history bundle preserve the exact local implementation
+commits. Publication uses the existing remote parent, with no force push.
+
+This chat's authenticated GitHub connector passed the write check independently
+of the operator's Codex Cloud authorization. Historical certificate failures
+remain unchanged; BUILD_STATE.json records current publication status.
+Full DMB external certification remains blocked by the other safety/runtime gates.
