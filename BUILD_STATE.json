@@ -96,7 +96,7 @@
       "synthetic": true
     },
     "compileall": "passed",
-    "github_ci": "PASS M1 source commit280351df, run38461398850: all126 tests and actual paper-workflow/controller-recovery checks plus original bridge/portfolio regression",
+    "github_ci": "PASS Windows bridge sourceb1f53a963435fb07ec224a9cf50fbd9c2d79eb0e, run38486041775:145 tests, actual paper recovery and original portfolio verifier",
     "security_review": "No credentials, signing, submission, live execution or cross-project integration in source; RPC method allowlist tested",
     "durable_replay": {
       "status": "passed",
@@ -521,7 +521,7 @@
     "evidence": "docs/evidence/windows-bridge/CERTIFICATION.json",
     "runbook": "docs/DMB_WINDOWS_BRIDGE.md",
     "portable_tests": 18,
-    "final_TLS_fixture": "pending CI",
+    "final_TLS_fixture": "PASS GitHub Linux CI run38486041775 / fixture executor",
     "genuine_windows_task": false,
     "windows_foreground_pairing": "PENDING_OPERATOR_SESSION",
     "full_certification": "BLOCKED",
@@ -529,6 +529,8 @@
     "OS_isolation": "NOT TESTED",
     "services_installed": false,
     "current_remote_executor": "Administrator/High; worker launches prohibited",
-    "operator_baseline": "DirectiveCodex non-admin; CLI0.162.1 auth and genuine execution PASS retained as operator report"
+    "operator_baseline": "DirectiveCodex non-admin; CLI0.162.1 auth and genuine execution PASS retained as operator report",
+    "ci": "PASS145 tests at sourceb1f53a96",
+    "published_evidence_commit": "217eac578528d6907f1a489622ed10dce30edf6a"
   }
 }

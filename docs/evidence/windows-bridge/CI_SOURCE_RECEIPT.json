@@ -1,0 +1,113 @@
+{
+  "schema_version": 1,
+  "scope": "GitHub Ubuntu CI; Windows execution not claimed",
+  "remote_source_commit": "b1f53a963435fb07ec224a9cf50fbd9c2d79eb0e",
+  "run_id": 38486041775,
+  "status": "PASS",
+  "tests": 145,
+  "jobs": [
+    {
+      "id": 115599819944,
+      "head_sha": "b1f53a963435fb07ec224a9cf50fbd9c2d79eb0e",
+      "status": "completed",
+      "conclusion": "success",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run actions/setup-python@v5",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run PYTHONPATH=src python -m unittest discover -s tests -v",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run PYTHONPATH=src python -m unittest discover -s certification_tests -v",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run PYTHONPATH=src python -m unittest discover -s control_plane_tests -v",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run PYTHONPATH=src python -m unittest discover -s windows_bridge_tests -v",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run python tools/prepare_shadow_research_worker.py --destination /tmp/dmb-ci-research-worker --manifest /tmp/dmb-ci-research-workers.json",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run python tools/run_control_plane_workflow.py --workers /tmp/dmb-ci-research-workers.json --output /tmp/dmb-ci-research-evidence",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run PYTHONPATH=src python -m dci tests/fixtures/synthetic.json",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run python -m compileall -q src tests",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run PYTHONPATH=src python tools/certify_bridge.py",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run python tools/prepare_dmb_labs.py --destination /tmp/dmb-ci-labs --manifest /tmp/dmb-ci-workers.json",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run python tools/certify_dmb.py --workers /tmp/dmb-ci-workers.json --output /tmp/dmb-ci-evidence",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run actions/upload-artifact@v4",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run actions/upload-artifact@v4",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Run actions/setup-python@v5",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success"
+        }
+      ]
+    }
+  ]
+}
