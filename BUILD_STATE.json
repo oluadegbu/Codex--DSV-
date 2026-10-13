@@ -2,7 +2,7 @@
   "schema_version": 1,
   "project": "Directive Crypto Intelligence",
   "repository": "oluadegbu/Codex--DSV-",
-  "updated_at": "2026-10-13T20:13:17.385351+00:00",
+  "updated_at": "2026-10-13T20:18:50.124683+00:00",
   "milestone": "functional-dmb-shadow-control-plane-m1",
   "status": "functional_trusted_shadow_control_plane_pass_codex_and_external_routes_disabled",
   "mode": "SHADOW",
@@ -96,7 +96,7 @@
       "synthetic": true
     },
     "compileall": "passed",
-    "github_ci": "PASS baseline f1d11c0f2bae6aaa07749c445173da1c079c1437 run38305725020; Phase9 publication CI to be independently observed",
+    "github_ci": "PASS M1 source commit280351df, run38461398850: all126 tests and actual paper-workflow/controller-recovery checks plus original bridge/portfolio regression",
     "security_review": "No credentials, signing, submission, live execution or cross-project integration in source; RPC method allowlist tested",
     "durable_replay": {
       "status": "passed",
@@ -493,6 +493,16 @@
     "artifact_manifest": "docs/evidence/control-plane-m1/ARTIFACT_MANIFEST.json",
     "full_DMB_certified": false,
     "separate_DAT_Temporal_milestone_preserved": true,
-    "next_milestone": "Connect the verified non-admin runtime to official Codex handoff; prove its canary isolation/cancellation/recovery before enabling uncertified routes"
+    "next_milestone": "Connect the verified non-admin runtime to official Codex handoff; prove its canary isolation/cancellation/recovery before enabling uncertified routes",
+    "publication": {
+      "status": "PASS",
+      "commit": "280351dfde6b8985104b7bd255a0be25ab3564f3",
+      "draft_pr": "https://github.com/oluadegbu/Codex--DSV-/pull/1",
+      "exact_tree": "3dc1d0df45bc438b711a44edb86253a650bed221",
+      "ci": "PASS",
+      "ci_run": "https://github.com/oluadegbu/Codex--DSV-/actions/runs/38461398850",
+      "receipt": "docs/evidence/control-plane-m1/PUBLICATION_RECEIPT.json",
+      "main_unchanged": true
+    }
   }
 }
