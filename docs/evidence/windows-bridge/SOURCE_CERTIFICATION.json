@@ -1,0 +1,31 @@
+{
+  "schema_version": 1,
+  "local_source_commit": "614d23ee97acce913945d504903fc2987f32c85c",
+  "remote_source_commit": "b1f53a963435fb07ec224a9cf50fbd9c2d79eb0e",
+  "exact_tree": "0ac6d2bdb1677004d829b233c88de5e2db27e08b",
+  "source_sha256": {
+    ".gitattributes": "b7412f3d830405c4610c343be1c3d011835e92345ef5fb24cc88d027248fad23",
+    ".github/workflows/ci.yml": "25a35cda62bddf65a4bb90a791561e8356672b389144f6b64f40b65f377014c1",
+    "CODEX.md": "c5a6642da82428f74d07e7c1714bf2023c89e6983905cf2911ddec91653911c6",
+    "README.md": "2f869e20b044047c03522e09caef363c23b8e751f1ca8e820f81a9846fcd4aec",
+    "docs/DMB_WINDOWS_BRIDGE.md": "f442348ea55f445b35fad5b1ea80f72daa2f0e61cfe09d9d92cd8559045b766d",
+    "src/dci/master/windows_bridge_cli.py": "3aefddeaac86ea9e9ea7f61434db764b33c863f2fda7543cf44bb3c2e2ce35c1",
+    "src/dci/master/windows_controller.py": "901e29896bd709911e543d76544c03da1d5fa9f72da66c57601c1821ddfed4bf",
+    "src/dci/master/windows_native.py": "c238781f6fc45102495dd46b92b32e6394d48dfeb7eb2460118291901d715c31",
+    "src/dci/master/windows_protocol.py": "27decaec8670ff0a3a842101db080c3658f22b8df5269d3f8aef6aeed092dd7e",
+    "src/dci/master/windows_worker.py": "4cc2207620c53d48cc58edb590165945d6433545004ffed2288b9db54ebec71d",
+    "tools/run_windows_shadow_bridge.py": "63677945b01e447b045c81bda7ff373781a573d3662a9deee7e101920b99e917",
+    "windows_bridge_tests/test_bridge.py": "ef49c9a31a5b969212ac6dbbea4780c780e0683558f3cb90303e4f36bebc70bf"
+  },
+  "static_compile": "PASS",
+  "driver_native_windows_execution": "NOT TESTED",
+  "local_test_counts": {
+    "preserved": 100,
+    "authorization": 17,
+    "paper_control_plane": 9,
+    "new_portable_bridge": 18,
+    "total": 144
+  },
+  "final_TLS_fixture": "CI_PENDING",
+  "earlier_TLS_fixture_note": "17-test preliminary run passed real loopback TLS before final owner-lock/cancellation hardening; not certification of final native Windows source"
+}

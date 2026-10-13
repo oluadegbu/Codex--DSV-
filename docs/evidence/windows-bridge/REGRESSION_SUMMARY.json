@@ -1,0 +1,47 @@
+{
+  "local_shadow_status": "PASS",
+  "overall_status": "BLOCKED",
+  "cycles": 100,
+  "executions": 100,
+  "lost_executions": 0,
+  "duplicate_executions": 0,
+  "total_worker_test_executions": 1099,
+  "peak_concurrent_processes": 3,
+  "overlap_proven": true,
+  "identity": {
+    "uid": 1000,
+    "groups": [],
+    "non_admin": true
+  },
+  "worker_git": [
+    {
+      "worker_id": "bhb_heg",
+      "workspace": "/workspace/dmb-windows-regression-labs/bhb_heg",
+      "expected_commit": "101f22b3a3e5cb8c40e6b13a96e77b956c8d43ee",
+      "bundle_sha256": "994f9238b552aa1f43d76dee802e3421de1cc8a0a0e7e3e2239a59b3a35a3c61"
+    },
+    {
+      "worker_id": "dat_nontrading",
+      "workspace": "/workspace/dmb-windows-regression-labs/dat_nontrading",
+      "expected_commit": "2c69cdb2c4ab0784bc604d4505d9365c0dce2a04",
+      "bundle_sha256": "b1096ad7c608008fd3f33afe534c161fb9c331a862fc24bb234f2258beb5ed52"
+    },
+    {
+      "worker_id": "dpm_simulation",
+      "workspace": "/workspace/dmb-windows-regression-labs/dpm_simulation",
+      "expected_commit": "0d4c9c0ef1f58835fec15249dee00a11821036d6",
+      "bundle_sha256": "23c0ec62aecfeb47768cd30aa776ac927e6e81e88c4e6e0601f2aa123e5bf274"
+    }
+  ],
+  "observed_head_commit": "18108b35e369a654e88a91014d950d009afb8018",
+  "audit_valid": true,
+  "test_suite": {
+    "command": "PYTHONPATH=src python -m unittest discover -s tests -v",
+    "tests": 100,
+    "failures": 0,
+    "errors": 0,
+    "log": "docs/evidence/DMB_TESTS.log"
+  },
+  "scope": "Fresh trusted Linux verifier regression, not Windows Codex or current external gates",
+  "legacy_tool_status_note": "Legacy verifier has historical fixed external gates; current publication and Windows statuses belong to CERTIFICATION.json."
+}

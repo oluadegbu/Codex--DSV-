@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "updated_at": "2026-10-13T23:45:06.672213+00:00",
+  "mode": "SHADOW",
+  "status": "WINDOWS_BRIDGE_IMPLEMENTED_GENUINE_WINDOWS_PAIRING_PENDING",
+  "full_DMB_certification": "BLOCKED",
+  "gates": {
+    "existing_publication_preserved": "PASS",
+    "historical_evidence_continuity": "PASS",
+    "portable_authenticated_contracts": "PASS",
+    "final_real_TLS_fixture": "NOT TESTED locally; pending CI",
+    "foreground_windows_driver": "IMPLEMENTED / NOT TESTED on Windows",
+    "actual_windows_identity": "Operator-certified DirectiveCodex baseline retained; current connected remote token Administrator/High, not allowed for worker launch",
+    "genuine_windows_dispatch_artifact_durable_completion": "BLOCKED pending foreground procedure",
+    "genuine_windows_restart": "BLOCKED pending foreground procedure",
+    "genuine_windows_cancellation_crash": "NOT TESTED",
+    "OS_access_denial_isolation": "NOT TESTED",
+    "authenticated_remote_cloud_delivery": "BLOCKED no route",
+    "WhatsApp_email_delivery": "BLOCKED approval/certification",
+    "github_source_publication": "PASS",
+    "github_source_CI": "IN PROGRESS run38486041775"
+  },
+  "scope": "Windows production path has no fixture option; only fixed zero-tool Codex ping. Portable tests use explicit CONTRACT_FIXTURE.",
+  "publication": {
+    "pr": 1,
+    "draft": true,
+    "merged": false,
+    "source_commit": "b1f53a963435fb07ec224a9cf50fbd9c2d79eb0e",
+    "local_source": "614d23ee97acce913945d504903fc2987f32c85c",
+    "tree": "0ac6d2bdb1677004d829b233c88de5e2db27e08b",
+    "main_preserved": "0af1f4208da6d5f799ec68d48aab5fb4800159d0"
+  },
+  "pairing_procedure": "docs/DMB_WINDOWS_BRIDGE.md",
+  "automatic_next_action": "Existing DirectiveCodex RDP session runs foreground driver; private loopback pairing, genuine task, exact artifact, one durable execution, reopen both ends and prove no reexecution",
+  "notifications_activated": false,
+  "services_installed": false,
+  "privileged_changes": false,
+  "production_changes": false,
+  "costs_incurred": false,
+  "DAT_temporal_milestone": "Preserved separately; no deployment"
+}

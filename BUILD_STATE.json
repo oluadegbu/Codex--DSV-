@@ -2,9 +2,9 @@
   "schema_version": 1,
   "project": "Directive Crypto Intelligence",
   "repository": "oluadegbu/Codex--DSV-",
-  "updated_at": "2026-10-13T20:18:50.124683+00:00",
-  "milestone": "functional-dmb-shadow-control-plane-m1",
-  "status": "functional_trusted_shadow_control_plane_pass_codex_and_external_routes_disabled",
+  "updated_at": "2026-10-13T23:45:06.672590+00:00",
+  "milestone": "authenticated-foreground-windows-codex-bridge",
+  "status": "implemented_published_windows_pairing_pending",
   "mode": "SHADOW",
   "synthetic_only": true,
   "hard_gates": {
@@ -129,6 +129,14 @@
       "core_fixture": "PASS",
       "source_commit": "a3d85e45de16231e7cfcea092abbe21c6dcc0a1b",
       "evidence": "docs/evidence/DMB_CERTIFICATION.json"
+    },
+    "windows_bridge_local": {
+      "tests": 18,
+      "failures": 0,
+      "regression_tests": 126,
+      "fresh_verifier_cycles": 100,
+      "fresh_worker_test_executions": 1099,
+      "actual_paper_workflow": "PASS three processes and controller exit73 receipt recovery; not Windows evidence"
     }
   },
   "open_decisions": [
@@ -150,9 +158,9 @@
     "M1 operates one trusted non-root Linux paper worker; hostile-code OS separation and real Windows Codex cancellation/recovery remain pending"
   ],
   "next_safe_tasks": [
-    "Use the existing non-admin connection reference when provided to integrate one bounded official Codex worker into the durable dispatch receipt workflow",
-    "Continue real fixed-template DCI shadow workflows with dependency planning, verified artifacts and receipt recovery through the standalone foreground runtime",
-    "Keep unknown external integrations/providers disabled; preserve quarantined tasks and the separate DAT Temporal milestone"
+    "Run the single reviewed foreground pairing procedure in the existing non-admin DirectiveCodex RDP session; driver automatically dispatches and verifies one genuine Windows task and restart replay suppression",
+    "Read and reconcile sanitized Windows CERTIFICATION.json; preserve uncertain outcomes and locks",
+    "Keep remote delivery, OS isolation, providers and full DMB certification gated; preserve separate DAT Temporal milestone"
   ],
   "publication": {
     "method": "authenticated GitHub connector Git database APIs",
@@ -504,5 +512,23 @@
       "receipt": "docs/evidence/control-plane-m1/PUBLICATION_RECEIPT.json",
       "main_unchanged": true
     }
+  },
+  "windows_bridge": {
+    "mode": "SHADOW",
+    "implementation": "PASS",
+    "source_commit": "b1f53a963435fb07ec224a9cf50fbd9c2d79eb0e",
+    "local_source_commit": "614d23ee97acce913945d504903fc2987f32c85c",
+    "evidence": "docs/evidence/windows-bridge/CERTIFICATION.json",
+    "runbook": "docs/DMB_WINDOWS_BRIDGE.md",
+    "portable_tests": 18,
+    "final_TLS_fixture": "pending CI",
+    "genuine_windows_task": false,
+    "windows_foreground_pairing": "PENDING_OPERATOR_SESSION",
+    "full_certification": "BLOCKED",
+    "remote_delivery": "DISABLED_NOT_CERTIFIED",
+    "OS_isolation": "NOT TESTED",
+    "services_installed": false,
+    "current_remote_executor": "Administrator/High; worker launches prohibited",
+    "operator_baseline": "DirectiveCodex non-admin; CLI0.162.1 auth and genuine execution PASS retained as operator report"
   }
 }
