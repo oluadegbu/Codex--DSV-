@@ -166,3 +166,14 @@ The existing architecture and all historical certificates are retained. The
 operator-reported genuine Windows Codex baseline is preserved; this connector
 still exposes Administrator/High, so Codex and external delivery routes remain
 disabled in the new runtime. No persistent service or production change occurred.
+
+## Windows Codex worker bridge
+
+The [foreground pairing procedure](docs/DMB_WINDOWS_BRIDGE.md) reuses the durable
+DMB planner and audit with an authenticated outbound-only Windows bridge. It pairs
+privately, automatically runs one genuine fixed Codex shadow task and verifies its
+artifact, durable completion and restart replay suppression. It needs the existing
+non-admin DirectiveCodex RDP session; no service or firewall change is installed.
+Portable contract/TLS-fixture tests do not certify Windows execution or OS separation.
+See [current evidence](docs/evidence/windows-bridge/CERTIFICATION.json); full DMB
+certification and remote delivery remain blocked until their actual gates pass.

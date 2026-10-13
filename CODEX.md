@@ -56,3 +56,11 @@ meaningful runtime milestones, with fresh output paths. Preserve all old evidenc
 bytes; historical live README/BUILD_STATE hashes are verified from their pinned
 Git source, not newer milestone state. Intact receipts may finish only valid
 leases; never clear an uncertain quarantine, reset a lease or blindly rerun effects.
+
+Windows bridge work uses docs/DMB_WINDOWS_BRIDGE.md and windows_bridge_tests.
+Keep only the compiled windows_codex_ping operation; no remote text shell/prompt.
+Pairing, TLS private keys, raw Codex output and journals stay in ignored artifacts.
+The foreground Windows procedure must verify the actual DirectiveCodex Medium
+non-admin token before using authentication or launching a child. Never use the
+Administrator/High remote executor for worker launch. Keep local Windows loopback
+certification distinct from authenticated remote delivery and OS access denial.

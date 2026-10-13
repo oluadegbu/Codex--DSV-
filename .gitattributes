@@ -1,0 +1,3 @@
+# Paired bridge fingerprints are byte hashes; Windows checkouts must retain LF.
+src/dci/master/windows_*.py text eol=lf
+tools/run_windows_shadow_bridge.py text eol=lf

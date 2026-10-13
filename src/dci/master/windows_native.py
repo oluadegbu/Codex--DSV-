@@ -1,0 +1,259 @@
+"""User-mode Windows identity, DPAPI and owned Job Object primitives.
+
+Never create identities, alter ACL/firewalls, impersonate, elevate or install a
+service. This module is deliberately unavailable on other operating systems.
+"""
+import base64
+import csv
+import ctypes
+from ctypes import wintypes as w
+import io
+import json
+import os
+from pathlib import Path
+import platform
+import shutil
+import subprocess
+import time
+from contextlib import contextmanager
+
+
+def dll(name):
+    if os.name != "nt":
+        raise PermissionError("actual Windows runtime required")
+    return ctypes.WinDLL(name, use_last_error=True)
+
+
+def system_directory():
+    kernel = dll("kernel32")
+    buffer = ctypes.create_unicode_buffer(32768)
+    if not kernel.GetSystemDirectoryW(buffer, len(buffer)):
+        raise ctypes.WinError(ctypes.get_last_error())
+    return Path(buffer.value)
+
+
+def require_identity():
+    whoami = str(system_directory() / "whoami.exe")
+    user = subprocess.check_output([whoami, "/user", "/fo", "csv"], text=True, timeout=5)
+    groups = subprocess.check_output([whoami, "/groups", "/fo", "csv"], text=True, timeout=5)
+    username = list(csv.reader(io.StringIO(user)))[1][0]
+    sids = {row[1] for row in list(csv.reader(io.StringIO(groups)))[1:] if len(row) > 1}
+    host = platform.node()
+    admin = bool(dll("shell32").IsUserAnAdmin())
+    if username.casefold() != (host + "\\DirectiveCodex").casefold() or admin or "S-1-5-32-544" in sids or "S-1-16-8192" not in sids or any(s.startswith("S-1-16-") and int(s.rsplit("-", 1)[1]) > 8192 for s in sids):
+        raise PermissionError("DirectiveCodex non-admin Medium-integrity token required")
+    return {"host": host, "user": host + "\\DirectiveCodex", "administrator": False, "integrity": "Medium"}
+
+
+def private_root():
+    require_identity()
+    buffer = ctypes.create_unicode_buffer(32768)
+    if dll("shell32").SHGetFolderPathW(None, 0x1C, None, 0, buffer) != 0:
+        raise PermissionError("current-user LocalAppData unavailable")
+    root = Path(buffer.value) / "Directive" / "DMBWindowsWorker-v1"
+    kernel = dll("kernel32")
+    kernel.GetFileAttributesW.argtypes = [w.LPCWSTR]
+    kernel.GetFileAttributesW.restype = w.DWORD
+    for path in [root, *root.parents]:
+        attributes = kernel.GetFileAttributesW(str(path))
+        if attributes != 0xFFFFFFFF and attributes & 0x400:
+            raise PermissionError("reparse/junction worker boundary rejected")
+    return root
+
+
+@contextmanager
+def foreground_lock(root):
+    """One local owner. A competing foreground process must never recover its peer."""
+    require_identity()
+    import msvcrt
+    root = Path(root); root.mkdir(parents=True, exist_ok=True)
+    with (root / "foreground.lock").open("a+b") as stream:
+        if not stream.seek(0, os.SEEK_END):
+            stream.write(b"1"); stream.flush()
+        stream.seek(0)
+        try:
+            msvcrt.locking(stream.fileno(), msvcrt.LK_NBLCK, 1)
+        except OSError as exc:
+            raise PermissionError("another foreground bridge owns this worker; no concurrent recovery") from exc
+        try:
+            yield
+        finally:
+            stream.seek(0)
+            msvcrt.locking(stream.fileno(), msvcrt.LK_UNLCK, 1)
+
+
+class Blob(ctypes.Structure):
+    _fields_ = [("size", w.DWORD), ("data", ctypes.POINTER(ctypes.c_ubyte))]
+
+
+def dpapi(data, protect=True):
+    require_identity()
+    crypt, kernel = dll("crypt32"), dll("kernel32")
+    value = ctypes.create_string_buffer(data)
+    source = Blob(len(data), ctypes.cast(value, ctypes.POINTER(ctypes.c_ubyte)))
+    output = Blob()
+    function = crypt.CryptProtectData if protect else crypt.CryptUnprotectData
+    function.argtypes = [ctypes.POINTER(Blob), ctypes.c_void_p, ctypes.POINTER(Blob), ctypes.c_void_p, ctypes.c_void_p, w.DWORD, ctypes.POINTER(Blob)]
+    function.restype = w.BOOL
+    kernel.LocalFree.argtypes = [ctypes.c_void_p]
+    kernel.LocalFree.restype = ctypes.c_void_p
+    if not function(ctypes.byref(source), None, None, None, None, 1, ctypes.byref(output)):
+        raise ctypes.WinError(ctypes.get_last_error())
+    try:
+        return ctypes.string_at(output.data, output.size)
+    finally:
+        kernel.LocalFree(output.data)
+
+
+def resolve_codex():
+    require_identity()
+    powershell = system_directory() / "WindowsPowerShell/v1.0/powershell.exe"
+    source = subprocess.check_output([str(powershell), "-NoProfile", "-NonInteractive", "-Command",
+                                      "(Get-Command codex -ErrorAction Stop).Source"], text=True, timeout=5).strip()
+    path = Path(source)
+    if path.name.casefold() == "codex.exe":
+        return path.resolve(strict=True)
+    arch = "aarch64" if platform.machine().upper() == "ARM64" else "x86_64"
+    package = "codex-win32-arm64" if arch == "aarch64" else "codex-win32-x64"
+    triple = arch + "-pc-windows-msvc"
+    npm = path.parent / "node_modules/@openai"
+    roots = [npm / package, npm / "codex", npm / "codex/node_modules/@openai" / package]
+    for root in roots:
+        for leaf in ("bin/codex.exe", "codex/codex.exe"):
+            candidate = root / "vendor" / triple / leaf
+            if candidate.is_file():
+                return candidate.resolve(strict=True)
+    raise FileNotFoundError("existing official native Codex executable not resolved; no install/fallback/elevation")
+
+
+class BasicLimits(ctypes.Structure):
+    _fields_ = [("process_time", ctypes.c_longlong), ("job_time", ctypes.c_longlong), ("flags", w.DWORD),
+                ("minimum_working_set", ctypes.c_size_t), ("maximum_working_set", ctypes.c_size_t),
+                ("active_process_limit", w.DWORD), ("affinity", ctypes.c_size_t), ("priority", w.DWORD), ("scheduling", w.DWORD)]
+
+
+class IOCounters(ctypes.Structure):
+    _fields_ = [(name, ctypes.c_ulonglong) for name in ("read_ops", "write_ops", "other_ops", "read_bytes", "write_bytes", "other_bytes")]
+
+
+class ExtendedLimits(ctypes.Structure):
+    _fields_ = [("basic", BasicLimits), ("io", IOCounters), ("process_memory", ctypes.c_size_t),
+                ("job_memory", ctypes.c_size_t), ("peak_process_memory", ctypes.c_size_t), ("peak_job_memory", ctypes.c_size_t)]
+
+
+class Accounting(ctypes.Structure):
+    _fields_ = [(name, ctypes.c_longlong) for name in ("user_time", "kernel_time", "period_user", "period_kernel")] + [
+        (name, w.DWORD) for name in ("page_faults", "total_processes", "active_processes", "terminated_processes")]
+
+
+class SecurityAttributes(ctypes.Structure):
+    _fields_ = [("length", w.DWORD), ("descriptor", ctypes.c_void_p), ("inherit", w.BOOL)]
+
+
+class StartupInfo(ctypes.Structure):
+    _fields_ = [("cb", w.DWORD), ("reserved", w.LPWSTR), ("desktop", w.LPWSTR), ("title", w.LPWSTR)] + [
+        (name, w.DWORD) for name in ("x", "y", "xsize", "ysize", "xchars", "ychars", "fill", "flags")] + [
+        ("show", w.WORD), ("reserved2_size", w.WORD), ("reserved2", ctypes.POINTER(ctypes.c_ubyte)),
+        ("stdin", w.HANDLE), ("stdout", w.HANDLE), ("stderr", w.HANDLE)]
+
+
+class ProcessInfo(ctypes.Structure):
+    _fields_ = [("process", w.HANDLE), ("thread", w.HANDLE), ("pid", w.DWORD), ("tid", w.DWORD)]
+
+
+class WindowsJobProcess:
+    """Create suspended, assign this job, then resume. Owned handles survive PID reuse."""
+    def __init__(self, executable, arguments, cwd, directory):
+        require_identity()
+        self.kernel = k = dll("kernel32")
+        signatures = {
+            "CreateJobObjectW": ([ctypes.c_void_p, w.LPCWSTR], w.HANDLE),
+            "SetInformationJobObject": ([w.HANDLE, ctypes.c_int, ctypes.c_void_p, w.DWORD], w.BOOL),
+            "QueryInformationJobObject": ([w.HANDLE, ctypes.c_int, ctypes.c_void_p, w.DWORD, ctypes.c_void_p], w.BOOL),
+            "CreatePipe": ([ctypes.POINTER(w.HANDLE), ctypes.POINTER(w.HANDLE), ctypes.POINTER(SecurityAttributes), w.DWORD], w.BOOL),
+            "SetHandleInformation": ([w.HANDLE, w.DWORD, w.DWORD], w.BOOL),
+            "CloseHandle": ([w.HANDLE], w.BOOL), "ResumeThread": ([w.HANDLE], w.DWORD),
+            "TerminateJobObject": ([w.HANDLE, w.UINT], w.BOOL), "AssignProcessToJobObject": ([w.HANDLE, w.HANDLE], w.BOOL),
+            "TerminateProcess": ([w.HANDLE, w.UINT], w.BOOL),
+            "CreateProcessW": ([w.LPCWSTR, w.LPWSTR, ctypes.c_void_p, ctypes.c_void_p, w.BOOL, w.DWORD, ctypes.c_void_p, w.LPCWSTR, ctypes.POINTER(StartupInfo), ctypes.POINTER(ProcessInfo)], w.BOOL),
+            "WriteFile": ([w.HANDLE, ctypes.c_void_p, w.DWORD, ctypes.POINTER(w.DWORD), ctypes.c_void_p], w.BOOL),
+            "GetExitCodeProcess": ([w.HANDLE, ctypes.POINTER(w.DWORD)], w.BOOL),
+        }
+        for name, (args, restype) in signatures.items():
+            getattr(k, name).argtypes, getattr(k, name).restype = args, restype
+        self.job, self.process, self.stdin = None, None, None
+        self.output_files = []
+        read, write = w.HANDLE(), w.HANDLE()
+        info = ProcessInfo()
+        try:
+            self.job = k.CreateJobObjectW(None, None)
+            if not self.job: raise ctypes.WinError(ctypes.get_last_error())
+            limits = ExtendedLimits()
+            limits.basic.flags = 0x2000 | 0x200 | 0x4 | 0x8  # kill-on-close, job memory/time, active-process cap
+            limits.basic.job_time = 10 * 10000000
+            limits.basic.active_process_limit = 8
+            limits.job_memory = 256 * 1048576
+            if not k.SetInformationJobObject(self.job, 9, ctypes.byref(limits), ctypes.sizeof(limits)):
+                raise ctypes.WinError(ctypes.get_last_error())
+            attributes = SecurityAttributes(ctypes.sizeof(SecurityAttributes), None, True)
+            if not k.CreatePipe(ctypes.byref(read), ctypes.byref(write), ctypes.byref(attributes), 0):
+                raise ctypes.WinError(ctypes.get_last_error())
+            self.stdin = write
+            if not k.SetHandleInformation(write, 1, 0): raise ctypes.WinError(ctypes.get_last_error())
+            import msvcrt
+            startup = StartupInfo(); startup.cb = ctypes.sizeof(startup); startup.flags = 0x100; startup.stdin = read
+            for name in ("stdout", "stderr"):
+                file = (Path(directory) / (name + ".log")).open("wb")
+                self.output_files.append(file)
+                handle = msvcrt.get_osfhandle(file.fileno()); os.set_handle_inheritable(handle, True)
+                setattr(startup, name, handle)
+            # Retain normal user/auth/proxy/CA context. Drop unrelated provider/trading variables.
+            allowed = {"PATH", "SYSTEMROOT", "WINDIR", "USERPROFILE", "APPDATA", "LOCALAPPDATA", "TEMP", "TMP", "COMSPEC",
+                       "CODEX_HOME", "HTTP_PROXY", "HTTPS_PROXY", "ALL_PROXY", "NO_PROXY", "SSL_CERT_FILE", "SSL_CERT_DIR", "NODE_EXTRA_CA_CERTS"}
+            env = {name: value for name, value in os.environ.items() if name.upper() in allowed}
+            block = ctypes.create_unicode_buffer("\0".join(name + "=" + value for name, value in sorted(env.items(), key=lambda item: item[0].upper())) + "\0\0")
+            command = ctypes.create_unicode_buffer(subprocess.list2cmdline([str(executable), *arguments]))
+            if not k.CreateProcessW(str(executable), command, None, None, True, 0x4 | 0x400 | 0x08000000,
+                                    block, str(cwd), ctypes.byref(startup), ctypes.byref(info)):
+                raise ctypes.WinError(ctypes.get_last_error())
+            self.process, self.pid, self.stdin = info.process, info.pid, write
+            if not k.AssignProcessToJobObject(self.job, self.process):
+                k.TerminateProcess(self.process, 1)
+                raise ctypes.WinError(ctypes.get_last_error())
+            if k.ResumeThread(info.thread) == 0xFFFFFFFF:
+                raise ctypes.WinError(ctypes.get_last_error())
+        except BaseException:
+            self.close()
+            raise
+        finally:
+            if read.value: k.CloseHandle(read)
+            if info.thread: k.CloseHandle(info.thread)
+
+    def send(self, value):
+        data = (json.dumps(value, separators=(",", ":")) + "\n").encode()
+        buffer = ctypes.create_string_buffer(data); written = w.DWORD()
+        if not self.kernel.WriteFile(self.stdin, buffer, len(data), ctypes.byref(written), None) or written.value != len(data):
+            raise ctypes.WinError(ctypes.get_last_error())
+
+    def active(self):
+        value = Accounting()
+        if not self.kernel.QueryInformationJobObject(self.job, 1, ctypes.byref(value), ctypes.sizeof(value), None):
+            raise ctypes.WinError(ctypes.get_last_error())
+        return value.active_processes
+
+    def terminate(self):
+        if self.job and not self.kernel.TerminateJobObject(self.job, 1):
+            raise ctypes.WinError(ctypes.get_last_error())
+        deadline = time.monotonic() + 3
+        while self.active() and time.monotonic() < deadline:
+            time.sleep(.02)
+        return self.active()
+
+    def close(self):
+        if self.job:
+            self.kernel.CloseHandle(self.job); self.job = None
+        for handle in (self.stdin, self.process):
+            if handle: self.kernel.CloseHandle(handle)
+        self.stdin = self.process = None
+        for file in self.output_files: file.close()
+        self.output_files = []
