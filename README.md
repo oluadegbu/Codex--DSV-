@@ -139,3 +139,15 @@ This chat's authenticated GitHub connector passed the write check independently
 of the operator's Codex Cloud authorization. Historical certificate failures
 remain unchanged; BUILD_STATE.json records current publication status.
 Full DMB external certification remains blocked by the other safety/runtime gates.
+
+## Phase 9 actual worker runtime
+
+Publication remains PASS in draft [PR #1](https://github.com/oluadegbu/Codex--DSV-/pull/1); main is unchanged and the PR is unmerged.
+Single-real-worker certification is **BLOCKED**. An actual non-root Linux Codex
+CLI process fails before a turn starts. The Windows executor is Administrator/High;
+the existing enabled non-admin DirectiveCodex account has a disconnected session.
+All 117 existing tests pass; historical tests, cycles, bundles and certificates remain intact.
+See the [procedure and findings](docs/DMB_PHASE9.md), [scope-specific matrix](docs/evidence/phase9-20261013/CERTIFICATION_MATRIX.md),
+[artifact hashes](docs/evidence/phase9-20261013/ARTIFACT_MANIFEST.json) and
+[existing-account prerequisite](decisions/REQUEST-0007.md). The inbox/outbox plan
+is disabled. No production, identity, privileged ACL, provider or service change occurred.

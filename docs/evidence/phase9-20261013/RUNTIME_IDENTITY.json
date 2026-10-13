@@ -1,0 +1,22 @@
+{
+  "schema_version": 1,
+  "host": "cb72e1cfc391",
+  "system": "Linux",
+  "kernel": "6.18.44",
+  "architecture": "x86_64",
+  "user": "agent",
+  "uid": 1000,
+  "gid": 1000,
+  "supplemental_groups_observed": [],
+  "workspace": "/workspace/dci",
+  "cli_process_uid_observed": 1000,
+  "windows_integrity_level": "NOT APPLICABLE",
+  "mounted_root_read_only": true,
+  "workspace_mount_writable": true,
+  "codex_binary": "/opt/codex/bin/codex",
+  "codex_version": "0.159.0-alpha.3",
+  "authentication_observation": "Normal codex login status reports existing ChatGPT login; no credential file read",
+  "managed_environment_provider": "cloud",
+  "codex_cloud_repository_initialization": "HISTORICAL user report; distinct executor/authentication context not certified",
+  "windows_or_DirectiveCodex_identity_inferred": false
+}
