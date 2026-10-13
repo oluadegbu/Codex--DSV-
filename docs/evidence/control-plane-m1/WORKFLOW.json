@@ -1,0 +1,109 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-10-13T20:07:05.970841+00:00",
+  "workflow": "intake -> dependency planner -> actual child -> verified result/ledger -> durable completion -> restart -> report",
+  "status": "PASS",
+  "scope": "real trusted Linux process execution with synthetic paper data; no actual Codex or hostile OS isolation certification",
+  "completed_jobs": 3,
+  "duplicate_dispatches": 0,
+  "controller_crash_exit_code": 73,
+  "restart_recovered_without_worker_rerun": [
+    "research-crash"
+  ],
+  "audit_valid": true,
+  "reservations_released": true,
+  "results": [
+    {
+      "task_id": "research-crash",
+      "correlation_id": "corr-research-crash",
+      "pid": 13777,
+      "uid": 1000,
+      "worker_git_commit": "8b28390ba7b4a3fe2c2071b1d57d4b9674664a7f",
+      "exit_code": 0,
+      "process_group_terminated": true,
+      "fence": 1,
+      "files_sha256": {
+        "paper.sqlite": "bbffd1a2ac7b93721ef43733f66cb774c8d7379b90638f9f72c0ea4ee7675e7b",
+        "report.json": "606f3d2a2a5b61350b89c8fa585de1155cf44a25e478730c984e60cc1b761be6",
+        "result.json": "31253764ad44004595bda959e13cb251fe4d4e3a82127e5700954ddf6aa8bfb4",
+        "stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdout.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "paper_events": [
+        "paper_entry",
+        "paper_mark",
+        "paper_exit"
+      ],
+      "synthetic": true,
+      "mode": "SHADOW",
+      "score": "0.9150",
+      "receipt_sha256": "66982f01b3f1bd0fbe813536326be4dad7316f2f8daf065ece2413575944ded9"
+    },
+    {
+      "task_id": "research-002",
+      "correlation_id": "corr-research-002",
+      "pid": 13758,
+      "uid": 1000,
+      "worker_git_commit": "8b28390ba7b4a3fe2c2071b1d57d4b9674664a7f",
+      "exit_code": 0,
+      "process_group_terminated": true,
+      "fence": 1,
+      "files_sha256": {
+        "paper.sqlite": "bbffd1a2ac7b93721ef43733f66cb774c8d7379b90638f9f72c0ea4ee7675e7b",
+        "report.json": "d3bc402237c51cde32ada61ef5e17c1f2021eadc37ea8c9108a0eaf298996e93",
+        "result.json": "31253764ad44004595bda959e13cb251fe4d4e3a82127e5700954ddf6aa8bfb4",
+        "stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdout.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "paper_events": [
+        "paper_entry",
+        "paper_mark",
+        "paper_exit"
+      ],
+      "synthetic": true,
+      "mode": "SHADOW",
+      "score": "0.9150",
+      "receipt_sha256": "579913d806d7add93a9f3fc0a621f03b06a92d1f19ce7d46764a9298314d4d6e"
+    },
+    {
+      "task_id": "research-001",
+      "correlation_id": "corr-research-001",
+      "pid": 13742,
+      "uid": 1000,
+      "worker_git_commit": "8b28390ba7b4a3fe2c2071b1d57d4b9674664a7f",
+      "exit_code": 0,
+      "process_group_terminated": true,
+      "fence": 1,
+      "files_sha256": {
+        "paper.sqlite": "bbffd1a2ac7b93721ef43733f66cb774c8d7379b90638f9f72c0ea4ee7675e7b",
+        "report.json": "e0f3c5bca6b8e5c4f60b59788e05b3ad066e709553440c12a1f64c4c933b4912",
+        "result.json": "31253764ad44004595bda959e13cb251fe4d4e3a82127e5700954ddf6aa8bfb4",
+        "stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdout.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "paper_events": [
+        "paper_entry",
+        "paper_mark",
+        "paper_exit"
+      ],
+      "synthetic": true,
+      "mode": "SHADOW",
+      "score": "0.9150",
+      "receipt_sha256": "91a0928799efd1758a3810ad8401864642b9f682f1cbe25d47b29665214a92bc"
+    }
+  ],
+  "source_commit": "4730ebe8d2667f9adf8eb4852f0d8b177c38280a",
+  "workers_manifest_sha256": "63474bbe84fbb505fa681960b4eee595bd153fb13870ea98e50d8c8c04a799e2",
+  "new_sources_sha256": {
+    "src/dci/master/control_plane.py": "20957f5abbb5226082681e5922d0ba584a4060ecce90f6f811338320aed0dcd7",
+    "src/dci/master/runtime_cli.py": "d0041aadf42406f5d1793d34ca23f7b4bd09b68321da4bcdaaa9235a63121c1a",
+    "tools/shadow_research_entry.py": "63b0c32d3befb00b417712534520d50d8358fa1ab0178f17f0dd647ba81ba386",
+    "tools/prepare_shadow_research_worker.py": "3c14cbf9e575e0b137a35a20bf7da1aa9600cb4e12253d2800d16b3d67abcff5",
+    "tools/run_control_plane_workflow.py": "54d5b6996df2a11587cef001df09f89a4fcfb4e34d86d005cbad610a9473f95e"
+  },
+  "codex_dispatch_enabled": false,
+  "remote_delivery_enabled": false,
+  "services_installed": false,
+  "production_changes": false,
+  "live_trading": false
+}

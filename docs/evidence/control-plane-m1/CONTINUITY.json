@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "baseline_local_commit": "86e73dc974564f98da886e5886e24a554ec0ba31",
+  "baseline_remote_commit": "107bd73f317ab271caf283469641bbc78480f7af",
+  "immutable_manifests": [
+    {
+      "manifest": "docs/evidence/phase8/ARTIFACT_MANIFEST.json",
+      "manifest_sha256": "4214c42dff6c12700f83de9bde71b5be8384ca20cc2012ca19b0edfb42dd3669",
+      "entries_verified": 18,
+      "old_artifact_bytes_unchanged": true,
+      "historical_live_state_source": null
+    },
+    {
+      "manifest": "docs/evidence/phase8-20261012/ARTIFACT_MANIFEST.json",
+      "manifest_sha256": "20b67aeaf314d7ec06a7758c709c2db6eeec70f98e6fa2001dbaa018556e3bdf",
+      "entries_verified": 16,
+      "old_artifact_bytes_unchanged": true,
+      "historical_live_state_source": null
+    },
+    {
+      "manifest": "docs/evidence/phase9-20261013/ARTIFACT_MANIFEST.json",
+      "manifest_sha256": "93f0423c41cb26ed402a87f7cc3eabd9988cfaf2bd81e487e1f322dd30c7e5d2",
+      "entries_verified": 18,
+      "old_artifact_bytes_unchanged": true,
+      "historical_live_state_source": "1a7319098dd5099858e9c1cbeb2739df37cb0458"
+    }
+  ],
+  "original_source_files_verified": 35,
+  "historical_cycles_preserved": 100,
+  "historical_worker_tests_preserved": 1099,
+  "original_history_bundle_sha256": "1de9ed13ac1209a415d558e76db71d64b534935000c88a4712e7e8f7eb863300",
+  "original_source_bundles_overwritten": false,
+  "main_modified": false,
+  "root_README_BUILD_STATE": "Live milestone records may advance. Historical Phase9 hashes are checked from their exact original Git source, not incorrectly against newer live state."
+}

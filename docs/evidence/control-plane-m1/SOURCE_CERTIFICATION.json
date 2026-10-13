@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "source_commit": "f72802312cc9e23c9b5ba742f1bf89382ed45adb",
+  "new_source_sha256": {
+    "src/dci/master/control_plane.py": "20957f5abbb5226082681e5922d0ba584a4060ecce90f6f811338320aed0dcd7",
+    "src/dci/master/runtime_cli.py": "d0041aadf42406f5d1793d34ca23f7b4bd09b68321da4bcdaaa9235a63121c1a",
+    "tools/shadow_research_entry.py": "63b0c32d3befb00b417712534520d50d8358fa1ab0178f17f0dd647ba81ba386",
+    "tools/prepare_shadow_research_worker.py": "3c14cbf9e575e0b137a35a20bf7da1aa9600cb4e12253d2800d16b3d67abcff5",
+    "tools/run_control_plane_workflow.py": "54d5b6996df2a11587cef001df09f89a4fcfb4e34d86d005cbad610a9473f95e",
+    "control_plane_tests/test_runtime.py": "94174d2be50608dfcf840a93c14ef6588570f288d62a64f4de04e21a40d7dc97",
+    ".github/workflows/ci.yml": "52a24bc017bf0b52bb4f5aad38795060f2e52cc930f41a044d2ab6870764fee4"
+  },
+  "new_workflow_source_hashes_match_committed_code": true,
+  "workflow_observed_head_before_cleanup_fix_commit": "4730ebe8d2667f9adf8eb4852f0d8b177c38280a",
+  "provenance_note": "WORKFLOW preserves the observed Git HEAD at execution. The new tested-code byte hashes are independently matched to this source commit, including the cleanup/storage guard refinement. No runtime evidence was rewritten to invent a different observed HEAD.",
+  "real_execution": "Three actual non-root deterministic paper worker processes; controller exits73 and a fresh process commits the verified receipt without worker reexecution. Actual owned-process cancellation is exercised by the focused suite.",
+  "windows_Codex": "Operator-reported genuine execution retained; current connector Administrator/High blocks access. Not substituted by the Linux workflow.",
+  "ci_for_this_source": "NOT TESTED before publication; no claim of remote PASS"
+}

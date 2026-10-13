@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "preserved_tests": 100,
+  "authorization_tests": 17,
+  "new_runtime_tests": 9,
+  "total_tests": 126,
+  "legacy_verifier_cycles": 100,
+  "legacy_worker_tests": 1099,
+  "three_legacy_process_overlap": true,
+  "legacy_lost": 0,
+  "legacy_duplicates": 0,
+  "compileall": "PASS",
+  "scope": "Original trusted verifier checks rerun once for required milestone regression; actual new paper workflow and recovery evidence is separate. No actual Codex certification inferred."
+}

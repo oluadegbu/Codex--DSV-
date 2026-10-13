@@ -151,3 +151,18 @@ See the [procedure and findings](docs/DMB_PHASE9.md), [scope-specific matrix](do
 [artifact hashes](docs/evidence/phase9-20261013/ARTIFACT_MANIFEST.json) and
 [existing-account prerequisite](decisions/REQUEST-0007.md). The inbox/outbox plan
 is disabled. No production, identity, privileged ACL, provider or service change occurred.
+
+## Functional DMB control plane — current milestone
+
+A standalone foreground control plane now runs fixed DCI paper-research jobs from
+intake through dependency planning, actual worker dispatch, verified artifacts,
+durable completion and restart reporting. Three actual non-root worker processes
+completed the workflow; a crashed controller recovered a sealed result without
+rerunning its worker. Duplicate intake caused no additional execution.
+
+See the [working runbook](docs/DMB_CONTROL_PLANE_M1.md) and
+[real execution evidence](docs/evidence/control-plane-m1/WORKFLOW.json).
+The existing architecture and all historical certificates are retained. The
+operator-reported genuine Windows Codex baseline is preserved; this connector
+still exposes Administrator/High, so Codex and external delivery routes remain
+disabled in the new runtime. No persistent service or production change occurred.

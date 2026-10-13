@@ -2,9 +2,9 @@
   "schema_version": 1,
   "project": "Directive Crypto Intelligence",
   "repository": "oluadegbu/Codex--DSV-",
-  "updated_at": "2026-10-13T10:06:22.202413+00:00",
-  "milestone": "dmb-phase9-runtime-evidence-and-nonadmin-prerequisite",
-  "status": "local_shadow_pass_single_real_worker_and_full_certification_blocked",
+  "updated_at": "2026-10-13T20:13:17.385351+00:00",
+  "milestone": "functional-dmb-shadow-control-plane-m1",
+  "status": "functional_trusted_shadow_control_plane_pass_codex_and_external_routes_disabled",
   "mode": "SHADOW",
   "synthetic_only": true,
   "hard_gates": {
@@ -145,15 +145,14 @@
     "No streaming worker or Temporal deployment",
     "No validated wallet independence or predictive performance",
     "SQLite single-host O(n) journal recovery; no distributed scheduling",
-    "Windows remote is Administrator/high integrity; workspace access EPERM",
-    "Codex exec cannot initialize in read-only runtime storage",
-    "Live ChatGPT and provider/approval identity certification absent"
+    "Live ChatGPT and provider/approval identity certification absent",
+    "Verified Windows Codex baseline is operator-reported; current connected executor is Administrator/High and exposes no non-admin worker context",
+    "M1 operates one trusted non-root Linux paper worker; hostile-code OS separation and real Windows Codex cancellation/recovery remain pending"
   ],
   "next_safe_tasks": [
-    "Verify actual DirectiveCodex non-admin process token through an existing foreground connection when supplied; then execute the documented bounded Windows procedure",
-    "Maintain fixed task templates, auth/delivery fixtures and certification artifact integrity without provider activation",
-    "Inspect an existing disposable OS canary boundary when authorized and available; do not infer isolation from separate paths",
-    "Preserve blocked/quarantined tasks; continue unrelated safe shadow work and the separate DAT Temporal milestone"
+    "Use the existing non-admin connection reference when provided to integrate one bounded official Codex worker into the durable dispatch receipt workflow",
+    "Continue real fixed-template DCI shadow workflows with dependency planning, verified artifacts and receipt recovery through the standalone foreground runtime",
+    "Keep unknown external integrations/providers disabled; preserve quarantined tasks and the separate DAT Temporal milestone"
   ],
   "publication": {
     "method": "authenticated GitHub connector Git database APIs",
@@ -444,6 +443,56 @@
     "identities_or_privileged_acl_changes": false,
     "providers_activated": false,
     "production_changes": false,
-    "DAT_Temporal_milestone_preserved": true
+    "DAT_Temporal_milestone_preserved": true,
+    "snapshot_context": "Historical Phase9 evidence at local source1a73190. Original certificate bytes remain unchanged; README/BUILD_STATE hashes are verified from that exact Git source. Current operator-reported Windows baseline and actual connected-executor boundary are in control_plane_m1."
+  },
+  "control_plane_m1": {
+    "mode": "SHADOW / NON-TRADING / FAIL-CLOSED",
+    "status": "FUNCTIONAL LOCAL SHADOW PASS",
+    "operation": "shadow_research",
+    "enabled_project": "DCI",
+    "path": "intake -> dependency planner -> actual child -> verified result/paper journal -> durable completion -> restart -> report",
+    "existing_architecture_reused": [
+      "PortfolioRegistry",
+      "PortfolioPlanner",
+      "BHB BridgeStore and audit",
+      "workspace/resource locks",
+      "MasterBrainTools local inbox/outbox"
+    ],
+    "source_commit": "f72802312cc9e23c9b5ba742f1bf89382ed45adb",
+    "worker_kind": "trusted deterministic Linux paper pipeline; actual process execution with synthetic data",
+    "actual_paper_jobs_completed": 3,
+    "duplicate_dispatches": 0,
+    "controller_crash_exit_code": 73,
+    "completion_recovered_without_worker_reexecution": true,
+    "cancellation": "PASS for actual newly-owned Linux process in integration suite; not Windows Codex cancellation certification",
+    "unknown_or_expired_completion": "QUARANTINED; no auto replay or lease reset; locks/reservations retained",
+    "tests": {
+      "preserved": 100,
+      "authorization": 17,
+      "new_runtime": 9,
+      "total": 126
+    },
+    "original_certifications_preserved": true,
+    "operator_reported_Windows_baseline": {
+      "DirectiveCodex_non_admin_session": "PASS",
+      "official_Codex_CLI": "0.162.1",
+      "ChatGPT_authentication": "PASS",
+      "genuine_Codex_execution": "PASS",
+      "evidence_scope": "current user directive; exact connection not supplied"
+    },
+    "current_connected_executor": "WIN-HQAAFGGU1AM\\Administrator / High; no worker launched",
+    "codex_dispatch_enabled": false,
+    "external_delivery_enabled": false,
+    "services_installed": false,
+    "production_changes": false,
+    "source_certification": "docs/evidence/control-plane-m1/SOURCE_CERTIFICATION.json",
+    "real_workflow_evidence": "docs/evidence/control-plane-m1/WORKFLOW.json",
+    "runbook": "docs/DMB_CONTROL_PLANE_M1.md",
+    "continuity": "docs/evidence/control-plane-m1/CONTINUITY.json",
+    "artifact_manifest": "docs/evidence/control-plane-m1/ARTIFACT_MANIFEST.json",
+    "full_DMB_certified": false,
+    "separate_DAT_Temporal_milestone_preserved": true,
+    "next_milestone": "Connect the verified non-admin runtime to official Codex handoff; prove its canary isolation/cancellation/recovery before enabling uncertified routes"
   }
 }

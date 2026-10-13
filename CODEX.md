@@ -44,3 +44,15 @@ uncertain started execution. Worker manifests pin exact workspace/Git/source
 state. Current labs are trusted same-UID logical isolation, not hostile-code
 confinement. Never promote simulated approval or local PASS to a live gate.
 Run tools/certify_dmb.py for DMB milestones; it also runs the regression suite.
+
+The functional M1 paper runtime is documented in docs/DMB_CONTROL_PLANE_M1.md.
+Use dci.master.runtime_cli for its fixed shadow_research operation; the original
+DMB CLI remains the legacy lab interface. Preserve operator-certified baselines;
+verify the actual connected token before an authorized Codex launch. Do not infer
+isolation, cancellation or external authentication from those reports, simulated
+responses or deterministic-worker certification.
+Run control_plane_tests and the actual run_control_plane_workflow.py driver at
+meaningful runtime milestones, with fresh output paths. Preserve all old evidence
+bytes; historical live README/BUILD_STATE hashes are verified from their pinned
+Git source, not newer milestone state. Intact receipts may finish only valid
+leases; never clear an uncertain quarantine, reset a lease or blindly rerun effects.
