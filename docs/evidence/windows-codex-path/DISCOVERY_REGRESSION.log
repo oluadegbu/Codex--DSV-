@@ -1,0 +1,17 @@
+test_missing_primary_and_missing_path_stays_closed (test_codex_discovery.DiscoveryTests.test_missing_primary_and_missing_path_stays_closed) ... ok
+test_path_executable_requires_same_official_hash (test_codex_discovery.DiscoveryTests.test_path_executable_requires_same_official_hash) ... ok
+test_untrusted_primary_never_falls_back_to_path (test_codex_discovery.DiscoveryTests.test_untrusted_primary_never_falls_back_to_path) ... ok
+test_user_local_verified_executable_without_subprocess_path (test_codex_discovery.DiscoveryTests.test_user_local_verified_executable_without_subprocess_path) ... ok
+test_proven_prestart_retains_exact_database_bytes (test_codex_discovery.PredecessorTests.test_proven_prestart_retains_exact_database_bytes) ... ok
+test_started_or_uncertain_predecessor_cannot_be_routed_around (test_codex_discovery.PredecessorTests.test_started_or_uncertain_predecessor_cannot_be_routed_around) ... ok
+test_wal_or_worker_journal_blocks_replacement (test_codex_discovery.PredecessorTests.test_wal_or_worker_journal_blocks_replacement) ... ok
+test_missing_runtime_and_wrong_version_rejected (test_package.PackageTests.test_missing_runtime_and_wrong_version_rejected) ... ok
+test_path_traversal_in_manifest_and_archive_rejected (test_package.PackageTests.test_path_traversal_in_manifest_and_archive_rejected) ... ok
+test_redirected_package_file_cannot_escape_boundary (test_package.PackageTests.test_redirected_package_file_cannot_escape_boundary) ... ok
+test_success_uses_only_process_path_and_no_installer (test_package.PackageTests.test_success_uses_only_process_path_and_no_installer) ... ok
+test_tampered_package_source_rejected_before_path_change (test_package.PackageTests.test_tampered_package_source_rejected_before_path_change) ... ok
+
+----------------------------------------------------------------------
+Ran 12 tests in 0.007s
+
+OK

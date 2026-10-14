@@ -2,9 +2,9 @@
   "schema_version": 1,
   "project": "Directive Crypto Intelligence",
   "repository": "oluadegbu/Codex--DSV-",
-  "updated_at": "2026-10-14T07:12:36.931404+00:00",
-  "milestone": "windows-native-identity-gate-repair-0.1.1",
-  "status": "native_API_repair_and_package_pass_genuine_RDP_task_pending",
+  "updated_at": "2026-10-14T08:17:09.093238+00:00",
+  "milestone": "windows-user-local-codex-path-fix-0.1.2",
+  "status": "native_Codex_discovery_pass_before_genuine_RDP_handoff",
   "mode": "SHADOW",
   "synthetic_only": true,
   "hard_gates": {
@@ -96,7 +96,7 @@
       "synthetic": true
     },
     "compileall": "passed",
-    "github_ci": "PASS150 tests at repair source35291220795c; native Windows token API comparisons and package PASS",
+    "github_ci": "PASS157 tests at path-fix sourced3ce1b9cc73e and actual Windows discovery/package PASS",
     "security_review": "No credentials, signing, submission, live execution or cross-project integration in source; RPC method allowlist tested",
     "durable_replay": {
       "status": "passed",
@@ -158,7 +158,7 @@
     "M1 operates one trusted non-root Linux paper worker; hostile-code OS separation and real Windows Codex cancellation/recovery remain pending"
   ],
   "next_safe_tasks": [
-    "Run the hash-pinned self-contained package procedure under existing DirectiveCodex RDP; automatic genuine Codex task/artifact/durable completion and restart verification, no Git/Python installation",
+    "Run version-pinned0.1.2 foreground procedure; automatic readonly predecessor check, fresh isolated pairing and genuine shadow task; no installed Codex or global PATH change",
     "Read and reconcile sanitized Windows CERTIFICATION.json; preserve uncertain outcomes and locks",
     "Keep remote delivery, OS isolation, providers and full DMB certification gated; preserve separate DAT Temporal milestone"
   ],
@@ -523,7 +523,7 @@
     "portable_tests": 18,
     "final_TLS_fixture": "PASS GitHub Linux CI run38486041775 / fixture executor",
     "genuine_windows_task": false,
-    "windows_foreground_pairing": "PENDING_REPLACEMENT_OPERATOR_SESSION",
+    "windows_foreground_pairing": "PENDING_NEW_VERSION_FOREGROUND_PROCEDURE",
     "full_certification": "BLOCKED",
     "remote_delivery": "DISABLED_NOT_CERTIFIED",
     "OS_isolation": "NOT TESTED",
@@ -534,13 +534,16 @@
     "published_evidence_commit": "217eac578528d6907f1a489622ed10dce30edf6a",
     "deployment": "One hash-verified ZIP: embedded Python, portable Git and TLS dependencies; no operator installation",
     "operator_dependency_status": "Git/Python unavailable per operator; standalone package removes these system prerequisites",
-    "package_release": "https://github.com/oluadegbu/Codex--DSV-/releases/tag/dmb-windows-v0.1.1-35291220795c",
-    "package_sha256": "867adb13ecc9d77b5aaa8f4a7cc182bd205e269656f0f21330ddd92371331675",
-    "package_native_CI": "PASS38526420504 actual embedded Windows token APIs/TLS/Git/SQLite; not genuine DirectiveCodex task",
-    "package_source": "35291220795cd500cb84cd825d9e61e0ee476416",
+    "package_release": "https://github.com/oluadegbu/Codex--DSV-/releases/tag/dmb-windows-v0.1.2-d3ce1b9cc73e",
+    "package_sha256": "4ebd023dbfd6c935fccca64bbe6ae3004b1b17052b693c90d9078f9d5f0d640e",
+    "package_native_CI": "PASS38533236795 real official native exe discovered with no PATH; no Codex execution in CI",
+    "package_source": "d3ce1b9cc73ef646120f06a6056876086632df98",
     "package_evidence": "docs/evidence/windows-package/CERTIFICATION.json",
     "identity_gate": "Repaired from wrong CSV column to strict direct token APIs; native Windows comparison PASS; CI High/Admin rejected",
     "identity_repair_evidence": "docs/evidence/windows-identity-repair/CERTIFICATION.json",
-    "operator_failed_installation": "Preserved; side-by-side replacement only"
+    "operator_failed_installation": "Preserved; side-by-side replacement only",
+    "code_path_fix_evidence": "docs/evidence/windows-codex-path/CERTIFICATION.json",
+    "new_private_state": "Current-user LocalAppData/Directive/DMBWindowsWorker-v1-0.1.2",
+    "predecessor_safety": "Read-only proof of unstarted predecessor required; never overwrite or route around uncertain state"
   }
 }

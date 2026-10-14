@@ -32,26 +32,37 @@ The Linux suite retains all145 existing tests and adds five package-boundary che
 
 ## Foreground deployment
 
-Published repaired prerelease: [dmb-windows-v0.1.1-35291220795c](https://github.com/oluadegbu/Codex--DSV-/releases/tag/dmb-windows-v0.1.1-35291220795c).
-The ZIP is58,456,175 bytes; SHA-256
-`867adb13ecc9d77b5aaa8f4a7cc182bd205e269656f0f21330ddd92371331675`.
-Source is `35291220795cd500cb84cd825d9e61e0ee476416`.
+Published replacement: [dmb-windows-v0.1.2-d3ce1b9cc73e](https://github.com/oluadegbu/Codex--DSV-/releases/tag/dmb-windows-v0.1.2-d3ce1b9cc73e).
+The ZIP is58,464,767 bytes; SHA-256
+`4ebd023dbfd6c935fccca64bbe6ae3004b1b17052b693c90d9078f9d5f0d640e`.
+Source is `d3ce1b9cc73ef646120f06a6056876086632df98`.
 
-Version0.1.0 rejected valid Medium tokens because it read the CSV group Type column
-as a SID column. Version0.1.1 uses native process token APIs, including a separate
-TokenIntegrityLevel query, with the same strict local DirectiveCodex/non-admin/
-exact Medium requirements. Administrators membership, including deny-only groups,
-any elevation and thread impersonation are rejected. Native embedded Windows CI
-38526420504 compared the APIs to actual Windows SID output, reproduced the old
-column defect and rejected the actual CI High/Admin account;150 regression checks
-pass. Actual DirectiveCodex pairing/task remains pending the one procedure below.
-[Exact evidence](evidence/windows-identity-repair/CERTIFICATION.json).
+Version0.1.1 passed the repaired identity gate but its non-interactive Get-Command
+lookup could not resolve the existing installation. Version0.1.2 checks native
+current-user LocalAppData/Programs/OpenAI/Codex/bin/codex.exe first, without PATH.
+The executable must match OpenAI's raw v0.162.1 release hash/size and pass the exact
+version probe. Failed primary verification stops; it never silently chooses another
+binary. Hash verification repeats under a no-write/no-delete-sharing file handle
+through process creation. Windows8.3 aliases are canonicalized; junction/reparse
+redirects are still rejected. No global PATH or installed Codex changes.
 
-Paste the complete replacement block in normal PowerShell in the existing
-DirectiveCodex RDP session. It preserves the failed0.1.0 installation by using a
-new directory; it never deletes or overwrites old pairing/state. Existing unexpected
-pairing or uncertain execution stays blocked instead of being reset. No diagnostics,
-installations, privilege, ACL, service or production changes are requested.
+Native Windows CI38533236795 tested actual official Codex bytes in the user-local
+layout with PATH lookup forbidden, and retained privileged-identity rejection,
+TLS/HMAC/Git/SQLite checks.157 tests pass. CI does not execute/authenticate Codex
+or substitute for the genuine RDP task. [Exact evidence](evidence/windows-codex-path/CERTIFICATION.json).
+
+The old0.1.0/0.1.1 installations, pairing and journals are preserved. Before fresh
+pairing in DMBWindowsWorker-v1-0.1.2, the driver reads only a checkpointed immutable
+old controller snapshot and requires the original task to be QUEUED/attempts0,
+with no dispatch, execution, lock, authenticated HELLO or worker journal. Missing,
+changing, uncheckpointed or started/uncertain evidence blocks rather than being
+reset or routed around. No old pairing file is decrypted or overwritten.
+
+Paste this complete block into normal PowerShell in the existing DirectiveCodex
+RDP session. It creates one distinct deployment directory, checks the predecessor,
+pairs and automatically executes/verifies the genuine fixed shadow task and durable
+completion/restart. No separate diagnostics, installs, elevation, services or
+production changes. The [same block](DMB_WINDOWS_PACKAGE.ps1) is kept in Git.
 
 ```powershell
 $ErrorActionPreference = 'Stop'
@@ -60,9 +71,9 @@ $DmbPrincipal = New-Object Security.Principal.WindowsPrincipal($DmbIdentity)
 if ($DmbIdentity.Name -ine "$env:COMPUTERNAME\DirectiveCodex" -or $DmbPrincipal.IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)) {
     throw 'Use normal PowerShell in the existing non-admin DirectiveCodex RDP session.'
 }
-$DmbUrl = 'https://github.com/oluadegbu/Codex--DSV-/releases/download/dmb-windows-v0.1.1-35291220795c/DMB-Windows-0.1.1-35291220795c-amd64.zip'
-$DmbSha = '867adb13ecc9d77b5aaa8f4a7cc182bd205e269656f0f21330ddd92371331675'
-$DmbRoot = Join-Path $env:LOCALAPPDATA 'Directive\DMB-0.1.1-35291220795c'
+$DmbUrl = 'https://github.com/oluadegbu/Codex--DSV-/releases/download/dmb-windows-v0.1.2-d3ce1b9cc73e/DMB-Windows-0.1.2-d3ce1b9cc73e-amd64.zip'
+$DmbSha = '4ebd023dbfd6c935fccca64bbe6ae3004b1b17052b693c90d9078f9d5f0d640e'
+$DmbRoot = Join-Path $env:LOCALAPPDATA 'Directive\DMB-0.1.2-d3ce1b9cc73e'
 if (Test-Path $DmbRoot) { throw 'Existing state preserved. Do not overwrite, delete or silently re-pair.' }
 for ($DmbPath = [IO.DirectoryInfo]$DmbRoot; $null -ne $DmbPath; $DmbPath = $DmbPath.Parent) {
     if ($DmbPath.Exists -and ($DmbPath.Attributes -band [IO.FileAttributes]::ReparsePoint)) { throw 'Junction/reparse deployment boundary rejected.' }

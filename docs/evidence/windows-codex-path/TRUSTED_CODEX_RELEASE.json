@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "origin": "https://api.github.com/repos/openai/codex/releases/tags/rust-v0.162.1",
+  "tag": "rust-v0.162.1",
+  "verified_metadata": "authenticated GitHub connector public release read",
+  "assets": [
+    {
+      "name": "codex-aarch64-pc-windows-msvc.exe",
+      "sha256": "sha256:3afc6a5195ce3fc08ee69b99521773b1542f129ee5b68dd4f0bb10cf7930c6ef",
+      "size": 282434864,
+      "url": "https://github.com/openai/codex/releases/download/rust-v0.162.1/codex-aarch64-pc-windows-msvc.exe"
+    },
+    {
+      "name": "codex-x86_64-pc-windows-msvc.exe",
+      "sha256": "sha256:dd13bdb162a184fa04039488b234a8258ef9b76f84e926c505d5742b19249a6a",
+      "size": 333479728,
+      "url": "https://github.com/openai/codex/releases/download/rust-v0.162.1/codex-x86_64-pc-windows-msvc.exe"
+    }
+  ]
+}

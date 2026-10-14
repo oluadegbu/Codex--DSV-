@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "mode": "SHADOW",
+  "status": "CODEX_USER_LOCAL_DISCOVERY_NATIVE_WINDOWS_PASS_GENUINE_TASK_PENDING",
+  "remote_source": "d3ce1b9cc73ef646120f06a6056876086632df98",
+  "local_source": "613e4ed72447a6f2d79da215f64afba04238e1fd",
+  "source_tree": "c92d758898494e027fd5f82a492c6ddc5d98a6d2",
+  "source_sha256": {
+    "package_tests/test_codex_discovery.py": "3696a9475e924e209b779798d8947bebf0c78985d0ed9d305dbf141e001a68b0",
+    "package_tests/test_package.py": "deb8c567643c57770c0985b6393aae7b999f7ce6949b2a49ca5e1febc565d899",
+    "packaging/WINDOWS_INPUTS.json": "bcb0aa32fda877f3c930c7a08a7490d865c47df92f79d9f6c4e4010c9cb32c2e",
+    "src/dci/master/windows_codex_locator.py": "879ca3e79d127641050fd3330295d18e953a59db9d09a285699f5ad7916ce6f5",
+    "src/dci/master/windows_native.py": "e8cd20a886a6841391a4301a2b080c09d55325bf1dcdb1cc9a8d95ad54234f1e",
+    "src/dci/master/windows_worker.py": "d3f598ac792d8e1053198ded87bcb312f46a73d645914254e48a40fd75d22be4",
+    "tools/build_windows_package.py": "4dc4fc932d870c8960eea499a817435c4b1a4a88902ca1a9e6b2af60573c71aa",
+    "tools/check_windows_package.py": "8906324ef458ed97c5cf3b58e85e7d753dc2001a657b95210e017c9649f638a4",
+    "tools/run_windows_shadow_bridge.py": "34bdfe1b882cb26fd2afaa14e139a2503322c91c789aa6ea48cb97dcc5f81fb6",
+    "tools/windows_package_runtime.py": "bdd2d9a5ef2baeec878c8fb0e25209bcab6b0d61e9b47415b5bf5923cc82d39a"
+  },
+  "operator_failure_evidence": {
+    "version": "0.1.1",
+    "module": "windows_native.py",
+    "line": 189,
+    "function": "resolve_codex",
+    "exception": "subprocess.CalledProcessError",
+    "command": "(Get-Command codex -ErrorAction Stop).Source",
+    "exit_status": 1,
+    "stage": "before version probe, worker journal, authenticated HELLO or task claim",
+    "verified_installed_path": "C:\\Users\\DirectiveCodex\\AppData\\Local\\Programs\\OpenAI\\Codex\\bin\\codex.exe"
+  },
+  "fix": "Resolve current-user LocalAppData/Programs/OpenAI/Codex/bin/codex.exe before PATH; verify raw executable against pinned OpenAI rust-v0.162.1 digest and size before executing; reverify under no-write/no-delete sharing handle through process creation; retain exact CLI version probe and identity/sandbox/job/auth/audit/cancel/quarantine controls",
+  "CI": {
+    "tests": 157,
+    "deterministic_run": 38533236746,
+    "native_package_run": 38533236795,
+    "native_job": 115749987093,
+    "native_user_local_discovery_without_PATH": "PASS using actual official raw Windows Codex executable; no Codex execution or authentication in CI",
+    "privileged_CI_identity": "Rejected, unchanged",
+    "package_release_publication": "PASS"
+  },
+  "release_tag": "dmb-windows-v0.1.2-d3ce1b9cc73e",
+  "package_sha256": "4ebd023dbfd6c935fccca64bbe6ae3004b1b17052b693c90d9078f9d5f0d640e",
+  "package_bytes": 58464767,
+  "old_state_preservation": "Retain old installations/pairing/journals; immutable readonly checkpointed controller inspection proves QUEUED/attempts0, no offers, execution, locks or authenticated identity and no worker journal before opening new version-isolated state. Otherwise block; never route around uncertainty.",
+  "new_private_state": "Current-user LocalAppData/Directive/DMBWindowsWorker-v1-0.1.2",
+  "global_PATH_changed": false,
+  "Codex_reinstalled": false,
+  "VPS_changes_performed": false,
+  "services_installed": false,
+  "full_DMB_certification": "BLOCKED",
+  "genuine_Windows_task": "PENDING operator foreground procedure"
+}

@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "algorithm": "SHA-256",
+  "self_hash_excluded": true,
+  "source_commit": "613e4ed72447a6f2d79da215f64afba04238e1fd",
+  "artifacts": {
+    "docs/evidence/windows-codex-path/CERTIFICATION.json": {
+      "sha256": "ebad2e5aa6a2d12532e2107ad2cba85f406d93ad3644a0aa47360405d2c85f60",
+      "bytes": 3465
+    },
+    "docs/evidence/windows-codex-path/CONTINUITY.json": {
+      "sha256": "e095ee82ed1ff9090404fee8ba94f3fe37290e2bb4e852c6799fabe2547c06b8",
+      "bytes": 456
+    },
+    "docs/evidence/windows-codex-path/DISCOVERY_REGRESSION.log": {
+      "sha256": "f76d41324a864b4b17f6fcebd966e9292cc8a9c6c068fb4f4cf8e03aa35c694c",
+      "bytes": 1853
+    },
+    "docs/evidence/windows-codex-path/PACKAGE_SMOKE.json": {
+      "sha256": "9347ccc94719dcf4ca5bef04483781cc7c2029a2bb9cfcae732bf0a62307d15c",
+      "bytes": 1093
+    },
+    "docs/evidence/windows-codex-path/PRESERVED_BUILD_STATE.json": {
+      "sha256": "4180f9d6172ccab45b003cedb9487110d4d4bfb17c3185f85e5830b87f34bc97",
+      "bytes": 27735
+    },
+    "docs/evidence/windows-codex-path/RELEASE.json": {
+      "sha256": "f5543cf1b6cd161ada23b25ad2ba7d1c1e15ae556c0b1c6386218904a080eb9e",
+      "bytes": 760
+    },
+    "docs/evidence/windows-codex-path/TRUSTED_CODEX_RELEASE.json": {
+      "sha256": "3f0a6f7ee74f45c1c12a1b12a55d0eb572bfbc058626061def153f82dd9ea883",
+      "bytes": 816
+    }
+  }
+}
