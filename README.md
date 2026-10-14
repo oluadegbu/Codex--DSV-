@@ -179,3 +179,11 @@ See [current evidence](docs/evidence/windows-bridge/CERTIFICATION.json); full DM
 certification and remote delivery remain blocked until their actual gates pass.
 
 For DirectiveCodex sessions without Git or Python, the [self-contained Windows package](docs/DMB_WINDOWS_PACKAGE.md) bundles its dependencies without installing them.
+
+The current pinned replacement is v0.1.3, validated against the actual official
+Codex standalone junction layout on Windows. It verifies native final file
+identity and the pinned executable hash before launching the resolved image,
+with write/delete pins through suspended creation. All158 tests and native
+package validation pass. Both failed installations remain intact and proven
+unstarted; genuine DirectiveCodex completion awaits the one foreground procedure.
+See [release evidence](docs/evidence/windows-junction-repair/CERTIFICATION.json).

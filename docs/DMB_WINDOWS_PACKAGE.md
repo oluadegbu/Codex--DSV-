@@ -28,35 +28,43 @@ Windows CI executes the **actual embedded runtime**, removing system Git and Pyt
 from PATH, and tests bundled Git, native cryptography, validated loopback TLS/HMAC,
 SQLite reopen/audit and rejection of the CI identity before Codex launch. This is
 package/dependency certification, not a genuine DirectiveCodex task or OS isolation.
-The Linux suite retains all145 existing tests and adds five package-boundary checks.
+The Linux suite retains all existing regression checks; the current total is158 tests.
 
 ## Foreground deployment
 
-Published replacement: [dmb-windows-v0.1.2-d3ce1b9cc73e](https://github.com/oluadegbu/Codex--DSV-/releases/tag/dmb-windows-v0.1.2-d3ce1b9cc73e).
-The ZIP is58,464,767 bytes; SHA-256
-`4ebd023dbfd6c935fccca64bbe6ae3004b1b17052b693c90d9078f9d5f0d640e`.
-Source is `d3ce1b9cc73ef646120f06a6056876086632df98`.
+Published replacement: [dmb-windows-v0.1.3-8d78f83963db](https://github.com/oluadegbu/Codex--DSV-/releases/tag/dmb-windows-v0.1.3-8d78f83963db).
+The ZIP is 58,471,674 bytes; SHA-256 `3f469da9e5a326e66fd6e8dc43ded9cb42381f6c83a0b8c2ba3abc2201d66457`.
+Source is `8d78f83963dbd2afb1eb06ffc5481e6d08934a26`.
 
-Version0.1.1 passed the repaired identity gate but its non-interactive Get-Command
-lookup could not resolve the existing installation. Version0.1.2 checks native
-current-user LocalAppData/Programs/OpenAI/Codex/bin/codex.exe first, without PATH.
-The executable must match OpenAI's raw v0.162.1 release hash/size and pass the exact
-version probe. Failed primary verification stops; it never silently chooses another
-binary. Hash verification repeats under a no-write/no-delete-sharing file handle
-through process creation. Windows8.3 aliases are canonicalized; junction/reparse
-redirects are still rejected. No global PATH or installed Codex changes.
+The v0.1.2 rejection was the official installer junction
+`Programs/OpenAI/Codex/bin` -> `.codex/packages/standalone/current/bin`.
+The actual VPS native handle resolved this to the exact pinned
+`releases/0.162.1-x86_64-pc-windows-msvc/bin/codex.exe`; its SHA-256 matches
+OpenAI's raw release. Version0.1.3 accepts only these two exact mount-point
+targets, validates the final path and volume/file identity with native Windows
+APIs, and rejects other reparse components or destinations even with matching
+binary bytes. It executes the resolved release path rather than either alias.
+The final file and every ancestor stay pinned against write/delete redirection
+through suspended process creation; the process image path/file identity must
+match before resume. Hash, exact CLI version, identity and sandbox checks remain.
+No global PATH, installed Codex, ACL, token, service or production changes.
 
-Native Windows CI38533236795 tested actual official Codex bytes in the user-local
-layout with PATH lookup forbidden, and retained privileged-identity rejection,
-TLS/HMAC/Git/SQLite checks.157 tests pass. CI does not execute/authenticate Codex
-or substitute for the genuine RDP task. [Exact evidence](evidence/windows-codex-path/CERTIFICATION.json).
+Native Windows CI38645136491 validates actual official Codex bytes through the
+real junction layout, rejects an untrusted target with identical official bytes,
+and proves writes/directory renames fail while pinned. All158 tests pass.
+The earlier CI failure38642171755 caught Windows8.3 name normalization and
+published nothing; both expected/actual names now come from native handles,
+with file-ID verification unchanged. CI does not execute/authenticate Codex
+under its privileged account. [Exact evidence](evidence/windows-junction-repair/).
 
-The old0.1.0/0.1.1 installations, pairing and journals are preserved. Before fresh
-pairing in DMBWindowsWorker-v1-0.1.2, the driver reads only a checkpointed immutable
-old controller snapshot and requires the original task to be QUEUED/attempts0,
-with no dispatch, execution, lock, authenticated HELLO or worker journal. Missing,
-changing, uncheckpointed or started/uncertain evidence blocks rather than being
-reset or routed around. No old pairing file is decrypted or overwritten.
+The old0.1.0/0.1.1/0.1.2 installations, pairing and journals are retained.
+Before fresh pairing in DMBWindowsWorker-v1-0.1.3, the driver reads checkpointed
+immutable controller snapshots for BOTH failed versions. Each must still be
+QUEUED/attempts0, with no lease, dispatch, execution, lock, authenticated HELLO
+or worker journal. Missing, changing, WAL-bearing or uncertain evidence blocks;
+no old pairing is decrypted, state reset, or uncertainty routed around.
+Actual read-only VPS validation already passed for both predecessors; the
+foreground command checks again immediately before pairing.
 
 Paste this complete block into normal PowerShell in the existing DirectiveCodex
 RDP session. It creates one distinct deployment directory, checks the predecessor,
@@ -71,9 +79,9 @@ $DmbPrincipal = New-Object Security.Principal.WindowsPrincipal($DmbIdentity)
 if ($DmbIdentity.Name -ine "$env:COMPUTERNAME\DirectiveCodex" -or $DmbPrincipal.IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)) {
     throw 'Use normal PowerShell in the existing non-admin DirectiveCodex RDP session.'
 }
-$DmbUrl = 'https://github.com/oluadegbu/Codex--DSV-/releases/download/dmb-windows-v0.1.2-d3ce1b9cc73e/DMB-Windows-0.1.2-d3ce1b9cc73e-amd64.zip'
-$DmbSha = '4ebd023dbfd6c935fccca64bbe6ae3004b1b17052b693c90d9078f9d5f0d640e'
-$DmbRoot = Join-Path $env:LOCALAPPDATA 'Directive\DMB-0.1.2-d3ce1b9cc73e'
+$DmbUrl = 'https://github.com/oluadegbu/Codex--DSV-/releases/download/dmb-windows-v0.1.3-8d78f83963db/DMB-Windows-0.1.3-8d78f83963db-amd64.zip'
+$DmbSha = '3f469da9e5a326e66fd6e8dc43ded9cb42381f6c83a0b8c2ba3abc2201d66457'
+$DmbRoot = Join-Path $env:LOCALAPPDATA 'Directive\DMB-0.1.3-8d78f83963db'
 if (Test-Path $DmbRoot) { throw 'Existing state preserved. Do not overwrite, delete or silently re-pair.' }
 for ($DmbPath = [IO.DirectoryInfo]$DmbRoot; $null -ne $DmbPath; $DmbPath = $DmbPath.Parent) {
     if ($DmbPath.Exists -and ($DmbPath.Attributes -band [IO.FileAttributes]::ReparsePoint)) { throw 'Junction/reparse deployment boundary rejected.' }
@@ -107,7 +115,7 @@ repository authorization failures are material publication blockers, not permiss
 to bypass authentication.
 
 Current hashes, actual release/download identity, CI and blockers are recorded
-under docs/evidence/windows-package and BUILD_STATE.json after publication.
+under docs/evidence/windows-junction-repair and BUILD_STATE.json.
 Windows task certification remains pending until the foreground task produces its
 genuine receipt. Remote cloud delivery, Windows cancellation/crash, OS canary read
 and write denial, multi-worker isolation and external integrations remain separate

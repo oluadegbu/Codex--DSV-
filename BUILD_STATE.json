@@ -2,9 +2,9 @@
   "schema_version": 1,
   "project": "Directive Crypto Intelligence",
   "repository": "oluadegbu/Codex--DSV-",
-  "updated_at": "2026-10-14T08:17:09.093238+00:00",
+  "updated_at": "2026-10-14T22:08:56.926131+00:00",
   "milestone": "windows-official-junction-validation-fix-0.1.3",
-  "status": "native_Codex_discovery_pass_before_genuine_RDP_handoff",
+  "status": "native_official_Codex_junction_validation_PASS_genuine_DirectiveCodex_task_PENDING",
   "mode": "SHADOW",
   "synthetic_only": true,
   "hard_gates": {
@@ -158,7 +158,7 @@
     "M1 operates one trusted non-root Linux paper worker; hostile-code OS separation and real Windows Codex cancellation/recovery remain pending"
   ],
   "next_safe_tasks": [
-    "Publish native-validated0.1.3 junction fix, then run one pinned foreground procedure with both predecessor states automatically reconciled read-only.",
+    "Run pinned0.1.3 foreground procedure once in existing DirectiveCodex RDP; automatic predecessor reconciliation, task execution/artifact verification, durable completion and restart/no duplicate.",
     "Read and reconcile sanitized Windows CERTIFICATION.json; preserve uncertain outcomes and locks",
     "Keep remote delivery, OS isolation, providers and full DMB certification gated; preserve separate DAT Temporal milestone"
   ],
@@ -530,50 +530,71 @@
     "services_installed": false,
     "current_remote_executor": "Administrator/High; worker launches prohibited",
     "operator_baseline": "DirectiveCodex non-admin; CLI0.162.1 auth and genuine execution PASS retained as operator report",
-    "ci": "PASS145 tests at sourceb1f53a96",
+    "ci": "PASS158 tests at source8d78f839",
     "published_evidence_commit": "217eac578528d6907f1a489622ed10dce30edf6a",
     "deployment": "One hash-verified ZIP: embedded Python, portable Git and TLS dependencies; no operator installation",
     "operator_dependency_status": "Git/Python unavailable per operator; standalone package removes these system prerequisites",
-    "package_release": "https://github.com/oluadegbu/Codex--DSV-/releases/tag/dmb-windows-v0.1.2-d3ce1b9cc73e",
-    "package_sha256": "4ebd023dbfd6c935fccca64bbe6ae3004b1b17052b693c90d9078f9d5f0d640e",
-    "package_native_CI": "PASS38533236795 real official native exe discovered with no PATH; no Codex execution in CI",
-    "package_source": "d3ce1b9cc73ef646120f06a6056876086632df98",
-    "package_evidence": "docs/evidence/windows-package/CERTIFICATION.json",
+    "package_release": "https://github.com/oluadegbu/Codex--DSV-/releases/tag/dmb-windows-v0.1.3-8d78f83963db",
+    "package_sha256": "3f469da9e5a326e66fd6e8dc43ded9cb42381f6c83a0b8c2ba3abc2201d66457",
+    "package_native_CI": "PASS38645136491 official junctions/final file identity/hash and write/rename denial; no Codex execution in CI",
+    "package_source": "8d78f83963dbd2afb1eb06ffc5481e6d08934a26",
+    "package_evidence": "docs/evidence/windows-junction-repair/CERTIFICATION.json",
     "identity_gate": "Repaired from wrong CSV column to strict direct token APIs; native Windows comparison PASS; CI High/Admin rejected",
     "identity_repair_evidence": "docs/evidence/windows-identity-repair/CERTIFICATION.json",
     "operator_failed_installation": "Preserved; side-by-side replacement only",
     "code_path_fix_evidence": "docs/evidence/windows-codex-path/CERTIFICATION.json",
-    "new_private_state": "Current-user LocalAppData/Directive/DMBWindowsWorker-v1-0.1.2",
-    "predecessor_safety": "Read-only proof of unstarted predecessor required; never overwrite or route around uncertain state"
+    "new_private_state": "Current-user LocalAppData/Directive/DMBWindowsWorker-v1-0.1.3",
+    "predecessor_safety": "BOTH0.1.1/0.1.2 require read-only unstarted proof; actual VPS PASS; no old state mutation"
   },
   "windows_junction_repair": {
     "schema_version": 1,
     "mode": "SHADOW",
-    "status": "VPS_READ_ONLY_NATIVE_PATH_VALIDATION_PASS_WORKER_PENDING",
-    "observed_alias": "C:\\Users\\DirectiveCodex\\AppData\\Local\\Programs\\OpenAI\\Codex\\bin",
-    "type": "Junction",
-    "attributes": 1040,
-    "junction_target": "C:\\Users\\DirectiveCodex\\.codex\\packages\\standalone\\current\\bin",
-    "native_resolved_executable": "C:\\Users\\DirectiveCodex\\.codex\\packages\\standalone\\releases\\0.162.1-x86_64-pc-windows-msvc\\bin\\codex.exe",
-    "native_file_identity": [
-      1781029520,
-      786432,
-      698860
-    ],
-    "sha256": "dd13bdb162a184fa04039488b234a8258ef9b76f84e926c505d5742b19249a6a",
-    "native_exact_junction_targets_final_path_and_pins": "PASS",
-    "probe_exit_code": 0,
-    "probe_identity_scope": "read-only metadata/content validation via existing remote executor; not a DirectiveCodex launch",
-    "worker_executed": false,
-    "credentials_read": false,
-    "old_state_modified": false,
-    "fix": "Allow only exact official bin/current/versioned-release mount points; native handle final path and volume/file ID; reject every other reparse component. Execute direct pinned release path, rehash under file/directory pins, compare suspended process image identity before resume.",
-    "release": "PENDING native Windows package CI",
-    "genuine_windows_completion": "PENDING foreground DirectiveCodex operator run",
+    "status": "OFFICIAL_JUNCTION_NATIVE_WINDOWS_PASS_GENUINE_WORKER_PENDING",
+    "root_cause": "C:\\Users\\DirectiveCodex\\AppData\\Local\\Programs\\OpenAI\\Codex\\bin is a legitimate official Codex standalone installation junction, rejected by the blanket ancestor-reparse check.",
+    "source_commit": "8d78f83963dbd2afb1eb06ffc5481e6d08934a26",
+    "local_source": "45b03a3bd3ddd7ae6a89bb5a082b8de3eb993c2e",
+    "source_tree": "1aa4ab650bb7b2699b43dd01b491dc93d2aff844",
+    "tests": 158,
+    "CI": {
+      "native_package_run": 38645136491,
+      "native_package_job": 116130170122,
+      "deterministic_run": 38645136519,
+      "status": "PASS"
+    },
+    "release": {
+      "schema_version": 1,
+      "mode": "SHADOW",
+      "version": "0.1.3",
+      "tag": "dmb-windows-v0.1.3-8d78f83963db",
+      "source_commit": "8d78f83963dbd2afb1eb06ffc5481e6d08934a26",
+      "filename": "DMB-Windows-0.1.3-8d78f83963db-amd64.zip",
+      "sha256": "3f469da9e5a326e66fd6e8dc43ded9cb42381f6c83a0b8c2ba3abc2201d66457",
+      "bytes": 58471674,
+      "package_manifest_sha256": "3a0e0ad01ccddd9ed23b7ff7865edfac2b51e8557e686d81486c727e6a61d24e",
+      "smoke_evidence_sha256": "3d74bfabee3983b870b3e2c6737cea672ef84a636e49ac396c0e8e32ba5b4a17",
+      "Windows_genuine_task": "NOT TESTED; requires existing DirectiveCodex foreground session",
+      "signature": "SHA-256 verified release ZIP; CPython executable Authenticode checked in CI; DCI ZIP not Authenticode signed"
+    },
+    "actual_VPS_readonly_path_validation": "PASS",
+    "actual_VPS_both_failed_predecessors_unstarted": "PASS",
+    "native_junction_redirect_write_and_rename_tests": "PASS",
+    "genuine_windows_task": false,
     "full_DMB": "BLOCKED",
-    "predecessor_readonly_validation": "PASS actual VPS: both QUEUED/attempts0/no lease/no offers/executions/locks/identity/worker journal"
+    "operator_action": "One foreground pinned procedure in existing DirectiveCodex non-admin Medium RDP session; no automatic launch through Administrator/High remote executor.",
+    "old_evidence_files_byte_identical": 100,
+    "services_installed": false,
+    "production_changes": false,
+    "source_sha256": {
+      "src/dci/master/windows_codex_locator.py": "dd47905e9ea736118190a392ea73dd509b2b0fbb5cadbbf6db96fea75d52c8db",
+      "src/dci/master/windows_native.py": "e74ea47423b5b2fc72c72127431ab73efe0f10771e71c6447553d65a343eef1e",
+      "tools/windows_package_runtime.py": "f982fb839c88328f7f990a437c3afbe696f8a6d57f0b63b40beadfeacc159bd1",
+      "tools/check_windows_package.py": "69f3d70c0aba1186327774b030791d681dd4f3605aead4d8a37c9f012c88c990"
+    },
+    "release_url": "https://github.com/oluadegbu/Codex--DSV-/releases/tag/dmb-windows-v0.1.3-8d78f83963db"
   },
   "next_safe_actions": [
-    "Complete native Windows package validation and publish pinned0.1.3; then single DirectiveCodex foreground action to execute and durably verify the genuine task. Retain both failed deployments and fail closed on any uncertain prior dispatch."
+    "Run pinned0.1.3 foreground procedure once in existing DirectiveCodex RDP; automatic predecessor reconciliation, task execution/artifact verification, durable completion and restart/no duplicate.",
+    "Read and reconcile sanitized Windows CERTIFICATION.json; preserve uncertain outcomes and locks",
+    "Keep remote delivery, OS isolation, providers and full DMB certification gated; preserve separate DAT Temporal milestone"
   ]
 }

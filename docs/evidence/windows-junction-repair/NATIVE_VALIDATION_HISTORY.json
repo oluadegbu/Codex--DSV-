@@ -1,0 +1,9 @@
+{
+  "run": 38642171755,
+  "job": 116120308219,
+  "source": "88207a51ff3d1daf56faacf689d60ab152a1b28b",
+  "status": "FAIL_NO_RELEASE",
+  "exception": "PermissionError: Official Codex final path/file identity mismatch",
+  "cause": "Windows CI temporary path uses an 8.3 user alias; compare both expected and actual handle-resolved final names rather than a handle-resolved name against an unresolved alias. File ID check remains mandatory.",
+  "corrected_source": "8d78f83963dbd2afb1eb06ffc5481e6d08934a26"
+}

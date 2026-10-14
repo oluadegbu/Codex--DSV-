@@ -9,3 +9,5 @@ docs/evidence/windows-identity-repair/RELEASE.json -text whitespace=cr-at-eol
 docs/evidence/windows-identity-repair/PACKAGE_SMOKE.json -text whitespace=cr-at-eol
 docs/evidence/windows-codex-path/RELEASE.json -text whitespace=cr-at-eol
 docs/evidence/windows-codex-path/PACKAGE_SMOKE.json -text whitespace=cr-at-eol
+docs/evidence/windows-junction-repair/RELEASE.json -text whitespace=cr-at-eol
+docs/evidence/windows-junction-repair/PACKAGE_SMOKE.json -text whitespace=cr-at-eol
