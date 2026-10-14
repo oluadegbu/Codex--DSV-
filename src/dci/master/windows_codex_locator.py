@@ -158,8 +158,9 @@ def canonical_path(path, profile=None, arch=None):
                 with native_handle(path) as handle:
                     resolved = final_path(handle)
                     with native_handle(release) as expected:
-                        if resolved != release or file_identity(handle) != file_identity(expected):
+                        if resolved != final_path(expected) or file_identity(handle) != file_identity(expected):
                             raise PermissionError('Official Codex final path/file identity mismatch')
+                strict_components(resolved)
                 return resolved
     strict_components(path)
     with native_handle(path) as handle: return final_path(handle)

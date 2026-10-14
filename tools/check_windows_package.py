@@ -50,9 +50,9 @@ with tempfile.TemporaryDirectory() as d:
   subprocess.run([cmd,'/d','/c','mklink','/J',str(link),str(target)],check=True,capture_output=True,timeout=5)
  current=standalone/'current'
  junction(current,release.parent.parent);junction(source,current/'bin')
- assert discover(junction_local,missing_path,'x86_64')==release
+ assert discover(junction_local,missing_path,'x86_64')==release.resolve(strict=True)
  with pinned_image(release) as (locked,identity):
-  assert locked==release and len(identity)==3
+  assert locked==release.resolve(strict=True) and len(identity)==3
   try:
    with release.open('r+b'):pass
   except OSError:pass
