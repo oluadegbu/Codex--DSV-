@@ -128,7 +128,7 @@ def private_root():
     buffer = ctypes.create_unicode_buffer(32768)
     if dll("shell32").SHGetFolderPathW(None, 0x1C, None, 0, buffer) != 0:
         raise PermissionError("current-user LocalAppData unavailable")
-    root = Path(buffer.value) / "Directive" / "DMBWindowsWorker-v1"
+    root = Path(buffer.value) / "Directive" / "DMBWindowsWorker-v1-0.1.2"
     kernel = dll("kernel32")
     kernel.GetFileAttributesW.argtypes = [w.LPCWSTR]
     kernel.GetFileAttributesW.restype = w.DWORD
@@ -183,25 +183,46 @@ def dpapi(data, protect=True):
         kernel.LocalFree(output.data)
 
 
+def local_appdata():
+    require_identity()
+    buffer = ctypes.create_unicode_buffer(32768)
+    if dll("shell32").SHGetFolderPathW(None, 0x1C, None, 0, buffer) != 0:
+        raise PermissionError("current-user LocalAppData unavailable")
+    return Path(buffer.value)
+
+
 def resolve_codex():
     require_identity()
+    from .windows_codex_locator import discover, architecture
     powershell = system_directory() / "WindowsPowerShell/v1.0/powershell.exe"
-    source = subprocess.check_output([str(powershell), "-NoProfile", "-NonInteractive", "-Command",
-                                      "(Get-Command codex -ErrorAction Stop).Source"], text=True, timeout=5).strip()
-    path = Path(source)
-    if path.name.casefold() == "codex.exe":
-        return path.resolve(strict=True)
-    arch = "aarch64" if platform.machine().upper() == "ARM64" else "x86_64"
-    package = "codex-win32-arm64" if arch == "aarch64" else "codex-win32-x64"
-    triple = arch + "-pc-windows-msvc"
-    npm = path.parent / "node_modules/@openai"
-    roots = [npm / package, npm / "codex", npm / "codex/node_modules/@openai" / package]
-    for root in roots:
-        for leaf in ("bin/codex.exe", "codex/codex.exe"):
-            candidate = root / "vendor" / triple / leaf
-            if candidate.is_file():
-                return candidate.resolve(strict=True)
-    raise FileNotFoundError("existing official native Codex executable not resolved; no install/fallback/elevation")
+    def path_query():
+        return subprocess.check_output([str(powershell), "-NoProfile", "-NonInteractive", "-Command",
+                                        "(Get-Command codex -ErrorAction Stop).Source"], text=True, timeout=5)
+    return discover(local_appdata(), path_query, architecture())
+
+
+@contextmanager
+def pinned_codex_file(executable):
+    """Hold a no-write/no-delete sharing handle through image creation; verify before launch."""
+    require_identity()
+    from .windows_codex_locator import architecture, verify_stream
+    path = Path(executable)
+    if not path.is_absolute() or path.name.casefold() != "codex.exe" or path.resolve(strict=True) != path.absolute():
+        raise PermissionError("canonical pinned executable required")
+    kernel = dll("kernel32")
+    kernel.CreateFileW.argtypes = [w.LPCWSTR, w.DWORD, w.DWORD, ctypes.c_void_p, w.DWORD, w.DWORD, w.HANDLE]
+    kernel.CreateFileW.restype = w.HANDLE
+    handle = kernel.CreateFileW(str(path), 0x80000000, 1, None, 3, 0x08000000, None)
+    if handle == ctypes.c_void_p(-1).value:
+        raise ctypes.WinError(ctypes.get_last_error())
+    import msvcrt
+    try:
+        fd = msvcrt.open_osfhandle(handle, os.O_RDONLY | os.O_BINARY)
+    except BaseException:
+        kernel.CloseHandle.argtypes = [w.HANDLE]; kernel.CloseHandle(handle); raise
+    with os.fdopen(fd, "rb") as stream:
+        verify_stream(stream, architecture())
+        yield
 
 
 class BasicLimits(ctypes.Structure):
@@ -242,6 +263,10 @@ class ProcessInfo(ctypes.Structure):
 class WindowsJobProcess:
     """Create suspended, assign this job, then resume. Owned handles survive PID reuse."""
     def __init__(self, executable, arguments, cwd, directory):
+        with pinned_codex_file(executable):
+            self._launch(executable, arguments, cwd, directory)
+
+    def _launch(self, executable, arguments, cwd, directory):
         require_identity()
         self.kernel = k = dll("kernel32")
         signatures = {

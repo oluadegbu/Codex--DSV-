@@ -83,11 +83,12 @@ def controller(config, manifest, database):
 def main():
     if sys.version_info < (3, 11): raise PermissionError('Existing Python 3.11+ required; no installation attempted')
     identity = require_identity()  # Before creating files or using authentication.
-    from windows_package_runtime import verify_package, initialize_package_git, create_tls_certificate
+    from windows_package_runtime import verify_package, initialize_package_git, create_tls_certificate, verify_predecessor_unstarted
     package = verify_package(ROOT)
+    private = private_root()
+    predecessor = verify_predecessor_unstarted(private.parent) if package else None
     if package:
         initialize_package_git(ROOT, package)
-    private = private_root()
     out = ROOT / 'artifacts/windows-foreground'
     out.mkdir(parents=True, exist_ok=True)
     settings = out / 'pairing.json'; manifest = out / 'workers.json'; database = out / 'controller.sqlite'
@@ -154,6 +155,7 @@ def main():
                'source_commit': source, 'bridge_sha256': bridge_fingerprint(), 'identity': identity,
                'package_source_commit': package['source_commit'] if package else None,
                'package_version': package['package_version'] if package else None,
+               'predecessor_evidence': predecessor,
                'transport': 'authenticated outbound HTTPS to foreground Windows loopback DMB; not remote cloud delivery',
                'genuine_completion': evidence, 'worker_runs': runs, 'durable_executions': 1, 'audit_valid': True,
                'restart_replay_suppression': 'PASS', 'injected_windows_crash': 'NOT TESTED',

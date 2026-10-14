@@ -5,6 +5,7 @@ import json
 import os
 from pathlib import Path, PurePosixPath
 import subprocess
+import sqlite3
 from datetime import datetime, timedelta, timezone
 
 
@@ -14,7 +15,7 @@ def verify_package(app_root):
     if not manifest_path.exists():
         return None
     manifest = json.loads(manifest_path.read_text())
-    if manifest.get('schema_version') != 1 or manifest.get('mode') != 'SHADOW' or manifest.get('package_version') != '0.1.1' or manifest.get('architecture') != 'windows-amd64':
+    if manifest.get('schema_version') != 1 or manifest.get('mode') != 'SHADOW' or manifest.get('package_version') != '0.1.2' or manifest.get('architecture') != 'windows-amd64':
         raise PermissionError('Unexpected versioned shadow package')
     files = manifest.get('files')
     source = manifest.get('source_commit')
@@ -71,3 +72,37 @@ def create_tls_certificate(certificate, private_key):
         stream.flush(); os.fsync(stream.fileno())
     with Path(certificate).open('xb') as stream:
         stream.write(cert.public_bytes(serialization.Encoding.PEM)); stream.flush(); os.fsync(stream.fileno())
+
+
+def verify_predecessor_unstarted(directive_root):
+    """Read only v0.1.1 evidence. Never reset pairing, leases, locks, WAL or journals."""
+    directive_root = Path(directive_root)
+    old_install = directive_root / 'DMB-0.1.1-35291220795c'
+    old_state = directive_root / 'DMBWindowsWorker-v1'
+    database = old_install / 'package/app/artifacts/windows-foreground/controller.sqlite'
+    worker_database = old_state / 'state/bridge.sqlite'
+    if not old_install.exists():
+        if old_state.exists(): raise PermissionError('Legacy state without reviewed predecessor evidence; no new route')
+        return {'status': 'NO_PREDECESSOR', 'journals_modified': False}
+    if not database.is_file() or worker_database.exists():
+        raise PermissionError('Predecessor not proven before worker dispatch; preserve and reconcile')
+    for suffix in ('-wal', '-journal'):
+        sidecar = Path(str(database) + suffix)
+        if sidecar.exists() and sidecar.stat().st_size:
+            raise PermissionError('Predecessor has unreconciled WAL/journal; no new route')
+    stat = database.stat()
+    with sqlite3.connect(database.resolve().as_uri() + '?mode=ro&immutable=1', uri=True) as db:
+        if db.execute('PRAGMA user_version').fetchone()[0] != 101:
+            raise PermissionError('Unknown predecessor database')
+        rows = db.execute('SELECT id,state,attempts,lease FROM tasks').fetchall()
+        if rows != [('windows-shadow-001', 'QUEUED', 0, None)]:
+            raise PermissionError('Predecessor task not proven unstarted; no replay or new route')
+        if any(db.execute('SELECT count(*) FROM ' + table).fetchone()[0] for table in ('executions','win_offers','master_locks','win_identity')):
+            raise PermissionError('Predecessor dispatch/identity/lock evidence present; retain all reservations')
+    after = database.stat()
+    if (stat.st_size,stat.st_mtime_ns) != (after.st_size,after.st_mtime_ns):
+        raise PermissionError('Predecessor evidence changed during read; fail closed')
+    return {'status': 'PROVEN_BEFORE_DISPATCH', 'task_state': 'QUEUED', 'attempts': 0,
+            'dispatches': 0, 'executions': 0, 'locks': 0, 'worker_journal_exists': False,
+            'journals_modified': False, 'old_pairing_and_installation_retained': True,
+            'new_state_namespace': 'DMBWindowsWorker-v1-0.1.2'}

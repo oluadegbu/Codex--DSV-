@@ -30,7 +30,7 @@ def scratch_manifest_digest():
 def bridge_fingerprint():
     root = Path(__file__).parent
     return sha({name: hashlib.sha256((root / name).read_bytes()).hexdigest() for name in
-                ("windows_protocol.py", "windows_worker.py", "windows_native.py", "windows_bridge_cli.py")})
+                ("windows_protocol.py", "windows_worker.py", "windows_native.py", "windows_bridge_cli.py", "windows_codex_locator.py")})
 
 
 class NoRedirect(urllib.request.HTTPRedirectHandler):

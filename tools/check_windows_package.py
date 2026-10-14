@@ -7,7 +7,7 @@ import subprocess
 import sys
 
 
-def main(package, output):
+def main(package, output, codex_fixture):
     if os.name != 'nt': raise PermissionError('Actual Windows package smoke required')
     python = package / 'runtime/python/python.exe'
     system = Path(os.environ['SystemRoot']) / 'System32'
@@ -25,6 +25,7 @@ from pathlib import Path
 from windows_package_runtime import verify_package,create_tls_certificate
 from dci.master.windows_protocol import PeerKey,sign,verify
 from dci.master.windows_native import require_identity,token_snapshot,system_directory
+from dci.master.windows_codex_locator import discover,OFFICIAL_CODEX
 from dci.bridge.store import BridgeStore
 app=Path(sys.argv[1]); assert sys.version_info[:3]==(3,12,10)
 assert shutil.which('git') is None and shutil.which('python') is None
@@ -34,6 +35,13 @@ key=PeerKey('windows_codex_shadow','offline-smoke',2000,b'0'*32)
 verify(key,sign(key,'worker_to_controller','POLL',1,{},1000),'worker_to_controller',1000)
 with tempfile.TemporaryDirectory() as d:
  p=Path(d); create_tls_certificate(p/'certificate.pem',p/'key.pem')
+ local=p/'local-appdata'; installed=local/'Programs/OpenAI/Codex/bin/codex.exe'
+ installed.parent.mkdir(parents=True);shutil.copyfile(sys.argv[2],installed)
+ def missing_path():raise RuntimeError('PATH lookup must not be used for the installed user-local binary')
+ assert discover(local,missing_path,'x86_64')==installed
+ discovery={'official_raw_release_SHA256':OFFICIAL_CODEX['x86_64'][1],
+  'native_Windows_user_local_discovery_without_PATH':'PASS', 'PATH_lookup_called':False,
+  'Codex_executed_in_CI':False}
  server=ssl.SSLContext(ssl.PROTOCOL_TLS_SERVER);server.load_cert_chain(p/'certificate.pem',p/'key.pem')
  client=ssl.create_default_context(cafile=str(p/'certificate.pem'))
  assert client.check_hostname and client.verify_mode==ssl.CERT_REQUIRED
@@ -79,9 +87,9 @@ except PermissionError:
  guard='PASS CI identity rejected before worker launch'
 else:
  raise RuntimeError('CI cannot substitute for the DirectiveCodex worker session')
-print(json.dumps({'embedded_python':'PASS3.12.10','system_Git_Python_absent_from_PATH':True,'bundled_git':'PASS2.51.0.windows.1','TLS_crypto_native_dependencies':'PASS','sqlite_reopen_audit':'PASS','HMAC_protocol':'PASS','identity_guard':guard,'native_token_API_evidence':native_identity_evidence,'genuine_Codex':'NOT TESTED','services_installed':False}))
+print(json.dumps({'embedded_python':'PASS3.12.10','system_Git_Python_absent_from_PATH':True,'bundled_git':'PASS2.51.0.windows.1','TLS_crypto_native_dependencies':'PASS','sqlite_reopen_audit':'PASS','HMAC_protocol':'PASS','identity_guard':guard,'native_token_API_evidence':native_identity_evidence,'native_Codex_discovery':discovery,'genuine_Codex':'NOT TESTED','services_installed':False}))
 '''
-    result = subprocess.run([str(python), '-I', '-c', code, str(package / 'app')], env=env,
+    result = subprocess.run([str(python), '-I', '-c', code, str(package / 'app'), str(codex_fixture)], env=env,
                             capture_output=True, text=True, timeout=30)
     if result.returncode:
         print(result.stderr[-8000:], file=sys.stderr)
@@ -93,5 +101,5 @@ print(json.dumps({'embedded_python':'PASS3.12.10','system_Git_Python_absent_from
 
 
 if __name__ == '__main__':
-    p=argparse.ArgumentParser();p.add_argument('--package',type=Path,required=True);p.add_argument('--output',type=Path,required=True)
-    a=p.parse_args();main(a.package.resolve(),a.output.resolve())
+    p=argparse.ArgumentParser();p.add_argument('--package',type=Path,required=True);p.add_argument('--output',type=Path,required=True);p.add_argument('--codex-fixture',type=Path,required=True)
+    a=p.parse_args();main(a.package.resolve(),a.output.resolve(),a.codex_fixture.resolve())

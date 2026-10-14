@@ -15,7 +15,7 @@ class PackageTests(unittest.TestCase):
         app=root/'app';app.mkdir()
         git=root/'runtime/git/cmd/git.exe';git.parent.mkdir(parents=True);git.write_bytes(b'synthetic not executable')
         source=app/'CODEX.md';source.write_bytes(b'SHADOW')
-        manifest={'schema_version':1,'mode':'SHADOW','package_version':'0.1.1','architecture':'windows-amd64','source_commit':'a'*40,
+        manifest={'schema_version':1,'mode':'SHADOW','package_version':'0.1.2','architecture':'windows-amd64','source_commit':'a'*40,
                   'files':{p.relative_to(root).as_posix():hashlib.sha256(p.read_bytes()).hexdigest() for p in (git,source)}}
         (root/'PACKAGE_MANIFEST.json').write_text(json.dumps(manifest))
         return app,manifest
