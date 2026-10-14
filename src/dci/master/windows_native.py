@@ -100,11 +100,15 @@ def token_snapshot():
             raise PermissionError("invalid token group buffer")
         groups = (SidAndAttributes * count).from_buffer(group_data, offset)
         integrity_data = information(25)  # TokenIntegrityLevel, separate mandatory label.
-        elevation_data = information(20)  # TokenElevation
+        # Fixed-size TOKEN_ELEVATION must be queried with its real DWORD buffer;
+        # unlike variable-length classes, Windows may reject a null sizing probe.
+        elevation = w.DWORD(); elevation_size = w.DWORD()
+        if not advapi.GetTokenInformation(token, 20, ctypes.byref(elevation), ctypes.sizeof(elevation), ctypes.byref(elevation_size)) or elevation_size.value != ctypes.sizeof(elevation):
+            raise ctypes.WinError(ctypes.get_last_error())
         return {"host": host_buffer.value, "user": domain.value + "\\" + name.value,
                 "user_sid": sid_string(user.sid), "group_sids": [sid_string(g.sid) for g in groups],
                 "integrity_sid": sid_string(SidAndAttributes.from_buffer(integrity_data).sid),
-                "elevated": bool(w.DWORD.from_buffer(elevation_data).value)}
+                "elevated": bool(elevation.value)}
     finally:
         kernel.CloseHandle(token)
 
