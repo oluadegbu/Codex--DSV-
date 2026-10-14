@@ -1,5 +1,8 @@
 """Fixed official Codex162.1 discovery and content verification; never execute PATH candidates."""
 import hashlib
+import ctypes
+from ctypes import wintypes
+import os
 from pathlib import Path
 import platform
 import subprocess
@@ -32,10 +35,26 @@ def verify_stream(stream, arch):
     return expected
 
 
-def verified_path(path, arch):
+def canonical_path(path):
     path = Path(path)
-    if not path.is_absolute() or path.name.casefold() != 'codex.exe' or path.is_symlink() or path.resolve(strict=True) != path.absolute():
+    if not path.is_absolute() or path.name.casefold() != 'codex.exe' or path.is_symlink():
         raise PermissionError('Canonical native codex.exe required; redirects rejected')
+    if os.name == 'nt':
+        kernel = ctypes.WinDLL('kernel32', use_last_error=True)
+        kernel.GetFileAttributesW.argtypes = [wintypes.LPCWSTR]
+        kernel.GetFileAttributesW.restype = wintypes.DWORD
+        for component in (path, *path.parents):
+            attributes = kernel.GetFileAttributesW(str(component))
+            if attributes == 0xFFFFFFFF: raise ctypes.WinError(ctypes.get_last_error())
+            if attributes & 0x400: raise PermissionError('Codex reparse/junction path rejected')
+    elif path.resolve(strict=True) != path.absolute():
+        raise PermissionError('Codex redirected path rejected')
+    # Windows 8.3 aliases are names for the same file, not reparse points.
+    return path.resolve(strict=True)
+
+
+def verified_path(path, arch):
+    path = canonical_path(path)
     with path.open('rb') as stream: verify_stream(stream, arch)
     return path
 

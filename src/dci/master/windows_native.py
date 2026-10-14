@@ -205,10 +205,8 @@ def resolve_codex():
 def pinned_codex_file(executable):
     """Hold a no-write/no-delete sharing handle through image creation; verify before launch."""
     require_identity()
-    from .windows_codex_locator import architecture, verify_stream
-    path = Path(executable)
-    if not path.is_absolute() or path.name.casefold() != "codex.exe" or path.resolve(strict=True) != path.absolute():
-        raise PermissionError("canonical pinned executable required")
+    from .windows_codex_locator import architecture, verify_stream, canonical_path
+    path = canonical_path(executable)
     kernel = dll("kernel32")
     kernel.CreateFileW.argtypes = [w.LPCWSTR, w.DWORD, w.DWORD, ctypes.c_void_p, w.DWORD, w.DWORD, w.HANDLE]
     kernel.CreateFileW.restype = w.HANDLE

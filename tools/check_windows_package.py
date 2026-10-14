@@ -38,7 +38,7 @@ with tempfile.TemporaryDirectory() as d:
  local=p/'local-appdata'; installed=local/'Programs/OpenAI/Codex/bin/codex.exe'
  installed.parent.mkdir(parents=True);shutil.copyfile(sys.argv[2],installed)
  def missing_path():raise RuntimeError('PATH lookup must not be used for the installed user-local binary')
- assert discover(local,missing_path,'x86_64')==installed
+ assert discover(local,missing_path,'x86_64')==installed.resolve(strict=True)
  discovery={'official_raw_release_SHA256':OFFICIAL_CODEX['x86_64'][1],
   'native_Windows_user_local_discovery_without_PATH':'PASS', 'PATH_lookup_called':False,
   'Codex_executed_in_CI':False}
