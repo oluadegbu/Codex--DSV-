@@ -25,7 +25,7 @@ from pathlib import Path
 from windows_package_runtime import verify_package,create_tls_certificate
 from dci.master.windows_protocol import PeerKey,sign,verify
 from dci.master.windows_native import require_identity,token_snapshot,system_directory
-from dci.master.windows_codex_locator import discover,OFFICIAL_CODEX
+from dci.master.windows_codex_locator import discover,OFFICIAL_CODEX,pinned_image,canonical_path
 from dci.bridge.store import BridgeStore
 app=Path(sys.argv[1]); assert sys.version_info[:3]==(3,12,10)
 assert shutil.which('git') is None and shutil.which('python') is None
@@ -39,7 +39,38 @@ with tempfile.TemporaryDirectory() as d:
  installed.parent.mkdir(parents=True);shutil.copyfile(sys.argv[2],installed)
  def missing_path():raise RuntimeError('PATH lookup must not be used for the installed user-local binary')
  assert discover(local,missing_path,'x86_64')==installed.resolve(strict=True)
+ profile=p/'profile'; junction_local=profile/'AppData/Local'
+ standalone=profile/'.codex/packages/standalone'
+ release=standalone/'releases/0.162.1-x86_64-pc-windows-msvc/bin/codex.exe'
+ release.parent.mkdir(parents=True);shutil.copyfile(sys.argv[2],release)
+ source=junction_local/'Programs/OpenAI/Codex/bin'
+ source.parent.mkdir(parents=True)
+ cmd=str(system_directory()/'cmd.exe')
+ def junction(link,target):
+  subprocess.run([cmd,'/d','/c','mklink','/J',str(link),str(target)],check=True,capture_output=True,timeout=5)
+ current=standalone/'current'
+ junction(current,release.parent.parent);junction(source,current/'bin')
+ assert discover(junction_local,missing_path,'x86_64')==release
+ with pinned_image(release) as (locked,identity):
+  assert locked==release and len(identity)==3
+  try:
+   with release.open('r+b'):pass
+  except OSError:pass
+  else:raise RuntimeError('Pinned executable write must fail')
+  try:release.parent.rename(release.parent.with_name('changed-bin'))
+  except OSError:pass
+  else:raise RuntimeError('Pinned executable directory rename must fail')
+ outside=p/'outside';outside.mkdir();shutil.copyfile(sys.argv[2],outside/'codex.exe')
+ source.rmdir();junction(source,outside)
+ try:discover(junction_local,missing_path,'x86_64')
+ except PermissionError:pass
+ else:raise RuntimeError('Even matching official bytes at an untrusted junction must be rejected')
+ source.rmdir();current.rmdir()
  discovery={'official_raw_release_SHA256':OFFICIAL_CODEX['x86_64'][1],
+  'native_official_bin_current_versioned_release_junctions':'PASS',
+  'matching_binary_untrusted_junction_rejected':'PASS',
+  'native_pinned_image_write_and_directory_rename_denied':'PASS','native_file_identity':identity,
+
   'native_Windows_user_local_discovery_without_PATH':'PASS', 'PATH_lookup_called':False,
   'Codex_executed_in_CI':False}
  server=ssl.SSLContext(ssl.PROTOCOL_TLS_SERVER);server.load_cert_chain(p/'certificate.pem',p/'key.pem')
@@ -90,7 +121,7 @@ else:
 print(json.dumps({'embedded_python':'PASS3.12.10','system_Git_Python_absent_from_PATH':True,'bundled_git':'PASS2.51.0.windows.1','TLS_crypto_native_dependencies':'PASS','sqlite_reopen_audit':'PASS','HMAC_protocol':'PASS','identity_guard':guard,'native_token_API_evidence':native_identity_evidence,'native_Codex_discovery':discovery,'genuine_Codex':'NOT TESTED','services_installed':False}))
 '''
     result = subprocess.run([str(python), '-I', '-c', code, str(package / 'app'), str(codex_fixture)], env=env,
-                            capture_output=True, text=True, timeout=30)
+                            capture_output=True, text=True, timeout=60)
     if result.returncode:
         print(result.stderr[-8000:], file=sys.stderr)
         raise RuntimeError('Actual embedded Windows runtime smoke failed')

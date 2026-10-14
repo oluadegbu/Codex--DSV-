@@ -1,0 +1,26 @@
+{
+  "schema_version": 1,
+  "mode": "SHADOW",
+  "status": "VPS_READ_ONLY_NATIVE_PATH_VALIDATION_PASS_WORKER_PENDING",
+  "observed_alias": "C:\\Users\\DirectiveCodex\\AppData\\Local\\Programs\\OpenAI\\Codex\\bin",
+  "type": "Junction",
+  "attributes": 1040,
+  "junction_target": "C:\\Users\\DirectiveCodex\\.codex\\packages\\standalone\\current\\bin",
+  "native_resolved_executable": "C:\\Users\\DirectiveCodex\\.codex\\packages\\standalone\\releases\\0.162.1-x86_64-pc-windows-msvc\\bin\\codex.exe",
+  "native_file_identity": [
+    1781029520,
+    786432,
+    698860
+  ],
+  "sha256": "dd13bdb162a184fa04039488b234a8258ef9b76f84e926c505d5742b19249a6a",
+  "native_exact_junction_targets_final_path_and_pins": "PASS",
+  "probe_exit_code": 0,
+  "probe_identity_scope": "read-only metadata/content validation via existing remote executor; not a DirectiveCodex launch",
+  "worker_executed": false,
+  "credentials_read": false,
+  "old_state_modified": false,
+  "fix": "Allow only exact official bin/current/versioned-release mount points; native handle final path and volume/file ID; reject every other reparse component. Execute direct pinned release path, rehash under file/directory pins, compare suspended process image identity before resume.",
+  "release": "PENDING native Windows package CI",
+  "genuine_windows_completion": "PENDING foreground DirectiveCodex operator run",
+  "full_DMB": "BLOCKED"
+}

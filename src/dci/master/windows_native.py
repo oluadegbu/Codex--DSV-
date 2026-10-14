@@ -128,7 +128,7 @@ def private_root():
     buffer = ctypes.create_unicode_buffer(32768)
     if dll("shell32").SHGetFolderPathW(None, 0x1C, None, 0, buffer) != 0:
         raise PermissionError("current-user LocalAppData unavailable")
-    root = Path(buffer.value) / "Directive" / "DMBWindowsWorker-v1-0.1.2"
+    root = Path(buffer.value) / "Directive" / "DMBWindowsWorker-v1-0.1.3"
     kernel = dll("kernel32")
     kernel.GetFileAttributesW.argtypes = [w.LPCWSTR]
     kernel.GetFileAttributesW.restype = w.DWORD
@@ -203,24 +203,10 @@ def resolve_codex():
 
 @contextmanager
 def pinned_codex_file(executable):
-    """Hold a no-write/no-delete sharing handle through image creation; verify before launch."""
     require_identity()
-    from .windows_codex_locator import architecture, verify_stream, canonical_path
-    path = canonical_path(executable)
-    kernel = dll("kernel32")
-    kernel.CreateFileW.argtypes = [w.LPCWSTR, w.DWORD, w.DWORD, ctypes.c_void_p, w.DWORD, w.DWORD, w.HANDLE]
-    kernel.CreateFileW.restype = w.HANDLE
-    handle = kernel.CreateFileW(str(path), 0x80000000, 1, None, 3, 0x08000000, None)
-    if handle == ctypes.c_void_p(-1).value:
-        raise ctypes.WinError(ctypes.get_last_error())
-    import msvcrt
-    try:
-        fd = msvcrt.open_osfhandle(handle, os.O_RDONLY | os.O_BINARY)
-    except BaseException:
-        kernel.CloseHandle.argtypes = [w.HANDLE]; kernel.CloseHandle(handle); raise
-    with os.fdopen(fd, "rb") as stream:
-        verify_stream(stream, architecture())
-        yield
+    from .windows_codex_locator import pinned_image
+    with pinned_image(executable) as pinned:
+        yield pinned
 
 
 class BasicLimits(ctypes.Structure):
@@ -261,10 +247,10 @@ class ProcessInfo(ctypes.Structure):
 class WindowsJobProcess:
     """Create suspended, assign this job, then resume. Owned handles survive PID reuse."""
     def __init__(self, executable, arguments, cwd, directory):
-        with pinned_codex_file(executable):
-            self._launch(executable, arguments, cwd, directory)
+        with pinned_codex_file(executable) as (resolved, identity):
+            self._launch(resolved, arguments, cwd, directory, identity)
 
-    def _launch(self, executable, arguments, cwd, directory):
+    def _launch(self, executable, arguments, cwd, directory, image_identity):
         require_identity()
         self.kernel = k = dll("kernel32")
         signatures = {
@@ -318,6 +304,12 @@ class WindowsJobProcess:
                                     block, str(cwd), ctypes.byref(startup), ctypes.byref(info)):
                 raise ctypes.WinError(ctypes.get_last_error())
             self.process, self.pid, self.stdin = info.process, info.pid, write
+            from .windows_codex_locator import verify_suspended_image
+            try:
+                verify_suspended_image(self.process, Path(executable), image_identity)
+            except BaseException:
+                k.TerminateProcess(self.process, 1)
+                raise
             if not k.AssignProcessToJobObject(self.job, self.process):
                 k.TerminateProcess(self.process, 1)
                 raise ctypes.WinError(ctypes.get_last_error())

@@ -46,6 +46,11 @@ class PredecessorTests(unittest.TestCase):
     def test_started_or_uncertain_predecessor_cannot_be_routed_around(self):
         db=sqlite3.connect(self.dbpath);db.execute("UPDATE tasks SET state='NEEDS_HUMAN',attempts=1");db.commit();db.close()
         with self.assertRaises(PermissionError):verify_predecessor_unstarted(self.root)
+    def test_v012_journal_blocks_new_version_even_when_v011_is_unstarted(self):
+        journal=self.root/'DMBWindowsWorker-v1-0.1.2/state/bridge.sqlite'
+        journal.parent.mkdir(parents=True);journal.write_bytes(b'preserve unknown outcome')
+        with self.assertRaises(PermissionError):verify_predecessor_unstarted(self.root)
+
     def test_wal_or_worker_journal_blocks_replacement(self):
         Path(str(self.dbpath)+'-wal').write_bytes(b'unknown uncheckpointed outcome')
         with self.assertRaises(PermissionError):verify_predecessor_unstarted(self.root)

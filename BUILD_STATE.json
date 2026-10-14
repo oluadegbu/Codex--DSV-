@@ -3,7 +3,7 @@
   "project": "Directive Crypto Intelligence",
   "repository": "oluadegbu/Codex--DSV-",
   "updated_at": "2026-10-14T08:17:09.093238+00:00",
-  "milestone": "windows-user-local-codex-path-fix-0.1.2",
+  "milestone": "windows-official-junction-validation-fix-0.1.3",
   "status": "native_Codex_discovery_pass_before_genuine_RDP_handoff",
   "mode": "SHADOW",
   "synthetic_only": true,
@@ -158,7 +158,7 @@
     "M1 operates one trusted non-root Linux paper worker; hostile-code OS separation and real Windows Codex cancellation/recovery remain pending"
   ],
   "next_safe_tasks": [
-    "Run version-pinned0.1.2 foreground procedure; automatic readonly predecessor check, fresh isolated pairing and genuine shadow task; no installed Codex or global PATH change",
+    "Publish native-validated0.1.3 junction fix, then run one pinned foreground procedure with both predecessor states automatically reconciled read-only.",
     "Read and reconcile sanitized Windows CERTIFICATION.json; preserve uncertain outcomes and locks",
     "Keep remote delivery, OS isolation, providers and full DMB certification gated; preserve separate DAT Temporal milestone"
   ],
@@ -545,5 +545,35 @@
     "code_path_fix_evidence": "docs/evidence/windows-codex-path/CERTIFICATION.json",
     "new_private_state": "Current-user LocalAppData/Directive/DMBWindowsWorker-v1-0.1.2",
     "predecessor_safety": "Read-only proof of unstarted predecessor required; never overwrite or route around uncertain state"
-  }
+  },
+  "windows_junction_repair": {
+    "schema_version": 1,
+    "mode": "SHADOW",
+    "status": "VPS_READ_ONLY_NATIVE_PATH_VALIDATION_PASS_WORKER_PENDING",
+    "observed_alias": "C:\\Users\\DirectiveCodex\\AppData\\Local\\Programs\\OpenAI\\Codex\\bin",
+    "type": "Junction",
+    "attributes": 1040,
+    "junction_target": "C:\\Users\\DirectiveCodex\\.codex\\packages\\standalone\\current\\bin",
+    "native_resolved_executable": "C:\\Users\\DirectiveCodex\\.codex\\packages\\standalone\\releases\\0.162.1-x86_64-pc-windows-msvc\\bin\\codex.exe",
+    "native_file_identity": [
+      1781029520,
+      786432,
+      698860
+    ],
+    "sha256": "dd13bdb162a184fa04039488b234a8258ef9b76f84e926c505d5742b19249a6a",
+    "native_exact_junction_targets_final_path_and_pins": "PASS",
+    "probe_exit_code": 0,
+    "probe_identity_scope": "read-only metadata/content validation via existing remote executor; not a DirectiveCodex launch",
+    "worker_executed": false,
+    "credentials_read": false,
+    "old_state_modified": false,
+    "fix": "Allow only exact official bin/current/versioned-release mount points; native handle final path and volume/file ID; reject every other reparse component. Execute direct pinned release path, rehash under file/directory pins, compare suspended process image identity before resume.",
+    "release": "PENDING native Windows package CI",
+    "genuine_windows_completion": "PENDING foreground DirectiveCodex operator run",
+    "full_DMB": "BLOCKED",
+    "predecessor_readonly_validation": "PASS actual VPS: both QUEUED/attempts0/no lease/no offers/executions/locks/identity/worker journal"
+  },
+  "next_safe_actions": [
+    "Complete native Windows package validation and publish pinned0.1.3; then single DirectiveCodex foreground action to execute and durably verify the genuine task. Retain both failed deployments and fail closed on any uncertain prior dispatch."
+  ]
 }
