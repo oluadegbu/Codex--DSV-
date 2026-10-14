@@ -4,9 +4,9 @@ $DmbPrincipal = New-Object Security.Principal.WindowsPrincipal($DmbIdentity)
 if ($DmbIdentity.Name -ine "$env:COMPUTERNAME\DirectiveCodex" -or $DmbPrincipal.IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)) {
     throw 'Use normal PowerShell in the existing non-admin DirectiveCodex RDP session.'
 }
-$DmbUrl = 'https://github.com/oluadegbu/Codex--DSV-/releases/download/dmb-windows-v0.1.0-c92206a1122b/DMB-Windows-0.1.0-c92206a1122b-amd64.zip'
-$DmbSha = '5136c083cb1d3b4a12d7ba86b2d6d56c96d3518054897ecb01d8ed43e1b38a2c'
-$DmbRoot = Join-Path $env:LOCALAPPDATA 'Directive\DMB-0.1.0-c92206a1122b'
+$DmbUrl = 'https://github.com/oluadegbu/Codex--DSV-/releases/download/dmb-windows-v0.1.1-35291220795c/DMB-Windows-0.1.1-35291220795c-amd64.zip'
+$DmbSha = '867adb13ecc9d77b5aaa8f4a7cc182bd205e269656f0f21330ddd92371331675'
+$DmbRoot = Join-Path $env:LOCALAPPDATA 'Directive\DMB-0.1.1-35291220795c'
 if (Test-Path $DmbRoot) { throw 'Existing state preserved. Do not overwrite, delete or silently re-pair.' }
 for ($DmbPath = [IO.DirectoryInfo]$DmbRoot; $null -ne $DmbPath; $DmbPath = $DmbPath.Parent) {
     if ($DmbPath.Exists -and ($DmbPath.Attributes -band [IO.FileAttributes]::ReparsePoint)) { throw 'Junction/reparse deployment boundary rejected.' }

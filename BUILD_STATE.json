@@ -2,9 +2,9 @@
   "schema_version": 1,
   "project": "Directive Crypto Intelligence",
   "repository": "oluadegbu/Codex--DSV-",
-  "updated_at": "2026-10-14T06:39:21.198716+00:00",
-  "milestone": "self-contained-windows-shadow-package",
-  "status": "package_native_windows_smoke_pass_genuine_directivecodex_task_pending",
+  "updated_at": "2026-10-14T07:12:36.931404+00:00",
+  "milestone": "windows-native-identity-gate-repair-0.1.1",
+  "status": "native_API_repair_and_package_pass_genuine_RDP_task_pending",
   "mode": "SHADOW",
   "synthetic_only": true,
   "hard_gates": {
@@ -96,7 +96,7 @@
       "synthetic": true
     },
     "compileall": "passed",
-    "github_ci": "PASS150 tests at package sourcec92206a1122b; standalone Windows smoke and release also PASS",
+    "github_ci": "PASS150 tests at repair source35291220795c; native Windows token API comparisons and package PASS",
     "security_review": "No credentials, signing, submission, live execution or cross-project integration in source; RPC method allowlist tested",
     "durable_replay": {
       "status": "passed",
@@ -523,7 +523,7 @@
     "portable_tests": 18,
     "final_TLS_fixture": "PASS GitHub Linux CI run38486041775 / fixture executor",
     "genuine_windows_task": false,
-    "windows_foreground_pairing": "PENDING_OPERATOR_SESSION",
+    "windows_foreground_pairing": "PENDING_REPLACEMENT_OPERATOR_SESSION",
     "full_certification": "BLOCKED",
     "remote_delivery": "DISABLED_NOT_CERTIFIED",
     "OS_isolation": "NOT TESTED",
@@ -534,10 +534,13 @@
     "published_evidence_commit": "217eac578528d6907f1a489622ed10dce30edf6a",
     "deployment": "One hash-verified ZIP: embedded Python, portable Git and TLS dependencies; no operator installation",
     "operator_dependency_status": "Git/Python unavailable per operator; standalone package removes these system prerequisites",
-    "package_release": "https://github.com/oluadegbu/Codex--DSV-/releases/tag/dmb-windows-v0.1.0-c92206a1122b",
-    "package_sha256": "5136c083cb1d3b4a12d7ba86b2d6d56c96d3518054897ecb01d8ed43e1b38a2c",
-    "package_native_CI": "PASS38522928600 actual Windows embedded-runtime/TLS/Git/SQLite smoke, no actual Codex turn",
-    "package_source": "c92206a1122b5064528bc85ddf411247e48e7ea4",
-    "package_evidence": "docs/evidence/windows-package/CERTIFICATION.json"
+    "package_release": "https://github.com/oluadegbu/Codex--DSV-/releases/tag/dmb-windows-v0.1.1-35291220795c",
+    "package_sha256": "867adb13ecc9d77b5aaa8f4a7cc182bd205e269656f0f21330ddd92371331675",
+    "package_native_CI": "PASS38526420504 actual embedded Windows token APIs/TLS/Git/SQLite; not genuine DirectiveCodex task",
+    "package_source": "35291220795cd500cb84cd825d9e61e0ee476416",
+    "package_evidence": "docs/evidence/windows-package/CERTIFICATION.json",
+    "identity_gate": "Repaired from wrong CSV column to strict direct token APIs; native Windows comparison PASS; CI High/Admin rejected",
+    "identity_repair_evidence": "docs/evidence/windows-identity-repair/CERTIFICATION.json",
+    "operator_failed_installation": "Preserved; side-by-side replacement only"
   }
 }

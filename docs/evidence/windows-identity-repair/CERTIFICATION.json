@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "mode": "SHADOW",
+  "status": "IDENTITY_GATE_REPAIR_NATIVE_WINDOWS_PASS_GENUINE_RDP_TASK_PENDING",
+  "remote_source_commit": "35291220795cd500cb84cd825d9e61e0ee476416",
+  "local_source_commit": "741bdc8b6905572cb5612f5133574c3250707e90",
+  "source_tree": "30d17b817879d2283fa74f926914908fdf506749",
+  "source_sha256": {
+    ".github/workflows/windows-release.yml": "b15adc11fb91bcfe92a05988bb77bac41bb9d43fb8b7992e036dbb4603e719a1",
+    "package_tests/test_package.py": "44909906ad4dedaf4bcd464f5bfdd416aaafd3c89d5f4b6731b6be8e93bd7a68",
+    "packaging/WINDOWS_INPUTS.json": "0077f1be9da0a4df3151526fad82dcf90ebebb96f16941682e506922a980c87f",
+    "src/dci/master/windows_native.py": "712d24a43b1b8247bf28a4cbf2d858fd9df87c090f4a9cd20590c0f0737c61ff",
+    "tools/build_windows_package.py": "15c184cf6cf2c533e27c971f614dfd4988fe04210cd85a94892f5f08419a0f79",
+    "tools/check_windows_package.py": "920bf87f15597822244d01f3319667ad157da1975ca5d4ceba17767a3cb48c5b",
+    "tools/windows_package_runtime.py": "a3fd3bbcd1af2d5af24b74cfb0dd4ed1145a9a9e2e74b639272aee1937dfb622"
+  },
+  "root_cause": "whoami /groups CSV schema is GroupName,Type,SID,Attributes; old gate collected zero-based column1 (Type) instead of column2 (SID), so Medium SID was always absent. Native embedded-Windows tests demonstrated this exact defect.",
+  "fix": "Native OpenProcessToken/GetTokenInformation TokenUser/TokenGroups/TokenIntegrityLevel/TokenElevation, native SID lookup and machine name; exact local DirectiveCodex, no elevation, no Administrators membership even deny-only, exact Medium SID8192, no thread impersonation. No defaults or bypass on API failure.",
+  "native_API_evidence": {
+    "process_user": "runnervmfi6oq\\runneradmin",
+    "user_sid_matches_whoami": true,
+    "TokenIntegrityLevel_sid": "S-1-16-12288",
+    "GetTokenInformation_groups_match_correct_CSV_column": true,
+    "legacy_column_2_has_no_SIDs": true,
+    "legacy_would_reject_any_valid_Medium_token": true,
+    "elevated": true,
+    "administrators_member": true
+  },
+  "CI": {
+    "native_package_run": 38526420504,
+    "native_package_job": 115727875503,
+    "deterministic_tests_run": 38526420454,
+    "tests": 150,
+    "native_Windows": "PASS actual embedded runtime and token API/CSV comparisons; actual CI High/Admin identity rejected",
+    "genuine_DirectiveCodex_task": "PENDING foreground replacement; not substituted by CI"
+  },
+  "release_tag": "dmb-windows-v0.1.1-35291220795c",
+  "package_sha256": "867adb13ecc9d77b5aaa8f4a7cc182bd205e269656f0f21330ddd92371331675",
+  "failed_installation": "No VPS changes made; replacement uses distinct version-pinned directory; never deletes old files, credentials, pairing or uncertain journals",
+  "old_failure_stage": "require_identity before private_root/pairing/Git/task dispatch",
+  "full_DMB_certification": "BLOCKED",
+  "privileged_changes": false,
+  "production_changes": false,
+  "services_installed": false,
+  "operator_action": "Run one replacement foreground procedure in existing DirectiveCodex RDP session; no additional diagnostics or installations"
+}
