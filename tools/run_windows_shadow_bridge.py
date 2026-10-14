@@ -83,6 +83,10 @@ def controller(config, manifest, database):
 def main():
     if sys.version_info < (3, 11): raise PermissionError('Existing Python 3.11+ required; no installation attempted')
     identity = require_identity()  # Before creating files or using authentication.
+    from windows_package_runtime import verify_package, initialize_package_git, create_tls_certificate
+    package = verify_package(ROOT)
+    if package:
+        initialize_package_git(ROOT, package)
     private = private_root()
     out = ROOT / 'artifacts/windows-foreground'
     out.mkdir(parents=True, exist_ok=True)
@@ -92,10 +96,13 @@ def main():
     if not settings.exists():
         if (private / 'pairing.dpapi').exists():
             raise PermissionError('Existing pairing retained; run its original procedure, do not replace it')
-        openssl = openssl_existing()
-        subprocess.run([openssl, 'req', '-x509', '-newkey', 'rsa:2048', '-nodes', '-keyout', str(tls_key), '-out', str(certificate),
-                        '-days', '1', '-subj', '/CN=localhost', '-addext', 'subjectAltName=IP:127.0.0.1,DNS:localhost'],
-                       capture_output=True, check=True, timeout=15)
+        if package:
+            create_tls_certificate(certificate, tls_key)
+        else:
+            openssl = openssl_existing()
+            subprocess.run([openssl, 'req', '-x509', '-newkey', 'rsa:2048', '-nodes', '-keyout', str(tls_key), '-out', str(certificate),
+                            '-days', '1', '-subj', '/CN=localhost', '-addext', 'subjectAltName=IP:127.0.0.1,DNS:localhost'],
+                           capture_output=True, check=True, timeout=15)
         prepare(ROOT, private / 'controller-route', manifest, settings, origin, identity['host'], 3600)
         pair_windows(settings, certificate)
     config = json.loads(settings.read_text())
@@ -145,6 +152,8 @@ def main():
         finally: store.close()
     summary = {'schema_version': 1, 'mode': 'SHADOW', 'status': 'WINDOWS_SINGLE_TASK_LOCAL_BRIDGE_PASS',
                'source_commit': source, 'bridge_sha256': bridge_fingerprint(), 'identity': identity,
+               'package_source_commit': package['source_commit'] if package else None,
+               'package_version': package['package_version'] if package else None,
                'transport': 'authenticated outbound HTTPS to foreground Windows loopback DMB; not remote cloud delivery',
                'genuine_completion': evidence, 'worker_runs': runs, 'durable_executions': 1, 'audit_valid': True,
                'restart_replay_suppression': 'PASS', 'injected_windows_crash': 'NOT TESTED',

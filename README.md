@@ -177,3 +177,5 @@ non-admin DirectiveCodex RDP session; no service or firewall change is installed
 Portable contract/TLS-fixture tests do not certify Windows execution or OS separation.
 See [current evidence](docs/evidence/windows-bridge/CERTIFICATION.json); full DMB
 certification and remote delivery remain blocked until their actual gates pass.
+
+For DirectiveCodex sessions without Git or Python, the [self-contained Windows package](docs/DMB_WINDOWS_PACKAGE.md) bundles its dependencies without installing them.

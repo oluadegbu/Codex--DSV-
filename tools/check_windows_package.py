@@ -1,0 +1,77 @@
+"""Test the actual packaged runtime with no system Git/Python; never launch Codex."""
+import argparse
+import json
+import os
+from pathlib import Path
+import subprocess
+import sys
+
+
+def main(package, output):
+    if os.name != 'nt': raise PermissionError('Actual Windows package smoke required')
+    python = package / 'runtime/python/python.exe'
+    system = Path(os.environ['SystemRoot']) / 'System32'
+    env = {k: v for k, v in os.environ.items() if k.upper() in {'SYSTEMROOT', 'WINDIR', 'TEMP', 'TMP', 'USERPROFILE', 'LOCALAPPDATA'}}
+    env['PATH'] = str(system)
+    # Check the official Python executable signature, without changing trust or policy.
+    literal = str(python).replace("'", "''")
+    signature_script = "$s=Get-AuthenticodeSignature -LiteralPath '" + literal + "'; if($s.Status -ne 'Valid' -or $s.SignerCertificate.Subject -notmatch 'Python Software Foundation'){throw 'Official Python signature not verified'}; $s.Status"
+    subprocess.run([str(system / 'WindowsPowerShell/v1.0/powershell.exe'), '-NoProfile', '-NonInteractive', '-Command',
+                    signature_script], env=env, capture_output=True, check=True, timeout=20)
+    code = r'''
+import hashlib,json,os,shutil,sqlite3,ssl,subprocess,tempfile,sys,threading,urllib.request
+from http.server import HTTPServer,BaseHTTPRequestHandler
+from pathlib import Path
+from windows_package_runtime import verify_package,create_tls_certificate
+from dci.master.windows_protocol import PeerKey,sign,verify
+from dci.master.windows_native import require_identity
+from dci.bridge.store import BridgeStore
+app=Path(sys.argv[1]); assert sys.version_info[:3]==(3,12,10)
+assert shutil.which('git') is None and shutil.which('python') is None
+meta=verify_package(app); assert meta['mode']=='SHADOW'
+assert subprocess.check_output(['git','--version'],text=True).strip()=='git version 2.51.0.windows.1'
+key=PeerKey('windows_codex_shadow','offline-smoke',2000,b'0'*32)
+verify(key,sign(key,'worker_to_controller','POLL',1,{},1000),'worker_to_controller',1000)
+with tempfile.TemporaryDirectory() as d:
+ p=Path(d); create_tls_certificate(p/'certificate.pem',p/'key.pem')
+ server=ssl.SSLContext(ssl.PROTOCOL_TLS_SERVER);server.load_cert_chain(p/'certificate.pem',p/'key.pem')
+ client=ssl.create_default_context(cafile=str(p/'certificate.pem'))
+ assert client.check_hostname and client.verify_mode==ssl.CERT_REQUIRED
+ class Echo(BaseHTTPRequestHandler):
+  def log_message(self,*args):pass
+  def do_POST(self):
+   raw=self.rfile.read(int(self.headers['Content-Length'])); packet=json.loads(raw)
+   verify(key,packet,'worker_to_controller',1000)
+   body=json.dumps(sign(key,'controller_to_worker','REPLY',1,{'fixture':'TLS_ONLY'},1000)).encode()
+   self.send_response(200);self.send_header('Content-Length',str(len(body)));self.end_headers();self.wfile.write(body)
+ http=HTTPServer(('127.0.0.1',0),Echo); http.timeout=2
+ http.socket=server.wrap_socket(http.socket,server_side=True)
+ thread=threading.Thread(target=http.handle_request);thread.start()
+ try:
+  request=urllib.request.Request('https://127.0.0.1:'+str(http.server_port),json.dumps(sign(key,'worker_to_controller','POLL',1,{},1000)).encode())
+  with urllib.request.urlopen(request,context=client,timeout=2) as response:verify(key,json.load(response),'controller_to_worker',1000)
+ finally:
+  thread.join(3);http.server_close()
+ assert not thread.is_alive()
+ db=BridgeStore(p/'audit.sqlite');db.verify_audit();db.close()
+ db=BridgeStore(p/'audit.sqlite');db.verify_audit();db.close()
+ subprocess.run(['git','init','--quiet',str(p/'scratch')],check=True,timeout=5)
+try:
+ require_identity()
+except PermissionError:
+ guard='PASS CI identity rejected before worker launch'
+else:
+ raise RuntimeError('CI cannot substitute for the DirectiveCodex worker session')
+print(json.dumps({'embedded_python':'PASS3.12.10','system_Git_Python_absent_from_PATH':True,'bundled_git':'PASS2.51.0.windows.1','TLS_crypto_native_dependencies':'PASS','sqlite_reopen_audit':'PASS','HMAC_protocol':'PASS','identity_guard':guard,'genuine_Codex':'NOT TESTED','services_installed':False}))
+'''
+    result = subprocess.run([str(python), '-I', '-c', code, str(package / 'app')], env=env,
+                            capture_output=True, text=True, check=True, timeout=30)
+    data = json.loads(result.stdout)
+    data['official_python_Authenticode'] = 'PASS'
+    output.write_text(json.dumps(data, indent=2) + '\n')
+    print(json.dumps(data))
+
+
+if __name__ == '__main__':
+    p=argparse.ArgumentParser();p.add_argument('--package',type=Path,required=True);p.add_argument('--output',type=Path,required=True)
+    a=p.parse_args();main(a.package.resolve(),a.output.resolve())

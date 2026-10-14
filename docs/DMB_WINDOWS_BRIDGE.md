@@ -1,5 +1,8 @@
 # DMB Windows worker bridge — foreground pairing
 
+For a VPS without Git/Python, use the [self-contained package](DMB_WINDOWS_PACKAGE.md).
+The source-checkout procedure below is retained for already provisioned development environments.
+
 This milestone adds an authenticated outbound-only worker using the existing
 PortfolioPlanner, durable BHB store/audit, scope fences, locks and resource budgets.
 The only enabled operation is `windows_codex_ping`, a compiled zero-tool prompt
