@@ -56,13 +56,13 @@ def build(output):
                     '--dest', str(downloads / 'wheels'), '-r', str(ROOT / 'packaging/windows-build-requirements.txt')], check=True, timeout=120)
     wheel_inputs = []
     for wheel in sorted((downloads / 'wheels').glob('*.whl')):
-        name, version = wheel.name.split('-')[:2]
-        with urllib.request.urlopen('https://pypi.org/pypi/' + name + '/' + version + '/json', timeout=30) as response:
+        name, wheel_version = wheel.name.split('-')[:2]
+        with urllib.request.urlopen('https://pypi.org/pypi/' + name + '/' + wheel_version + '/json', timeout=30) as response:
             metadata = json.load(response)
         expected = next(p['digests']['sha256'] for p in metadata['urls'] if p['filename'] == wheel.name)
         if digest(wheel) != expected: raise PermissionError('Official PyPI wheel digest mismatch')
         unpack(wheel, runtime / 'python')
-        wheel_inputs.append({'name': wheel.name, 'sha256': expected, 'origin': 'https://pypi.org/pypi/' + name + '/' + version + '/json'})
+        wheel_inputs.append({'name': wheel.name, 'sha256': expected, 'origin': 'https://pypi.org/pypi/' + name + '/' + wheel_version + '/json'})
     if len(wheel_inputs) != 3: raise PermissionError('Exact three bundled wheel dependencies required')
     # Export committed bytes, not platform-converted checkouts or runtime artifacts.
     names = subprocess.check_output(['git', 'ls-files', 'src', 'schemas', 'portfolio/REGISTRY.v1.json', 'CODEX.md',
