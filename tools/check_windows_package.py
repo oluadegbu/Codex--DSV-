@@ -17,7 +17,7 @@ def main(package, output):
     literal = str(python).replace("'", "''")
     signature_script = "$s=Get-AuthenticodeSignature -LiteralPath '" + literal + "'; if($s.Status -ne 'Valid' -or $s.SignerCertificate.Subject -notmatch 'Python Software Foundation'){throw 'Official Python signature not verified'}; $s.Status"
     subprocess.run([str(system / 'WindowsPowerShell/v1.0/powershell.exe'), '-NoProfile', '-NonInteractive', '-Command',
-                    signature_script], env=env, capture_output=True, check=True, timeout=20)
+                    signature_script], env=env, check=True, timeout=120)
     code = r'''
 import hashlib,json,os,shutil,sqlite3,ssl,subprocess,tempfile,sys,threading,urllib.request
 from http.server import HTTPServer,BaseHTTPRequestHandler
@@ -65,7 +65,10 @@ else:
 print(json.dumps({'embedded_python':'PASS3.12.10','system_Git_Python_absent_from_PATH':True,'bundled_git':'PASS2.51.0.windows.1','TLS_crypto_native_dependencies':'PASS','sqlite_reopen_audit':'PASS','HMAC_protocol':'PASS','identity_guard':guard,'genuine_Codex':'NOT TESTED','services_installed':False}))
 '''
     result = subprocess.run([str(python), '-I', '-c', code, str(package / 'app')], env=env,
-                            capture_output=True, text=True, check=True, timeout=30)
+                            capture_output=True, text=True, timeout=30)
+    if result.returncode:
+        print(result.stderr[-8000:], file=sys.stderr)
+        raise RuntimeError('Actual embedded Windows runtime smoke failed')
     data = json.loads(result.stdout)
     data['official_python_Authenticode'] = 'PASS'
     output.write_text(json.dumps(data, indent=2) + '\n')

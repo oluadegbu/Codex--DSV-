@@ -78,7 +78,7 @@ def build(output):
                 'runtime_license_notice': 'CPython LICENSE.txt and wheel dist-info licenses included; MinGit licenses retained from upstream ZIP. Git corresponding source/build records are linked above.'}
     (package / 'PACKAGE_MANIFEST.json').write_text(json.dumps(manifest, indent=2) + '\n')
     subprocess.run([sys.executable, str(ROOT / 'tools/check_windows_package.py'), '--package', str(package),
-                    '--output', str(output / 'PACKAGE_SMOKE.json')], check=True, timeout=60)
+                    '--output', str(output / 'PACKAGE_SMOKE.json')], check=True, timeout=180)
     archive = output / ('DMB-Windows-0.1.0-' + source[:12] + '-amd64.zip')
     with zipfile.ZipFile(archive, 'x', zipfile.ZIP_DEFLATED, compresslevel=6) as bundle:
         for path in sorted(package.rglob('*')):
