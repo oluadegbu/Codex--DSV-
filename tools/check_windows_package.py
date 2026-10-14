@@ -19,12 +19,12 @@ def main(package, output):
     subprocess.run([str(system / 'WindowsPowerShell/v1.0/powershell.exe'), '-NoProfile', '-NonInteractive', '-Command',
                     signature_script], env=env, check=True, timeout=120)
     code = r'''
-import hashlib,json,os,shutil,sqlite3,ssl,subprocess,tempfile,sys,threading,urllib.request
+import hashlib,json,os,shutil,sqlite3,ssl,subprocess,tempfile,sys,threading,urllib.request,csv,io
 from http.server import HTTPServer,BaseHTTPRequestHandler
 from pathlib import Path
 from windows_package_runtime import verify_package,create_tls_certificate
 from dci.master.windows_protocol import PeerKey,sign,verify
-from dci.master.windows_native import require_identity
+from dci.master.windows_native import require_identity,token_snapshot,system_directory
 from dci.bridge.store import BridgeStore
 app=Path(sys.argv[1]); assert sys.version_info[:3]==(3,12,10)
 assert shutil.which('git') is None and shutil.which('python') is None
@@ -56,13 +56,30 @@ with tempfile.TemporaryDirectory() as d:
  db=BridgeStore(p/'audit.sqlite');db.verify_audit();db.close()
  db=BridgeStore(p/'audit.sqlite');db.verify_audit();db.close()
  subprocess.run(['git','init','--quiet',str(p/'scratch')],check=True,timeout=5)
+actual=token_snapshot()
+whoami=str(system_directory()/'whoami.exe')
+user_rows=list(csv.reader(io.StringIO(subprocess.check_output([whoami,'/user','/fo','csv'],text=True))))
+group_rows=list(csv.reader(io.StringIO(subprocess.check_output([whoami,'/groups','/fo','csv'],text=True))))[1:]
+assert actual['user'].casefold()==user_rows[1][0].casefold()
+assert actual['user_sid']==user_rows[1][1]
+assert all(len(row)==4 for row in group_rows)
+correct_sids={row[2] for row in group_rows}
+legacy_wrong_column={row[1] for row in group_rows}
+assert actual['integrity_sid'] in correct_sids
+assert actual['integrity_sid'] not in legacy_wrong_column
+assert correct_sids <= set(actual['group_sids']) | {actual['integrity_sid']}
+assert not any(s.startswith('S-1-') for s in legacy_wrong_column)
+native_identity_evidence={'process_user':actual['user'],'user_sid_matches_whoami':True,
+ 'TokenIntegrityLevel_sid':actual['integrity_sid'],'GetTokenInformation_groups_match_correct_CSV_column':True,
+ 'legacy_column_2_has_no_SIDs':True,'legacy_would_reject_any_valid_Medium_token':True,
+ 'elevated':actual['elevated'],'administrators_member':'S-1-5-32-544' in actual['group_sids']}
 try:
  require_identity()
 except PermissionError:
  guard='PASS CI identity rejected before worker launch'
 else:
  raise RuntimeError('CI cannot substitute for the DirectiveCodex worker session')
-print(json.dumps({'embedded_python':'PASS3.12.10','system_Git_Python_absent_from_PATH':True,'bundled_git':'PASS2.51.0.windows.1','TLS_crypto_native_dependencies':'PASS','sqlite_reopen_audit':'PASS','HMAC_protocol':'PASS','identity_guard':guard,'genuine_Codex':'NOT TESTED','services_installed':False}))
+print(json.dumps({'embedded_python':'PASS3.12.10','system_Git_Python_absent_from_PATH':True,'bundled_git':'PASS2.51.0.windows.1','TLS_crypto_native_dependencies':'PASS','sqlite_reopen_audit':'PASS','HMAC_protocol':'PASS','identity_guard':guard,'native_token_API_evidence':native_identity_evidence,'genuine_Codex':'NOT TESTED','services_installed':False}))
 '''
     result = subprocess.run([str(python), '-I', '-c', code, str(package / 'app')], env=env,
                             capture_output=True, text=True, timeout=30)

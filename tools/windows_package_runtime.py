@@ -14,7 +14,7 @@ def verify_package(app_root):
     if not manifest_path.exists():
         return None
     manifest = json.loads(manifest_path.read_text())
-    if manifest.get('schema_version') != 1 or manifest.get('mode') != 'SHADOW' or manifest.get('package_version') != '0.1.0' or manifest.get('architecture') != 'windows-amd64':
+    if manifest.get('schema_version') != 1 or manifest.get('mode') != 'SHADOW' or manifest.get('package_version') != '0.1.1' or manifest.get('architecture') != 'windows-amd64':
         raise PermissionError('Unexpected versioned shadow package')
     files = manifest.get('files')
     source = manifest.get('source_commit')

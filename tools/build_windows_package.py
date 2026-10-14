@@ -44,7 +44,8 @@ def build(output):
     if output.exists(): raise PermissionError('Fresh output required; no release overwrite')
     output.mkdir(parents=True)
     downloads = output / 'inputs'; downloads.mkdir()
-    package = output / 'DMB-Windows-0.1.0-amd64'; package.mkdir()
+    version = inputs['package_version']
+    package = output / ('DMB-Windows-' + version + '-amd64'); package.mkdir()
     runtime = package / 'runtime'; runtime.mkdir()
     python_zip, git_zip = downloads / 'python.zip', downloads / 'mingit.zip'
     python_hash = fetch(inputs['python_url'], python_zip)
@@ -79,11 +80,11 @@ def build(output):
     (package / 'PACKAGE_MANIFEST.json').write_text(json.dumps(manifest, indent=2) + '\n')
     subprocess.run([sys.executable, str(ROOT / 'tools/check_windows_package.py'), '--package', str(package),
                     '--output', str(output / 'PACKAGE_SMOKE.json')], check=True, timeout=180)
-    archive = output / ('DMB-Windows-0.1.0-' + source[:12] + '-amd64.zip')
+    archive = output / ('DMB-Windows-' + version + '-' + source[:12] + '-amd64.zip')
     with zipfile.ZipFile(archive, 'x', zipfile.ZIP_DEFLATED, compresslevel=6) as bundle:
         for path in sorted(package.rglob('*')):
             if path.is_file(): bundle.write(path, path.relative_to(package).as_posix())
-    release = {'schema_version': 1, 'mode': 'SHADOW', 'version': '0.1.0', 'tag': 'dmb-windows-v0.1.0-' + source[:12],
+    release = {'schema_version': 1, 'mode': 'SHADOW', 'version': version, 'tag': 'dmb-windows-v' + version + '-' + source[:12],
                'source_commit': source, 'filename': archive.name, 'sha256': digest(archive), 'bytes': archive.stat().st_size,
                'package_manifest_sha256': digest(package / 'PACKAGE_MANIFEST.json'), 'smoke_evidence_sha256': digest(output / 'PACKAGE_SMOKE.json'),
                'Windows_genuine_task': 'NOT TESTED; requires existing DirectiveCodex foreground session',

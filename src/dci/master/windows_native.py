@@ -32,17 +32,91 @@ def system_directory():
     return Path(buffer.value)
 
 
+class SidAndAttributes(ctypes.Structure):
+    _fields_ = [("sid", ctypes.c_void_p), ("attributes", w.DWORD)]
+
+
+class TokenGroups(ctypes.Structure):
+    _fields_ = [("count", w.DWORD), ("groups", SidAndAttributes * 1)]
+
+
+def token_snapshot():
+    """Read the real process token; reject thread impersonation. Never impersonate/elevate."""
+    kernel, advapi = dll("kernel32"), dll("advapi32")
+    signatures = {
+        "GetCurrentProcess": ([], w.HANDLE), "GetCurrentThread": ([], w.HANDLE),
+        "CloseHandle": ([w.HANDLE], w.BOOL),
+        "GetComputerNameW": ([w.LPWSTR, ctypes.POINTER(w.DWORD)], w.BOOL),
+        "LocalFree": ([ctypes.c_void_p], ctypes.c_void_p),
+    }
+    for name, (args, result) in signatures.items():
+        getattr(kernel, name).argtypes, getattr(kernel, name).restype = args, result
+    signatures = {
+        "OpenProcessToken": ([w.HANDLE, w.DWORD, ctypes.POINTER(w.HANDLE)], w.BOOL),
+        "OpenThreadToken": ([w.HANDLE, w.DWORD, w.BOOL, ctypes.POINTER(w.HANDLE)], w.BOOL),
+        "GetTokenInformation": ([w.HANDLE, ctypes.c_int, ctypes.c_void_p, w.DWORD, ctypes.POINTER(w.DWORD)], w.BOOL),
+        "ConvertSidToStringSidW": ([ctypes.c_void_p, ctypes.POINTER(w.LPWSTR)], w.BOOL),
+        "LookupAccountSidW": ([w.LPCWSTR, ctypes.c_void_p, w.LPWSTR, ctypes.POINTER(w.DWORD), w.LPWSTR, ctypes.POINTER(w.DWORD), ctypes.POINTER(w.DWORD)], w.BOOL),
+    }
+    for name, (args, result) in signatures.items():
+        getattr(advapi, name).argtypes, getattr(advapi, name).restype = args, result
+    thread = w.HANDLE()
+    if advapi.OpenThreadToken(kernel.GetCurrentThread(), 8, True, ctypes.byref(thread)):
+        kernel.CloseHandle(thread)
+        raise PermissionError("impersonated thread token forbidden")
+    if ctypes.get_last_error() != 1008:  # ERROR_NO_TOKEN is the only allowed absence.
+        raise ctypes.WinError(ctypes.get_last_error())
+    token = w.HANDLE()
+    if not advapi.OpenProcessToken(kernel.GetCurrentProcess(), 8, ctypes.byref(token)):
+        raise ctypes.WinError(ctypes.get_last_error())
+    def information(kind):
+        needed = w.DWORD()
+        if advapi.GetTokenInformation(token, kind, None, 0, ctypes.byref(needed)) or ctypes.get_last_error() != 122 or not 1 <= needed.value <= 1048576:
+            raise PermissionError("token-information sizing failed closed")
+        data = ctypes.create_string_buffer(needed.value)
+        if not advapi.GetTokenInformation(token, kind, data, len(data), ctypes.byref(needed)):
+            raise ctypes.WinError(ctypes.get_last_error())
+        return data
+    def sid_string(sid):
+        output = w.LPWSTR()
+        if not advapi.ConvertSidToStringSidW(sid, ctypes.byref(output)):
+            raise ctypes.WinError(ctypes.get_last_error())
+        try: return output.value
+        finally: kernel.LocalFree(ctypes.cast(output, ctypes.c_void_p))
+    try:
+        host_buffer = ctypes.create_unicode_buffer(32768); host_size = w.DWORD(len(host_buffer))
+        if not kernel.GetComputerNameW(host_buffer, ctypes.byref(host_size)):
+            raise ctypes.WinError(ctypes.get_last_error())
+        user_data = information(1)  # TokenUser: SID_AND_ATTRIBUTES
+        user = SidAndAttributes.from_buffer(user_data)
+        name_size, domain_size, use = w.DWORD(32768), w.DWORD(32768), w.DWORD()
+        name, domain = ctypes.create_unicode_buffer(name_size.value), ctypes.create_unicode_buffer(domain_size.value)
+        if not advapi.LookupAccountSidW(None, user.sid, name, ctypes.byref(name_size), domain, ctypes.byref(domain_size), ctypes.byref(use)) or use.value != 1:
+            raise PermissionError("process token must resolve to an actual user")
+        group_data = information(2)  # TokenGroups, includes disabled/deny-only membership.
+        count = w.DWORD.from_buffer(group_data).value
+        offset = TokenGroups.groups.offset
+        if count > 4096 or offset + count * ctypes.sizeof(SidAndAttributes) > len(group_data):
+            raise PermissionError("invalid token group buffer")
+        groups = (SidAndAttributes * count).from_buffer(group_data, offset)
+        integrity_data = information(25)  # TokenIntegrityLevel, separate mandatory label.
+        elevation_data = information(20)  # TokenElevation
+        return {"host": host_buffer.value, "user": domain.value + "\\" + name.value,
+                "user_sid": sid_string(user.sid), "group_sids": [sid_string(g.sid) for g in groups],
+                "integrity_sid": sid_string(SidAndAttributes.from_buffer(integrity_data).sid),
+                "elevated": bool(w.DWORD.from_buffer(elevation_data).value)}
+    finally:
+        kernel.CloseHandle(token)
+
+
 def require_identity():
-    whoami = str(system_directory() / "whoami.exe")
-    user = subprocess.check_output([whoami, "/user", "/fo", "csv"], text=True, timeout=5)
-    groups = subprocess.check_output([whoami, "/groups", "/fo", "csv"], text=True, timeout=5)
-    username = list(csv.reader(io.StringIO(user)))[1][0]
-    sids = {row[1] for row in list(csv.reader(io.StringIO(groups)))[1:] if len(row) > 1}
-    host = platform.node()
-    admin = bool(dll("shell32").IsUserAnAdmin())
-    if username.casefold() != (host + "\\DirectiveCodex").casefold() or admin or "S-1-5-32-544" in sids or "S-1-16-8192" not in sids or any(s.startswith("S-1-16-") and int(s.rsplit("-", 1)[1]) > 8192 for s in sids):
-        raise PermissionError("DirectiveCodex non-admin Medium-integrity token required")
-    return {"host": host, "user": host + "\\DirectiveCodex", "administrator": False, "integrity": "Medium"}
+    token = token_snapshot()
+    if token["user"].casefold() != (token["host"] + "\\DirectiveCodex").casefold() or token["elevated"] or "S-1-5-32-544" in token["group_sids"] or token["integrity_sid"] != "S-1-16-8192":
+        raise PermissionError("DirectiveCodex non-admin Medium-integrity token required; " +
+                              "user=" + token["user"] + "; elevated=" + str(token["elevated"]) +
+                              "; administrators_member=" + str("S-1-5-32-544" in token["group_sids"]) +
+                              "; integrity_sid=" + token["integrity_sid"])
+    return {"host": token["host"], "user": token["host"] + "\\DirectiveCodex", "administrator": False, "integrity": "Medium"}
 
 
 def private_root():
