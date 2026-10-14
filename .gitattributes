@@ -2,3 +2,6 @@
 src/dci/master/windows_*.py text eol=lf
 tools/run_windows_shadow_bridge.py text eol=lf
 tools/windows_package_runtime.py text eol=lf
+# Preserve exact Windows release receipt bytes, including CRLF, for hash evidence.
+docs/evidence/windows-package/RELEASE.json -text whitespace=cr-at-eol
+docs/evidence/windows-package/PACKAGE_SMOKE.json -text whitespace=cr-at-eol

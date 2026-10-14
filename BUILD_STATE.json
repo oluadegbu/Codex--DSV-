@@ -2,9 +2,9 @@
   "schema_version": 1,
   "project": "Directive Crypto Intelligence",
   "repository": "oluadegbu/Codex--DSV-",
-  "updated_at": "2026-10-13T23:45:06.672590+00:00",
-  "milestone": "authenticated-foreground-windows-codex-bridge",
-  "status": "implemented_published_windows_pairing_pending",
+  "updated_at": "2026-10-14T06:39:21.198716+00:00",
+  "milestone": "self-contained-windows-shadow-package",
+  "status": "package_native_windows_smoke_pass_genuine_directivecodex_task_pending",
   "mode": "SHADOW",
   "synthetic_only": true,
   "hard_gates": {
@@ -96,7 +96,7 @@
       "synthetic": true
     },
     "compileall": "passed",
-    "github_ci": "PASS Windows bridge sourceb1f53a963435fb07ec224a9cf50fbd9c2d79eb0e, run38486041775:145 tests, actual paper recovery and original portfolio verifier",
+    "github_ci": "PASS150 tests at package sourcec92206a1122b; standalone Windows smoke and release also PASS",
     "security_review": "No credentials, signing, submission, live execution or cross-project integration in source; RPC method allowlist tested",
     "durable_replay": {
       "status": "passed",
@@ -158,7 +158,7 @@
     "M1 operates one trusted non-root Linux paper worker; hostile-code OS separation and real Windows Codex cancellation/recovery remain pending"
   ],
   "next_safe_tasks": [
-    "Run the single reviewed foreground pairing procedure in the existing non-admin DirectiveCodex RDP session; driver automatically dispatches and verifies one genuine Windows task and restart replay suppression",
+    "Run the hash-pinned self-contained package procedure under existing DirectiveCodex RDP; automatic genuine Codex task/artifact/durable completion and restart verification, no Git/Python installation",
     "Read and reconcile sanitized Windows CERTIFICATION.json; preserve uncertain outcomes and locks",
     "Keep remote delivery, OS isolation, providers and full DMB certification gated; preserve separate DAT Temporal milestone"
   ],
@@ -519,7 +519,7 @@
     "source_commit": "b1f53a963435fb07ec224a9cf50fbd9c2d79eb0e",
     "local_source_commit": "614d23ee97acce913945d504903fc2987f32c85c",
     "evidence": "docs/evidence/windows-bridge/CERTIFICATION.json",
-    "runbook": "docs/DMB_WINDOWS_BRIDGE.md",
+    "runbook": "docs/DMB_WINDOWS_PACKAGE.md",
     "portable_tests": 18,
     "final_TLS_fixture": "PASS GitHub Linux CI run38486041775 / fixture executor",
     "genuine_windows_task": false,
@@ -531,6 +531,13 @@
     "current_remote_executor": "Administrator/High; worker launches prohibited",
     "operator_baseline": "DirectiveCodex non-admin; CLI0.162.1 auth and genuine execution PASS retained as operator report",
     "ci": "PASS145 tests at sourceb1f53a96",
-    "published_evidence_commit": "217eac578528d6907f1a489622ed10dce30edf6a"
+    "published_evidence_commit": "217eac578528d6907f1a489622ed10dce30edf6a",
+    "deployment": "One hash-verified ZIP: embedded Python, portable Git and TLS dependencies; no operator installation",
+    "operator_dependency_status": "Git/Python unavailable per operator; standalone package removes these system prerequisites",
+    "package_release": "https://github.com/oluadegbu/Codex--DSV-/releases/tag/dmb-windows-v0.1.0-c92206a1122b",
+    "package_sha256": "5136c083cb1d3b4a12d7ba86b2d6d56c96d3518054897ecb01d8ed43e1b38a2c",
+    "package_native_CI": "PASS38522928600 actual Windows embedded-runtime/TLS/Git/SQLite smoke, no actual Codex turn",
+    "package_source": "c92206a1122b5064528bc85ddf411247e48e7ea4",
+    "package_evidence": "docs/evidence/windows-package/CERTIFICATION.json"
   }
 }

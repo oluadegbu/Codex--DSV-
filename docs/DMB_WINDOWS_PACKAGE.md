@@ -32,11 +32,43 @@ The Linux suite retains all145 existing tests and adds five package-boundary che
 
 ## Foreground deployment
 
-The final supervisor report supplies the exact development-prerelease ZIP URL,
-SHA-256 and a complete PowerShell block. No placeholders, interactive account
-setup, pip, Git/Python installation or downloaded-script policy bypass is required.
-The package source commit and release version are immutable selections in that
-procedure; it never downloads `latest` or overwrites an existing workspace.
+Published prerelease: [dmb-windows-v0.1.0-c92206a1122b](https://github.com/oluadegbu/Codex--DSV-/releases/tag/dmb-windows-v0.1.0-c92206a1122b).
+The ZIP is 58,452,407 bytes, SHA-256
+`5136c083cb1d3b4a12d7ba86b2d6d56c96d3518054897ecb01d8ed43e1b38a2c`.
+Package source is `c92206a1122b5064528bc85ddf411247e48e7ea4`.
+Windows package CI38522928600 and the original deterministic CI38522928685 pass;
+all150 tests are retained. The exact release/Windows smoke JSON bytes and CI
+receipts are in [evidence](evidence/windows-package/CERTIFICATION.json).
+
+Paste the following complete block into normal PowerShell in the existing
+non-admin DirectiveCodex RDP session. It downloads one ZIP and invokes its embedded
+runtime; it does not install Git/Python or change execution policy. The same reviewed
+block is preserved at [DMB_WINDOWS_PACKAGE.ps1](DMB_WINDOWS_PACKAGE.ps1).
+
+```powershell
+$ErrorActionPreference = 'Stop'
+$DmbIdentity = [Security.Principal.WindowsIdentity]::GetCurrent()
+$DmbPrincipal = New-Object Security.Principal.WindowsPrincipal($DmbIdentity)
+if ($DmbIdentity.Name -ine "$env:COMPUTERNAME\DirectiveCodex" -or $DmbPrincipal.IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)) {
+    throw 'Use normal PowerShell in the existing non-admin DirectiveCodex RDP session.'
+}
+$DmbUrl = 'https://github.com/oluadegbu/Codex--DSV-/releases/download/dmb-windows-v0.1.0-c92206a1122b/DMB-Windows-0.1.0-c92206a1122b-amd64.zip'
+$DmbSha = '5136c083cb1d3b4a12d7ba86b2d6d56c96d3518054897ecb01d8ed43e1b38a2c'
+$DmbRoot = Join-Path $env:LOCALAPPDATA 'Directive\DMB-0.1.0-c92206a1122b'
+if (Test-Path $DmbRoot) { throw 'Existing state preserved. Do not overwrite, delete or silently re-pair.' }
+for ($DmbPath = [IO.DirectoryInfo]$DmbRoot; $null -ne $DmbPath; $DmbPath = $DmbPath.Parent) {
+    if ($DmbPath.Exists -and ($DmbPath.Attributes -band [IO.FileAttributes]::ReparsePoint)) { throw 'Junction/reparse deployment boundary rejected.' }
+}
+New-Item -ItemType Directory -Path $DmbRoot | Out-Null
+$DmbZip = Join-Path $DmbRoot 'package.zip'
+Invoke-WebRequest -UseBasicParsing -Uri $DmbUrl -OutFile $DmbZip
+if ((Get-FileHash -Algorithm SHA256 -LiteralPath $DmbZip).Hash -ine $DmbSha) { throw 'Package SHA-256 mismatch; nothing executed.' }
+$DmbPackage = Join-Path $DmbRoot 'package'
+Expand-Archive -LiteralPath $DmbZip -DestinationPath $DmbPackage
+& (Join-Path $DmbPackage 'runtime\python\python.exe') -I (Join-Path $DmbPackage 'app\tools\run_windows_shadow_bridge.py')
+if ($LASTEXITCODE -ne 0) { throw "Stopped safely. Preserve $DmbPackage\app\artifacts\windows-foreground; no blind rerun." }
+Get-Content -LiteralPath (Join-Path $DmbPackage 'app\artifacts\windows-foreground\CERTIFICATION.json')
+```
 
 Under the existing non-admin DirectiveCodex RDP session the driver automatically:
 
