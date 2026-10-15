@@ -187,3 +187,10 @@ with write/delete pins through suspended creation. All158 tests and native
 package validation pass. Both failed installations remain intact and proven
 unstarted; genuine DirectiveCodex completion awaits the one foreground procedure.
 See [release evidence](docs/evidence/windows-junction-repair/CERTIFICATION.json).
+
+The actual Windows0.1.3 receipt now confirms the genuine local task and durable
+replay suppression. The [autonomous operations integration](docs/DMB_AUTONOMOUS_OPERATIONS.md)
+adds signed intake, evidence-bound review/follow-ups, outbound relay delivery and
+a bounded Windows wrapper. Local real-process integration passes; unattended
+Windows and external delivery remain blocked by [REQUEST-0008](decisions/REQUEST-0008.md).
+No persistent process, external provider or production change is activated.

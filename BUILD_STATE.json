@@ -2,9 +2,9 @@
   "schema_version": 1,
   "project": "Directive Crypto Intelligence",
   "repository": "oluadegbu/Codex--DSV-",
-  "updated_at": "2026-10-14T22:08:56.926131+00:00",
-  "milestone": "windows-official-junction-validation-fix-0.1.3",
-  "status": "native_official_Codex_junction_validation_PASS_genuine_DirectiveCodex_task_PENDING",
+  "updated_at": "2026-10-14T23:42:47.220472+00:00",
+  "milestone": "autonomous-operations-local-integration",
+  "status": "WINDOWS_LOCAL_BRIDGE_PASS_OPERATIONS_LOCAL_PASS_UNATTENDED_REMOTE_BLOCKED",
   "mode": "SHADOW",
   "synthetic_only": true,
   "hard_gates": {
@@ -158,9 +158,10 @@
     "M1 operates one trusted non-root Linux paper worker; hostile-code OS separation and real Windows Codex cancellation/recovery remain pending"
   ],
   "next_safe_tasks": [
-    "Run pinned0.1.3 foreground procedure once in existing DirectiveCodex RDP; automatic predecessor reconciliation, task execution/artifact verification, durable completion and restart/no duplicate.",
-    "Read and reconcile sanitized Windows CERTIFICATION.json; preserve uncertain outcomes and locks",
-    "Keep remote delivery, OS isolation, providers and full DMB certification gated; preserve separate DAT Temporal milestone"
+    "Publish and verify operations integration CI/evidence on draft PR1; retain certified Windows release/core/journals",
+    "Await REQUEST-0008 approval plus approved durable host/relay; never install persistence or activate external delivery implicitly",
+    "After authorized deployment, automatically certify actual non-admin startup, cancellation, owned-worker crash/recovery and harmless OS canary denial; retain uncertain quarantine",
+    "Keep provider notifications, tool-enabled development, live trading and full DMB certification gated; preserve separate DAT Temporal milestone"
   ],
   "publication": {
     "method": "authenticated GitHub connector Git database APIs",
@@ -522,8 +523,8 @@
     "runbook": "docs/DMB_WINDOWS_PACKAGE.md",
     "portable_tests": 18,
     "final_TLS_fixture": "PASS GitHub Linux CI run38486041775 / fixture executor",
-    "genuine_windows_task": false,
-    "windows_foreground_pairing": "PENDING_NEW_VERSION_FOREGROUND_PROCEDURE",
+    "genuine_windows_task": true,
+    "windows_foreground_pairing": "PASS actual VPS receipt retrieved and consistency-checked",
     "full_certification": "BLOCKED",
     "remote_delivery": "DISABLED_NOT_CERTIFIED",
     "OS_isolation": "NOT TESTED",
@@ -544,7 +545,11 @@
     "operator_failed_installation": "Preserved; side-by-side replacement only",
     "code_path_fix_evidence": "docs/evidence/windows-codex-path/CERTIFICATION.json",
     "new_private_state": "Current-user LocalAppData/Directive/DMBWindowsWorker-v1-0.1.3",
-    "predecessor_safety": "BOTH0.1.1/0.1.2 require read-only unstarted proof; actual VPS PASS; no old state mutation"
+    "predecessor_safety": "BOTH0.1.1/0.1.2 require read-only unstarted proof; actual VPS PASS; no old state mutation",
+    "genuine_completion_evidence": "docs/evidence/windows-genuine-completion/CERTIFICATION.json",
+    "RDP_independence": "BLOCKED REQUEST-0008",
+    "windows_cancellation": "NOT TESTED",
+    "windows_crash_recovery": "NOT TESTED"
   },
   "windows_junction_repair": {
     "schema_version": 1,
@@ -593,8 +598,20 @@
     "release_url": "https://github.com/oluadegbu/Codex--DSV-/releases/tag/dmb-windows-v0.1.3-8d78f83963db"
   },
   "next_safe_actions": [
-    "Run pinned0.1.3 foreground procedure once in existing DirectiveCodex RDP; automatic predecessor reconciliation, task execution/artifact verification, durable completion and restart/no duplicate.",
-    "Read and reconcile sanitized Windows CERTIFICATION.json; preserve uncertain outcomes and locks",
-    "Keep remote delivery, OS isolation, providers and full DMB certification gated; preserve separate DAT Temporal milestone"
-  ]
+    "Publish and verify operations integration CI/evidence on draft PR1; retain certified Windows release/core/journals",
+    "Await REQUEST-0008 approval plus approved durable host/relay; never install persistence or activate external delivery implicitly",
+    "After authorized deployment, automatically certify actual non-admin startup, cancellation, owned-worker crash/recovery and harmless OS canary denial; retain uncertain quarantine",
+    "Keep provider notifications, tool-enabled development, live trading and full DMB certification gated; preserve separate DAT Temporal milestone"
+  ],
+  "autonomous_operations": {
+    "implementation": "signed intake/review/followup, durable outbound delivery/relay, bounded Windows wrapper and canary probes",
+    "real_execution": "genuine Windows v0.1.3 receipt + actual independent Linux paper workflow; remote/unattended Windows not certified",
+    "external_relay": "DISABLED no approved endpoint or pairing",
+    "persistent_installation": false,
+    "human_notifications": "DISABLED approval and certification required",
+    "approval_request": "decisions/REQUEST-0008.md",
+    "OS_isolation": "NOT TESTED",
+    "production_changes": false,
+    "full_DMB": "BLOCKED"
+  }
 }

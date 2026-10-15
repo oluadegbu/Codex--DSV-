@@ -38,6 +38,7 @@ jobs:
       - run: PYTHONPATH=src python -m unittest discover -s control_plane_tests -v
       - run: PYTHONPATH=src python -m unittest discover -s windows_bridge_tests -v
       - run: PYTHONPATH=src:tools python -m unittest discover -s package_tests -v
+      - run: PYTHONPATH=src python -m unittest discover -s operations_tests -v
   windows-package:
     needs: validate
     runs-on: windows-latest
@@ -57,7 +58,8 @@ jobs:
             artifacts/windows-release/PACKAGE_SMOKE.json
   publish-shadow-package:
     needs: [validate, windows-package]
-    if: github.event_name == 'push' && github.ref == 'refs/heads/codex/dmb-shadow-publication-20261012-fd92f06'
+    # A normal operations milestone must not mint a replacement of certified0.1.3.
+    if: github.event_name == 'push' && github.ref == 'refs/heads/codex/dmb-shadow-publication-20261012-fd92f06' && contains(github.event.head_commit.message, '[publish-windows-shadow]')
     runs-on: ubuntu-latest
     permissions:
       contents: write
