@@ -78,7 +78,29 @@ def main():
     if probe(isolation,NAMESPACE)['OS_canary_access_denial'] != 'PASS':
         raise PermissionError('Actual OS access denial no longer passes')
     if args.preflight:
-        print(json.dumps({'mode':'SHADOW','preflight':'PASS','worker_started':False,'task_registered':False}));return
+        from dci.master.windows_native import foreground_lock
+        from dci.master.windows_bridge_cli import _windows_run_locked
+        # Genuine authenticated remote round-trip; never POLL or execute a task.
+        with foreground_lock(private):
+            _windows_run_locked(1,NAMESPACE,handshake_only=True)
+        # Public, immutable receipt for the separately authorized security owner.
+        # No DPAPI contents, account password or pairing secret leaves this process.
+        receipt={'schema_version':1,'mode':'SHADOW','preflight':'PASS','worker_started':False,
+                 'task_registered':False,'host':HOST,'user_sid':USER_SID,'identity':identity,
+                 'remote_HMAC_TLS_HELLO':'PASS','task_polled':False,
+                 'package_version':VERSION,'source_commit':manifest['source_commit'],
+                 'manifest_sha256':sha(ROOT.parent/'PACKAGE_MANIFEST.json'),'task_xml_sha256':sha(task),
+                 'approval_reference':grant['approval_reference'],'expires_at':grant['expires_at'],
+                 'activation_ciphertext_sha256':sha(approval),'Windows_acceptance_sha256':sha(acceptance)}
+        body=(json.dumps(receipt,sort_keys=True,indent=2)+'\n').encode()
+        target=private/('PREDEPLOY-'+sha(approval)+'.json')
+        if target.exists():
+            if target.read_bytes()!=body: raise PermissionError('Existing predeployment receipt drift; preserve it')
+        else:
+            import os
+            with target.open('xb') as stream:stream.write(body);stream.flush();os.fsync(stream.fileno())
+        print(json.dumps({'mode':'SHADOW','preflight':'PASS','worker_started':False,
+                          'task_registered':False,'report':str(target),'report_sha256':sha(target)}));return
     from dci.master.windows_operations_worker import run
     # A fixed local STOP file drains this owner's current bounded task, then exits.
     # No mailbox-supplied path or command and no scheduled-task self-modification.

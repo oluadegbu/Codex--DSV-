@@ -153,6 +153,25 @@ class BridgeTests(unittest.TestCase):
         self.assertEqual(self.h.server_store.task("one")["state"],"NEEDS_HUMAN")
         self.assertTrue(self.h.controller.report()["held_resources"])
 
+    def test_preflight_hello_authenticates_without_polling_queued_task(self):
+        self.h.submit();calls=[]
+        def observed(packet):
+            calls.append(packet["kind"]);return self.h.transport(packet)
+        self.h.worker.transport=observed
+        self.assertEqual(self.h.worker.handshake()["remote_HMAC_TLS_HELLO"],"PASS")
+        self.assertEqual(calls,["HELLO"]);self.assertEqual(self.h.executions,0)
+        self.assertEqual(self.h.server_store.task("one")["state"],"QUEUED")
+    def test_preflight_never_replays_pending_poll_or_dispatch(self):
+        self.h.worker.rpc("HELLO",self.h.identity)
+        def offline(packet):raise OSError("fixture offline before delivery")
+        self.h.worker.transport=offline
+        with self.assertRaises(RuntimeError):self.h.worker.rpc("POLL",{})
+        calls=[]
+        self.h.worker.transport=lambda packet:calls.append(packet["kind"])
+        with self.assertRaises(PermissionError):self.h.worker.handshake()
+        self.assertEqual(calls,[])
+        self.assertEqual(self.h.worker_store.db.execute("SELECT kind FROM win_outbox WHERE ack=0").fetchone()[0],"POLL")
+
     def test_wrong_key_tampering_reflection_and_stale_packets(self):
         packet = sign(self.h.key, "worker_to_controller", "HELLO", 1, self.h.identity, int(time.time()))
         for field, value in (("worker_id", "other"), ("direction", "controller_to_worker"), ("mac", "é"), ("payload", {})):

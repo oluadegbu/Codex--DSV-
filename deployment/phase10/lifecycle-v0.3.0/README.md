@@ -88,13 +88,30 @@ before any Codex launch. A missing/allowed canary blocks without blind retry.
    cannot implicitly grant a logon right.
 4. After native gates and remote verification, explicitly approve the exact
    new package hash, task XML hash, 8-hour version-2 activation lease and one task
-   installation/initial start. Enroll the existing account password **locally**
+   installation/initial start by the existing Administrator/security owner.
+   No Administrator membership/elevation is granted to DirectiveCodex. Enroll the existing account password **locally**
    using Windows-supported Password logon/protected task storage; never send it
    to chat or store it in XML, arguments, configuration or logs. The transient
    registration API password exists in process memory only, never on disk.
 
-The exact inert `REGISTER-AFTER-APPROVAL.ps1` refuses any existing task; it does
-not alter policy, ACLs or other schedules. Final activation.dpapi must already
+Microsoft explicitly limits boot-trigger task creation to an Administrator:
+https://learn.microsoft.com/en-us/windows/win32/taskschd/boottrigger .
+This is an installation permission, not permission to elevate DirectiveCodex.
+After real gates and final configuration exist, run `run_windows_lifecycle_host.py
+--preflight` under DirectiveCodex. It verifies the protected grant/package/native
+acceptance, performs one TLS/HMAC remote HELLO without POLL/task execution, then
+writes an immutable public `PREDEPLOY-<activation-ciphertext-sha256>.json` receipt.
+The final human approval must name that receipt's SHA256 and exact persistent
+changes. No pairing secret, DPAPI plaintext or password is in the receipt.
+
+Only after that final approval, the existing security owner uses its existing
+Administrator session for `REGISTER-AFTER-APPROVAL.ps1 -ApprovedPreflightPath
+<exact-receipt-path> -ApprovedPreflightSHA256 <human-approved-digest>`. No caller
+is elevated by the script; the worker is never launched directly as Administrator.
+The installer verifies the approved receipt, package/file hashes, exact XML,
+expiry and private configuration digests, then checks existing batch logon before
+creating/starting only the pinned LeastPrivilege task. It refuses any existing
+task and does not alter policy, ACLs or other schedules. Final activation.dpapi must already
 bind reviewed source, manifest, task, pairing, native canaries and acceptance.
 Registration/initial start are not authorized by this document or example values.
 Then verify actual batch Medium identity, current-user DPAPI/Codex/network auth,

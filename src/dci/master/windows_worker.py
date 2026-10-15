@@ -157,6 +157,18 @@ class OutboundWorker:
         for row in list(self.store.db.execute("SELECT * FROM win_local_jobs WHERE state='DONE'")):
             self.rpc("RESULT", {"route": route(json.loads(row["body"])), "report": json.loads(row["report"])})
 
+    def handshake(self):
+        # Deployment preflight is not a recovery/dispatch authority. Even a cached
+        # POLL/START must not be sent here. Preserve pending work for reconciliation.
+        pending=self.store.db.execute("SELECT kind FROM win_outbox WHERE ack=0").fetchone()
+        if pending and pending[0]!="HELLO":
+            raise PermissionError("Pending worker delivery must be reconciled before preflight")
+        for row in self.store.db.execute("SELECT state,report FROM win_local_jobs"):
+            if row[0]!="ACKED" or row[1] and json.loads(row[1]).get("status")=="UNCERTAIN":
+                raise PermissionError("Outstanding/quarantined worker cannot pass preflight")
+        self.rpc("HELLO",self.identity)
+        return {"remote_HMAC_TLS_HELLO":"PASS","task_polled":False,"task_executed":False}
+
     def step(self):
         self.recover()
         # Recovery must never roll directly into a new offer after ambiguous effects.

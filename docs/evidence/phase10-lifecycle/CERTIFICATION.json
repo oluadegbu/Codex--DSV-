@@ -10,20 +10,20 @@
   "sources": {
     "deployment/phase10/lifecycle-v0.3.0/CANARY_CREATOR.json": "a4fcf58ecfffd5ff3795810f06054663cc91d0b6629fc17b9f9e080243a5e8d1",
     "deployment/phase10/lifecycle-v0.3.0/Directive.DMB.ShadowWorker.Phase10.xml": "2dd50b9b5493513cb1c4b2510d732a75320949980a126dc5143cc58f2aed5b14",
-    "deployment/phase10/lifecycle-v0.3.0/README.md": "730135db9a14e90b0bef1195b7c58d2433e576b64e01eb8f8cb097727b2d2d68",
-    "deployment/phase10/lifecycle-v0.3.0/REGISTER-AFTER-APPROVAL.ps1": "4c76a75d8954559815b95035adfc666670355899321d350adcec11dc68325467",
+    "deployment/phase10/lifecycle-v0.3.0/README.md": "90d9fc128b335c0b995364be9d4fb9265683837dc2c2f20c0c9bfcea5a3ef321",
+    "deployment/phase10/lifecycle-v0.3.0/REGISTER-AFTER-APPROVAL.ps1": "e9b388bbff891ce7f2fdade7083835ba18414c66df3e5263ac13bdaeab41fa2b",
     "deployment/phase10/lifecycle-v0.3.0/ROLLBACK-AFTER-APPROVAL.ps1": "8d3cecfd57c9bc2369e7d4b036385c22ba032e36ec1cc078086de32acf8186ef",
     "packaging/WINDOWS_INPUTS.json": "7e653714112ea4762cb434480b80a7d77c6c1e408ad6a946fd3db1d29008dc56",
-    "src/dci/master/windows_bridge_cli.py": "8fdcbb4c1d1b3a695742e1ead1c0f661392f6c3113eec63d4f6c0026c95ea2ce",
+    "src/dci/master/windows_bridge_cli.py": "ad6657be3dab2bedcc0ae03bee553d915416cbb12da3af8c21a51b3902f47bb0",
     "src/dci/master/windows_isolation.py": "f88a526fbfa904e9414010c6b4bd5c5c8d7151c178aa5181375863957cabe428",
     "src/dci/master/windows_lifecycle.py": "3fa0667c6915513e3b6f9539af17ae9d25a82021e7270bff0c4e1fa091b7077e",
     "src/dci/master/windows_native.py": "a408d8e3068d895bb0f339895ce555b896484ccf56325e3df0b5f681cc58631f",
     "src/dci/master/windows_operations_worker.py": "f2c403782c11a107944b37be456b0fffba570f3f7c8c01e401d871a531811c10",
-    "src/dci/master/windows_worker.py": "f24284268d20159f12af1189b8b8d873b0f724d928c4c53b544b4ffb0dfc039f",
+    "src/dci/master/windows_worker.py": "4ab84141c025e7bcfe9df3aa2cae3981f740187dbd76e67e4538c3c338354dd7",
     "tools/build_windows_package.py": "c505522b7560f5c13cecba711dddafc465a4aa985646dc62a23ebdd3779c46c2",
     "tools/certify_windows_lifecycle.py": "6c485cf05408e36127dd2ccf3025eac320f3d218bf44a618bba5312744791dd8",
     "tools/check_windows_package.py": "a5f05c09817fcf6557fa0bcbf1de0adb5027f0041adf739546d0e35c6ee9aee1",
-    "tools/run_windows_lifecycle_host.py": "49a9d403fccd25bc11534015e5d81eb1ffc2c27261f60f7e2e4d027d3955fc0a",
+    "tools/run_windows_lifecycle_host.py": "cf338bf88bdee62c1802979e442e30f4c2d6feac24f5900db1c4f82d12bb1edf",
     "tools/windows_package_runtime.py": "f126c4b910a70eede5ab12bc807474a54a0ec35dd7f7feac2f1fa51f4b7f5dd5"
   },
   "gates": {
@@ -41,7 +41,9 @@
     "approved_remote_relay": "BLOCKED no verified endpoint/access identity",
     "RDP_independent_beyond_hour": "BLOCKED activation withheld",
     "grant_expiry_before_each_dispatch": "PASS local forward-clock/drain-boundary tests",
-    "missing_lifecycle_authority": "PASS local missing-database fail-closed test"
+    "missing_lifecycle_authority": "PASS local missing-database fail-closed test",
+    "boot_trigger_registration_role": "VERIFIED Microsoft requires existing Administrator for creation only; final approval WITHHELD",
+    "authenticated_remote_HELLO_preflight": "IMPLEMENTED no POLL/recovery of pending work; actual endpoint BLOCKED"
   },
   "genuine_receipt_path": "docs/evidence/windows-genuine-completion/CERTIFICATION.json",
   "genuine_receipt_sha256": "eeb58f4dbdc2dd9fab35cf55e528575e713022621a70230bbd4dc46fa69853e6",
@@ -56,7 +58,10 @@
     "native_package_run": 38790591248,
     "native_package_job": 116613954970,
     "native_package": "FAIL Task Scheduler COM validation timeout under deliberately stripped runtime environment; no release published",
-    "correction": "Task XML/PowerShell syntax review isolated into normal Windows context with bounded45s check; actual VPS XML parse PASS; native package rerun PENDING"
+    "correction": "Task XML/PowerShell syntax review isolated into normal Windows context with bounded45s check; actual VPS XML parse PASS; native package rerun PENDING",
+    "corrected_candidate_native_run": 38791528684,
+    "corrected_candidate_native_job": 116617226751,
+    "corrected_candidate_native_package": "PASS on a6f17c114ec291dc2f7c0372903c86769f0f5690; final installer/handshake source CI pending"
   },
   "publication": "PENDING"
 }

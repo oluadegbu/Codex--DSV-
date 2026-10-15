@@ -136,8 +136,9 @@ def windows_run(cycles):
         return _windows_run_locked(cycles)
 
 
-def _windows_run_locked(cycles, namespace="DMBWindowsWorker-v1-0.1.3", recover_only=False):
+def _windows_run_locked(cycles, namespace="DMBWindowsWorker-v1-0.1.3", recover_only=False, handshake_only=False):
     from .windows_native import private_root, dpapi, require_identity, resolve_codex, WindowsJobProcess
+    if recover_only and handshake_only: raise ProtocolError("One bounded bridge mode required")
     if not 1 <= cycles <= 100:
         raise ProtocolError("bounded foreground cycles required")
     identity, root = require_identity(), private_root(namespace)
@@ -174,6 +175,8 @@ def _windows_run_locked(cycles, namespace="DMBWindowsWorker-v1-0.1.3", recover_o
     worker = OutboundWorker(journal, key, identity, HttpsTransport(config["endpoint"], config.get("ca_file")),
                             NativeCodexExecutor(scratch, state, executable, identity), bridge_fingerprint())
     try:
+        if handshake_only:
+            return worker.handshake()
         if recover_only:
             worker.recover()
             return {"recovery_only": True, "new_execution": False}
