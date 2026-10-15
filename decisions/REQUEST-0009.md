@@ -68,3 +68,10 @@ HARD_GATE: YES
 Status: FINAL REVIEW PREPARED; REGISTRATION/ENABLEMENT WITHHELD; REMOTE AND REAL
 PREACTIVATION GATES BLOCKED. Package release/hash recorded in Phase10 evidence
 when the review-only native Windows build completes.
+
+Published REVIEW-ONLY package: https://github.com/oluadegbu/Codex--DSV-/releases/tag/dmb-windows-v0.2.0-review1-2f446d25d1f2
+ZIP SHA256: `bcb5ee880163061d54441942c751d4ff850e96821dbc31ce87decd9aceff835a` (58,496,268 bytes).
+Source: `2f446d25d1f20df16e1c01769bfc36a5391e1092`. Native package and171 tests PASS.
+Task definition SHA256 remains `2e9ff8a5dbe85640d357fd6d1397408e849a9f17f22dc83e4a364c30ee42e3e1`.
+Exact scope, hashes and blocked gates: docs/evidence/phase10-review/CERTIFICATION.json.
+No activation grant, pairing credentials or remote endpoint is included.

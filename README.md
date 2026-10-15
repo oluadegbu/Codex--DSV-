@@ -194,3 +194,11 @@ adds signed intake, evidence-bound review/follow-ups, outbound relay delivery an
 a bounded Windows wrapper. Local real-process integration passes; unattended
 Windows and external delivery remain blocked by [REQUEST-0008](decisions/REQUEST-0008.md).
 No persistent process, external provider or production change is activated.
+
+Phase10 architecture is approved subject to final configuration review. The exact
+prospective task, fixed action, private namespace, protected-credential policy
+and rollback are in [deployment/phase10](deployment/phase10/README.md).
+[REQUEST-0009](decisions/REQUEST-0009.md) records the final review and unresolved
+relay/real Windows acceptance gates. No Scheduled Task is registered or enabled.
+The0.2.0-review1 package is review-only, not an activation approval; the genuine
+v0.1.3 baseline and all existing installations/journals remain preserved.

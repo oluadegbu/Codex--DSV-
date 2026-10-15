@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "mode": "SHADOW",
+  "version": "0.2.0-review1",
+  "tag": "dmb-windows-v0.2.0-review1-2f446d25d1f2",
+  "source_commit": "2f446d25d1f20df16e1c01769bfc36a5391e1092",
+  "filename": "DMB-Windows-0.2.0-review1-2f446d25d1f2-amd64.zip",
+  "sha256": "bcb5ee880163061d54441942c751d4ff850e96821dbc31ce87decd9aceff835a",
+  "bytes": 58496268,
+  "package_manifest_sha256": "1f7650cb35a2935e9aa06851a51289e791553a3d249a8043a4091785c3e7dedf",
+  "smoke_evidence_sha256": "fbba04d17a8c70a6a41ac04d9a212395cb7a60847dbdc5f2f4f6a09363d4bdbf",
+  "Windows_genuine_task": "NOT TESTED; requires existing DirectiveCodex foreground session",
+  "signature": "SHA-256 verified release ZIP; CPython executable Authenticode checked in CI; DCI ZIP not Authenticode signed"
+}
