@@ -1,0 +1,28 @@
+{
+  "package_source_local": "683824f4df2a5e6ba1b1e055f4b3bef4701e72d7",
+  "package_source_remote": "a46705985abd939d1ffa64ac1d29684bdd4dd830",
+  "identical_source_tree": "fbbe95146c3a826b078bdc97a06600a5a346924d",
+  "history": [
+    {
+      "local": "8d04510544d61bf0bd3001e3a55f2604345d0396",
+      "remote": "9e66465931abc28c970be8a938c3d66307e5ef7c"
+    },
+    {
+      "local": "22d05715a18b1e8a1d5078dfe50ae8c2849d1639",
+      "remote": "a6f17c114ec291dc2f7c0372903c86769f0f5690"
+    },
+    {
+      "local": "683824f4df2a5e6ba1b1e055f4b3bef4701e72d7",
+      "remote": "a46705985abd939d1ffa64ac1d29684bdd4dd830"
+    }
+  ],
+  "code_bundle_path": "/workspace/dci-dmb-phase10-lifecycle-683824f.bundle",
+  "code_bundle_sha256": "08bc8a38356d9c514ea57dd779246de06e898cbe5425a4fb2a8bfadf6faaeb75",
+  "bundle_verify": "PASS complete history",
+  "remote_main_unchanged": "0af1f4208da6d5f799ec68d48aab5fb4800159d0",
+  "publication_method": "Git Data API exact-tree comparison and expected-SHA non-force development ref updates",
+  "PR": 1,
+  "draft": true,
+  "merged": false,
+  "earlier_packages_and_bundles": "PRESERVED"
+}

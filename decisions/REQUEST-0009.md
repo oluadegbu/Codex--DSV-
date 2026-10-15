@@ -148,3 +148,34 @@ first corrected CI package passes native checks. No new-package DirectiveCodex
 cancellation/crash/access-denial/elapsed-hour receipt, authenticated approved
 remote endpoint, batch-context receipt or RDP-independent worker PASS exists yet.
 Final registration and activation are still WITHHELD.
+
+
+### Final published candidate and one consolidated native action
+
+Exact version-pinned candidate: `dmb-windows-v0.3.0-a46705985abd`
+Source: `a46705985abd939d1ffa64ac1d29684bdd4dd830`
+ZIP: `DMB-Windows-0.3.0-a46705985abd-amd64.zip`
+SHA256: `38b395f3609900d1c5423fc9ed4f02413397db8728c2c27d66ae576308ead5f6` (58,518,513 bytes).
+CI:186 tests PASS;100 verifier cycles/1099 worker checks preserved; native Windows
+package, fixed task XML and inert deployment script parsing PASS. Independent
+published ZIP and624 manifest-file hashes PASS. Prior131 evidence files unchanged.
+No claim of actual new-package DirectiveCodex lifecycle certification is made.
+
+One copy-paste-ready foreground procedure, with download, integrity/signature,
+identity, pairing, genuine Codex artifact/completion, real elapsed-hour rotation,
+competing-owner denial, cancellation/crash/recovery and canary-denial checks:
+`docs/DMB_PHASE10_NATIVE_CERTIFICATION.ps1`. It installs NO persistent task/service,
+grants NO rights, changes NO ACL/policy/firewall and activates NO remote relay.
+It is necessary because the available remote executor is Administrator/High and
+cannot safely launch a worker or inject work into the existing user's RDP session.
+
+Consolidated remaining human requirements: run that single procedure in existing
+DirectiveCodex Medium context; identify the existing approved relay endpoint and
+authorized private configuration route; approve any demonstrably missing
+account-specific batch right and local protected password enrollment; only after
+actual acceptance/remote preflight review, explicitly authorize the exact
+PREDEPLOY digest, eight-hour version-2 grant and existing-security-owner creation/
+initial start of the single pinned least-privilege task. No task registration,
+activation, credential enrollment or logon-right change is authorized yet.
+
+REQUEST-0009 STATUS: WITHHELD. FULL UNATTENDED CERTIFICATION: BLOCKED.

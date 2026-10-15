@@ -216,3 +216,13 @@ entry and exact inert registration/rollback scripts. All historical evidence is
 preserved. CI/package validation and real Windows worker certification are
 reported separately in BUILD_STATE; REQUEST-0009 installation/activation stays
 withheld, and no remote relay is inferred from Temporal compatibility.
+
+
+Current lifecycle package: [dmb-windows-v0.3.0-a46705985abd](https://github.com/oluadegbu/Codex--DSV-/releases/tag/dmb-windows-v0.3.0-a46705985abd).
+The exact release source passes186 CI tests,100 verifier cycles and1099 worker
+checks; native Windows embedded-package validation passes. All624 packaged files
+were independently hash-verified after download. The [single foreground native
+procedure](docs/DMB_PHASE10_NATIVE_CERTIFICATION.ps1) is pinned to this ZIP and
+preserves existing installations. These are package/local gates; actual new-package
+Windows cancellation/crash/denial/hour-boundary and RDP-independent operation are
+still NOT TESTED. REQUEST-0009 registration/activation remains WITHHELD.

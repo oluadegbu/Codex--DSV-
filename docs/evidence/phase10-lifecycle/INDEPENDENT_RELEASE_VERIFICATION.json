@@ -1,0 +1,10 @@
+{
+  "status": "PASS",
+  "scope": "Independent public release download/ZIP and every manifest file verified; no Windows worker executed",
+  "source_commit": "a46705985abd939d1ffa64ac1d29684bdd4dd830",
+  "tag": "dmb-windows-v0.3.0-a46705985abd",
+  "sha256": "38b395f3609900d1c5423fc9ed4f02413397db8728c2c27d66ae576308ead5f6",
+  "bytes": 58518513,
+  "verified_manifest_files": 624,
+  "no_files_extracted_or_executed": true
+}
