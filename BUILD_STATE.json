@@ -2,9 +2,9 @@
   "schema_version": 1,
   "project": "Directive Crypto Intelligence",
   "repository": "oluadegbu/Codex--DSV-",
-  "updated_at": "2026-10-15T09:35:48.842444+00:00",
-  "milestone": "phase10-targeted-readiness-review",
-  "status": "NOT_READY_POLICY_AND_ACCESS_GATES_BLOCKED",
+  "updated_at": "2026-10-15T17:34:04.471572+00:00",
+  "milestone": "phase10-watchdog-lifecycle-implementation",
+  "status": "IMPLEMENTED_ACTIVATION_WITHHELD_EXTERNAL_AND_NATIVE_GATES_BLOCKED",
   "mode": "SHADOW",
   "synthetic_only": true,
   "hard_gates": {
@@ -705,5 +705,30 @@
     "previous_packages_journals_pairing": "PRESERVED",
     "new_release_published": false,
     "evidence": "docs/evidence/phase10-readiness/READINESS.json"
+  },
+  "phase10_lifecycle": {
+    "package_version": "0.3.0",
+    "source_evidence": "docs/evidence/phase10-lifecycle",
+    "implementation": [
+      "five_minute_watchdog",
+      "native_exclusive_owner",
+      "normal_exit_continuation",
+      "persistent_three_crash_circuit",
+      "sticky_STOP",
+      "clock_regression_block",
+      "quarantine_before_new_poll",
+      "recovery_only_delivery"
+    ],
+    "task_definition": "deployment/phase10/lifecycle-v0.3.0/Directive.DMB.ShadowWorker.Phase10.xml",
+    "task_xml_sha256": "2dd50b9b5493513cb1c4b2510d732a75320949980a126dc5143cc58f2aed5b14",
+    "scheduled_task_registered": false,
+    "REQUEST-0009": "WITHHELD",
+    "CI": "PENDING",
+    "release": "PENDING_NATIVE_VALIDATION",
+    "real_Windows_new_package": "NOT TESTED",
+    "remote_endpoint": "BLOCKED_NO_VERIFIED_EXISTING_APPROVED_ENDPOINT",
+    "next_safe_action": "CI native package validation and publication; single consolidated native procedure under existing DirectiveCodex once independent canary input is ready",
+    "genuine_v013_baseline_preserved": true,
+    "independent_canary_creation": "PASS ACTUAL WINDOWS; denial NOT TESTED"
   }
 }

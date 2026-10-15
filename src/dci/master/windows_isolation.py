@@ -29,7 +29,7 @@ def probe(manifest_file, namespace="DMBWindowsWorker-ops-0.2.0-review1"):
         kernel.CloseHandle(handle)
         return 0
     own = private_root(namespace)/'operations-isolation'
-    own.mkdir(exist_ok=True)
+    own.mkdir(parents=True,exist_ok=True)
     positive = own/'own-canary.txt'
     if not positive.exists():
         with positive.open('xb') as file:file.write(CANARY)

@@ -140,6 +140,19 @@ class BridgeTests(unittest.TestCase):
         self.assertTrue(self.h.controller.report()["held_resources"])
         self.assertEqual(self.h.controller.planner.claim(int(time.time())), [])
 
+    def test_quarantined_recovery_cannot_poll_for_another_task(self):
+        self.h.submit();self.h.worker.rpc("HELLO",self.h.identity)
+        offer=self.h.worker.rpc("POLL",{})["task"];self.h.worker.rpc("START",route(offer))
+        with self.h.worker_store.tx():self.h.worker_store.db.execute("UPDATE win_local_jobs SET state='EXECUTING'")
+        calls=[]
+        def observed(packet):
+            calls.append(packet["kind"]);return self.h.transport(packet)
+        self.h.worker.transport=observed
+        with self.assertRaises(PermissionError):self.h.worker.step()
+        self.assertNotIn("POLL",calls);self.assertEqual(self.h.executions,0)
+        self.assertEqual(self.h.server_store.task("one")["state"],"NEEDS_HUMAN")
+        self.assertTrue(self.h.controller.report()["held_resources"])
+
     def test_wrong_key_tampering_reflection_and_stale_packets(self):
         packet = sign(self.h.key, "worker_to_controller", "HELLO", 1, self.h.identity, int(time.time()))
         for field, value in (("worker_id", "other"), ("direction", "controller_to_worker"), ("mac", "é"), ("payload", {})):

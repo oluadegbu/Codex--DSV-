@@ -10,7 +10,7 @@ from datetime import datetime, timedelta, timezone
 
 
 def verify_package(app_root, expected_version="0.1.3"):
-    if expected_version not in {"0.1.3", "0.2.0-review1"}:
+    if expected_version not in {"0.1.3", "0.2.0-review1", "0.3.0"}:
         raise PermissionError("Unsupported reviewed package version")
     root = Path(app_root).parent.resolve(strict=True)
     manifest_path = root / 'PACKAGE_MANIFEST.json'

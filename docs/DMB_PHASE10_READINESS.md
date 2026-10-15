@@ -1,3 +1,5 @@
+> Historical review1 findings below are preserved. The implemented0.3.0 lifecycle supersedes the design-only runtime status; see [current package](../deployment/phase10/lifecycle-v0.3.0/README.md). Activation remains withheld.
+
 # Phase10 targeted readiness — activation withheld
 
 The released0.2.0-review1 package is NOT a continuous unattended service. Its

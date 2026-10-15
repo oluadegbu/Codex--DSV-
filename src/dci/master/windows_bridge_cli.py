@@ -33,7 +33,7 @@ def key_from_config(config):
     return PeerKey(config["worker_id"], config["key_id"], config["expires"], base64.b64decode(config["secret"], validate=True))
 
 
-def prepare(root, route_root, workers_path, pairing_path, origin, host, ttl):
+def prepare(root, route_root, workers_path, pairing_path, origin, host, ttl, protected=False):
     root = require_non_admin(root)
     destination, workers_path, pairing_path = Path(route_root).resolve(), Path(workers_path).resolve(), Path(pairing_path).resolve()
     endpoint(origin)
@@ -60,7 +60,13 @@ def prepare(root, route_root, workers_path, pairing_path, origin, host, ttl):
                              "transport": "authenticated_outbound_windows_v1", "remote_workspace_id": WORKSPACE_ID,
                              "bridge_sha256": config["bridge_sha256"], "source_origin": "controller route only; physical Windows identity bound by authenticated HELLO"}]}
     workers_path.parent.mkdir(parents=True, exist_ok=True); pairing_path.parent.mkdir(parents=True, exist_ok=True)
-    private_json(workers_path, manifest); private_json(pairing_path, config)
+    private_json(workers_path, manifest)
+    if protected:
+        from .windows_native import require_identity, dpapi
+        require_identity()
+        with pairing_path.open('xb') as stream:
+            stream.write(dpapi(canonical(config).encode())); stream.flush(); os.fsync(stream.fileno())
+    else: private_json(pairing_path, config)
     return {"workers_manifest": str(workers_path), "private_pairing_file": str(pairing_path), "expires": config["expires"],
             "worker_id": worker, "bridge_sha256": config["bridge_sha256"], "note": "Transfer pairing file only through an approved secure channel; never paste it into chat or GitHub"}
 
@@ -117,7 +123,7 @@ def pair_windows_operations(protected_bootstrap):
     key_from_config(config).check(int(time.time())); endpoint(config['endpoint'])
     if config['expected_host'] != identity['host'] or config['bridge_sha256'] != bridge_fingerprint() or config['workspace_id'] != WORKSPACE_ID:
         raise PermissionError('Operations pairing host/code/scope mismatch')
-    root = private_root('DMBWindowsWorker-ops-0.2.0-review1'); root.mkdir(parents=True, exist_ok=True)
+    root = private_root('DMBWindowsWorker-ops-0.3.0'); root.mkdir(parents=True, exist_ok=True)
     target = root/'pairing.dpapi'
     with target.open('xb') as stream:
         stream.write(dpapi(canonical(config).encode())); stream.flush(); os.fsync(stream.fileno())
@@ -130,7 +136,7 @@ def windows_run(cycles):
         return _windows_run_locked(cycles)
 
 
-def _windows_run_locked(cycles, namespace="DMBWindowsWorker-v1-0.1.3"):
+def _windows_run_locked(cycles, namespace="DMBWindowsWorker-v1-0.1.3", recover_only=False):
     from .windows_native import private_root, dpapi, require_identity, resolve_codex, WindowsJobProcess
     if not 1 <= cycles <= 100:
         raise ProtocolError("bounded foreground cycles required")
@@ -168,6 +174,9 @@ def _windows_run_locked(cycles, namespace="DMBWindowsWorker-v1-0.1.3"):
     worker = OutboundWorker(journal, key, identity, HttpsTransport(config["endpoint"], config.get("ca_file")),
                             NativeCodexExecutor(scratch, state, executable, identity), bridge_fingerprint())
     try:
+        if recover_only:
+            worker.recover()
+            return {"recovery_only": True, "new_execution": False}
         for _ in range(cycles):
             result = worker.step()
             if not result.get("idle"):

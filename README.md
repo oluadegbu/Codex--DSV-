@@ -207,3 +207,12 @@ v0.1.3 baseline and all existing installations/journals remain preserved.
 one-hour acceptance session is not continuous supervision. A disabled watchdog
 design is prepared; batch-logon allowance, approved relay and real non-admin
 preactivation gates remain blocked. No new package or operator procedure is issued.
+
+
+The 0.3.0 [lifecycle package](deployment/phase10/lifecycle-v0.3.0/README.md)
+implements the five-minute watchdog authority, durable three-crash circuit and
+normal-exit continuation. It adds one actual-Windows foreground certification
+entry and exact inert registration/rollback scripts. All historical evidence is
+preserved. CI/package validation and real Windows worker certification are
+reported separately in BUILD_STATE; REQUEST-0009 installation/activation stays
+withheld, and no remote relay is inferred from Temporal compatibility.

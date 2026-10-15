@@ -124,7 +124,9 @@ def require_identity():
 
 
 def private_root(namespace="DMBWindowsWorker-v1-0.1.3"):
-    if namespace not in {"DMBWindowsWorker-v1-0.1.3", "DMBWindowsWorker-ops-0.2.0-review1"}:
+    if namespace not in {"DMBWindowsWorker-v1-0.1.3", "DMBWindowsWorker-ops-0.2.0-review1", "DMBWindowsWorker-ops-0.3.0",
+                         "DMBWindowsWorker-cert-0.3.0-success", "DMBWindowsWorker-cert-0.3.0-cancel",
+                         "DMBWindowsWorker-cert-0.3.0-crash"}:
         raise PermissionError("Unapproved DMB private namespace")
     require_identity()
     buffer = ctypes.create_unicode_buffer(32768)
@@ -141,6 +143,10 @@ def private_root(namespace="DMBWindowsWorker-v1-0.1.3"):
     return root
 
 
+class WorkerOwnershipError(PermissionError):
+    """A live native lock owner exists; never recover its journal."""
+
+
 @contextmanager
 def foreground_lock(root):
     """One local owner. A competing foreground process must never recover its peer."""
@@ -154,7 +160,7 @@ def foreground_lock(root):
         try:
             msvcrt.locking(stream.fileno(), msvcrt.LK_NBLCK, 1)
         except OSError as exc:
-            raise PermissionError("another foreground bridge owns this worker; no concurrent recovery") from exc
+            raise WorkerOwnershipError("another foreground bridge owns this worker; no concurrent recovery") from exc
         try:
             yield
         finally:

@@ -159,6 +159,10 @@ class OutboundWorker:
 
     def step(self):
         self.recover()
+        # Recovery must never roll directly into a new offer after ambiguous effects.
+        if any(json.loads(row[0]).get("status") == "UNCERTAIN" for row in
+               self.store.db.execute("SELECT report FROM win_local_jobs WHERE report IS NOT NULL")):
+            raise PermissionError("Uncertain worker outcome quarantined; no further dispatch")
         self.rpc("HELLO", self.identity)
         self.rpc("POLL", {})
         row = self.store.db.execute("SELECT * FROM win_local_jobs WHERE state IN ('OFFERED','START_ACK','START_ACK_CANCEL') ORDER BY rowid LIMIT 1").fetchone()
@@ -276,6 +280,8 @@ class NativeCodexExecutor:
             proc = WindowsJobProcess(self.executable, ["-c", "mcp_servers={}", "-c", 'web_search="disabled"',
                                                       "app-server", "--listen", "stdio://"], self.scratch, directory)
             pid = proc.pid
+            atomic_json(directory / "process-started.json", {"pid": pid, "bridge_pid": os.getpid(),
+                        "task_id": task["task_id"], "bridge_sha256": bridge_fingerprint()})
             proc.send(machine.initial())
             while not machine.status and time.monotonic() < deadline:
                 if sum(p.stat().st_size for p in directory.glob("*.log")) > 1048576:

@@ -29,13 +29,20 @@ from dci.master.windows_codex_locator import discover,OFFICIAL_CODEX,pinned_imag
 from dci.bridge.store import BridgeStore
 app=Path(sys.argv[1]); assert sys.version_info[:3]==(3,12,10)
 assert shutil.which('git') is None and shutil.which('python') is None
-meta=verify_package(app, '0.2.0-review1'); assert meta['mode']=='SHADOW'
+meta=verify_package(app, '0.3.0'); assert meta['mode']=='SHADOW'
 assert not (app/'deployment/phase10/activation.dpapi').exists()
 from xml.etree import ElementTree as ET
-task=ET.parse(app/'deployment/phase10/Directive.DMB.ShadowWorker.Phase10.xml')
+task=ET.parse(app/'deployment/phase10/lifecycle-v0.3.0/Directive.DMB.ShadowWorker.Phase10.xml')
 ns={'t':'http://schemas.microsoft.com/windows/2004/02/mit/task'}
 assert task.find('.//t:LogonType',ns).text=='Password'
 assert task.find('.//t:RunLevel',ns).text=='LeastPrivilege'
+assert task.find('.//t:Repetition/t:Interval',ns).text=='PT5M'
+assert task.find('.//t:RestartOnFailure',ns) is None
+# Native Task Scheduler parser only: no registration, Run, or credentials.
+ps=str(system_directory()/'WindowsPowerShell/v1.0/powershell.exe')
+xml_path=str(app/'deployment/phase10/lifecycle-v0.3.0/Directive.DMB.ShadowWorker.Phase10.xml').replace("'", "''")
+script="$s=New-Object -ComObject Schedule.Service; $s.Connect(); $t=$s.NewTask(0); $t.XmlText=[IO.File]::ReadAllText('"+xml_path+"'); if($t.Settings.MultipleInstances -ne 2 -or $t.Settings.RestartCount -ne 0 -or $t.Triggers.Item(1).Repetition.Interval -ne 'PT5M' -or $t.Principal.LogonType -ne 1 -or $t.Principal.RunLevel -ne 0){throw 'Unsafe task definition'}"
+subprocess.run([ps,'-NoProfile','-NonInteractive','-Command',script],check=True,capture_output=True,timeout=15)
 assert subprocess.check_output(['git','--version'],text=True).strip()=='git version 2.51.0.windows.1'
 key=PeerKey('windows_codex_shadow','offline-smoke',2000,b'0'*32)
 verify(key,sign(key,'worker_to_controller','POLL',1,{},1000),'worker_to_controller',1000)
@@ -124,7 +131,7 @@ except PermissionError:
  guard='PASS CI identity rejected before worker launch'
 else:
  raise RuntimeError('CI cannot substitute for the DirectiveCodex worker session')
-print(json.dumps({'embedded_python':'PASS3.12.10','system_Git_Python_absent_from_PATH':True,'bundled_git':'PASS2.51.0.windows.1','TLS_crypto_native_dependencies':'PASS','sqlite_reopen_audit':'PASS','HMAC_protocol':'PASS','identity_guard':guard,'native_token_API_evidence':native_identity_evidence,'native_Codex_discovery':discovery,'genuine_Codex':'NOT TESTED','services_installed':False}))
+print(json.dumps({'embedded_python':'PASS3.12.10','system_Git_Python_absent_from_PATH':True,'bundled_git':'PASS2.51.0.windows.1','TLS_crypto_native_dependencies':'PASS','sqlite_reopen_audit':'PASS','HMAC_protocol':'PASS','identity_guard':guard,'native_token_API_evidence':native_identity_evidence,'native_Codex_discovery':discovery,'native_five_minute_task_XML':'PASS parsed only; never registered','genuine_Codex':'NOT TESTED','services_installed':False}))
 '''
     result = subprocess.run([str(python), '-I', '-c', code, str(package / 'app'), str(codex_fixture)], env=env,
                             capture_output=True, text=True, timeout=60)

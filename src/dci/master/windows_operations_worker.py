@@ -1,84 +1,90 @@
-"""Bounded polling wrapper for an APPROVED user-mode supervisor. Installs nothing.
-
-This foreground entry alone does not establish survival across RDP logoff/reboot.
-Existing paired worker code/journals remain unchanged. No restart on uncertainty.
-"""
+"""One bounded watchdog session; external five-minute scheduler installs separately."""
 import argparse
+import hashlib
 import json
 from pathlib import Path
+import sqlite3
 import time
-from uuid import uuid4
-from dci.bridge.store import BridgeStore
+from dci.bridge.protocol import ProtocolError
 from .windows_protocol import sha
+from .windows_lifecycle import Lifecycle
+
+NAMESPACE = 'DMBWindowsWorker-ops-0.3.0'
 
 
-def run(seconds=300, isolation_manifest=None, stop_file=None):
+def journal_uncertain(root):
+    """Read-only pre-dispatch check; missing database is safe, corrupt evidence is not."""
+    journal = Path(root) / 'state/bridge.sqlite'
+    if not journal.exists(): return False
+    with sqlite3.connect(journal.as_uri() + '?mode=ro', uri=True) as db:
+        rows = db.execute('SELECT state,report FROM win_local_jobs').fetchall()
+        return any(state == 'EXECUTING' or report and json.loads(report).get('status') == 'UNCERTAIN'
+                   for state, report in rows)
+
+
+def run(seconds=300, isolation_manifest=None, stop_file=None, namespace=NAMESPACE):
     from .windows_native import require_identity, private_root, foreground_lock
     from .windows_bridge_cli import _windows_run_locked
     from .windows_worker import bridge_fingerprint
     if type(seconds) is not int or not 1 <= seconds <= 3600:
-        raise PermissionError('Bounded user-mode polling duration required')
+        raise PermissionError('Bounded polling duration required')
     identity = require_identity()
-    namespace = "DMBWindowsWorker-ops-0.2.0-review1"
+    if namespace not in {NAMESPACE, 'DMBWindowsWorker-cert-0.3.0-success'}:
+        raise PermissionError('Compiled operations or certification namespace required')
     root = private_root(namespace)
-    isolation = None
-    if isolation_manifest is not None:
-        from .windows_isolation import probe
-        isolation = probe(isolation_manifest, namespace)
-        if isolation['OS_canary_access_denial'] != 'PASS':
-            raise PermissionError('Real canary denial did not pass; no worker activation')
-    # Same exclusive native lock as the certified executor, held for the whole run.
+    # Fixed local control path, never mailbox-controlled. STOP is sticky in SQLite too.
+    if stop_file is not None and Path(stop_file) != root/'STOP':
+        raise PermissionError('Fixed local STOP path required')
+    stop = root/'STOP'
+    binding = sha({'identity': identity, 'bridge': bridge_fingerprint(),
+                   'wrapper': hashlib.sha256(Path(__file__).read_bytes()).hexdigest()})
     with foreground_lock(root):
-        store = BridgeStore(root / 'operations-lifecycle.sqlite')
-        instance = str(uuid4())
+        lifecycle = Lifecycle(root/'watchdog.sqlite', binding)
+        owner = None
         try:
-            binding = sha({'identity': identity, 'bridge': bridge_fingerprint(),
-                           'wrapper_sha256': __import__('hashlib').sha256(Path(__file__).read_bytes()).hexdigest()})
-            with store.tx():
-                old = store.db.execute("SELECT value FROM meta WHERE key='worker_lifecycle_v1'").fetchone()
-                if old is None:
-                    store.db.execute('CREATE TABLE worker_runs(id TEXT PRIMARY KEY,state TEXT,heartbeat INTEGER,reason TEXT)')
-                    store.db.execute("INSERT INTO meta VALUES ('worker_lifecycle_v1',?)", (binding,))
-                elif old[0] != binding:
-                    raise PermissionError('Wrapper/identity drift; preserve lifecycle evidence')
-                # Recovery is delegated to the existing certified worker journal.
-                # It reconciles cached receipts and quarantines uncertain started work.
-                store.db.execute("UPDATE worker_runs SET state='INTERRUPTED',reason='Owner exited; reconcile worker journal before dispatch' WHERE state='ACTIVE'")
-                store.db.execute("INSERT INTO worker_runs VALUES (?,'ACTIVE',?,NULL)", (instance, int(time.time())))
-                store.audit('windows-supervisor', 'started', {'instance': instance}, int(time.time()))
-            deadline = time.monotonic() + seconds
-            polls = 0
+            uncertain = journal_uncertain(root)
+            state = lifecycle.enter(int(time.time()), stopped=stop.exists(), uncertain=uncertain)
+            if uncertain:
+                # Deliver a sealed uncertainty receipt, NEVER poll or invoke another task.
+                # If offline, its pending envelope remains durable for human reconciliation.
+                try: _windows_run_locked(1, namespace, recover_only=True)
+                except Exception: pass
+            if state['state'] != 'ACTIVE':
+                return {'mode': 'SHADOW', 'lifecycle': state, 'worker_started': False}
+            owner = state['owner']
+            if isolation_manifest is not None:
+                from .windows_isolation import probe
+                if probe(isolation_manifest, namespace)['OS_canary_access_denial'] != 'PASS':
+                    raise PermissionError('Native canary denial required')
+            deadline, polls, outcome = time.monotonic()+seconds, 0, 'NORMAL'
             while time.monotonic() < deadline:
-                if stop_file is not None and Path(stop_file).is_file():
-                    break
-                with store.tx():
-                    store.db.execute('UPDATE worker_runs SET heartbeat=? WHERE id=?', (int(time.time()), instance))
-                _windows_run_locked(1, namespace)  # Same exact identity, version, pairing, task and sandbox gates.
-                # Do not spin/retry a quarantined worker or create unrelated new tasks.
-                journal = root / 'state/bridge.sqlite'
-                if journal.exists():
-                    # Existing worker has closed the DB; read-only inspection, no writes.
-                    import sqlite3
-                    with sqlite3.connect(journal.as_uri() + '?mode=ro', uri=True) as db:
-                        reports = db.execute("SELECT report FROM win_local_jobs WHERE report IS NOT NULL").fetchall()
-                        if any(json.loads(r[0]).get('status') == 'UNCERTAIN' for r in reports):
-                            raise PermissionError('Uncertain worker outcome; supervisor must reconcile, not restart task')
+                if stop.exists(): outcome = 'STOP'; break
+                if not lifecycle.heartbeat(owner, int(time.time())):
+                    owner = None
+                    raise PermissionError('Clock regression; lifecycle blocked')
+                # Existing native identity, DPAPI, executable pins, authenticated route,
+                # controller cancellation, Job Object and task/lease checks remain enforced.
+                _windows_run_locked(1, namespace)
                 polls += 1
-                time.sleep(min(2, max(0, deadline - time.monotonic())))
-            with store.tx():
-                store.db.execute("UPDATE worker_runs SET state='STOPPED',heartbeat=?,reason='Bounded run ended' WHERE id=?", (int(time.time()), instance))
-                store.audit('windows-supervisor', 'bounded_stop', {'instance': instance, 'polls': polls}, int(time.time()))
-            return {'mode': 'SHADOW', 'instance': instance, 'polls': polls, 'state': 'STOPPED',
-                    'RDP_independence_certified': False, 'service_installed': False, 'isolation_probe': isolation}
+                if journal_uncertain(root):
+                    outcome = 'UNCERTAIN'; break
+                time.sleep(min(2, max(0, deadline-time.monotonic())))
+            if stop.exists(): outcome = 'STOP'
+            state = lifecycle.finish(owner, int(time.time()), outcome); owner = None
+            return {'mode': 'SHADOW', 'polls': polls, 'lifecycle': state,
+                    'service_installed': False, 'RDP_independence_certified': False}
         except BaseException as error:
-            if not store.db.execute("SELECT 1 FROM sqlite_master WHERE name='worker_runs'").fetchone():
-                raise
-            with store.tx():
-                store.db.execute("UPDATE worker_runs SET state='BLOCKED',heartbeat=?,reason=? WHERE id=?", (int(time.time()), type(error).__name__, instance))
-                store.audit('windows-supervisor', 'blocked', {'instance': instance, 'reason': type(error).__name__, 'automatic_task_retry': False}, int(time.time()))
+            if owner is not None:
+                # Never recover automatically from uncertain task effects, authentication,
+                # source/pairing/policy failures or corrupt journals.
+                try: uncertain = journal_uncertain(root)
+                except Exception: uncertain = True
+                outcome = 'UNCERTAIN' if uncertain else ('STOP' if isinstance(error, KeyboardInterrupt)
+                          else 'POLICY' if isinstance(error, (PermissionError, ProtocolError, ValueError, OSError))
+                          else 'CRASH')
+                lifecycle.finish(owner, int(time.time()), outcome)
             raise
-        finally:
-            store.close()
+        finally: lifecycle.close()
 
 
 def main():

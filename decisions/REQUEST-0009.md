@@ -85,3 +85,35 @@ account/groups; policy/credential changes remain unauthorized. No verified exist
 relay endpoint or supported non-admin invocation context is available. Do not
 register/import either definition. Operator procedure and activation remain withheld
 until those gates and real package-bound preactivation evidence are ready.
+
+
+## Blocker-closure implementation — final activation still WITHHELD
+
+The 0.3.0 implementation supersedes the historical review1 lifecycle description
+above for final review. Exact new task:
+`deployment/phase10/lifecycle-v0.3.0/Directive.DMB.ShadowWorker.Phase10.xml`,
+SHA256 `2dd50b9b5493513cb1c4b2510d732a75320949980a126dc5143cc58f2aed5b14`.
+Boot +1minute, indefinite five-minute repetition, IgnoreNew, no RestartOnFailure.
+Native exclusive ownership plus a persistent three-crash circuit now exist;
+normal session rotation preserves the crash count. STOP/policy/uncertainty are
+sticky, no automatic renewal or quarantine clear. New package/private namespaces
+preserve every old installation and journal. A version-2 grant up to8hours is a
+PROPOSED explicit acceptance authorization, never an extension of old1hour grants.
+
+One consolidated approval/access request remains in
+`deployment/phase10/lifecycle-v0.3.0/README.md`: existing approved authenticated
+relay host/access reference and private pairing; native DirectiveCodex foreground
+certification with independent harmless canaries; minimum account-specific batch
+right only if missing; local Windows-protected password enrollment; final exact
+package/XML/evidence-bound registration and initial start. No password in chat.
+Exact inert scripts perform only this task's create/start or disable/drain/remove,
+with no overwrite, security policy/ACL/firewall change or other schedule access.
+Actual batch logon is tested before registration to prevent implicit rights grant.
+The known selected remote executor remains Administrator/High; no worker is
+launched there. >1hour, actual cancellation/crash/denial and remote/batch/RDP
+independence must each retain BLOCKED/NOT TESTED until native receipts exist.
+
+BLOCKING: YES
+HARD_GATE: YES
+Status: REQUEST-0009 WITHHELD. Code/package publication is authorized development;
+this request, a package release and passing CI do not authorize task activation.

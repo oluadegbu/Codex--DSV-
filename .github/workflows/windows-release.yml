@@ -7,6 +7,9 @@ on:
       - 'schemas/**'
       - 'packaging/**'
       - 'tools/run_windows_shadow_bridge.py'
+      - 'tools/run_windows_lifecycle_host.py'
+      - 'tools/certify_windows_lifecycle.py'
+      - 'deployment/phase10/**'
       - 'tools/windows_package_runtime.py'
       - 'tools/build_windows_package.py'
       - 'tools/check_windows_package.py'
@@ -18,6 +21,9 @@ on:
       - 'schemas/**'
       - 'packaging/**'
       - 'tools/run_windows_shadow_bridge.py'
+      - 'tools/run_windows_lifecycle_host.py'
+      - 'tools/certify_windows_lifecycle.py'
+      - 'deployment/phase10/**'
       - 'tools/windows_package_runtime.py'
       - 'tools/build_windows_package.py'
       - 'tools/check_windows_package.py'
@@ -78,5 +84,5 @@ jobs:
           cd release
           sha256sum --check SHA256SUMS.txt
           tag="$(jq -r .tag RELEASE.json)"
-          printf '%s\n' 'Phase10 REVIEW-ONLY self-contained Windows package. No task/service registration, installer, activation grant, credentials or remote endpoint included. Architecture approval is not activation approval. Exact proposed task and rollback: app/deployment/phase10. Final approval and real Windows preactivation gates remain required. Provenance: RELEASE.json and PACKAGE_SMOKE.json.' > NOTES.txt
+          printf '%s\n' 'Phase10 bounded lifecycle self-contained Windows package; activation WITHHELD. No task/service registration, installer, activation grant, credentials or remote endpoint included. Architecture approval is not activation approval. Exact proposed task and rollback: app/deployment/phase10. Final approval and real Windows preactivation gates remain required. Provenance: RELEASE.json and PACKAGE_SMOKE.json.' > NOTES.txt
           gh release create "$tag" --target "$DMB_SOURCE" --prerelease --title "DMB Windows shadow $tag" --notes-file NOTES.txt ./*.zip RELEASE.json SHA256SUMS.txt PACKAGE_SMOKE.json
