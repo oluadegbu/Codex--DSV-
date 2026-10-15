@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "historical_evidence_files_preserved": 107,
+  "certified_Windows_core_files_byte_identical": [
+    "windows_protocol.py",
+    "windows_worker.py",
+    "windows_native.py",
+    "windows_bridge_cli.py",
+    "windows_codex_locator.py"
+  ],
+  "old_VPS_journals_mutated": false,
+  "production_changes": false,
+  "main_modified": false
+}

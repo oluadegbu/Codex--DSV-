@@ -120,3 +120,9 @@ Temporal-compatible activity boundaries are intake(message ID), execute(task ID,
 fence), reconcile(receipt digest), review(scope/result digest) and deliver(event ID).
 A Temporal retry must preserve identity/fence and must never re-run an uncertain
 started worker. No Temporal deployment or DAT Temporal milestone changes occurred.
+
+Milestone evidence: [operations certificate](evidence/autonomous-operations/CERTIFICATION.json),
+[real process workflow](evidence/autonomous-operations/WORKFLOW.json),
+[CI166 tests](evidence/autonomous-operations/CI.json), and
+[hash manifest](evidence/autonomous-operations/ARTIFACT_MANIFEST.json).
+The certified Windows core and107 prior evidence files remain byte-identical.

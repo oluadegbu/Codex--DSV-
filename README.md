@@ -185,7 +185,7 @@ Codex standalone junction layout on Windows. It verifies native final file
 identity and the pinned executable hash before launching the resolved image,
 with write/delete pins through suspended creation. All158 tests and native
 package validation pass. Both failed installations remain intact and proven
-unstarted; genuine DirectiveCodex completion awaits the one foreground procedure.
+unstarted. The later actual DirectiveCodex receipt confirms genuine completion.
 See [release evidence](docs/evidence/windows-junction-repair/CERTIFICATION.json).
 
 The actual Windows0.1.3 receipt now confirms the genuine local task and durable

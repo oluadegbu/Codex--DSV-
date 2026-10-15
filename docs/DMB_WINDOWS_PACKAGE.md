@@ -116,8 +116,9 @@ to bypass authentication.
 
 Current hashes, actual release/download identity, CI and blockers are recorded
 under docs/evidence/windows-junction-repair and BUILD_STATE.json.
-Windows task certification remains pending until the foreground task produces its
-genuine receipt. Remote cloud delivery, Windows cancellation/crash, OS canary read
+The actual v0.1.3 foreground receipt now passes at
+[Windows completion evidence](evidence/windows-genuine-completion/CERTIFICATION.json).
+Do not rerun the successful deployment or reset its journals for operations integration. Remote cloud delivery, Windows cancellation/crash, OS canary read
 and write denial, multi-worker isolation and external integrations remain separate
 gates. Full DMB certification stays BLOCKED; DAT Temporal integration and all
 production systems remain unchanged.

@@ -2,7 +2,7 @@
   "schema_version": 1,
   "project": "Directive Crypto Intelligence",
   "repository": "oluadegbu/Codex--DSV-",
-  "updated_at": "2026-10-14T23:42:47.220472+00:00",
+  "updated_at": "2026-10-15T01:06:34.482461+00:00",
   "milestone": "autonomous-operations-local-integration",
   "status": "WINDOWS_LOCAL_BRIDGE_PASS_OPERATIONS_LOCAL_PASS_UNATTENDED_REMOTE_BLOCKED",
   "mode": "SHADOW",
@@ -158,7 +158,7 @@
     "M1 operates one trusted non-root Linux paper worker; hostile-code OS separation and real Windows Codex cancellation/recovery remain pending"
   ],
   "next_safe_tasks": [
-    "Publish and verify operations integration CI/evidence on draft PR1; retain certified Windows release/core/journals",
+    "Await consolidated REQUEST-0008 deployment approval and an existing approved durable host/relay; all local implementation, integration evidence and CI published on draft PR1",
     "Await REQUEST-0008 approval plus approved durable host/relay; never install persistence or activate external delivery implicitly",
     "After authorized deployment, automatically certify actual non-admin startup, cancellation, owned-worker crash/recovery and harmless OS canary denial; retain uncertain quarantine",
     "Keep provider notifications, tool-enabled development, live trading and full DMB certification gated; preserve separate DAT Temporal milestone"
@@ -598,7 +598,7 @@
     "release_url": "https://github.com/oluadegbu/Codex--DSV-/releases/tag/dmb-windows-v0.1.3-8d78f83963db"
   },
   "next_safe_actions": [
-    "Publish and verify operations integration CI/evidence on draft PR1; retain certified Windows release/core/journals",
+    "Await consolidated REQUEST-0008 deployment approval and an existing approved durable host/relay; all local implementation, integration evidence and CI published on draft PR1",
     "Await REQUEST-0008 approval plus approved durable host/relay; never install persistence or activate external delivery implicitly",
     "After authorized deployment, automatically certify actual non-admin startup, cancellation, owned-worker crash/recovery and harmless OS canary denial; retain uncertain quarantine",
     "Keep provider notifications, tool-enabled development, live trading and full DMB certification gated; preserve separate DAT Temporal milestone"
@@ -612,6 +612,38 @@
     "approval_request": "decisions/REQUEST-0008.md",
     "OS_isolation": "NOT TESTED",
     "production_changes": false,
-    "full_DMB": "BLOCKED"
+    "full_DMB": "BLOCKED",
+    "evidence": "docs/evidence/autonomous-operations/CERTIFICATION.json",
+    "CI": {
+      "source_remote": "87bc6cdb37e5b22b577629b74a70af1ab3a9f815",
+      "source_local": "aeb62f3ff963ada8f211fcc036b2d9cff43d6129",
+      "source_tree": "7f8d3d0a1fd07729497227ef49cf772abe9b892b",
+      "tests": 166,
+      "test_breakdown": {
+        "core": 100,
+        "authorization": 17,
+        "real_paper_runtime": 9,
+        "Windows_contract_TLS_fixture": 19,
+        "package": 13,
+        "operations_real_process": 8
+      },
+      "deterministic_run": 38663475385,
+      "deterministic_job": 116189902875,
+      "Windows_package_run": 38663475024,
+      "Windows_package_job": 116190002403,
+      "status": "PASS",
+      "CI_operations_workflow": "LOCAL_AUTHENTICATED_OPERATIONS_WORKFLOW_PASS",
+      "CI_operations_durable_executions": 2,
+      "CI_operations_duplicate_executions": 0,
+      "CI_existing_controller_crash_exit": 73,
+      "CI_existing_controller_recovery_without_reexecution": "research-crash",
+      "replacement_Windows_release_published": false,
+      "native_Windows_worker_wrapper_run": "NOT TESTED; CI identity remains rejected"
+    },
+    "local_durable_executions": 2,
+    "local_duplicate_executions": 0,
+    "automatic_bounded_followup": true,
+    "real_Windows_PID": 4196,
+    "real_Windows_receipt": "docs/evidence/windows-genuine-completion/CERTIFICATION.json"
   }
 }
