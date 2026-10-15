@@ -65,5 +65,5 @@ If no suitable host/relay exists, report that access boundary; do not purchase o
 BLOCKING: YES
 HARD_GATE: YES
 
-Status: PENDING — no approval inferred from prior local certifications or delivery.
+Status: ARCHITECTURE APPROVED by the operator in Phase10, subject to FINAL CONFIGURATION REVIEW. Installation/activation NOT APPROVED. Exact review and remaining gates: REQUEST-0009.
 Independent safe development and CI may continue; deployment remains disabled.

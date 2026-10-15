@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "native_TaskScheduler_XML_parse": "PASS",
+  "task_xml_sha256": "2e9ff8a5dbe85640d357fd6d1397408e849a9f17f22dc83e4a364c30ee42e3e1",
+  "COM_calls": [
+    "Schedule.Service.Connect",
+    "NewTask(0)",
+    "ITaskDefinition.XmlText assignment/readback"
+  ],
+  "registration_calls": 0,
+  "task_runs": 0,
+  "principal_native_name": "DirectiveCodex",
+  "principal_configured_SID": "S-1-5-21-3675741470-1525898003-3877381073-1000",
+  "LogonType": 1,
+  "RunLevel": 0,
+  "trigger_count": 1,
+  "restart_count": 3,
+  "restart_interval": "PT5M",
+  "execution_time_limit": "PT1H2M",
+  "native_worker_context": {
+    "user": "WIN-HQAAFGGU1AM\\Administrator",
+    "sid": "S-1-5-21-3675741470-1525898003-3877381073-500",
+    "elevated": true,
+    "integrity_sid": "S-1-16-12288",
+    "eligible": false
+  },
+  "worker_launched": false,
+  "persistent_changes": false,
+  "notes": "Initial COM/BSTR parse rejected the UTF8 declaration; declaration was made encoding-neutral and native parse passed. No failed definition was registered."
+}

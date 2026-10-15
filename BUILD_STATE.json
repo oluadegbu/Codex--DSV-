@@ -3,8 +3,8 @@
   "project": "Directive Crypto Intelligence",
   "repository": "oluadegbu/Codex--DSV-",
   "updated_at": "2026-10-15T01:06:34.482461+00:00",
-  "milestone": "autonomous-operations-local-integration",
-  "status": "WINDOWS_LOCAL_BRIDGE_PASS_OPERATIONS_LOCAL_PASS_UNATTENDED_REMOTE_BLOCKED",
+  "milestone": "phase10-exact-deployment-review",
+  "status": "ARCHITECTURE_APPROVED_FINAL_CONFIGURATION_REVIEW_ONLY_ACTIVATION_BLOCKED",
   "mode": "SHADOW",
   "synthetic_only": true,
   "hard_gates": {
@@ -158,10 +158,9 @@
     "M1 operates one trusted non-root Linux paper worker; hostile-code OS separation and real Windows Codex cancellation/recovery remain pending"
   ],
   "next_safe_tasks": [
-    "Await consolidated REQUEST-0008 deployment approval and an existing approved durable host/relay; all local implementation, integration evidence and CI published on draft PR1",
-    "Await REQUEST-0008 approval plus approved durable host/relay; never install persistence or activate external delivery implicitly",
-    "After authorized deployment, automatically certify actual non-admin startup, cancellation, owned-worker crash/recovery and harmless OS canary denial; retain uncertain quarantine",
-    "Keep provider notifications, tool-enabled development, live trading and full DMB certification gated; preserve separate DAT Temporal milestone"
+    "Publish review-only self-contained package and exact task configuration with native validation",
+    "Obtain existing approved relay/controller host evidence and genuine non-admin preactivation context; no new infrastructure/credentials or production changes",
+    "Final approval request REQUEST-0009 remains NOT READY FOR ACTIVATION until private configuration and actual package-bound Windows gates pass"
   ],
   "publication": {
     "method": "authenticated GitHub connector Git database APIs",
@@ -598,10 +597,9 @@
     "release_url": "https://github.com/oluadegbu/Codex--DSV-/releases/tag/dmb-windows-v0.1.3-8d78f83963db"
   },
   "next_safe_actions": [
-    "Await consolidated REQUEST-0008 deployment approval and an existing approved durable host/relay; all local implementation, integration evidence and CI published on draft PR1",
-    "Await REQUEST-0008 approval plus approved durable host/relay; never install persistence or activate external delivery implicitly",
-    "After authorized deployment, automatically certify actual non-admin startup, cancellation, owned-worker crash/recovery and harmless OS canary denial; retain uncertain quarantine",
-    "Keep provider notifications, tool-enabled development, live trading and full DMB certification gated; preserve separate DAT Temporal milestone"
+    "Publish review-only self-contained package and exact task configuration with native validation",
+    "Obtain existing approved relay/controller host evidence and genuine non-admin preactivation context; no new infrastructure/credentials or production changes",
+    "Final approval request REQUEST-0009 remains NOT READY FOR ACTIVATION until private configuration and actual package-bound Windows gates pass"
   ],
   "autonomous_operations": {
     "implementation": "signed intake/review/followup, durable outbound delivery/relay, bounded Windows wrapper and canary probes",
@@ -645,5 +643,19 @@
     "automatic_bounded_followup": true,
     "real_Windows_PID": 4196,
     "real_Windows_receipt": "docs/evidence/windows-genuine-completion/CERTIFICATION.json"
+  },
+  "phase10": {
+    "architecture_approval": "Operator directive Phase10; installation withheld pending final configuration approval",
+    "task_definition": "deployment/phase10/Directive.DMB.ShadowWorker.Phase10.xml",
+    "task_definition_sha256": "2e9ff8a5dbe85640d357fd6d1397408e849a9f17f22dc83e4a364c30ee42e3e1",
+    "native_definition_parse": "PASS in-memory, no registration",
+    "new_version": "0.2.0-review1",
+    "package": "PENDING native Windows review build",
+    "final_request": "decisions/REQUEST-0009.md",
+    "remote_relay": "UNKNOWN existing infrastructure unverified",
+    "actual_Windows_cancellation_crash_OS_denial": "BLOCKED selected context Administrator/High; no impersonation/elevation",
+    "persistent_changes": false,
+    "old_VPS_state_changed": false,
+    "new_source_requires_new_receipts": true
   }
 }

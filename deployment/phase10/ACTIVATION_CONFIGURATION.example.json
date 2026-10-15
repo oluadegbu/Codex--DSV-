@@ -1,0 +1,17 @@
+{
+  "review_status": "NOT_AUTHORIZED_FOR_REGISTRATION_OR_ACTIVATION",
+  "task_name": "\\Directive.DMB.ShadowWorker.Phase10",
+  "host": "WIN-HQAAFGGU1AM",
+  "identity": "WIN-HQAAFGGU1AM\\DirectiveCodex",
+  "user_sid": "S-1-5-21-3675741470-1525898003-3877381073-1000",
+  "integrity": "Medium",
+  "namespace": "DMBWindowsWorker-ops-0.2.0-review1",
+  "relay_endpoint": null,
+  "remote_relay_status": "BLOCKED_NO_VERIFIED_EXISTING_ENDPOINT",
+  "activation_dpapi_included": false,
+  "credentials_included": false,
+  "permitted_operation": "windows_codex_ping",
+  "acceptance_window_seconds": 3600,
+  "required_real_gates": ["genuine_task", "cancellation", "owned_worker_crash_recovery", "OS_access_denial"],
+  "notes": "Review template only. An example JSON or architecture approval cannot authorize activation. Final approved values are sealed locally using current-user DPAPI."
+}

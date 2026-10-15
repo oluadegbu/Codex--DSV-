@@ -123,12 +123,14 @@ def require_identity():
     return {"host": token["host"], "user": token["host"] + "\\DirectiveCodex", "administrator": False, "integrity": "Medium"}
 
 
-def private_root():
+def private_root(namespace="DMBWindowsWorker-v1-0.1.3"):
+    if namespace not in {"DMBWindowsWorker-v1-0.1.3", "DMBWindowsWorker-ops-0.2.0-review1"}:
+        raise PermissionError("Unapproved DMB private namespace")
     require_identity()
     buffer = ctypes.create_unicode_buffer(32768)
     if dll("shell32").SHGetFolderPathW(None, 0x1C, None, 0, buffer) != 0:
         raise PermissionError("current-user LocalAppData unavailable")
-    root = Path(buffer.value) / "Directive" / "DMBWindowsWorker-v1-0.1.3"
+    root = Path(buffer.value) / "Directive" / namespace
     kernel = dll("kernel32")
     kernel.GetFileAttributesW.argtypes = [w.LPCWSTR]
     kernel.GetFileAttributesW.restype = w.DWORD

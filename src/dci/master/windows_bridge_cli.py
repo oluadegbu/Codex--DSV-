@@ -88,7 +88,9 @@ def handler_factory(controller):
     return Handler
 
 
-def pair_windows(bootstrap, ca_file=None):
+def pair_windows(bootstrap, ca_file=None, namespace="DMBWindowsWorker-v1-0.1.3"):
+    if namespace != "DMBWindowsWorker-v1-0.1.3":
+        raise PermissionError("Operations pairing requires the DPAPI-only pairing helper")
     from .windows_native import private_root, dpapi, require_identity
     identity = require_identity()
     root = private_root()
@@ -107,17 +109,32 @@ def pair_windows(bootstrap, ca_file=None):
     return {"paired_host": identity["host"], "worker_id": config["worker_id"], "state": str(root), "key_protection": "current-user DPAPI", "expires": config["expires"]}
 
 
+def pair_windows_operations(protected_bootstrap):
+    """Local approved provisioning only; no plaintext bootstrap or silent replacement."""
+    from .windows_native import private_root, dpapi, require_identity
+    identity = require_identity()
+    config = json.loads(dpapi(Path(protected_bootstrap).read_bytes(), False))
+    key_from_config(config).check(int(time.time())); endpoint(config['endpoint'])
+    if config['expected_host'] != identity['host'] or config['bridge_sha256'] != bridge_fingerprint() or config['workspace_id'] != WORKSPACE_ID:
+        raise PermissionError('Operations pairing host/code/scope mismatch')
+    root = private_root('DMBWindowsWorker-ops-0.2.0-review1'); root.mkdir(parents=True, exist_ok=True)
+    target = root/'pairing.dpapi'
+    with target.open('xb') as stream:
+        stream.write(dpapi(canonical(config).encode())); stream.flush(); os.fsync(stream.fileno())
+    return {'worker_id': config['worker_id'], 'pairing': 'current-user DPAPI', 'old_state_changed': False}
+
+
 def windows_run(cycles):
     from .windows_native import private_root, foreground_lock
     with foreground_lock(private_root()):
         return _windows_run_locked(cycles)
 
 
-def _windows_run_locked(cycles):
+def _windows_run_locked(cycles, namespace="DMBWindowsWorker-v1-0.1.3"):
     from .windows_native import private_root, dpapi, require_identity, resolve_codex, WindowsJobProcess
     if not 1 <= cycles <= 100:
         raise ProtocolError("bounded foreground cycles required")
-    identity, root = require_identity(), private_root()
+    identity, root = require_identity(), private_root(namespace)
     config = json.loads(dpapi((root / "pairing.dpapi").read_bytes(), False))
     key = key_from_config(config); key.check(int(time.time()))
     if config["bridge_sha256"] != bridge_fingerprint() or config["expected_host"] != identity["host"]:

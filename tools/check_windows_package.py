@@ -29,7 +29,13 @@ from dci.master.windows_codex_locator import discover,OFFICIAL_CODEX,pinned_imag
 from dci.bridge.store import BridgeStore
 app=Path(sys.argv[1]); assert sys.version_info[:3]==(3,12,10)
 assert shutil.which('git') is None and shutil.which('python') is None
-meta=verify_package(app); assert meta['mode']=='SHADOW'
+meta=verify_package(app, '0.2.0-review1'); assert meta['mode']=='SHADOW'
+assert not (app/'deployment/phase10/activation.dpapi').exists()
+from xml.etree import ElementTree as ET
+task=ET.parse(app/'deployment/phase10/Directive.DMB.ShadowWorker.Phase10.xml')
+ns={'t':'http://schemas.microsoft.com/windows/2004/02/mit/task'}
+assert task.find('.//t:LogonType',ns).text=='Password'
+assert task.find('.//t:RunLevel',ns).text=='LeastPrivilege'
 assert subprocess.check_output(['git','--version'],text=True).strip()=='git version 2.51.0.windows.1'
 key=PeerKey('windows_codex_shadow','offline-smoke',2000,b'0'*32)
 verify(key,sign(key,'worker_to_controller','POLL',1,{},1000),'worker_to_controller',1000)

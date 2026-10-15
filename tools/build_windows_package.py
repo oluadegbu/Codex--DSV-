@@ -67,14 +67,14 @@ def build(output):
     # Export committed bytes, not platform-converted checkouts or runtime artifacts.
     names = subprocess.check_output(['git', 'ls-files', 'src', 'schemas', 'portfolio/REGISTRY.v1.json', 'CODEX.md',
                                      'SUPERVISOR_POLICY.md', 'README.md', '.gitignore', 'tools/run_windows_shadow_bridge.py',
-                                     'tools/windows_package_runtime.py'], cwd=ROOT, text=True).splitlines()
+                                     'tools/windows_package_runtime.py', 'tools/run_windows_operations_host.py', 'deployment/phase10'], cwd=ROOT, text=True).splitlines()
     for name in names:
         target = package / 'app' / name; target.parent.mkdir(parents=True, exist_ok=True)
         target.write_bytes(subprocess.check_output(['git', 'show', 'HEAD:' + name], cwd=ROOT))
     source = subprocess.check_output(['git', 'rev-parse', 'HEAD'], cwd=ROOT, text=True).strip()
     manifest = {**inputs, 'source_commit': source, 'python_archive_sha256': python_hash, 'wheel_inputs': wheel_inputs,
                 'files': {p.relative_to(package).as_posix(): digest(p) for p in sorted(package.rglob('*')) if p.is_file()},
-                'execution': 'existing DirectiveCodex Medium non-admin only; foreground loopback, no installer',
+                'execution': 'Phase10 REVIEW ONLY: existing DirectiveCodex Medium non-admin; no installer or registration; activation grant absent',
                 'upstream_source': 'https://github.com/git-for-windows/git/tree/v2.51.0.windows.1',
                 'runtime_license_notice': 'CPython LICENSE.txt and wheel dist-info licenses included; MinGit licenses retained from upstream ZIP. Git corresponding source/build records are linked above.'}
     (package / 'PACKAGE_MANIFEST.json').write_text(json.dumps(manifest, indent=2) + '\n')

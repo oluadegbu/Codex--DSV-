@@ -1,0 +1,34 @@
+{
+  "schema_version": 1,
+  "mode": "SHADOW",
+  "stage": "REVIEW_ONLY_NOT_INSTALLED",
+  "task_name": "\\Directive.DMB.ShadowWorker.Phase10",
+  "task_xml_sha256": "2e9ff8a5dbe85640d357fd6d1397408e849a9f17f22dc83e4a364c30ee42e3e1",
+  "account": "WIN-HQAAFGGU1AM\\DirectiveCodex",
+  "sid": "S-1-5-21-3675741470-1525898003-3877381073-1000",
+  "LogonType": "Password (Windows protected task credential store, not S4U)",
+  "RunLevel": "LeastPrivilege",
+  "required_integrity": "Medium native token gate",
+  "trigger": "BootTrigger, PT1M delay; no daily/logon/repetition trigger",
+  "working_directory": "C:\\Users\\DirectiveCodex\\AppData\\Local\\Directive\\DMB-OPS-0.2.0-review1\\package\\app",
+  "executable": "C:\\Users\\DirectiveCodex\\AppData\\Local\\Directive\\DMB-OPS-0.2.0-review1\\package\\runtime\\python\\python.exe",
+  "arguments": "-I \"C:\\Users\\DirectiveCodex\\AppData\\Local\\Directive\\DMB-OPS-0.2.0-review1\\package\\app\\tools\\run_windows_operations_host.py\" --seconds 3600",
+  "restart": "Only unexpected nonzero exit: PT5M, count3. Policy/approval blocks exit0 and remain NEEDS_HUMAN; IgnoreNew prevents overlap.",
+  "shutdown": "Fixed STOP marker drains bounded task; Python lease<=1h, Task Scheduler hard cap1h2m; owned Job kill-on-close, uncertain restart quarantined",
+  "credential_policy": "No password or provider credentials in package/Git/logs. Local supported Windows registration only after final approval; no credential collection by assistant. No S4U/network/DPAPI assumption.",
+  "persistent_changes_if_finally_approved": [
+    "One versioned current-user package directory DMB-OPS-0.2.0-review1",
+    "One separate current-user state directory DMBWindowsWorker-ops-0.2.0-review1 with DPAPI grants/pairing and journals",
+    "Exactly one Task Scheduler registration at \\Directive.DMB.ShadowWorker.Phase10",
+    "Windows-managed encrypted task credential enrollment for existing DirectiveCodex only"
+  ],
+  "activation_ready": false,
+  "unresolved": [
+    "Approved existing remote relay endpoint and identity evidence",
+    "Actual non-admin batch-logon/DPAPI/provider authentication compatibility",
+    "Real new-package Windows cancellation, owned-worker crash/recovery and canary access denial",
+    "Final configuration approval covering exact package/task hashes"
+  ],
+  "native_task_definition_parse": "PASS in-memory COM definition; never RegisterTaskDefinition or Run",
+  "registration_performed": false
+}

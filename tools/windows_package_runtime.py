@@ -9,13 +9,15 @@ import sqlite3
 from datetime import datetime, timedelta, timezone
 
 
-def verify_package(app_root):
+def verify_package(app_root, expected_version="0.1.3"):
+    if expected_version not in {"0.1.3", "0.2.0-review1"}:
+        raise PermissionError("Unsupported reviewed package version")
     root = Path(app_root).parent.resolve(strict=True)
     manifest_path = root / 'PACKAGE_MANIFEST.json'
     if not manifest_path.exists():
         return None
     manifest = json.loads(manifest_path.read_text())
-    if manifest.get('schema_version') != 1 or manifest.get('mode') != 'SHADOW' or manifest.get('package_version') != '0.1.3' or manifest.get('architecture') != 'windows-amd64':
+    if manifest.get('schema_version') != 1 or manifest.get('mode') != 'SHADOW' or manifest.get('package_version') != expected_version or manifest.get('architecture') != 'windows-amd64':
         raise PermissionError('Unexpected versioned shadow package')
     files = manifest.get('files')
     source = manifest.get('source_commit')

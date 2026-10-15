@@ -12,18 +12,19 @@ from dci.bridge.store import BridgeStore
 from .windows_protocol import sha
 
 
-def run(seconds=300, isolation_manifest=None):
+def run(seconds=300, isolation_manifest=None, stop_file=None):
     from .windows_native import require_identity, private_root, foreground_lock
     from .windows_bridge_cli import _windows_run_locked
     from .windows_worker import bridge_fingerprint
     if type(seconds) is not int or not 1 <= seconds <= 3600:
         raise PermissionError('Bounded user-mode polling duration required')
     identity = require_identity()
-    root = private_root()
+    namespace = "DMBWindowsWorker-ops-0.2.0-review1"
+    root = private_root(namespace)
     isolation = None
     if isolation_manifest is not None:
         from .windows_isolation import probe
-        isolation = probe(isolation_manifest)
+        isolation = probe(isolation_manifest, namespace)
         if isolation['OS_canary_access_denial'] != 'PASS':
             raise PermissionError('Real canary denial did not pass; no worker activation')
     # Same exclusive native lock as the certified executor, held for the whole run.
@@ -48,9 +49,11 @@ def run(seconds=300, isolation_manifest=None):
             deadline = time.monotonic() + seconds
             polls = 0
             while time.monotonic() < deadline:
+                if stop_file is not None and Path(stop_file).is_file():
+                    break
                 with store.tx():
                     store.db.execute('UPDATE worker_runs SET heartbeat=? WHERE id=?', (int(time.time()), instance))
-                _windows_run_locked(1)  # Same exact identity, version, pairing, task and sandbox gates.
+                _windows_run_locked(1, namespace)  # Same exact identity, version, pairing, task and sandbox gates.
                 # Do not spin/retry a quarantined worker or create unrelated new tasks.
                 journal = root / 'state/bridge.sqlite'
                 if journal.exists():

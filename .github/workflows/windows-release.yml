@@ -39,6 +39,7 @@ jobs:
       - run: PYTHONPATH=src python -m unittest discover -s windows_bridge_tests -v
       - run: PYTHONPATH=src:tools python -m unittest discover -s package_tests -v
       - run: PYTHONPATH=src python -m unittest discover -s operations_tests -v
+      - run: PYTHONPATH=src:tools python -m unittest discover -s phase10_tests -v
   windows-package:
     needs: validate
     runs-on: windows-latest
@@ -77,5 +78,5 @@ jobs:
           cd release
           sha256sum --check SHA256SUMS.txt
           tag="$(jq -r .tag RELEASE.json)"
-          printf '%s\n' 'Hash-verified self-contained Windows foreground shadow package. No installer. Genuine DirectiveCodex task remains pending; no OS isolation claim. Source and package provenance: RELEASE.json and PACKAGE_SMOKE.json.' > NOTES.txt
+          printf '%s\n' 'Phase10 REVIEW-ONLY self-contained Windows package. No task/service registration, installer, activation grant, credentials or remote endpoint included. Architecture approval is not activation approval. Exact proposed task and rollback: app/deployment/phase10. Final approval and real Windows preactivation gates remain required. Provenance: RELEASE.json and PACKAGE_SMOKE.json.' > NOTES.txt
           gh release create "$tag" --target "$DMB_SOURCE" --prerelease --title "DMB Windows shadow $tag" --notes-file NOTES.txt ./*.zip RELEASE.json SHA256SUMS.txt PACKAGE_SMOKE.json

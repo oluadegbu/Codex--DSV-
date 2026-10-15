@@ -13,7 +13,7 @@ from .windows_native import require_identity, private_root, dll
 CANARY = b'DMB harmless access probe v1\n'
 
 
-def probe(manifest_file):
+def probe(manifest_file, namespace="DMBWindowsWorker-ops-0.2.0-review1"):
     identity = require_identity()
     plan = json.loads(Path(manifest_file).read_text())
     if set(plan) != {'version', 'host', 'creator_identity', 'canaries'} or plan['version'] != 1 or plan['host'] != identity['host'] or type(plan['creator_identity']) is not str or not plan['creator_identity'].casefold().startswith(identity['host'].casefold()+'\\') or plan['creator_identity'].casefold() == identity['user'].casefold() or type(plan['canaries']) is not list or len(plan['canaries']) != 2:
@@ -28,7 +28,7 @@ def probe(manifest_file):
             return ctypes.get_last_error()
         kernel.CloseHandle(handle)
         return 0
-    own = private_root()/'operations-isolation'
+    own = private_root(namespace)/'operations-isolation'
     own.mkdir(exist_ok=True)
     positive = own/'own-canary.txt'
     if not positive.exists():
