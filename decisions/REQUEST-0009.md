@@ -75,3 +75,13 @@ Source: `2f446d25d1f20df16e1c01769bfc36a5391e1092`. Native package and171 tests 
 Task definition SHA256 remains `2e9ff8a5dbe85640d357fd6d1397408e849a9f17f22dc83e4a364c30ee42e3e1`.
 Exact scope, hashes and blocked gates: docs/evidence/phase10-review/CERTIFICATION.json.
 No activation grant, pairing credentials or remote endpoint is included.
+
+Readiness addendum: docs/DMB_PHASE10_READINESS.md confirms review1 ends its bounded
+acceptance session and does not restart on normal exit. A disabled five-minute
+watchdog revision is designed/native-schema-parsed only, with a required durable
+three-crash circuit not present in review1. No new release/activation is implied.
+Actual local policy shows no observed batch-logon allowance for DirectiveCodex's
+account/groups; policy/credential changes remain unauthorized. No verified existing
+relay endpoint or supported non-admin invocation context is available. Do not
+register/import either definition. Operator procedure and activation remain withheld
+until those gates and real package-bound preactivation evidence are ready.

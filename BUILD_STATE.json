@@ -2,9 +2,9 @@
   "schema_version": 1,
   "project": "Directive Crypto Intelligence",
   "repository": "oluadegbu/Codex--DSV-",
-  "updated_at": "2026-10-15T08:56:57.869191+00:00",
-  "milestone": "phase10-exact-deployment-review",
-  "status": "ARCHITECTURE_APPROVED_FINAL_CONFIGURATION_REVIEW_ONLY_ACTIVATION_BLOCKED",
+  "updated_at": "2026-10-15T09:35:48.842444+00:00",
+  "milestone": "phase10-targeted-readiness-review",
+  "status": "NOT_READY_POLICY_AND_ACCESS_GATES_BLOCKED",
   "mode": "SHADOW",
   "synthetic_only": true,
   "hard_gates": {
@@ -158,9 +158,9 @@
     "M1 operates one trusted non-root Linux paper worker; hostile-code OS separation and real Windows Codex cancellation/recovery remain pending"
   ],
   "next_safe_tasks": [
-    "Review exact package/task definition; REQUEST-0009 activation stays blocked pending verified existing remote endpoint and genuine non-admin preactivation evidence",
-    "Obtain existing approved relay/controller host evidence and genuine non-admin preactivation context; no new infrastructure/credentials or production changes",
-    "Final approval request REQUEST-0009 remains NOT READY FOR ACTIVATION until private configuration and actual package-bound Windows gates pass"
+    "Resolve existing approved relay endpoint/host/read-only access metadata; no provisioning or credential reuse",
+    "Resolve actual non-admin foreground/batch execution context and missing local batch-right allowance through explicit authorized policy review; never impersonate or grant rights implicitly",
+    "Only then finalize/implement bounded watchdog circuit, produce one package-bound real Windows preactivation run and request final activation approval; no operator action issued prematurely"
   ],
   "publication": {
     "method": "authenticated GitHub connector Git database APIs",
@@ -597,9 +597,9 @@
     "release_url": "https://github.com/oluadegbu/Codex--DSV-/releases/tag/dmb-windows-v0.1.3-8d78f83963db"
   },
   "next_safe_actions": [
-    "Review exact package/task definition; REQUEST-0009 activation stays blocked pending verified existing remote endpoint and genuine non-admin preactivation evidence",
-    "Obtain existing approved relay/controller host evidence and genuine non-admin preactivation context; no new infrastructure/credentials or production changes",
-    "Final approval request REQUEST-0009 remains NOT READY FOR ACTIVATION until private configuration and actual package-bound Windows gates pass"
+    "Resolve existing approved relay endpoint/host/read-only access metadata; no provisioning or credential reuse",
+    "Resolve actual non-admin foreground/batch execution context and missing local batch-right allowance through explicit authorized policy review; never impersonate or grant rights implicitly",
+    "Only then finalize/implement bounded watchdog circuit, produce one package-bound real Windows preactivation run and request final activation approval; no operator action issued prematurely"
   ],
   "autonomous_operations": {
     "implementation": "signed intake/review/followup, durable outbound delivery/relay, bounded Windows wrapper and canary probes",
@@ -669,5 +669,41 @@
     "evidence": "docs/evidence/phase10-review/CERTIFICATION.json",
     "review": "docs/DMB_PHASE10_DEPLOYMENT_REVIEW.md",
     "final_installation_approved": false
+  },
+  "phase10_readiness": {
+    "schema_version": 1,
+    "generated_at": "2026-10-15T09:35:48.841664+00:00",
+    "mode": "SHADOW",
+    "status": "NOT_READY_POLICY_AND_ACCESS_GATES_BLOCKED",
+    "review1_lifecycle": {
+      "bounded_session": true,
+      "host_polling_budget": "min(--seconds3600, remaining one-hour grant)-120 seconds, then drain",
+      "normal_exit_restart": false,
+      "restart_on_failure_does_not_restart_successful_exit": true,
+      "claim_of_continuous_service": false
+    },
+    "watchdog_revision": {
+      "state": "DESIGNED_DISABLED_NOT_IMPLEMENTED_IN_RELEASE",
+      "native_XML_schema": "PASS",
+      "watchdog_interval_seconds": 300,
+      "overlap": "IgnoreNew + exclusive native worker lock",
+      "global_crash_circuit": "Proposed durable lifetime budget3 unexpected interrupted starts, then sticky BLOCKED until explicit authenticated reconciliation",
+      "normal_rotation": "New bounded session only while the explicitly approved policy/lease/pairing remains valid",
+      "expired_or_uncertain": "Never renew authority, clear quarantine or re-pair automatically"
+    },
+    "logon_candidate": "Password + LeastPrivilege; OS protected task credential store; no plaintext",
+    "batch_right": "NO_ALLOW_OBSERVED_LOCAL_POLICY",
+    "real_batch_network_DPAPI_logon": "BLOCKED_UNTESTED",
+    "remote_relay": "BLOCKED no existing approved endpoint/host/access identity supplied or verified",
+    "managed_executor": "Administrator/High; only managed terminal also Administrator; no supported run-as option",
+    "actual_cancellation_crash_denial_safe_restart": "BLOCKED no eligible supported non-admin invocation context or independent canary fixtures; no false PASS",
+    "genuine_v013_task": "PASS preserved at pinned original source; does not certify new source/batch context",
+    "operator_action_procedure": "WITHHELD_UNTIL_READY",
+    "REQUEST-0009": "ACTIVATION_WITHHELD",
+    "persistent_changes": false,
+    "production_changes": false,
+    "previous_packages_journals_pairing": "PRESERVED",
+    "new_release_published": false,
+    "evidence": "docs/evidence/phase10-readiness/READINESS.json"
   }
 }

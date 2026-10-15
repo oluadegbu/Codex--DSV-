@@ -202,3 +202,8 @@ and rollback are in [deployment/phase10](deployment/phase10/README.md).
 relay/real Windows acceptance gates. No Scheduled Task is registered or enabled.
 The0.2.0-review1 package is review-only, not an activation approval; the genuine
 v0.1.3 baseline and all existing installations/journals remain preserved.
+
+[Targeted Phase10 readiness](docs/DMB_PHASE10_READINESS.md) confirms the review1
+one-hour acceptance session is not continuous supervision. A disabled watchdog
+design is prepared; batch-logon allowance, approved relay and real non-admin
+preactivation gates remain blocked. No new package or operator procedure is issued.
