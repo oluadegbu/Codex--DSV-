@@ -26,6 +26,9 @@ At each scheduler tick, active owners are skipped by Scheduler and the native
 lock. A previous committed ACTIVE whose lock is now free counts as a crash. The
 first observation starts its five-minute cooldown. Third crash, source/binding
 drift, clock regression, uncertain execution or policy block stops new dispatch.
+A durable initialization marker makes missing/mismatched lifecycle state block
+instead of creating a fresh crash budget. The grant expiry/drain margin is
+rechecked before every dispatch, including forward wall-clock jumps.
 No automatic database replacement, circuit reset, pairing renewal or authority
 extension exists. An expired grant cannot be turned into an unlimited worker by
 the periodic trigger. Longer operation requires a separately approved renewal

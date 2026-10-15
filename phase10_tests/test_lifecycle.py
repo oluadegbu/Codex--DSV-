@@ -42,6 +42,20 @@ class LifecycleTests(unittest.TestCase):
         l=self.open();a=l.enter(1000)
         with self.assertRaises(PermissionError):l.finish('other',1001,'NORMAL')
         self.assertFalse(l.heartbeat(a['owner'],999));self.assertEqual(l.enter(5000)['state'],'BLOCKED');l.close()
+    def test_forward_clock_jump_cannot_outlive_grant_even_if_pairing_lasts_longer(self):
+        l=self.open();a=l.enter(1000)
+        self.assertTrue(l.heartbeat(a['owner'],1001,2000))
+        self.assertFalse(l.heartbeat(a['owner'],2001,2000))
+        self.assertEqual(l.enter(5000)['state'],'BLOCKED');l.close()
+    def test_authorization_reserves_drain_margin_before_new_dispatch(self):
+        l=self.open();a=l.enter(1000)
+        self.assertFalse(l.heartbeat(a['owner'],1880,2000))
+        self.assertEqual(l.snapshot()['reason'],'authorization_drain_boundary');l.close()
+    def test_missing_authority_cannot_reset_crash_budget(self):
+        l=self.open();a=l.enter(1000);l.finish(a['owner'],1001,'CRASH');l.close()
+        self.path.unlink()
+        with self.assertRaises(PermissionError):self.open()
+        self.assertFalse(self.path.exists())
     def test_binding_drift_does_not_overwrite_original(self):
         l=self.open();l.close()
         with self.assertRaises(PermissionError):Lifecycle(self.path,'different-code')

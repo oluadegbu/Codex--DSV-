@@ -84,7 +84,7 @@ def main():
     # No mailbox-supplied path or command and no scheduled-task self-modification.
     remaining=min(args.seconds,grant['expires_at']-int(time.time()))
     if remaining <= 120: raise PermissionError('Approval expired before worker start')
-    print(json.dumps(run(remaining-120,isolation,private/'STOP')))
+    print(json.dumps(run(remaining-120,isolation,private/'STOP',authorized_until=grant['expires_at'])))
 
 
 if __name__=='__main__':

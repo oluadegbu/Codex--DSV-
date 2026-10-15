@@ -4,6 +4,8 @@ No task registration, shell execution, credential renewal or quarantine reset.
 Wall-clock regression blocks instead of evading a recovery cooldown.
 """
 from uuid import uuid4
+from pathlib import Path
+import os
 from dci.bridge.store import BridgeStore
 
 CADENCE = 300
@@ -12,6 +14,17 @@ CRASH_LIMIT = 3
 
 class Lifecycle:
     def __init__(self, path, binding):
+        path=Path(path)
+        marker=path.with_name(path.name+'.initialized')
+        if path.exists()!=marker.exists():
+            raise PermissionError('Missing lifecycle authority/marker; never reset the crash budget')
+        if marker.exists():
+            if marker.read_text(encoding='utf-8')!=binding:
+                raise PermissionError('Lifecycle marker binding drift')
+        else:
+            # Marker first: an interrupted initialization remains blocked for review.
+            with marker.open('x',encoding='utf-8') as stream:
+                stream.write(binding);stream.flush();os.fsync(stream.fileno())
         self.store = BridgeStore(path)
         try:
             with self.store.tx():
@@ -68,11 +81,14 @@ class Lifecycle:
                 self._event('owner_acquired', now)
             return self.snapshot()
 
-    def heartbeat(self, owner, now):
+    def heartbeat(self, owner, now, authorized_until=None):
         with self.store.tx():
             row = self.snapshot()
             if row['state'] != 'ACTIVE' or row['owner'] != owner:
                 raise PermissionError('Watchdog owner mismatch')
+            if authorized_until is not None and (type(authorized_until) is not int or now+120 >= authorized_until):
+                self._block('authorization_drain_boundary', now)
+                return False
             if now < row['clock']:
                 self._block('clock_regressed', now)
                 return False

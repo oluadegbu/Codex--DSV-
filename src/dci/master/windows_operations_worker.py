@@ -22,7 +22,7 @@ def journal_uncertain(root):
                    for state, report in rows)
 
 
-def run(seconds=300, isolation_manifest=None, stop_file=None, namespace=NAMESPACE):
+def run(seconds=300, isolation_manifest=None, stop_file=None, namespace=NAMESPACE, authorized_until=None):
     from .windows_native import require_identity, private_root, foreground_lock
     from .windows_bridge_cli import _windows_run_locked
     from .windows_worker import bridge_fingerprint
@@ -59,9 +59,9 @@ def run(seconds=300, isolation_manifest=None, stop_file=None, namespace=NAMESPAC
             deadline, polls, outcome = time.monotonic()+seconds, 0, 'NORMAL'
             while time.monotonic() < deadline:
                 if stop.exists(): outcome = 'STOP'; break
-                if not lifecycle.heartbeat(owner, int(time.time())):
+                if not lifecycle.heartbeat(owner, int(time.time()), authorized_until):
                     owner = None
-                    raise PermissionError('Clock regression; lifecycle blocked')
+                    raise PermissionError('Authorization or clock boundary; lifecycle blocked')
                 # Existing native identity, DPAPI, executable pins, authenticated route,
                 # controller cancellation, Job Object and task/lease checks remain enforced.
                 _windows_run_locked(1, namespace)

@@ -2,7 +2,7 @@
   "schema_version": 1,
   "project": "Directive Crypto Intelligence",
   "repository": "oluadegbu/Codex--DSV-",
-  "updated_at": "2026-10-15T17:34:04.471572+00:00",
+  "updated_at": "2026-10-15T19:08:40.227804+00:00",
   "milestone": "phase10-watchdog-lifecycle-implementation",
   "status": "IMPLEMENTED_ACTIVATION_WITHHELD_EXTERNAL_AND_NATIVE_GATES_BLOCKED",
   "mode": "SHADOW",
@@ -723,12 +723,13 @@
     "task_xml_sha256": "2dd50b9b5493513cb1c4b2510d732a75320949980a126dc5143cc58f2aed5b14",
     "scheduled_task_registered": false,
     "REQUEST-0009": "WITHHELD",
-    "CI": "PENDING",
-    "release": "PENDING_NATIVE_VALIDATION",
+    "CI": "181 tests plus100 cycles/1099 worker checks PASS first source; native packaging failed COM timeout, corrected rerun PENDING",
+    "release": "NOT PUBLISHED first native build failed; corrected rerun PENDING",
     "real_Windows_new_package": "NOT TESTED",
     "remote_endpoint": "BLOCKED_NO_VERIFIED_EXISTING_APPROVED_ENDPOINT",
     "next_safe_action": "CI native package validation and publication; single consolidated native procedure under existing DirectiveCodex once independent canary input is ready",
     "genuine_v013_baseline_preserved": true,
-    "independent_canary_creation": "PASS ACTUAL WINDOWS; denial NOT TESTED"
+    "independent_canary_creation": "PASS ACTUAL WINDOWS; denial NOT TESTED",
+    "native_task_XML": "PASS actual VPS in-memory only"
   }
 }

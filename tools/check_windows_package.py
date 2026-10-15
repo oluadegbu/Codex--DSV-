@@ -18,6 +18,15 @@ def main(package, output, codex_fixture):
     signature_script = "$s=Get-AuthenticodeSignature -LiteralPath '" + literal + "'; if($s.Status -ne 'Valid' -or $s.SignerCertificate.Subject -notmatch 'Python Software Foundation'){throw 'Official Python signature not verified'}; $s.Status"
     subprocess.run([str(system / 'WindowsPowerShell/v1.0/powershell.exe'), '-NoProfile', '-NonInteractive', '-Command',
                     signature_script], env=env, check=True, timeout=120)
+    # Task Scheduler COM uses the normal Windows runtime context; it is not a
+    # portable Python dependency. Never strip RPC/profile environment for this
+    # independent read-only XML parser. No RegisterTaskDefinition/Run is invoked.
+    literal_task = str(package/'app/deployment/phase10/lifecycle-v0.3.0/Directive.DMB.ShadowWorker.Phase10.xml').replace("'", "''")
+    review_script = "$ErrorActionPreference='Stop'; $s=New-Object -ComObject Schedule.Service; $s.Connect(); $t=$s.NewTask(0); $t.XmlText=[IO.File]::ReadAllText('"+literal_task+"'); if($t.Settings.MultipleInstances -ne 2 -or $t.Settings.RestartCount -ne 0 -or $t.Triggers.Item(1).Repetition.Interval -ne 'PT5M' -or $t.Principal.LogonType -ne 1 -or $t.Principal.RunLevel -ne 0){throw 'Unsafe task definition'}"
+    for name in ('REGISTER-AFTER-APPROVAL.ps1','ROLLBACK-AFTER-APPROVAL.ps1'):
+        literal_script=str(package/'app/deployment/phase10/lifecycle-v0.3.0'/name).replace("'", "''")
+        review_script+="; $tokens=$null; $errors=$null; [void][System.Management.Automation.Language.Parser]::ParseFile('"+literal_script+"',[ref]$tokens,[ref]$errors); if($errors.Count){throw 'Invalid inert deployment script syntax'}"
+    subprocess.run([str(system/'WindowsPowerShell/v1.0/powershell.exe'),'-NoProfile','-NonInteractive','-Command',review_script],check=True,capture_output=True,timeout=45)
     code = r'''
 import hashlib,json,os,shutil,sqlite3,ssl,subprocess,tempfile,sys,threading,urllib.request,csv,io
 from http.server import HTTPServer,BaseHTTPRequestHandler
@@ -38,11 +47,6 @@ assert task.find('.//t:LogonType',ns).text=='Password'
 assert task.find('.//t:RunLevel',ns).text=='LeastPrivilege'
 assert task.find('.//t:Repetition/t:Interval',ns).text=='PT5M'
 assert task.find('.//t:RestartOnFailure',ns) is None
-# Native Task Scheduler parser only: no registration, Run, or credentials.
-ps=str(system_directory()/'WindowsPowerShell/v1.0/powershell.exe')
-xml_path=str(app/'deployment/phase10/lifecycle-v0.3.0/Directive.DMB.ShadowWorker.Phase10.xml').replace("'", "''")
-script="$s=New-Object -ComObject Schedule.Service; $s.Connect(); $t=$s.NewTask(0); $t.XmlText=[IO.File]::ReadAllText('"+xml_path+"'); if($t.Settings.MultipleInstances -ne 2 -or $t.Settings.RestartCount -ne 0 -or $t.Triggers.Item(1).Repetition.Interval -ne 'PT5M' -or $t.Principal.LogonType -ne 1 -or $t.Principal.RunLevel -ne 0){throw 'Unsafe task definition'}"
-subprocess.run([ps,'-NoProfile','-NonInteractive','-Command',script],check=True,capture_output=True,timeout=15)
 assert subprocess.check_output(['git','--version'],text=True).strip()=='git version 2.51.0.windows.1'
 key=PeerKey('windows_codex_shadow','offline-smoke',2000,b'0'*32)
 verify(key,sign(key,'worker_to_controller','POLL',1,{},1000),'worker_to_controller',1000)

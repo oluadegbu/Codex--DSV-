@@ -84,7 +84,7 @@ def build(output):
     codex_fixture = downloads / 'codex.exe'
     fetch(inputs['codex_executable_origin'], codex_fixture, inputs['codex_executable_sha256'])
     subprocess.run([sys.executable, str(ROOT / 'tools/check_windows_package.py'), '--package', str(package),
-                    '--codex-fixture', str(codex_fixture), '--output', str(output / 'PACKAGE_SMOKE.json')], check=True, timeout=180)
+                    '--codex-fixture', str(codex_fixture), '--output', str(output / 'PACKAGE_SMOKE.json')], check=True, timeout=240)
     archive = output / ('DMB-Windows-' + version + '-' + source[:12] + '-amd64.zip')
     with zipfile.ZipFile(archive, 'x', zipfile.ZIP_DEFLATED, compresslevel=6) as bundle:
         for path in sorted(package.rglob('*')):
