@@ -1,0 +1,28 @@
+{
+  "schema_version": 1,
+  "generated_at_utc": "2026-10-16T03:07:23.150496+00:00",
+  "mode": "SHADOW",
+  "status": "OFFLINE_PASS_ACTIVATION_BLOCKED",
+  "tests_run": 15,
+  "exit_code": 0,
+  "source_tree_dirty": true,
+  "observed_git_commit": "122d6432bd16789ac57742807841ea8410b9a874",
+  "source_sha256": {
+    "src/dci/master/document_bridge.py": "6c6b9187fdb584c1fb00e4fc8a306f69ec2a0b705663e9305516dc47d11af713",
+    "src/dci/master/document_cli.py": "c63a0f95ea85d439ed9d0fa22697abd5ea4ad62c9d2121a88434db80e0d72060",
+    "src/dci/master/document_github.py": "63a080db8c77b37aafe2827b74fe4f56cfd88cc6aa3ce065c6753661e9d74f9b",
+    "ddb_tests/test_document_bridge.py": "66ce21d5b8fb05edcfd4fe29024e2fab45be5ce26f1bffb48c89a30b39276034"
+  },
+  "gates": {
+    "offline_document_handoff": "PASS",
+    "real_local_paper_recovery": "PASS",
+    "real_github_document_exchange": "NOT_TESTED",
+    "native_codex_ddb_backend": "BLOCKED_DISABLED",
+    "signer_and_github_credential_enrollment": "BLOCKED_APPROVAL_REQUIRED",
+    "human_policy_pin": "BLOCKED_NOT_APPROVED",
+    "scheduler_activation": "WITHHELD"
+  },
+  "persistent_processes_installed": false,
+  "external_notifications": false,
+  "trading_authority": false
+}

@@ -234,3 +234,12 @@ Temporal namespace/task queue is verified. A thin HTTPS WSGI adapter now reuses
 DMB's atomic controller and signed protocols without opening a listener. Sixteen
 targeted offline operations tests pass, including eight new adapter contracts.
 The released Windows package is unchanged; REQUEST-0009 remains WITHHELD.
+
+The [interim Document Bridge](docs/DMB_DOCUMENT_BRIDGE.md) implements versioned
+signed reports/directives, atomic GitHub document publication, durable consumers,
+bounded deterministic supervision and three/five-minute cadence gates. Fifteen
+offline tests pass, including actual Linux paper-process artifact verification and
+crash recovery without duplicate execution. Native Codex-over-DDB, real GitHub
+mailbox delivery and unattended scheduling remain disabled/unverified. The
+separate development PR preserves PR #1, the Windows release and main; one
+consolidated [activation request](decisions/REQUEST-0010.md) retains REQUEST-0009.

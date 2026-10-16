@@ -1,0 +1,34 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://directive.invalid/ddb/v1/directive.schema.json",
+  "type": "object",
+  "properties": {
+    "directive_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9_-]{1,64}$"
+    },
+    "task_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9_-]{1,64}$"
+    },
+    "correlation_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9_-]{1,64}$"
+    },
+    "template": {
+      "const": "shadow_research"
+    },
+    "source_report": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    }
+  },
+  "required": [
+    "directive_id",
+    "task_id",
+    "correlation_id",
+    "template",
+    "source_report"
+  ],
+  "additionalProperties": false
+}

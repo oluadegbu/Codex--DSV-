@@ -9,5 +9,8 @@ description = "Isolated Solana wallet intelligence and shadow research"
 requires-python = ">=3.11"
 dependencies = []
 
+[project.optional-dependencies]
+ddb = ["cryptography==50.0.0"]
+
 [tool.setuptools.packages.find]
 where = ["src"]

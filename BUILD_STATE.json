@@ -2,8 +2,8 @@
   "schema_version": 1,
   "project": "Directive Crypto Intelligence",
   "repository": "oluadegbu/Codex--DSV-",
-  "updated_at": "2026-10-16T02:39:55.620726+00:00",
-  "milestone": "phase10-dsv-reuse-assessed-https-adapter-offline",
+  "updated_at": "2026-10-16T03:07:23.472656+00:00",
+  "milestone": "ddb-interim-document-bridge-offline-pass-activation-withheld",
   "status": "LOCAL_SHADOW_PASS_UNATTENDED_AND_FULL_CERTIFICATION_BLOCKED",
   "mode": "SHADOW",
   "synthetic_only": true,
@@ -798,5 +798,30 @@
       "scope": "LOCAL_SHADOW_NOT_EXTERNAL_OR_NEW_WINDOWS_LIFECYCLE"
     },
     "publication_evidence": "docs/evidence/phase10-dsv-reuse/PUBLICATION_CI.json"
+  },
+  "ddb": {
+    "version": 1,
+    "status": "OFFLINE_PASS_ACTIVATION_BLOCKED",
+    "schemas": "schemas/ddb/",
+    "documentation": "docs/DMB_DOCUMENT_BRIDGE.md",
+    "evidence": "docs/evidence/ddb-m1/",
+    "tests": 15,
+    "real_execution": "Existing local Linux paper worker, verified receipt, crash-after-completion recovery with one execution and Operations review ACCEPT; not Codex or GitHub certification.",
+    "proposed_coordination_branch": "coordination/dmb-ddb-v1",
+    "coordination_branch_activated": false,
+    "cadence_seconds": {
+      "report_watcher": 180,
+      "supervisor": 300,
+      "worker": 300
+    },
+    "per_policy_task_cap": 10,
+    "enabled_template": "shadow_research",
+    "native_codex_ddb": "BLOCKED_DISABLED",
+    "production_keys_enrolled": false,
+    "github_document_exchange": "NOT_TESTED",
+    "persistent_scheduler": "WITHHELD",
+    "activation_request": "decisions/REQUEST-0010.md",
+    "prior_request_0009": "PRESERVED_WITHHELD",
+    "next_safe_action": "Review scoped pairing/GitHub credential/host policy; real bounded foreground GitHub exchange after access approval; no unattended activation."
   }
 }

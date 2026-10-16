@@ -1,0 +1,52 @@
+{
+  "scope": "REAL_LOCAL_LINUX_PAPER_PROCESS_NOT_CODEX_OR_GITHUB",
+  "offline_fixture_policy_not_human_approval": {
+    "version": 1,
+    "mode": "SHADOW",
+    "policy_id": "offline-fixture-only",
+    "expires": 1792123642,
+    "max_tasks": 2,
+    "template": "shadow_research",
+    "report_max_age": 600,
+    "document_ttl": 900,
+    "worker_id": "dci_shadow_research",
+    "worker_key_id": "existing-offline-key",
+    "signers": {
+      "supervisor": "4148923fff7403111e8ceed0c6b0c5281b815b1c16e8e1373e8f935fe4066bc3",
+      "worker": "dcb0ac51cd2abb89c51311887aa8add67e346ed54a8baae4d6a4b7626909f70e"
+    }
+  },
+  "signed_report": {
+    "version": 1,
+    "mode": "SHADOW",
+    "id": "report-d1-ff97fad46e3c6e3b",
+    "role": "worker",
+    "sequence": 3,
+    "previous": "8c27989339d23bb9732355b41fe113b94454e6f381eb441bdcbbb429755c6758",
+    "issued_at": 1792120043,
+    "expires_at": 1792120943,
+    "policy_sha256": "6a2d06704434f2e881fd401eb7129fe04abb6a9507c5bdde88c59de4857e4958",
+    "kind": "REPORT",
+    "body": {
+      "effort_id": "effort-d1-ff97fad46e3c6e3b",
+      "directive_id": "d1-ff97fad46e3c6e3b",
+      "task_id": "ddb-task-d1-ff97fad46e3c6e3b",
+      "status": "SUCCEEDED",
+      "evidence": {
+        "kind": "VERIFIED_LOCAL_PAPER",
+        "scope_digest": "64ef4aa1b69fa83e6aeddc4f06b14d02d57ea62c8cb864b5e91df59af978226b",
+        "result_digest": "ce47fea0f055843896af0a066aea35223828c88f5aac8c4bab2ccc11b8cf506e",
+        "artifact_sha256": "31253764ad44004595bda959e13cb251fe4d4e3a82127e5700954ddf6aa8bfb4",
+        "git_commit": "725901ea55f7b8196467c55e5442f453ee8a3dfd",
+        "audit_valid": true,
+        "exit_code": 0
+      }
+    },
+    "content_sha256": "599f8aaabd7d0929e9ab594ec6eb0d3105dfad9169fce06fc8dfce8d57f6696c",
+    "signature": "c26c9c0bd0f96db94ef46631c361845a6a252ff23734bab1710dbcd252f2b09a5bc531dcf552d9e7d652a9923a26eca6577bca44ec5ddd1646a151515c07ed05"
+  },
+  "durable_executions": 1,
+  "restart_after_sealed_receipt": "PASS_NO_SECOND_EXECUTION",
+  "operations_review": "ACCEPT",
+  "audit_valid": true
+}
