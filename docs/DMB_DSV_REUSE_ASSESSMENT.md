@@ -110,3 +110,10 @@ Preserve all journals, private pairing, installations and audit evidence. Never
 rollback or restart DAT, DPM, DSV, Pulse or OpenClaw as part of DMB rollback.
 
 Evidence and source hashes: `docs/evidence/phase10-dsv-reuse/ASSESSMENT.json`.
+
+Published source `8afb01009aa07532da912a22ff42ecafc63fad17` passes **194 CI
+tests**, 100 verifier cycles and 1,099 worker test executions. Linux paper-process
+workflow completes three jobs with zero duplicate dispatches and recovers a
+controller crash without rerunning its worker. Run `38841861224`, job
+`116783543495`; exact provenance and suite counts are in `PUBLICATION_CI.json`.
+These remain local/shadow contracts, not remote ingress or native Windows gates.

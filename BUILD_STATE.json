@@ -786,6 +786,17 @@
     "external_delivery": "BLOCKED_APPROVED_HOST_TLS_ENDPOINT_SCOPED_AUTH_AND_DEPLOYMENT_APPROVAL",
     "brain_self_wake": "NOT_ESTABLISHED",
     "request_0009": "WITHHELD",
-    "next_safe_action": "Review approved existing HTTPS hosting/Temporal ownership metadata; do not activate or change production."
+    "next_safe_action": "Review approved existing HTTPS hosting/Temporal ownership metadata; do not activate or change production.",
+    "ci": {
+      "source_commit": "8afb01009aa07532da912a22ff42ecafc63fad17",
+      "run_id": 38841861224,
+      "job_id": 116783543495,
+      "tests": 194,
+      "cycles": 100,
+      "worker_test_executions": 1099,
+      "conclusion": "success",
+      "scope": "LOCAL_SHADOW_NOT_EXTERNAL_OR_NEW_WINDOWS_LIFECYCLE"
+    },
+    "publication_evidence": "docs/evidence/phase10-dsv-reuse/PUBLICATION_CI.json"
   }
 }
