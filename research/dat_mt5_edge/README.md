@@ -1,5 +1,7 @@
 # DAT MT5 edge research — Phase 1
 
+Phase 2 research: [quality-gated multi-instrument report](phase2/REPORT.md), [protocol and reproduction](phase2/README.md). Phase 1 results below remain preserved.
+
 Independent offline research, with no DMEN, DAT service, OpenClaw, terminal, broker credentials or order API dependency. Production is not a research workspace. No execution authority is implemented or restored.
 
 ## Reproduce
