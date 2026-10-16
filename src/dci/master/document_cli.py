@@ -87,12 +87,14 @@ def main():
                     raise PermissionError('Existing worker identity binding mismatch')
                 pairing.check(now)
                 operations = Operations(ShadowControlPlane(PortfolioPlanner(store, PortfolioRegistry(root/'portfolio/REGISTRY.v1.json'), config['workers'], root)), load_identity(config['operations_identity_file']))
+                if set(operations.controller.planner.workers) != {pairing.worker_id}:
+                    raise PermissionError('Document signer/pairing must bind the exact runtime worker')
                 client_store = AtomicPeerStore(config['operations_client_database'])
                 client = OperationsClient(client_store, operations.identity, lambda packet: operations.handle(packet, int(time.time())))
                 worker = Worker(node, PaperOperationsBackend(operations, client))
                 if not store.db.execute("SELECT 1 FROM ddb_outbox WHERE id='initial-idle'").fetchone(): worker.idle(now)
                 worker.poll(now); worker.execute_one(now)
-                node.enqueue('HEARTBEAT', {'state': 'BLOCKED' if store.db.execute("SELECT 1 FROM tasks WHERE state='NEEDS_HUMAN'").fetchone() else 'IDLE'}, 'heartbeat-'+str(now), now)
+                node.enqueue('HEARTBEAT', {'state': 'BLOCKED' if store.db.execute("SELECT 1 FROM meta WHERE key='ddb_blocked'").fetchone() or store.db.execute("SELECT 1 FROM tasks WHERE state='NEEDS_HUMAN'").fetchone() else 'IDLE'}, 'heartbeat-'+str(now), now)
             node.flush(int(time.time()))
             print(json.dumps({'mode': 'SHADOW', 'role': role, 'unattended_activated': False, 'audit_valid': True}))
         finally:

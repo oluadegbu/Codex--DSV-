@@ -32,8 +32,9 @@ The existing worker ID/key ID must match its approved private pairing. Existing
 non-admin Windows DirectiveCodex/Medium and DPAPI guards are retained before any
 private use; Linux requires non-root. Dedicated document signer public keys are
 bound to that worker identity in the human-approved policy. Private signing keys
-are separate per role. Workers hold the supervisor PUBLIC key, not its signing
-key or Brain HMAC secret. New signer enrollment remains approval gated. Optional
+are separate per role. Workers hold the document supervisor PUBLIC key, not its private signing
+key. The worker-local controller's existing Operations credential stays local;
+it is distinct from the remote supervisor's document signing key. New signer enrollment remains approval gated. Optional
 cryptography dependency is pinned to `cryptography==50.0.0`; Windows package
 v0.3.0 is not rebuilt/replaced and is not claimed to include the DDB dependency.
 
