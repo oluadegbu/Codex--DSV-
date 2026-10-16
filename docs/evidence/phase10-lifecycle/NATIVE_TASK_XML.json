@@ -1,0 +1,21 @@
+{
+  "status": "PASS",
+  "host": "WIN-HQAAFGGU1AM",
+  "selected_executor": "Administrator own token; XML parser only; no worker launch",
+  "remote_powershell_pid": 10684,
+  "XML": "deployment/phase10/lifecycle-v0.3.0/Directive.DMB.ShadowWorker.Phase10.xml",
+  "XML_sha256": "2dd50b9b5493513cb1c4b2510d732a75320949980a126dc5143cc58f2aed5b14",
+  "native_TaskScheduler_properties": {
+    "Repeat": "PT5M",
+    "Duration": null,
+    "Instances": 2,
+    "RestartCount": 0,
+    "Logon": 1,
+    "RunLevel": 0,
+    "Command": "C:\\Users\\DirectiveCodex\\AppData\\Local\\Directive\\DMB-OPS-0.3.0\\package\\runtime\\python\\python.exe"
+  },
+  "RegisterTaskDefinition_called": false,
+  "Run_called": false,
+  "credentials_requested": false,
+  "persistent_changes": false
+}

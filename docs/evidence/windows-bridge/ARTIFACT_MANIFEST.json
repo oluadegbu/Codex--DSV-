@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "algorithm": "SHA-256",
+  "source_code_commit": "614d23ee97acce913945d504903fc2987f32c85c",
+  "self_hash_excluded": true,
+  "live_records_excluded": [
+    "BUILD_STATE.json",
+    "README.md",
+    "CODEX.md",
+    "CERTIFICATION.json"
+  ],
+  "artifacts": {
+    "docs/evidence/windows-bridge/AUTHORIZATION_TESTS.log": {
+      "sha256": "ed8f786b4c5e78ddd9394b3b78ee577e511f3ed86de971da03a2b5fce63424f8",
+      "bytes": 2973
+    },
+    "docs/evidence/windows-bridge/CONTINUITY.json": {
+      "sha256": "6716e84458729118127078bad9635b9b04c3056631a616bfda68f6357d284a2f",
+      "bytes": 1312
+    },
+    "docs/evidence/windows-bridge/CONTROL_PLANE_TESTS.log": {
+      "sha256": "ecd9694c82994ec0a2499ded982819a58c7a9504c9687e21e3f4ea75dc18e45f",
+      "bytes": 1333
+    },
+    "docs/evidence/windows-bridge/PAPER_WORKFLOW.json": {
+      "sha256": "4e46052bcfd74196a72951376c7e14cb40876be2f864b502cbdf0303d648e2aa",
+      "bytes": 4587
+    },
+    "docs/evidence/windows-bridge/PRESERVED_BUILD_STATE.json": {
+      "sha256": "126fa44b55302732899c2766769480ae5288ba110110abc9692d9f6e7a7d26ad",
+      "bytes": 25467
+    },
+    "docs/evidence/windows-bridge/PRESERVED_TESTS.log": {
+      "sha256": "4a4183877c4558cb5ea92ebd3dc84df8538d7b3c48ab589fde282cdf086e5106",
+      "bytes": 13008
+    },
+    "docs/evidence/windows-bridge/REGRESSION_SUMMARY.json": {
+      "sha256": "6aa0752c2766f1b13fd203928d2407e71a69515d5fef367fd330acda8e498ecf",
+      "bytes": 1738
+    },
+    "docs/evidence/windows-bridge/SOURCE_CERTIFICATION.json": {
+      "sha256": "d20094d49a698ab0cb7826c0a17136b9113075a152413ec8cf130b83c8d48f23",
+      "bytes": 1932
+    },
+    "docs/evidence/windows-bridge/WINDOWS_CONTRACT_TESTS.log": {
+      "sha256": "ba35a22870bc363e54c2e81c2dfcec5258dd6303ac1d78be4df9d97756e787cf",
+      "bytes": 2661
+    }
+  }
+}

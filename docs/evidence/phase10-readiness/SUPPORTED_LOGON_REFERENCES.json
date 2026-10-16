@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "sources": [
+    {
+      "url": "https://learn.microsoft.com/en-us/windows/win32/api/taskschd/ne-taskschd-task_logon_type",
+      "verified_excerpt": "TASK_LOGON_PASSWORD: password must be supplied at registration time. TASK_LOGON_S4U: no password is stored, and there is no access to either the network or encrypted files."
+    },
+    {
+      "url": "https://learn.microsoft.com/en-us/windows/win32/taskschd/security-contexts-for-running-tasks",
+      "verified_excerpt": "Tasks registered with TASK_LOGON_PASSWORD or TASK_LOGON_S4U only launch if the specified user has Logon as Batch privilege enabled."
+    }
+  ],
+  "retrieval": "Authorized connector HTTPS read of official Microsoft documentation; no credential input or Windows logon attempted",
+  "conclusion": "Password plus LeastPrivilege is the supported candidate for DPAPI/network access. Actual batch profile, DPAPI/provider auth and rights remain unverified; S4U/interactive/SYSTEM are not substitutes."
+}

@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "classification": "UNKNOWN_REMOTE_RELAY_UNVERIFIED",
+  "authorized_scope": [
+    "Current Git portfolio registry and DMB evidence",
+    "Only connected device WIN-HQAAFGGU1AM: DMB task and DMB/Temporal-named services/process metadata only",
+    "Managed development environment status: no outbound host identities, secrets or VPN/relay configuration"
+  ],
+  "observed_DMB_tasks": [],
+  "observed_DMB_Temporal_named_services": [],
+  "observed_DMB_Temporal_named_processes": [],
+  "registry_Temporal_state": "INTERFACE_ONLY",
+  "other_hosts_exist": "UNKNOWN",
+  "existing_approved_remote_HTTPS_relay": "NOT VERIFIED",
+  "Temporal_can_replace_DMB_relay_by_assumption": false,
+  "missing_minimum_information": "Existing approved host/endpoint plus authorized read-only identity; no credentials in chat",
+  "services_reconfigured": false,
+  "DAT_Temporal_milestone": "PRESERVED"
+}

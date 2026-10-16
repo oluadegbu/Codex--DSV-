@@ -1,0 +1,80 @@
+{
+  "schema_version": 1,
+  "algorithm": "SHA-256",
+  "artifacts": {
+    "tools/probe_phase9_worker.py": {
+      "sha256": "fd06bb648f720e47214903328d81c618138010b2b88108f10c34bdedb2391856",
+      "bytes": 5344
+    },
+    "docs/DMB_PHASE9.md": {
+      "sha256": "261ca5f993c0f04a3b6247b88dc7bf647a1351593e9c1d92f3440e4110cbc597",
+      "bytes": 9236
+    },
+    "docs/DMB_REMOTE_INTEGRATION.v1.json": {
+      "sha256": "4c51ee539827efd8ca5de2967f7148a37348c12b2bacba3a43e126d8fb7e8322",
+      "bytes": 3583
+    },
+    "decisions/REQUEST-0007.md": {
+      "sha256": "b512205ca9ffdc43b16d2eace164049d2cabc037448758a11d7426606a8dfe57",
+      "bytes": 3121
+    },
+    "README.md": {
+      "sha256": "7087bf22e35df4225ed0d6a70c1f2e0ce6b7f996dc99c4b845eda4154412a6b6",
+      "bytes": 7860
+    },
+    "BUILD_STATE.json": {
+      "sha256": "85a74a6d6bd69a76a9c973b231df307c06a97dfe21645af39d7d17856bb9eed9",
+      "bytes": 22172
+    },
+    "docs/evidence/phase9-20261013/AUTHORIZATION_TESTS.log": {
+      "sha256": "274012c30084a197f3e34ce71f1e58a0991ab42deb4d319b3b82916d3f5ff141",
+      "bytes": 2973
+    },
+    "docs/evidence/phase9-20261013/BASELINE.json": {
+      "sha256": "2e85e9eac416c0259bb093555328fc60012b03e6305cfc7b38a615042b33a663",
+      "bytes": 9810
+    },
+    "docs/evidence/phase9-20261013/CERTIFICATION_MATRIX.json": {
+      "sha256": "9cb83fd9fe67c933d1f7ea87bab79246b681d4d23ef320aadf2c71bf0ad6e2db",
+      "bytes": 11293
+    },
+    "docs/evidence/phase9-20261013/CERTIFICATION_MATRIX.md": {
+      "sha256": "1644976ef01a29b7ae26a07fa138c8ac2b1fe2ff187517aa3fc759c8a6f0e1dc",
+      "bytes": 6133
+    },
+    "docs/evidence/phase9-20261013/CODEX_FAILURE.json": {
+      "sha256": "0d70766294aad5be1cd5dda2352fd2756035b12985825b1a138b95e2e681b30d",
+      "bytes": 879
+    },
+    "docs/evidence/phase9-20261013/CODEX_INVOCATION.json": {
+      "sha256": "b552f8ee4f0f741ab3a2fdcc90ade4a4b84e927c0f892b1ca5b3f9e2dd2b40f6",
+      "bytes": 1514
+    },
+    "docs/evidence/phase9-20261013/GITHUB_BASELINE.json": {
+      "sha256": "45e16ec928735e1c0ce38b670340c8af21ad17939d722fadb745c015db9b2f13",
+      "bytes": 1278
+    },
+    "docs/evidence/phase9-20261013/LOCAL_VERIFICATION.json": {
+      "sha256": "5b9f9fa05b31ae9b2fea29f2946c75a85883824954d8436e6de80892fac8e359",
+      "bytes": 2661
+    },
+    "docs/evidence/phase9-20261013/PRESERVED_TESTS.log": {
+      "sha256": "6831ea4cf32d654ac4517a07f9b702864c82c089851abec41be0a8f65908dcf6",
+      "bytes": 13008
+    },
+    "docs/evidence/phase9-20261013/RUNTIME_IDENTITY.json": {
+      "sha256": "e14b798e6f5810988b95da2576c2d5185b04d048d7bfac945d6ea4f9d2ea8738",
+      "bytes": 818
+    },
+    "docs/evidence/phase9-20261013/SANDBOX_DIAGNOSTIC.json": {
+      "sha256": "f9f204a209c22c5d4c429c880b4107b87696a6db61543a2e06672993b8713a68",
+      "bytes": 2600
+    },
+    "docs/evidence/phase9-20261013/WINDOWS_IDENTITY.json": {
+      "sha256": "21c68ca9b8a0d2edb6e9fbb51a83f346a93be082df1c6f5110c54a73d3e69a81",
+      "bytes": 1377
+    }
+  },
+  "self_hash_excluded": true,
+  "note": "This indexes Phase9 code, reports and reviewed evidence. Original certificates are independently verified in BASELINE.json. Later Git publication receipts bind the publication commit without rewriting this manifest."
+}

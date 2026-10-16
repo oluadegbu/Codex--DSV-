@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<Task version="1.4" xmlns="http://schemas.microsoft.com/windows/2004/02/mit/task">
+  <RegistrationInfo>
+    <Author>WIN-HQAAFGGU1AM\DirectiveCodex</Author>
+    <Description>DMB Phase10 shadow watchdog. Final activation approval REQUIRED. No production access.</Description>
+    <URI>\Directive.DMB.ShadowWorker.Phase10</URI>
+  </RegistrationInfo>
+  <Triggers>
+    <BootTrigger><Repetition><Interval>PT5M</Interval><StopAtDurationEnd>false</StopAtDurationEnd></Repetition><Enabled>true</Enabled><Delay>PT1M</Delay></BootTrigger>
+  </Triggers>
+  <Principals>
+    <Principal id="DirectiveCodex">
+      <UserId>S-1-5-21-3675741470-1525898003-3877381073-1000</UserId>
+      <LogonType>Password</LogonType>
+      <RunLevel>LeastPrivilege</RunLevel>
+    </Principal>
+  </Principals>
+  <Settings>
+    <MultipleInstancesPolicy>IgnoreNew</MultipleInstancesPolicy>
+    <DisallowStartIfOnBatteries>false</DisallowStartIfOnBatteries>
+    <StopIfGoingOnBatteries>false</StopIfGoingOnBatteries>
+    <AllowHardTerminate>true</AllowHardTerminate>
+    <StartWhenAvailable>true</StartWhenAvailable>
+    <RunOnlyIfNetworkAvailable>true</RunOnlyIfNetworkAvailable>
+    <IdleSettings><StopOnIdleEnd>false</StopOnIdleEnd><RestartOnIdle>false</RestartOnIdle></IdleSettings>
+    <AllowStartOnDemand>true</AllowStartOnDemand>
+    <Enabled>true</Enabled>
+    <Hidden>false</Hidden>
+    <RunOnlyIfIdle>false</RunOnlyIfIdle>
+    <WakeToRun>false</WakeToRun>
+    <ExecutionTimeLimit>PT1H2M</ExecutionTimeLimit>
+    <Priority>7</Priority>
+  </Settings>
+  <Actions Context="DirectiveCodex">
+    <Exec>
+      <Command>C:\Users\DirectiveCodex\AppData\Local\Directive\DMB-OPS-0.3.0\package\runtime\python\python.exe</Command>
+      <Arguments>-I "C:\Users\DirectiveCodex\AppData\Local\Directive\DMB-OPS-0.3.0\package\app\tools\run_windows_lifecycle_host.py" --seconds 3600</Arguments>
+      <WorkingDirectory>C:\Users\DirectiveCodex\AppData\Local\Directive\DMB-OPS-0.3.0\package\app</WorkingDirectory>
+    </Exec>
+  </Actions>
+</Task>

@@ -1,0 +1,23 @@
+test_atomic_failed_result_does_not_consume_sequence_or_unlock (test_bridge.BridgeTests.test_atomic_failed_result_does_not_consume_sequence_or_unlock) ... ok
+test_authenticated_dispatch_result_and_duplicate_poll (test_bridge.BridgeTests.test_authenticated_dispatch_result_and_duplicate_poll) ... ok
+test_authentication_failure_not_retried_and_outbox_preserved (test_bridge.BridgeTests.test_authentication_failure_not_retried_and_outbox_preserved) ... ok
+test_cancel_requires_interrupt_receipt_and_retains_exact_route (test_bridge.BridgeTests.test_cancel_requires_interrupt_receipt_and_retains_exact_route) ... ok
+test_cancellation_without_interrupt_ack_cannot_release_resources (test_bridge.BridgeTests.test_cancellation_without_interrupt_ack_cannot_release_resources) ... ok
+test_controller_restart_and_lost_completion_ack (test_bridge.BridgeTests.test_controller_restart_and_lost_completion_ack) ... ok
+test_expired_dispatch_is_not_revived (test_bridge.BridgeTests.test_expired_dispatch_is_not_revived) ... ok
+test_general_shell_task_fields_and_endpoint_redirects_forbidden (test_bridge.BridgeTests.test_general_shell_task_fields_and_endpoint_redirects_forbidden) ... ok
+test_lost_offer_reply_does_not_claim_twice (test_bridge.BridgeTests.test_lost_offer_reply_does_not_claim_twice) ... ok
+test_production_controller_rejects_fixture_identity_and_admin (test_bridge.BridgeTests.test_production_controller_rejects_fixture_identity_and_admin) ... ok
+test_replay_conflict_and_out_of_order_rejection (test_bridge.BridgeTests.test_replay_conflict_and_out_of_order_rejection) ... ok
+test_unknown_started_worker_restart_quarantines_and_never_runs (test_bridge.BridgeTests.test_unknown_started_worker_restart_quarantines_and_never_runs) ... ok
+test_worker_restart_resends_result_without_reexecution (test_bridge.BridgeTests.test_worker_restart_resends_result_without_reexecution) ... ok
+test_wrong_key_tampering_reflection_and_stale_packets (test_bridge.BridgeTests.test_wrong_key_tampering_reflection_and_stale_packets) ... ok
+test_interrupt_ack_and_terminal_status_are_separate (test_bridge.AppServerTests.test_interrupt_ack_and_terminal_status_are_separate) ... ok
+test_real_windows_primitives_refuse_linux (test_bridge.AppServerTests.test_real_windows_primitives_refuse_linux) ... ok
+test_supported_completed_turn_and_artifact (test_bridge.AppServerTests.test_supported_completed_turn_and_artifact) ... ok
+test_tools_approvals_policy_drift_and_wrong_route_fail_closed (test_bridge.AppServerTests.test_tools_approvals_policy_drift_and_wrong_route_fail_closed) ... ok
+
+----------------------------------------------------------------------
+Ran 18 tests in 0.566s
+
+OK

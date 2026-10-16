@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "mode": "SHADOW",
+  "user_date": "2026-10-12",
+  "user_timezone": "America/New_York",
+  "github": {
+    "identity": "oluadegbu",
+    "repository_id": "1409360122",
+    "repository": "oluadegbu/Codex--DSV-",
+    "default_branch": "main",
+    "user_permission_metadata": {
+      "admin": true,
+      "maintain": true,
+      "pull": true,
+      "push": true,
+      "triage": true
+    },
+    "write_status": "BLOCKED",
+    "write_operation": "create branch codex/dmb-phase8-recheck-20261012 from main",
+    "write_error": "GitHub API error 403: {\"message\":\"Resource not accessible by integration\",\"documentation_url\":\"https://docs.github.com/rest/git/refs#create-a-reference\",\"status\":\"403\"}",
+    "installation_scope": "NOT TESTED; available tools expose no installation-grants endpoint",
+    "privileges_or_auth_changed": false
+  },
+  "windows": {
+    "device_id": "c511976a-157b-46e4-987c-e88d9f6146bf",
+    "observed_user": "win-hqaafggu1am\\administrator",
+    "enabled_administrators_sid": "S-1-5-32-544",
+    "integrity_sid": "S-1-16-12288",
+    "status": "BLOCKED",
+    "probe": "whoami and whoami /groups only; no worker execution"
+  },
+  "brain_heg": {
+    "remote_endpoint": null,
+    "external_oauth_verified": false,
+    "real_notifications_sent": false,
+    "approval_gate": "Existing REQUEST-0004/0006 remains unanswered; synthetic evidence grants no real authority"
+  },
+  "external_projects": {
+    "exact_new_artifact_locations_supplied": false,
+    "status": "No new access or certification inferred; prior reconciliation ledger retained"
+  },
+  "persistent_services_installed": false,
+  "production_changes": false,
+  "new_accounts": false,
+  "new_costs_or_purchases": false
+}

@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "operator_reported_baseline": {
+    "identity": "DirectiveCodex non-admin Windows session",
+    "codex_cli": "0.162.1",
+    "ChatGPT_authentication": "PASS",
+    "genuine_Codex_execution": "PASS",
+    "source": "Current user directive; scope retained without inferring this connector uses that account"
+  },
+  "current_connected_executor": {
+    "host": "WIN-HQAAFGGU1AM",
+    "user": "WIN-HQAAFGGU1AM\\Administrator",
+    "administrator": true,
+    "integrity": "High",
+    "worker_launch_allowed": false,
+    "probe_count": 1,
+    "development_worker_launched": false
+  },
+  "critical_access_gate": "Verified non-admin session is not the execution context exposed by the current connection. Existing connection/path reference requested; no credentials requested, no reauthentication or account change performed.",
+  "windows_or_production_mutations": false,
+  "codex_dispatch_enabled_in_M1": false,
+  "real_windows_isolation_and_recovery": "PENDING",
+  "policy": "Continue independent trusted shadow workflow work; never inherit Administrator privileges."
+}

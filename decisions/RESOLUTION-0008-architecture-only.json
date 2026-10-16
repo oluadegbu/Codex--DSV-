@@ -1,0 +1,13 @@
+{
+  "schema_version": 1,
+  "request": "REQUEST-0008",
+  "source": "Operator directive DMB PHASE 10 DEPLOYMENT AUTHORIZATION REVIEW",
+  "architecture_approved": true,
+  "scope": "Unattended startup architecture under existing non-administrator DirectiveCodex, subject to final configuration review",
+  "scheduled_task_installation_authorized": false,
+  "scheduled_task_enablement_authorized": false,
+  "final_configuration_request": "REQUEST-0009",
+  "credentials_supplied": false,
+  "production_changes_authorized": false,
+  "instruction": "Do not install or enable the Scheduled Task until that final approval is granted."
+}

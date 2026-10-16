@@ -1,0 +1,154 @@
+{
+  "schema_version": 1,
+  "source_local_commit": "1f2d66ef015104d4ad8da19e4c6292f3ef869c84",
+  "source_remote_commit": "8afb01009aa07532da912a22ff42ecafc63fad17",
+  "identical_tree": "2197a89c0751b28a0ee93069cf07aa96376d4b97",
+  "github": {
+    "pull_request": 1,
+    "draft": true,
+    "merged": false,
+    "base": "main",
+    "base_sha": "0af1f4208da6d5f799ec68d48aab5fb4800159d0",
+    "source_branch": "codex/dmb-shadow-publication-20261012-fd92f06",
+    "write_method": "Git data API, expected-head lease, force=false"
+  },
+  "local_git_bundle": {
+    "path": "/workspace/dci-dmb-dsv-reuse-1f2d66e.bundle",
+    "sha256": "ed5652449c6be7d102ddd1b53b9e4c074cbf88ee81f0f2eec5090254dd8fc9a9",
+    "verification": "PASS complete history"
+  },
+  "ci": {
+    "run_id": 38841861224,
+    "job_id": 116783543495,
+    "conclusion": "success",
+    "source_commit": "8afb01009aa07532da912a22ff42ecafc63fad17",
+    "suites": {
+      "tests": 100,
+      "certification_tests": 17,
+      "control_plane_tests": 9,
+      "windows_bridge_tests": 22,
+      "package_tests": 13,
+      "operations_tests": 16,
+      "phase10_tests": 17
+    },
+    "total_tests": 194,
+    "verifier_cycles": 100,
+    "worker_test_executions": 1099,
+    "peak_concurrent_paper_processes": 3,
+    "local_shadow_status": "PASS",
+    "overall_status": "BLOCKED",
+    "control_plane_workflow": {
+      "status": "PASS",
+      "completed_jobs": 3,
+      "duplicate_dispatches": 0,
+      "controller_crash_exit_code": 73,
+      "restart_recovered_without_worker_rerun": [
+        "research-crash"
+      ]
+    },
+    "job_steps": [
+      {
+        "name": "Set up job",
+        "conclusion": "success"
+      },
+      {
+        "name": "Run actions/checkout@v4",
+        "conclusion": "success"
+      },
+      {
+        "name": "Run actions/setup-python@v5",
+        "conclusion": "success"
+      },
+      {
+        "name": "Run PYTHONPATH=src python -m unittest discover -s tests -v",
+        "conclusion": "success"
+      },
+      {
+        "name": "Run PYTHONPATH=src python -m unittest discover -s certification_tests -v",
+        "conclusion": "success"
+      },
+      {
+        "name": "Run PYTHONPATH=src python -m unittest discover -s control_plane_tests -v",
+        "conclusion": "success"
+      },
+      {
+        "name": "Run PYTHONPATH=src python -m unittest discover -s windows_bridge_tests -v",
+        "conclusion": "success"
+      },
+      {
+        "name": "Run PYTHONPATH=src:tools python -m unittest discover -s package_tests -v",
+        "conclusion": "success"
+      },
+      {
+        "name": "Run PYTHONPATH=src python -m unittest discover -s operations_tests -v",
+        "conclusion": "success"
+      },
+      {
+        "name": "Run PYTHONPATH=src:tools python -m unittest discover -s phase10_tests -v",
+        "conclusion": "success"
+      },
+      {
+        "name": "Run python tools/prepare_shadow_research_worker.py --destination /tmp/dmb-ci-research-worker --manifest /tmp/dmb-ci-research-workers.json",
+        "conclusion": "success"
+      },
+      {
+        "name": "Run python tools/run_control_plane_workflow.py --workers /tmp/dmb-ci-research-workers.json --output /tmp/dmb-ci-research-evidence",
+        "conclusion": "success"
+      },
+      {
+        "name": "Run python tools/run_operations_workflow.py --workers /tmp/dmb-ci-research-workers.json --output /tmp/dmb-ci-operations-evidence",
+        "conclusion": "success"
+      },
+      {
+        "name": "Run PYTHONPATH=src python -m dci tests/fixtures/synthetic.json",
+        "conclusion": "success"
+      },
+      {
+        "name": "Run python -m compileall -q src tests",
+        "conclusion": "success"
+      },
+      {
+        "name": "Run PYTHONPATH=src python tools/certify_bridge.py",
+        "conclusion": "success"
+      },
+      {
+        "name": "Run python tools/prepare_dmb_labs.py --destination /tmp/dmb-ci-labs --manifest /tmp/dmb-ci-workers.json",
+        "conclusion": "success"
+      },
+      {
+        "name": "Run python tools/certify_dmb.py --workers /tmp/dmb-ci-workers.json --output /tmp/dmb-ci-evidence",
+        "conclusion": "success"
+      },
+      {
+        "name": "Run actions/upload-artifact@v4",
+        "conclusion": "success"
+      },
+      {
+        "name": "Run actions/upload-artifact@v4",
+        "conclusion": "success"
+      },
+      {
+        "name": "Run actions/upload-artifact@v4",
+        "conclusion": "success"
+      },
+      {
+        "name": "Post Run actions/setup-python@v5",
+        "conclusion": "success"
+      },
+      {
+        "name": "Post Run actions/checkout@v4",
+        "conclusion": "success"
+      },
+      {
+        "name": "Complete job",
+        "conclusion": "success"
+      }
+    ],
+    "external_https_certified": false,
+    "genuine_windows_lifecycle_certified": false
+  },
+  "new_windows_release_published": false,
+  "existing_windows_package_unchanged": true,
+  "request_0009": "WITHHELD",
+  "activated": false
+}

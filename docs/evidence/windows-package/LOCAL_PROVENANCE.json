@@ -1,0 +1,10 @@
+{
+  "local_package_source_commit": "b83de33eff3efc6c31f2baf0c9c8ea024c26b119",
+  "remote_package_source_commit": "76e437e5deb067c2c423ba47e6fbcda9688a278c",
+  "original_windows_source_commit": "614d23ee97acce913945d504903fc2987f32c85c",
+  "original_windows_sources_preserved": 12,
+  "old_evidence_manifest_sha256": "c86dbd16f4e0d89df80b17de01aed5ec78d36a0430d0907d9523d5d4753f5df6",
+  "portable_package_checks": 5,
+  "native_Windows_package_smoke": "Pending GitHub Windows CI",
+  "genuine_Windows_task": "Pending DirectiveCodex foreground procedure"
+}

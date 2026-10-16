@@ -1,0 +1,80 @@
+{
+  "schema_version": 1,
+  "captured_at": "2026-10-13T09:56:09.798097+00:00",
+  "outcome": "DMB LOCAL SHADOW PASS / FULL CERTIFICATION BLOCKED",
+  "suite_results": {
+    "tests": {
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-v"
+      ],
+      "passed": 100,
+      "failures": 0,
+      "log_sha256": "6831ea4cf32d654ac4517a07f9b702864c82c089851abec41be0a8f65908dcf6"
+    },
+    "certification_tests": {
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "certification_tests",
+        "-v"
+      ],
+      "passed": 17,
+      "failures": 0,
+      "log_sha256": "274012c30084a197f3e34ce71f1e58a0991ab42deb4d319b3b82916d3f5ff141"
+    }
+  },
+  "total_tests_passed": 117,
+  "previous_artifacts_verified": 18,
+  "previous_source_files_unchanged": 38,
+  "preserved_historical_cycles": 100,
+  "preserved_historical_worker_test_executions": 1099,
+  "bundles": [
+    {
+      "path": "/workspace/dci-dmb-shadow.bundle",
+      "sha256": "ba5f4c7ea182280dc6dbef9be1f14995d0152abc9e2e35194ea676bd4b4e4a6b",
+      "git_verify": "PASS"
+    },
+    {
+      "path": "/workspace/dci-dmb-phase8.bundle",
+      "sha256": "4d3710d9edeb1654c3ed69d0fe05793527a82333ae41d644f2b1dc2dd2bc6a7c",
+      "git_verify": "PASS"
+    }
+  ],
+  "os_isolation_probe": {
+    "status": "BLOCKED",
+    "scope": "same-UID synthetic cross-root negative read/write probe; not a Codex sandbox test",
+    "uid": 1000,
+    "distinct_roots": true,
+    "probes": {
+      "read": {
+        "exit_code": 0,
+        "access_denied": false
+      },
+      "write": {
+        "exit_code": 0,
+        "access_denied": false
+      }
+    },
+    "real_or_secret_data_accessed": false
+  },
+  "source_sha256": {
+    "src/dci/master/authorization_contract.py": "8b4833f994be3778ac810b2670955901e56d92c434486331035859f1f80013c2",
+    "certification_tests/test_authorization_contract.py": "129522130daba9b23e173dd015a8d186704968d156225a7d408bb0d40ed2fd3f",
+    "tools/verify_phase8_authorization.py": "d381e7bb9b7734890e04ee82454d4ff99271d96ab245f6669d082c33da41ebf5"
+  },
+  "live_oauth_verified": false,
+  "actual_bearer_tokens_used": false,
+  "auth_services_installed": false,
+  "external_messages_sent": false,
+  "classification": "New policy tests are fixture-only authorization rules; they do not verify token signatures, OAuth flow, external identity or human approval",
+  "observed_git_head": "fc3029f5cccbba76f421ad33461503a8712ae290"
+}

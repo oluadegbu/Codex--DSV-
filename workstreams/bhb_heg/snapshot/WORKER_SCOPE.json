@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "worker_id": "bhb_heg",
+  "mode": "SHADOW",
+  "workspace": "/workspace/dmb-workers/bhb_heg",
+  "identity": "agent uid1000",
+  "allowed": "isolated local development and synthetic testing only",
+  "forbidden": [
+    "production changes",
+    "credentials",
+    "trading",
+    "orders",
+    "fund movement",
+    "external providers",
+    "service installation"
+  ]
+}

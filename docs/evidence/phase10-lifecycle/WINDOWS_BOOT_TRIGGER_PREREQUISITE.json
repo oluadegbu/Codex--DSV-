@@ -1,0 +1,6 @@
+{
+  "source_url": "https://learn.microsoft.com/en-us/windows/win32/taskschd/boottrigger",
+  "retrieved_excerpt": "Only a member of the Administrators group can create a task with a boot trigger.",
+  "scope": "Task creation only; worker must remain existing DirectiveCodex non-admin Medium",
+  "action_taken": "Prepared approval-gated existing-security-owner registration script; no installation/elevation/rights change"
+}

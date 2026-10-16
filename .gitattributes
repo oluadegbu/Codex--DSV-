@@ -1,0 +1,18 @@
+# Paired bridge fingerprints are byte hashes; Windows checkouts must retain LF.
+src/dci/master/windows_*.py text eol=lf
+tools/run_windows_shadow_bridge.py text eol=lf
+tools/windows_package_runtime.py text eol=lf
+# Preserve exact Windows release receipt bytes, including CRLF, for hash evidence.
+docs/evidence/windows-package/RELEASE.json -text whitespace=cr-at-eol
+docs/evidence/windows-package/PACKAGE_SMOKE.json -text whitespace=cr-at-eol
+docs/evidence/windows-identity-repair/RELEASE.json -text whitespace=cr-at-eol
+docs/evidence/windows-identity-repair/PACKAGE_SMOKE.json -text whitespace=cr-at-eol
+docs/evidence/windows-codex-path/RELEASE.json -text whitespace=cr-at-eol
+docs/evidence/windows-codex-path/PACKAGE_SMOKE.json -text whitespace=cr-at-eol
+docs/evidence/windows-junction-repair/RELEASE.json -text whitespace=cr-at-eol
+docs/evidence/windows-junction-repair/PACKAGE_SMOKE.json -text whitespace=cr-at-eol
+docs/evidence/phase10-review/RELEASE.json -text whitespace=cr-at-eol
+docs/evidence/phase10-review/PACKAGE_SMOKE.json -text whitespace=cr-at-eol
+docs/evidence/phase10-lifecycle/RELEASE.json -text whitespace=cr-at-eol
+docs/evidence/phase10-lifecycle/PACKAGE_SMOKE.json -text whitespace=cr-at-eol
+docs/evidence/phase10-lifecycle/SHA256SUMS.txt -text whitespace=cr-at-eol

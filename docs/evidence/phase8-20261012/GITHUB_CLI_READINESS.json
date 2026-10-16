@@ -1,0 +1,9 @@
+{
+  "schema_version": 1,
+  "interface": "gh auth status (normal supported CLI; no login/config changes)",
+  "exit_code": 0,
+  "public_login_status": [],
+  "authorization_changed": false,
+  "tokens_requested_or_exported": false,
+  "classification": "CLI readiness only; integration installation/write grant is not inferred"
+}

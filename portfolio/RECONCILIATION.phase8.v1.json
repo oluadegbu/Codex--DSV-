@@ -1,0 +1,262 @@
+{
+  "schema_version": 1,
+  "registry_version": "dmb-portfolio-v1",
+  "assessment_version": "dmb-phase8-reconciliation-v1",
+  "mode": "SHADOW",
+  "status_vocabulary": [
+    "VERIFIED",
+    "HISTORICAL",
+    "UNKNOWN",
+    "BLOCKED"
+  ],
+  "authority": "Additive evidence ledger; original registry retained with its pinned planner configuration",
+  "projects": [
+    {
+      "project_id": "DCI",
+      "local_capability_status": "VERIFIED",
+      "external_reconciliation_status": "BLOCKED",
+      "historical_status": "UNKNOWN",
+      "historical_assertions": [],
+      "evidence": [
+        "docs/evidence/BHB_CERTIFICATION.json",
+        "BUILD_STATE.json",
+        "docs/evidence/phase8/BASELINE.json",
+        "docs/evidence/phase8/LOCAL_RESILIENCE.json"
+      ],
+      "blockers": [
+        "GitHub publication is rejected by the connected integration"
+      ],
+      "authorized_workspace": "/workspace/dci",
+      "authorized_repository": "oluadegbu/Codex--DSV-",
+      "next_safe_action": "Run isolated bounded shadow checks; review supplied non-secret project evidence",
+      "actual_project_access_verified": true,
+      "verified_scope": "local synthetic/interface evidence only"
+    },
+    {
+      "project_id": "BHB",
+      "local_capability_status": "VERIFIED",
+      "external_reconciliation_status": "BLOCKED",
+      "historical_status": "UNKNOWN",
+      "historical_assertions": [],
+      "evidence": [
+        "docs/evidence/BHB_CERTIFICATION.json",
+        "BUILD_STATE.json",
+        "docs/evidence/phase8/BASELINE.json",
+        "docs/evidence/phase8/LOCAL_RESILIENCE.json"
+      ],
+      "blockers": [
+        "GitHub publication is rejected by the connected integration",
+        "Standalone Codex, Windows non-admin identity, authenticated remote Brain and OS isolation gates blocked"
+      ],
+      "authorized_workspace": "/workspace/dci",
+      "authorized_repository": "oluadegbu/Codex--DSV-",
+      "next_safe_action": "Run isolated bounded shadow checks; review supplied non-secret project evidence",
+      "actual_project_access_verified": true,
+      "verified_scope": "local synthetic/interface evidence only"
+    },
+    {
+      "project_id": "HEG",
+      "local_capability_status": "VERIFIED",
+      "external_reconciliation_status": "BLOCKED",
+      "historical_status": "UNKNOWN",
+      "historical_assertions": [],
+      "evidence": [
+        "docs/evidence/BHB_CERTIFICATION.json",
+        "BUILD_STATE.json",
+        "docs/evidence/phase8/BASELINE.json",
+        "docs/evidence/phase8/LOCAL_RESILIENCE.json"
+      ],
+      "blockers": [
+        "GitHub publication is rejected by the connected integration",
+        "External providers and human approval identity have no approval/certification"
+      ],
+      "authorized_workspace": "/workspace/dci",
+      "authorized_repository": "oluadegbu/Codex--DSV-",
+      "next_safe_action": "Run isolated bounded shadow checks; review supplied non-secret project evidence",
+      "actual_project_access_verified": true,
+      "verified_scope": "local synthetic/interface evidence only"
+    },
+    {
+      "project_id": "DSV",
+      "local_capability_status": "UNKNOWN",
+      "external_reconciliation_status": "UNKNOWN",
+      "historical_status": "UNKNOWN",
+      "historical_assertions": [],
+      "evidence": [],
+      "blockers": [],
+      "authorized_workspace": null,
+      "authorized_repository": null,
+      "next_safe_action": "Run isolated bounded shadow checks; review supplied non-secret project evidence",
+      "actual_project_access_verified": false,
+      "verified_scope": "No accessible actual project certification evidence"
+    },
+    {
+      "project_id": "PULSE",
+      "local_capability_status": "UNKNOWN",
+      "external_reconciliation_status": "UNKNOWN",
+      "historical_status": "UNKNOWN",
+      "historical_assertions": [],
+      "evidence": [],
+      "blockers": [],
+      "authorized_workspace": null,
+      "authorized_repository": null,
+      "next_safe_action": "Run isolated bounded shadow checks; review supplied non-secret project evidence",
+      "actual_project_access_verified": false,
+      "verified_scope": "No accessible actual project certification evidence"
+    },
+    {
+      "project_id": "DAT_FUTURES",
+      "local_capability_status": "UNKNOWN",
+      "external_reconciliation_status": "UNKNOWN",
+      "historical_status": "HISTORICAL",
+      "historical_assertions": [
+        "Verified synthetic lab exists; it is not evidence of the actual project repository, runtime or production certification"
+      ],
+      "evidence": [
+        "portfolio/WORKERS.v1.json"
+      ],
+      "blockers": [],
+      "authorized_workspace": null,
+      "authorized_repository": null,
+      "next_safe_action": "Run isolated bounded shadow checks; review supplied non-secret project evidence",
+      "actual_project_access_verified": false,
+      "verified_scope": "No accessible actual project certification evidence"
+    },
+    {
+      "project_id": "DAT_MT5",
+      "local_capability_status": "UNKNOWN",
+      "external_reconciliation_status": "UNKNOWN",
+      "historical_status": "HISTORICAL",
+      "historical_assertions": [
+        "Verified synthetic lab exists; it is not evidence of the actual project repository, runtime or production certification"
+      ],
+      "evidence": [
+        "portfolio/WORKERS.v1.json"
+      ],
+      "blockers": [],
+      "authorized_workspace": null,
+      "authorized_repository": null,
+      "next_safe_action": "Run isolated bounded shadow checks; review supplied non-secret project evidence",
+      "actual_project_access_verified": false,
+      "verified_scope": "No accessible actual project certification evidence"
+    },
+    {
+      "project_id": "DPM",
+      "local_capability_status": "UNKNOWN",
+      "external_reconciliation_status": "UNKNOWN",
+      "historical_status": "HISTORICAL",
+      "historical_assertions": [
+        "Verified synthetic lab exists; it is not evidence of the actual project repository, runtime or production certification"
+      ],
+      "evidence": [
+        "portfolio/WORKERS.v1.json"
+      ],
+      "blockers": [],
+      "authorized_workspace": null,
+      "authorized_repository": null,
+      "next_safe_action": "Run isolated bounded shadow checks; review supplied non-secret project evidence",
+      "actual_project_access_verified": false,
+      "verified_scope": "No accessible actual project certification evidence"
+    },
+    {
+      "project_id": "TEMPORAL",
+      "local_capability_status": "VERIFIED",
+      "external_reconciliation_status": "UNKNOWN",
+      "historical_status": "HISTORICAL",
+      "historical_assertions": [
+        "User directive says DAT Temporal Integration was approved; implementation/deployment not verified"
+      ],
+      "evidence": [
+        "src/dci/master/workflows.py",
+        "src/dci/bridge/workflows.py"
+      ],
+      "blockers": [],
+      "authorized_workspace": null,
+      "authorized_repository": null,
+      "next_safe_action": "Run isolated bounded shadow checks; review supplied non-secret project evidence",
+      "actual_project_access_verified": false,
+      "verified_scope": "No production PASS inferred"
+    },
+    {
+      "project_id": "VMA_DAR",
+      "local_capability_status": "UNKNOWN",
+      "external_reconciliation_status": "UNKNOWN",
+      "historical_status": "UNKNOWN",
+      "historical_assertions": [],
+      "evidence": [],
+      "blockers": [],
+      "authorized_workspace": null,
+      "authorized_repository": null,
+      "next_safe_action": "Run isolated bounded shadow checks; review supplied non-secret project evidence",
+      "actual_project_access_verified": false,
+      "verified_scope": "No accessible actual project certification evidence"
+    },
+    {
+      "project_id": "CRYPTO_RESEARCH",
+      "local_capability_status": "UNKNOWN",
+      "external_reconciliation_status": "UNKNOWN",
+      "historical_status": "HISTORICAL",
+      "historical_assertions": [
+        "Planned according to portfolio directive; no external implementation evidence"
+      ],
+      "evidence": [],
+      "blockers": [],
+      "authorized_workspace": null,
+      "authorized_repository": null,
+      "next_safe_action": "Run isolated bounded shadow checks; review supplied non-secret project evidence",
+      "actual_project_access_verified": false,
+      "verified_scope": "No accessible actual project certification evidence"
+    },
+    {
+      "project_id": "CRYPTO_EXECUTION_PLANNED",
+      "local_capability_status": "UNKNOWN",
+      "external_reconciliation_status": "BLOCKED",
+      "historical_status": "HISTORICAL",
+      "historical_assertions": [
+        "Planned according to portfolio directive; no external implementation evidence"
+      ],
+      "evidence": [],
+      "blockers": [
+        "Signing, wallets, fund movement and live execution are not authorized"
+      ],
+      "authorized_workspace": null,
+      "authorized_repository": null,
+      "next_safe_action": "Run isolated bounded shadow checks; review supplied non-secret project evidence",
+      "actual_project_access_verified": false,
+      "verified_scope": "No accessible actual project certification evidence"
+    },
+    {
+      "project_id": "DMB",
+      "local_capability_status": "VERIFIED",
+      "external_reconciliation_status": "BLOCKED",
+      "historical_status": "UNKNOWN",
+      "historical_assertions": [],
+      "evidence": [
+        "docs/evidence/DMB_CERTIFICATION.json",
+        "docs/evidence/DMB_TESTS.log",
+        "docs/evidence/phase8/BASELINE.json",
+        "docs/evidence/phase8/LOCAL_RESILIENCE.json"
+      ],
+      "blockers": [
+        "GitHub publication is rejected by the connected integration",
+        "Standalone Codex, Windows non-admin identity, authenticated remote Brain and OS isolation gates blocked"
+      ],
+      "authorized_workspace": "/workspace/dci",
+      "authorized_repository": "oluadegbu/Codex--DSV-",
+      "next_safe_action": "Extend durable shadow reconciliation and review supplied external project certification artifacts; retain all live gates",
+      "actual_project_access_verified": true,
+      "verified_scope": "100 real trusted local lab cycles and simulated HEG only; overall DMB SHADOW CERTIFIED remains BLOCKED"
+    }
+  ],
+  "discovery_limit": "Only the explicitly authorized DCI checkout/repository and stated Windows DCI path were inspected. Empty repository inventory does not establish absence. No inferred DAT/DPM/DSV/Pulse/VMA-DAR paths were scanned.",
+  "protected_milestone": {
+    "name": "DAT Temporal Integration",
+    "approval": "Previously approved according to user directive",
+    "implementation": "UNVERIFIED",
+    "policy": "Preserve milestone; no DAT changes or production integration inferred"
+  },
+  "sources_sha256": {
+    "portfolio/REGISTRY.v1.json": "f0c9b30a096feb1eff4dcd9a479d2362bf8c754c0072fe1858645dcd53335912",
+    "src/dci/master/workflows.py": "5927dd56af08aed77cc620ca95eb6090dc6a26a8a1feeeb9d05268f1f56d0d36"
+  }
+}

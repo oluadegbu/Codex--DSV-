@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "kind": "POST_PUBLICATION_READBACK",
+  "repository": "oluadegbu/Codex--DSV-",
+  "local_source_commit": "1a7319098dd5099858e9c1cbeb2739df37cb0458",
+  "remote_publication_commit": "da2b40c2e91970cd5cc119e5c1a052c63e25aec7",
+  "exact_tree": "3e74b36bb6395c3a0c50d18a8b8e8a2e1b8ec30a",
+  "remote_parent": "f1d11c0f2bae6aaa07749c445173da1c079c1437",
+  "remote_git_commit_tree_readback": "PASS",
+  "draft_pr": {
+    "number": 1,
+    "url": "https://github.com/oluadegbu/Codex--DSV-/pull/1",
+    "head_branch": "codex/dmb-shadow-publication-20261012-fd92f06",
+    "open": true,
+    "draft": true,
+    "merged": false
+  },
+  "ci": {
+    "id": 38449701354,
+    "url": "https://github.com/oluadegbu/Codex--DSV-/actions/runs/38449701354",
+    "source_commit": "da2b40c2e91970cd5cc119e5c1a052c63e25aec7",
+    "status": "completed",
+    "conclusion": "success",
+    "provider_started_at": "2026-10-13T18:48:10Z",
+    "provider_completed_at": "2026-10-13T18:48:59Z",
+    "proves": "Both preserved suites, core fixture, BHB and relocated DMB trusted shadow certification",
+    "does_not_prove": "Actual standalone Codex completion/cancellation/restart, Windows token, OS confinement, remote authenticated Brain or HEG"
+  },
+  "main_expected_unchanged": "0af1f4208da6d5f799ec68d48aab5fb4800159d0",
+  "local_main_expected_unchanged": "fc3029f5cccbba76f421ad33461503a8712ae290",
+  "phase9_artifact_manifest_sha256": "93f0423c41cb26ed402a87f7cc3eabd9988cfaf2bd81e487e1f322dd30c7e5d2",
+  "phase9_source_bundle": {
+    "path": "/workspace/dci-dmb-phase9-20261013.bundle",
+    "sha256": "34c0c34496c970c622126382d0173c369350bfea649e760a5c725ac605dbc6ac",
+    "complete_history": true,
+    "git_verify": "PASS"
+  },
+  "source_and_published_commit_identity": "Different commit parents/provenance; identical trees. Original local history preserved in bundles.",
+  "certification_outcome": "DMB LOCAL SHADOW PASS / SINGLE REAL WORKER CERTIFICATION BLOCKED",
+  "full_DMB_certified": false,
+  "publication_method": "Supported authenticated GitHub connector with leased non-force development-ref update",
+  "clock_scope": "Provider CI timestamps are recorded separately from executor observation timestamps; no clock synchronization or authentication-expiry certification is inferred.",
+  "manifest_note": "This later receipt is outside the previously published immutable artifact manifest. Its own Git blob and commit bind these fields."
+}

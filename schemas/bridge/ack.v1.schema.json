@@ -1,0 +1,83 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:dci:bhb:ack:v1",
+  "type": "object",
+  "properties": {
+    "version": {
+      "const": 1
+    },
+    "kind": {
+      "const": "ACK"
+    },
+    "message_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9_-]{1,64}$"
+    },
+    "task_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9_-]{1,64}$"
+    },
+    "correlation_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9_-]{1,64}$"
+    },
+    "sender": {
+      "type": "string"
+    },
+    "recipient": {
+      "type": "string"
+    },
+    "sequence": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "issued_at": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "expires_at": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "payload": {
+      "type": "object",
+      "properties": {
+        "accepted_message_id": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9_-]{1,64}$"
+        }
+      },
+      "required": [
+        "accepted_message_id"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "required": [
+    "version",
+    "kind",
+    "message_id",
+    "task_id",
+    "correlation_id",
+    "sender",
+    "recipient",
+    "sequence",
+    "issued_at",
+    "expires_at",
+    "payload"
+  ],
+  "additionalProperties": false,
+  "oneOf": [
+    {
+      "properties": {
+        "sender": {
+          "const": "runner"
+        },
+        "recipient": {
+          "const": "brain"
+        }
+      }
+    }
+  ],
+  "description": "Transport contract only. Runtime enforces sender authentication, route-specific payloads, expiry, sequence and lifecycle. Local shadow deployment only."
+}

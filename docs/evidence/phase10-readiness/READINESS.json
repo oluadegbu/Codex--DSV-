@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-10-15T09:35:48.841664+00:00",
+  "mode": "SHADOW",
+  "status": "NOT_READY_POLICY_AND_ACCESS_GATES_BLOCKED",
+  "review1_lifecycle": {
+    "bounded_session": true,
+    "host_polling_budget": "min(--seconds3600, remaining one-hour grant)-120 seconds, then drain",
+    "normal_exit_restart": false,
+    "restart_on_failure_does_not_restart_successful_exit": true,
+    "claim_of_continuous_service": false
+  },
+  "watchdog_revision": {
+    "state": "DESIGNED_DISABLED_NOT_IMPLEMENTED_IN_RELEASE",
+    "native_XML_schema": "PASS",
+    "watchdog_interval_seconds": 300,
+    "overlap": "IgnoreNew + exclusive native worker lock",
+    "global_crash_circuit": "Proposed durable lifetime budget3 unexpected interrupted starts, then sticky BLOCKED until explicit authenticated reconciliation",
+    "normal_rotation": "New bounded session only while the explicitly approved policy/lease/pairing remains valid",
+    "expired_or_uncertain": "Never renew authority, clear quarantine or re-pair automatically"
+  },
+  "logon_candidate": "Password + LeastPrivilege; OS protected task credential store; no plaintext",
+  "batch_right": "NO_ALLOW_OBSERVED_LOCAL_POLICY",
+  "real_batch_network_DPAPI_logon": "BLOCKED_UNTESTED",
+  "remote_relay": "BLOCKED no existing approved endpoint/host/access identity supplied or verified",
+  "managed_executor": "Administrator/High; only managed terminal also Administrator; no supported run-as option",
+  "actual_cancellation_crash_denial_safe_restart": "BLOCKED no eligible supported non-admin invocation context or independent canary fixtures; no false PASS",
+  "genuine_v013_task": "PASS preserved at pinned original source; does not certify new source/batch context",
+  "operator_action_procedure": "WITHHELD_UNTIL_READY",
+  "REQUEST-0009": "ACTIVATION_WITHHELD",
+  "persistent_changes": false,
+  "production_changes": false,
+  "previous_packages_journals_pairing": "PRESERVED",
+  "new_release_published": false
+}

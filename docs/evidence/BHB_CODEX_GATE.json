@@ -1,0 +1,38 @@
+{
+  "mode": "SHADOW",
+  "task": {
+    "id": "3dd122da-8658-4add-9f3e-f81db3df9e63",
+    "correlation": "b9108bbc-6e1e-4539-b184-5e47a00bef69",
+    "action": "codex_review",
+    "scope": "6c1612987ebb1dfe9207ef4ead9fecb49fcfad8e405ca6a24c564f943e2897d7",
+    "state": "NEEDS_HUMAN",
+    "expires": 1791753315,
+    "attempts": 1,
+    "lease": null,
+    "result": "{\"artifacts\":\"artifacts/hands/ca625434-8b72-490d-b51e-a8d32f861081\",\"diff_after_sha256\":\"d79d1db1014436a25f35eb4d1d277634bbbf298862a07369aa1b75243ba4e256\",\"diff_before_sha256\":\"d79d1db1014436a25f35eb4d1d277634bbbf298862a07369aa1b75243ba4e256\",\"duration_seconds\":0.07,\"exit_code\":1,\"git_after\":\"69bb12ebc8075560a9e27a2c1082088898a3ac8e\",\"git_before\":\"69bb12ebc8075560a9e27a2c1082088898a3ac8e\",\"git_worktree_unchanged\":true,\"interface\":\"codex exec\",\"operation\":\"codex_review\",\"passed\":false,\"sandbox\":\"read-only\",\"stderr_sha256\":\"8e3330eeb312ddb37b9da73c3ece4a8aa7e2ade4b7bb255573aa487bc89f0f58\",\"stdout_sha256\":\"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\",\"synthetic\":false,\"turn_completed\":false}",
+    "retry_at": null
+  },
+  "human_request": {
+    "id": "3eaf7c32-a6a8-45d3-9047-9617dbfcf5fe",
+    "task": "3dd122da-8658-4add-9f3e-f81db3df9e63",
+    "scope": "6c1612987ebb1dfe9207ef4ead9fecb49fcfad8e405ca6a24c564f943e2897d7",
+    "expires": 1791750016,
+    "category": "CONTROL_PLANE_DEGRADED",
+    "summary": "\ud83d\udd34\ud83d\udd34\ud83d\udd34 HUMAN INPUT REQUIRED \u2014 CONTROL PLANE DEGRADED \ud83d\udd34\ud83d\udd34\ud83d\udd34 Codex turn not completed; runtime certification blocked",
+    "decision": null,
+    "identity": null,
+    "decided_at": null
+  },
+  "notifications": "SIMULATED ONLY",
+  "database": "artifacts/bhb-certification/78745944-8592-4caf-981a-8205c9feef60/bridge.sqlite",
+  "deliveries": [
+    {
+      "request": "3eaf7c32-a6a8-45d3-9047-9617dbfcf5fe",
+      "channel": "whatsapp",
+      "attempts": 1,
+      "state": "ACKNOWLEDGED",
+      "next_at": 1791749717,
+      "acknowledgement": "simulated-ack-d797fa06-5ec5-45e3-ba4a-639925041f24"
+    }
+  ]
+}

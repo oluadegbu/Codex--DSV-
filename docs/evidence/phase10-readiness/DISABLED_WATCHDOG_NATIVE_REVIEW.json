@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "status": "PASS_NATIVE_SCHEMA_ONLY",
+  "proposal_sha256": "255c82318e31dfda488a884684e220fafd407a65c9f26a26d1bda215ce5b6e0d",
+  "Native_TaskScheduler_COM_readback": {
+    "Enabled": false,
+    "TriggerEnabled": false,
+    "Repetition": "PT5M",
+    "Duration": null,
+    "RestartCount": 0,
+    "MultipleInstances": 2,
+    "LogonType": 1,
+    "RunLevel": 0
+  },
+  "registered": false,
+  "run": false,
+  "global_circuit_runtime": "DESIGN ONLY; not implemented in review1; candidate must not be registered",
+  "source_package": "The0.2.0-review1 release is unchanged; this disabled proposal is not in that release"
+}

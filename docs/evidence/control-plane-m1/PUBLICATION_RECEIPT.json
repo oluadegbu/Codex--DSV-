@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "repository": "oluadegbu/Codex--DSV-",
+  "local_milestone_commit": "6f99d6f684275ae714f09c10811ad9746115176a",
+  "local_implementation_commits": [
+    "4730ebe",
+    "f72802312cc9e23c9b5ba742f1bf89382ed45adb"
+  ],
+  "remote_milestone_commit": "280351dfde6b8985104b7bd255a0be25ab3564f3",
+  "exact_tree": "3dc1d0df45bc438b711a44edb86253a650bed221",
+  "remote_parent": "107bd73f317ab271caf283469641bbc78480f7af",
+  "tree_readback": "PASS",
+  "publication_method": "supported authenticated GitHub connector, leased non-force development-ref update",
+  "draft_pr": "https://github.com/oluadegbu/Codex--DSV-/pull/1",
+  "main_expected_unchanged": "0af1f4208da6d5f799ec68d48aab5fb4800159d0",
+  "ci": {
+    "status": "completed",
+    "conclusion": "success",
+    "run_id": 38461398850,
+    "url": "https://github.com/oluadegbu/Codex--DSV-/actions/runs/38461398850",
+    "source_commit": "280351dfde6b8985104b7bd255a0be25ab3564f3",
+    "scope": "100 preserved +17 auth +9 runtime tests, actual paper workflow/controller crash recovery, original BHB/relocated DMB checks"
+  },
+  "artifact_manifest_sha256": "b633cb8db3aff04f13e3d7e7303d07216eead8061a3df71103c14d25c78ea3cb",
+  "local_history_bundle": {
+    "path": "/workspace/dci-dmb-control-plane-m1.bundle",
+    "sha256": "8aff145c4abe73428086c95f8e7a833a8a173ba02a29cc6c121729770b0dada2",
+    "git_verify": "PASS",
+    "prior_bundles_overwritten": false
+  },
+  "functionality": "Functional trusted DMB shadow research control plane, with fixed intake/planning/dispatch/artifacts/durable recovery/reporting",
+  "genuine_Windows_Codex_baseline": "Operator-certified baseline preserved. Available connector still Administrator/High; genuine worker handoff/isolation/cancellation/recovery not certified by this milestone.",
+  "codex_dispatch_enabled": false,
+  "external_delivery_enabled": false,
+  "full_DMB_certified": false,
+  "merge_or_production_change": false,
+  "immutable_manifest_note": "This post-publication receipt is bound by its own Git blob/commit; prior manifest and preserved milestone state are not rewritten."
+}

@@ -1,0 +1,82 @@
+{
+  "token": "SYNTHETIC_TOKEN",
+  "launch": 900,
+  "as_of": 1100,
+  "timing": ".9",
+  "momentum": ".8",
+  "entry_price": "1",
+  "profiles": [
+    {
+      "wallet": "wallet-0",
+      "cluster": "cluster-0",
+      "quality": ".9",
+      "samples": 10,
+      "as_of": 1000
+    },
+    {
+      "wallet": "wallet-1",
+      "cluster": "cluster-1",
+      "quality": ".9",
+      "samples": 10,
+      "as_of": 1000
+    },
+    {
+      "wallet": "wallet-2",
+      "cluster": "cluster-2",
+      "quality": ".9",
+      "samples": 10,
+      "as_of": 1000
+    }
+  ],
+  "buys": [
+    {
+      "signature": "sig-0",
+      "instruction": 0,
+      "wallet": "wallet-0",
+      "token": "SYNTHETIC_TOKEN",
+      "timestamp": 1050,
+      "slot": 123,
+      "price": "1",
+      "finalized": true
+    },
+    {
+      "signature": "sig-1",
+      "instruction": 0,
+      "wallet": "wallet-1",
+      "token": "SYNTHETIC_TOKEN",
+      "timestamp": 1051,
+      "slot": 124,
+      "price": "1",
+      "finalized": true
+    },
+    {
+      "signature": "sig-2",
+      "instruction": 0,
+      "wallet": "wallet-2",
+      "token": "SYNTHETIC_TOKEN",
+      "timestamp": 1052,
+      "slot": 125,
+      "price": "1",
+      "finalized": true
+    }
+  ],
+  "risk": {
+    "token": "SYNTHETIC_TOKEN",
+    "as_of": 1090,
+    "mint_authority_revoked": true,
+    "freeze_authority_revoked": true,
+    "liquidity_verified": true,
+    "safety": ".95",
+    "liquidity": ".85"
+  },
+  "marks": [
+    {
+      "price": "1.1",
+      "at": 1200
+    },
+    {
+      "price": "1.6",
+      "at": 1300
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "status": "CREATOR_VERIFIED",
+  "host": "WIN-HQAAFGGU1AM",
+  "host_provenance": "exact native WindowsIdentity.Name prefix and connected device; COMPUTERNAME env absent",
+  "creator_identity": "WIN-HQAAFGGU1AM\\Administrator",
+  "remote_powershell_pid": 11904,
+  "actions": "CreateNew harmless canary files in creator own profile only; independently read exact bytes and SHA256",
+  "plan": {
+    "version": 1,
+    "host": "WIN-HQAAFGGU1AM",
+    "creator_identity": "WIN-HQAAFGGU1AM\\Administrator",
+    "canaries": [
+      {
+        "path": "C:\\Users\\Administrator\\AppData\\Local\\Directive\\DMB-Isolation-Canary-v1\\fixtures\\v1\\read-canary.txt",
+        "sha256": "b0cce10abf6492e188b553d10faa0dea768fbef1e6566c54ead8b3d69737e6b1",
+        "operation": "read",
+        "creator_verified_exists": true
+      },
+      {
+        "path": "C:\\Users\\Administrator\\AppData\\Local\\Directive\\DMB-Isolation-Canary-v1\\fixtures\\v1\\write-canary.txt",
+        "sha256": "b0cce10abf6492e188b553d10faa0dea768fbef1e6566c54ead8b3d69737e6b1",
+        "operation": "write",
+        "creator_verified_exists": true
+      }
+    ]
+  },
+  "native_worker_access_denial": "NOT TESTED",
+  "ACLs_changed": false,
+  "accounts_created": false,
+  "Codex_executed": false,
+  "production_changes": false
+}
