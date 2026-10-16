@@ -179,3 +179,38 @@ initial start of the single pinned least-privilege task. No task registration,
 activation, credential enrollment or logon-right change is authorized yet.
 
 REQUEST-0009 STATUS: WITHHELD. FULL UNATTENDED CERTIFICATION: BLOCKED.
+
+### DSV reuse assessment and consolidated minimum remaining authorization
+
+Read-only inspection found DSV at `C:\DirectiveSupervisor`, with durable own
+SQLite queue/audit and a browser-dependent reasoning adapter. Current browser
+availability is false; three COMPLETE messages and zero queued deliveries were
+observed. Historical browser-optional PASS is preserved, not promoted to remote
+DMB certification. No DMB route is configured. Existing DAT/DPM route permissions
+and OpenClaw Administrator credentials must not be inherited by DMB.
+
+Official OpenClaw 2026.9.7 status reports local RPC OK at
+`ws://127.0.0.1:18789`; observed listeners are loopback-only. Its existing gateway
+task uses Administrator/Interactive/Limited and LogonTrigger. No remote HTTPS
+ingress, independent authentication mode or full-logoff resilience was certified.
+No Temporal address/namespace/task queue was verified in the authorized evidence;
+this does not prove an approved deployment elsewhere is absent.
+
+The reusable HTTPS WSGI adapter now directly mounts the existing atomic DMB
+controller; it opens no listener, provisions no identity and installs nothing.
+Sixteen targeted offline operations tests PASS (eight new). Existing Windows
+package, private pairing, installations and earlier evidence are unchanged.
+
+Minimum consolidated operator requirement: identify the **existing approved
+non-admin hosting and HTTPS endpoint/access reference**, plus any existing
+Temporal namespace/DMB-specific queue ownership reference; approve only the exact
+DMB route, private scoped authentication/configuration and durable hosting/trigger
+changes after review. Never send credentials in chat or repurpose production
+secrets. Then complete the existing single DirectiveCodex foreground acceptance
+procedure and receipt-bound Windows preflight. Final task registration/start,
+any missing account-specific batch right and local Windows-protected credential
+enrollment remain explicitly WITHHELD. No new infrastructure purchase, listener,
+persistent process, policy change or task activation is authorized by this update.
+
+Recommendation and rollback: `docs/DMB_DSV_REUSE_ASSESSMENT.md`.
+REQUEST-0009 remains WITHHELD; no new approval request replaces it.

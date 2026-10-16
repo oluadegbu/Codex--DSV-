@@ -2,8 +2,8 @@
   "schema_version": 1,
   "project": "Directive Crypto Intelligence",
   "repository": "oluadegbu/Codex--DSV-",
-  "updated_at": "2026-10-15T19:23:37.585853+00:00",
-  "milestone": "phase10-bounded-lifecycle-package-released",
+  "updated_at": "2026-10-16T02:39:55.620726+00:00",
+  "milestone": "phase10-dsv-reuse-assessed-https-adapter-offline",
   "status": "LOCAL_SHADOW_PASS_UNATTENDED_AND_FULL_CERTIFICATION_BLOCKED",
   "mode": "SHADOW",
   "synthetic_only": true,
@@ -773,5 +773,19 @@
     "native_foreground_procedure": "docs/DMB_PHASE10_NATIVE_CERTIFICATION.ps1",
     "native_VPS_procedure_syntax": "PASS parsed only",
     "activation": "WITHHELD REQUEST-0009"
+  },
+  "phase10_dsv_reuse": {
+    "assessment": "docs/DMB_DSV_REUSE_ASSESSMENT.md",
+    "evidence": "docs/evidence/phase10-dsv-reuse/ASSESSMENT.json",
+    "dsv": "VERIFIED_SCOPED_SOURCE_AND_READ_ONLY_STATE_BROWSER_REASONING_DEPENDENT",
+    "openclaw": "VERIFIED_LOCAL_LOOPBACK_RPC_ONLY",
+    "temporal": "UNKNOWN_NO_APPROVED_ENDPOINT_OR_QUEUE_VERIFIED",
+    "adapter": "IMPLEMENTED_WSGI_NO_LISTENER_NOT_DEPLOYED",
+    "targeted_tests": "16_PASS_8_NEW_PLUS_8_EXISTING_OPERATIONS_OFFLINE",
+    "windows_package": "UNCHANGED_dmb-windows-v0.3.0-a46705985abd",
+    "external_delivery": "BLOCKED_APPROVED_HOST_TLS_ENDPOINT_SCOPED_AUTH_AND_DEPLOYMENT_APPROVAL",
+    "brain_self_wake": "NOT_ESTABLISHED",
+    "request_0009": "WITHHELD",
+    "next_safe_action": "Review approved existing HTTPS hosting/Temporal ownership metadata; do not activate or change production."
   }
 }

@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "recorded_at_utc": "2026-10-16T02:40:34.955914+00:00",
+  "command": "PYTHONPATH=src python -m unittest discover -s operations_tests -v",
+  "exit_code": 0,
+  "tests_run": 16,
+  "new_adapter_tests": 8,
+  "existing_operations_regressions": 8,
+  "failures": 0,
+  "errors": 0,
+  "duration_seconds": 1.268,
+  "scope": "OFFLINE signed in-process WSGI and actual temporary SQLite; existing operations real local paper subprocess/recovery. No new native Windows or external HTTPS certification.",
+  "compileall": "PASS: src/dci/master/https_gateway.py operations_tests/test_https_gateway.py",
+  "git_diff_check": "PASS",
+  "baseline_ci_tests": 186,
+  "baseline_repeated_locally": false,
+  "network_permission_attempt": "Aborted before execution; no TLS loopback test applied or run.",
+  "files_sha256": {
+    "src/dci/master/https_gateway.py": "812bd3d37211e66d8d34bb554e4e7f309d91d1d4a36c54f643bc9df1ca0d27e6",
+    "operations_tests/test_https_gateway.py": "8a3d92d6de4eb06d109a92ad7ea37697ab8d448744fabe9aa981433f864dab0c",
+    "operations_tests/test_operations.py": "7e9faf0e0358763aad525259d989a8a9a840c7c4c97529dead4abb9aeace42ce"
+  }
+}

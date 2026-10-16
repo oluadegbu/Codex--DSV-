@@ -226,3 +226,11 @@ procedure](docs/DMB_PHASE10_NATIVE_CERTIFICATION.ps1) is pinned to this ZIP and
 preserves existing installations. These are package/local gates; actual new-package
 Windows cancellation/crash/denial/hour-boundary and RDP-independent operation are
 still NOT TESTED. REQUEST-0009 registration/activation remains WITHHELD.
+
+[DSV relay reuse assessment](docs/DMB_DSV_REUSE_ASSESSMENT.md): existing DSV source
+and own-state metadata are verified; OpenClaw local loopback RPC responds. Current
+DSV reasoning remains browser-dependent, and no approved remote HTTPS endpoint or
+Temporal namespace/task queue is verified. A thin HTTPS WSGI adapter now reuses
+DMB's atomic controller and signed protocols without opening a listener. Sixteen
+targeted offline operations tests pass, including eight new adapter contracts.
+The released Windows package is unchanged; REQUEST-0009 remains WITHHELD.
