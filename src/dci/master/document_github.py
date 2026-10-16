@@ -95,3 +95,36 @@ class GitHubDocuments:
         # A sibling publication makes this non-fast-forward. Never force a ref.
         self.request('PATCH', '/git/refs/heads/'+BRANCH, {'sha': commit, 'force': False})
         return commit
+
+
+class GitHubCLIDocuments(GitHubDocuments):
+    """Use already-enrolled official gh authentication; never extract its token.
+
+    Explicitly selected, never a silent fallback after token failure. Auth repair
+    or managed-secret enrollment requires the operator's approved mechanism.
+    """
+    def __init__(self, repository, cache_store=None):
+        super().__init__(repository, lambda: None, cache_store)
+
+    def request(self, method, path, value=None):
+        import subprocess
+        remaining=self.deadline-time.monotonic()
+        if remaining<=0: raise TimeoutError('Bounded GitHub invocation deadline')
+        argv=['gh','api','--hostname','github.com','--method',method,
+              '/repos/'+self.repository+path,'-H','Accept: application/vnd.github+json',
+              '-H','X-GitHub-Api-Version: 2022-11-28']
+        if value is not None: argv += ['--input','-']
+        try:
+            result=subprocess.run(argv,input=None if value is None else canonical(value).encode(),
+                capture_output=True,timeout=min(10,remaining),shell=False)
+        except subprocess.TimeoutExpired:
+            raise TimeoutError('GitHub CLI deadline; pending state retained') from None
+        if result.returncode:
+            detail=result.stderr.lower()
+            if method=='PATCH' and any(code in detail for code in (b'http 409',b'http 422')):
+                raise ConnectionError('GitHub branch CAS conflict')
+            if any(code in detail for code in (b'http 500',b'http 502',b'http 503',b'http 429')):
+                raise ConnectionError('GitHub temporarily unavailable')
+            raise PermissionError('Existing GitHub CLI authentication/connectivity rejected; no credential details exported')
+        if len(result.stdout)>2000000: raise ProtocolError('GitHub response limit')
+        return json.loads(result.stdout,object_pairs_hook=unique_object)

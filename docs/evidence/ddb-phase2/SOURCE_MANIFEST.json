@@ -1,0 +1,13 @@
+{
+  "ddb_tests/test_native_preparation.py": "f2ec52c8c14e865943061acc4489ea793b3460f89854771e3d81e1f8d82e93dd",
+  "schemas/ddb/ack.schema.json": "9dc416808f41376ed0798341f670b10d5f858e324296b8535b94222e106b9c1c",
+  "schemas/ddb/complete.schema.json": "cb15a599e6d7ecf4619a97d1f31244f9f2d59407be42635bd50a1a35e6ddb6a3",
+  "schemas/ddb/directive.schema.json": "c7e88331b43e5566f8a72813dae5e8ac52fd07846d9acf6ee2cfd869fba4529e",
+  "schemas/ddb/envelope.schema.json": "dacb9204bb75dd249bedaed011098df4989515298f31c6c7179b3ce9a1ded1e4",
+  "schemas/ddb/heartbeat.schema.json": "57f9804365f472fdda54043630827d7c3a99ef612f0f59bde8ab54813db467ce",
+  "schemas/ddb/report.schema.json": "a006ed07d095767c58d03dbec04e0285bb9fcee81323f72cc62a47e49b65f064",
+  "src/dci/master/document_bridge.py": "6cc5a78dcb340f3bc715a5a1bd322f5e870d9c6af7e0e8599ae5917cb8173a91",
+  "src/dci/master/document_cli.py": "81822c827ddef97f79572e4050ae4654a2389fa30ebf84011c4a3d0ce93fb182",
+  "src/dci/master/document_github.py": "a20908ef8e3cee15ec5923a06fec60abff21e494bd04e5637269be776e89ac81",
+  "src/dci/master/document_native.py": "d5db86df2f79da8fdacb04871a9a2b15d56a2ff437fdfdffcb8cef835d87638a"
+}

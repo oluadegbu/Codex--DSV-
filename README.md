@@ -243,3 +243,12 @@ crash recovery without duplicate execution. Native Codex-over-DDB, real GitHub
 mailbox delivery and unattended scheduling remain disabled/unverified. The
 separate development PR preserves PR #1, the Windows release and main; one
 consolidated [activation request](decisions/REQUEST-0010.md) retains REQUEST-0009.
+
+[DDB Phase2 foreground preparation](docs/DDB_PHASE2_FOREGROUND_CERTIFICATION.md)
+adds a native Linux Codex adapter with one-effort policy and real GitHub admission
+before launch. The documents-only coordination branch now contains only a signed
+BLOCKED heartbeat. No native task has started: the worker's existing GitHub CLI
+authentication is invalid and no managed runtime binding is ready. Connector
+publication is distinct from worker authentication. REQUEST-0010 Option1 is
+approved for bounded preparation/certification; unattended activation remains
+withheld, with one consolidated runtime credential/access action outstanding.

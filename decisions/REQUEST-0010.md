@@ -67,3 +67,29 @@ HARD_GATE: YES
 ## SUPERVISOR RESPONSE
 Pending. No policy pin, signer enrollment, GitHub runtime credential or scheduler
 activation is inferred from development authorization or offline PASS.
+
+## SUPERVISOR RESPONSE — controlled Phase 2 scope
+
+The user explicitly approved Option1 for preparation and bounded, non-persistent
+certification. This supersedes the earlier pending response for that limited
+scope only. Unattended installation/activation, REQUEST-0009 Windows task/batch
+rights and production changes remain WITHHELD.
+
+Prepared dedicated local signer candidates, a documents-only coordination branch
+with a signed BLOCKED heartbeat and native Linux foreground adapter. No directive
+or model execution has occurred. No GitHub credential was modified/enrolled.
+
+ONE CONSOLIDATED REMAINING ACTION: repair/attach approved runtime GitHub auth to
+the existing UID1000 cloud foreground executor, repository selected to
+oluadegbu/Codex--DSV-, Metadata read + Contents read/write only, through protected
+platform binding or official CLI authentication. Existing gh authentication reports
+an invalid token/account; the managed environment has no ready GitHub binding.
+The interactive GitHub connector is not exportable worker authentication. Never
+send a token in chat; do not broaden permissions, reuse production secrets or
+install a scheduler. Native task launch remains blocked before that boundary.
+
+Exact proposed policy/fingerprints, gates, evidence and rollback:
+`docs/DDB_PHASE2_FOREGROUND_CERTIFICATION.md` and
+`docs/evidence/ddb-phase2/PROPOSED_POLICY.json`.
+STATUS: FOREGROUND PREPARATION AUTHORIZED / RUNTIME AUTHENTICATION BLOCKED /
+UNATTENDED ACTIVATION WITHHELD.

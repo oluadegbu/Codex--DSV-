@@ -2,8 +2,8 @@
   "schema_version": 1,
   "project": "Directive Crypto Intelligence",
   "repository": "oluadegbu/Codex--DSV-",
-  "updated_at": "2026-10-16T03:07:23.472656+00:00",
-  "milestone": "ddb-interim-document-bridge-offline-pass-activation-withheld",
+  "updated_at": "2026-10-16T03:42:15.150106+00:00",
+  "milestone": "ddb-phase2-native-preparation-runtime-github-authentication-blocked",
   "status": "LOCAL_SHADOW_PASS_UNATTENDED_AND_FULL_CERTIFICATION_BLOCKED",
   "mode": "SHADOW",
   "synthetic_only": true,
@@ -834,5 +834,19 @@
       "conclusion": "success",
       "evidence": "docs/evidence/ddb-m1/PUBLICATION_CI.json"
     }
+  },
+  "ddb_phase2": {
+    "status": "BLOCKED \u2014 HUMAN AUTHORIZATION REQUIRED",
+    "report": "docs/DDB_PHASE2_FOREGROUND_CERTIFICATION.md",
+    "evidence": "docs/evidence/ddb-phase2/",
+    "coordination_branch": "coordination/dmb-ddb-v1",
+    "preparation_commit": "e25c4a5b135ad98ca15045acc7b832beb7bf3328",
+    "policy_sha256": "f0762f00d6ee75ed09e0520e04525918b3f63312f36595cf28174d5bca703ea5",
+    "native_backend": "PREPARED_LINUX_ONLY_NOT_CERTIFIED",
+    "genuine_native_document_executions": 0,
+    "runtime_auth": "BLOCKED_INVALID_GITHUB_CLI_AUTH_NO_READY_MANAGED_BINDING",
+    "request_0010": "OPTION1_BOUNDED_PREPARATION_APPROVED_CREDENTIAL_ACCESS_ACTION_NEEDED",
+    "request_0009": "WITHHELD",
+    "unattended_activation": false
   }
 }

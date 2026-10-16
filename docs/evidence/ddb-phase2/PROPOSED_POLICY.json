@@ -1,0 +1,31 @@
+{
+  "classification": "PREPARATION_ONLY_NO_DISPATCH_AUTHORITY",
+  "policy": {
+    "version": 1,
+    "mode": "SHADOW",
+    "policy_id": "ddb-phase2-native-candidate",
+    "expires": 1792125472,
+    "max_tasks": 1,
+    "template": "codex_shadow_review_v1",
+    "report_max_age": 600,
+    "document_ttl": 900,
+    "worker_id": "cloud_codex_foreground",
+    "worker_key_id": "ddb-phase2-candidate",
+    "signers": {
+      "supervisor": "f4013b4f659ad91b506358ea5b53d2085473e067845142781d03463ac3494189",
+      "worker": "9dff6ae56dd961bcd53334b5f0a7c74a0427e5090c090fe8bd37bea6e739cd8e"
+    }
+  },
+  "policy_sha256": "f0762f00d6ee75ed09e0520e04525918b3f63312f36595cf28174d5bca703ea5",
+  "signer_fingerprints_sha256": {
+    "supervisor": "fb11fd16f05d42cf829d0fcca1d0152330efaad1c9f3b317151f0da771f40b29",
+    "worker": "df8f82113c99100fe24afab8f9433074bd28196f38345654f54a5e16af58bb47"
+  },
+  "credential_ownership": {
+    "private_key_uid": 1000,
+    "private_root_mode": "0o700",
+    "private_file_mode": "0600",
+    "github_worker_auth": "BLOCKED_INVALID_EXISTING_CLI_TOKEN_NO_READY_MANAGED_BINDING"
+  },
+  "rollback": "Keep branch and private audit evidence; do not dispatch. No task/service exists to uninstall. No credential was changed or enrolled."
+}

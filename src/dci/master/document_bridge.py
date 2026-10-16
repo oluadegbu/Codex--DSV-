@@ -51,8 +51,10 @@ class Policy:
         integer(self.body['max_tasks'], 1, 10)
         integer(self.body['report_max_age'], 300, 900)
         integer(self.body['document_ttl'], 600, 900)
-        if self.body['template'] != 'shadow_research':
-            raise PermissionError('Only existing fixed DCI paper-research template enabled')
+        if self.body['template'] not in {'shadow_research','codex_shadow_review_v1'}:
+            raise PermissionError('Only compiled DCI shadow templates enabled')
+        if self.body['template']=='codex_shadow_review_v1' and self.body['max_tasks']!=1:
+            raise PermissionError('Native foreground policy permits exactly one effort')
         exact(self.body['signers'], {'supervisor', 'worker'})
         for public in self.body['signers'].values(): hexvalue(public)
         if len(set(self.body['signers'].values())) != 2: raise PermissionError('Separate role keys required')
@@ -67,7 +69,7 @@ def validate_body(kind, body):
     if kind == 'DIRECTIVE':
         exact(body, {'directive_id', 'task_id', 'correlation_id', 'template', 'source_report'})
         for k in ('directive_id', 'task_id', 'correlation_id'): identifier(body[k])
-        if body['template'] != 'shadow_research': raise PermissionError('Unapproved DDB template')
+        if body['template'] not in {'shadow_research','codex_shadow_review_v1'}: raise PermissionError('Unapproved DDB template')
         hexvalue(body['source_report'])
     elif kind == 'REPORT':
         exact(body, {'effort_id', 'directive_id', 'task_id', 'status', 'evidence'})
@@ -84,7 +86,7 @@ def validate_body(kind, body):
                 e = body['evidence']
                 for k in ('scope_digest', 'result_digest', 'artifact_sha256'): hexvalue(e[k])
                 hexvalue(e['git_commit'], 40)
-                if e['kind'] != 'VERIFIED_LOCAL_PAPER' or e['audit_valid'] is not True or type(e['exit_code']) is not int or e['exit_code'] != 0:
+                if e['kind'] not in {'VERIFIED_LOCAL_PAPER','VERIFIED_NATIVE_CODEX'} or e['audit_valid'] is not True or type(e['exit_code']) is not int or e['exit_code'] != 0:
                     raise PermissionError('Verified bounded shadow evidence required')
     elif kind == 'COMPLETE':
         exact(body, {'directive_id', 'report_digest', 'verdict'})
@@ -114,6 +116,8 @@ def validate_document(doc, policy, now, historical=False):
     integer(doc['expires_at'], doc['issued_at'] + 1, min(doc['issued_at'] + policy.body['document_ttl'], policy.body['expires']))
     if not historical and doc['expires_at'] <= now: raise PermissionError('Stale DDB document')
     validate_body(doc['kind'], doc['body'])
+    if doc['kind']=='DIRECTIVE' and doc['body']['template']!=policy.body['template']:
+        raise PermissionError('Directive template differs from pinned policy')
     unsigned = {k: v for k, v in doc.items() if k != 'signature'}
     if sha({k: v for k, v in unsigned.items() if k != 'content_sha256'}) != doc['content_sha256']:
         raise PermissionError('DDB content hash mismatch')
@@ -278,7 +282,7 @@ class DocumentNode:
                 if sha(streams[peer][row['seq']-1]) != row['digest']: raise PermissionError('Remote history substitution')
             for doc in streams[peer][len(seen):]:
                 # Expired history cannot introduce new authority/evidence.
-                validate_document(doc, self.policy, now)
+                validate_document(doc, self.policy, now, historical=doc['kind']=='HEARTBEAT')
                 handler(doc, now)
                 self.store.db.execute('INSERT INTO ddb_seen VALUES (?,?,?)', (peer, doc['sequence'], sha(doc)))
                 self.store.audit('ddb-'+self.role, 'document_received', {'id': doc['id'], 'head': head}, now)
@@ -310,6 +314,8 @@ class Supervisor:
             return
         active = db.execute('SELECT * FROM ddb_plan WHERE completed=0').fetchall()
         if report['status'] == 'SUCCEEDED':
+            expected_kind='VERIFIED_NATIVE_CODEX' if n.policy.body['template']=='codex_shadow_review_v1' else 'VERIFIED_LOCAL_PAPER'
+            if report['evidence']['kind']!=expected_kind: raise PermissionError('Paper/native evidence substitution rejected')
             if len(active) != 1 or active[0]['id'] != report['directive_id'] or report['task_id'] != 'ddb-task-'+report['directive_id']:
                 raise ProtocolError('Unsolicited/conflicting completion')
             n.enqueue('COMPLETE', {'directive_id': report['directive_id'], 'report_digest': sha(doc), 'verdict': 'ACCEPT_ATTESTED_SHADOW'}, 'complete-'+report['directive_id'], now)
@@ -403,6 +409,7 @@ class PaperOperationsBackend:
 
     def run(self, directive, now):
         from pathlib import Path
+        if directive['template']!='shadow_research': raise PermissionError('Paper cannot certify native Codex')
         c = self.ops.controller
         arguments = {k: directive[k] for k in ('task_id', 'correlation_id')}
         arguments['project_id'] = 'DCI'

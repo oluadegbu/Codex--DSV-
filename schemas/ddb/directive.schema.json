@@ -16,7 +16,10 @@
       "pattern": "^[A-Za-z0-9_-]{1,64}$"
     },
     "template": {
-      "const": "shadow_research"
+      "enum": [
+        "shadow_research",
+        "codex_shadow_review_v1"
+      ]
     },
     "source_report": {
       "type": "string",
