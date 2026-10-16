@@ -1,0 +1,31 @@
+{
+  "years": [
+    {
+      "year": 2017,
+      "source_sha256": "e04589a05a8cf25435d37910bc24b140892e92cc2eed4bebb2b1cd8c7fd88638",
+      "source_bytes": 25947432,
+      "rows": 505209,
+      "first_ms": 1483228800000,
+      "last_ms": 1514764740000,
+      "invalid": 0,
+      "nonincreasing": 0,
+      "missing_minutes": 20391,
+      "accepted_30m": 12615,
+      "dropped_buckets": 4904
+    },
+    {
+      "year": 2018,
+      "source_sha256": "fb76d145d538ba863b76446f550be80aba0ee4b33684f5c6d881f973740ab649",
+      "source_bytes": 27776032,
+      "rows": 520499,
+      "first_ms": 1514764800000,
+      "last_ms": 1546300740000,
+      "invalid": 0,
+      "nonincreasing": 0,
+      "missing_minutes": 5101,
+      "accepted_30m": 15363,
+      "dropped_buckets": 2153
+    }
+  ],
+  "normalized_sha256": "0390982c2b8c4489a287a8a5259c6d56cce424e0c6daa7266661a0a2964b2c1c"
+}
