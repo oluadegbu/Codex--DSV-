@@ -163,3 +163,12 @@ REQUEST-0009. Rollback stops only the approved DDB scheduler/owned invocation,
 retains signed documents/SQLite/DPAPI artifacts, and disables the private DDB
 credential through the authorized owner if approved. No main merge, production
 restart, ACL/firewall/right change or deletion of historical evidence is involved.
+
+Exact-source publication: draft PR #3, source GitHub
+`dae60c1b7dc1a20d48761cd2b1cbf444acc0a9ef` (local
+`7497d95ef29f4fc80f2ccb74ed441c057cb09f50`, identical tree
+`a2e4e4c172b91e414a619fe1350224d8ba3e56f8`). CI run `38844529495`, job
+`116791922110`: **209 tests PASS**, 100 verifier cycles and 1,099 worker checks.
+Final-source offline certificate and signed local paper recovery evidence are
+retained alongside earlier unchanged receipts. These results do not certify a
+standalone GitHub runtime credential, native Codex DDB or unattended scheduler.

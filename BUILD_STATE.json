@@ -822,6 +822,17 @@
     "persistent_scheduler": "WITHHELD",
     "activation_request": "decisions/REQUEST-0010.md",
     "prior_request_0009": "PRESERVED_WITHHELD",
-    "next_safe_action": "Review scoped pairing/GitHub credential/host policy; real bounded foreground GitHub exchange after access approval; no unattended activation."
+    "next_safe_action": "Review scoped pairing/GitHub credential/host policy; real bounded foreground GitHub exchange after access approval; no unattended activation.",
+    "publication": {
+      "draft_pr": 3,
+      "source_github_commit": "dae60c1b7dc1a20d48761cd2b1cbf444acc0a9ef",
+      "source_local_commit": "7497d95ef29f4fc80f2ccb74ed441c057cb09f50",
+      "identical_tree": "a2e4e4c172b91e414a619fe1350224d8ba3e56f8",
+      "ci_run": 38844529495,
+      "ci_job": 116791922110,
+      "tests": 209,
+      "conclusion": "success",
+      "evidence": "docs/evidence/ddb-m1/PUBLICATION_CI.json"
+    }
   }
 }
