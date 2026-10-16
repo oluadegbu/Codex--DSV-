@@ -1,9 +1,0 @@
-{
-  "schema_version": 1,
-  "interface": "gh api user --jq .login",
-  "exit_code": 1,
-  "login": null,
-  "intended_identity_match": false,
-  "stderr_summary": "Read-only API identity probe failed; no output secrets published",
-  "auth_reconfigured": false
-}

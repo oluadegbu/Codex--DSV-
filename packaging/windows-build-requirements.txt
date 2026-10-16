@@ -1,4 +1,0 @@
-# Build-time wheels only. Everything is bundled; the operator runs no pip/install.
-cryptography==46.0.2
-cffi==2.0.0
-pycparser==2.23
