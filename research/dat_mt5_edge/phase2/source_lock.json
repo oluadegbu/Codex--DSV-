@@ -1,0 +1,121 @@
+{
+  "archive_inventory": {
+    "EURUSD": {
+      "archive_bytes": 257056125,
+      "archive_sha256": "a78e46c840480ccbe59cdfd91279c4e70efec298925219ecb449a7bfd243b52e",
+      "pin": "5c11b5b111000deaeef266a9096fa748f1cc31ce",
+      "selected_files": 1566,
+      "url": "https://codeload.github.com/FX-Data/FX-Data-EURUSD-DS/tar.gz/5c11b5b111000deaeef266a9096fa748f1cc31ce"
+    },
+    "GBPUSD": {
+      "archive_bytes": 102462737,
+      "archive_sha256": "874cd9f38cfe0cc3c49d11a6ec00db138e8dbd6570dc369c1b812a09e723e3ae",
+      "pin": "df1848f2d2a17ae795011313bf98382b1e4bd7ad",
+      "selected_files": 994,
+      "url": "https://codeload.github.com/FX-Data/FX-Data-GBPUSD-DS/tar.gz/df1848f2d2a17ae795011313bf98382b1e4bd7ad"
+    },
+    "XAUUSD": {
+      "archive_bytes": 133101399,
+      "archive_sha256": "5df0bc1b74aabca5263f622fa85eed7553fc67cac11bc05b17fea1ef70ea7894",
+      "pin": "e392db6b0cbc1da241ea5ce410490504204b1c1b",
+      "selected_files": 946,
+      "url": "https://codeload.github.com/FX-Data/FX-Data-XAUUSD-DS/tar.gz/e392db6b0cbc1da241ea5ce410490504204b1c1b"
+    }
+  },
+  "data_qualification": {
+    "EURUSD": {
+      "pilot_price_units_accepted": true,
+      "reason": "USD per EUR per upstream FX quote convention; primary provenance still unverified"
+    },
+    "GBPUSD": {
+      "pilot_price_units_accepted": true,
+      "reason": "USD per GBP per upstream FX quote convention; primary provenance still unverified"
+    },
+    "XAUUSD": {
+      "pilot_price_units_accepted": false,
+      "reason": "Unverified mirror price scale (approximately 13 instead of verified USD/oz); nearly all tick volumes zero; do not infer a correction"
+    }
+  },
+  "initial_qualification_run_invalidated": {
+    "optimization": false,
+    "reason": "XAUUSD semantic scale/volume check added before final ranking",
+    "sha256": "73f1df92ce2b6dd7db02a430934fb9ec0b5e280d5cf80460b458db02ab0b21a2"
+  },
+  "normalized": {
+    "EURUSD": {
+      "first": 1514844000,
+      "last": 1533081540,
+      "rows": 91656,
+      "sha256": "7dde8d0a170ef8d276c67d47ac8ccd316022b391ca46eb75c8f92ec6eb40bcf7"
+    },
+    "GBPUSD": {
+      "first": 1514844000,
+      "last": 1525132740,
+      "rows": 58245,
+      "sha256": "8f0cb64d64690fa546ecf5c267481d1282e63924d2dad03d62247236ff5ca403"
+    },
+    "XAUUSD": {
+      "first": 1514847600,
+      "last": 1525132740,
+      "rows": 55850,
+      "sha256": "ae86bfe7c575edb92a939dac9e1267928267b61007bdaf16a0a25b55cca2ad2a"
+    }
+  },
+  "primary_crosscheck": {
+    "EURUSD": {
+      "ASK": {
+        "error": "HTTPError",
+        "url": "https://datafeed.dukascopy.com/datafeed/EURUSD/2018/00/03/ASK_candles_min_1.bi5",
+        "verified": false
+      },
+      "BID": {
+        "error": "HTTPError",
+        "url": "https://datafeed.dukascopy.com/datafeed/EURUSD/2018/00/03/BID_candles_min_1.bi5",
+        "verified": false
+      }
+    },
+    "GBPUSD": {
+      "ASK": {
+        "error": "HTTPError",
+        "url": "https://datafeed.dukascopy.com/datafeed/GBPUSD/2018/00/03/ASK_candles_min_1.bi5",
+        "verified": false
+      },
+      "BID": {
+        "error": "HTTPError",
+        "url": "https://datafeed.dukascopy.com/datafeed/GBPUSD/2018/00/03/BID_candles_min_1.bi5",
+        "verified": false
+      }
+    },
+    "XAUUSD": {
+      "ASK": {
+        "error": "HTTPError",
+        "url": "https://datafeed.dukascopy.com/datafeed/XAUUSD/2018/00/03/ASK_candles_min_1.bi5",
+        "verified": false
+      },
+      "BID": {
+        "error": "HTTPError",
+        "url": "https://datafeed.dukascopy.com/datafeed/XAUUSD/2018/00/03/BID_candles_min_1.bi5",
+        "verified": false
+      }
+    }
+  },
+  "primary_crossverified": false,
+  "research_months": [
+    1,
+    4,
+    7
+  ],
+  "research_year": 2018,
+  "source_pins": {
+    "EURUSD": "5c11b5b111000deaeef266a9096fa748f1cc31ce",
+    "GBPUSD": "df1848f2d2a17ae795011313bf98382b1e4bd7ad",
+    "XAUUSD": "e392db6b0cbc1da241ea5ce410490504204b1c1b"
+  },
+  "tzdata": {
+    "sha256": {
+      "America/New_York": "e9ed07d7bee0c76a9d442d091ef1f01668fee7c4f26014c0a868b19fe6c18a95",
+      "Europe/London": "c85495070dca42687df6a1c3ee780a27cbcb82f1844750ea6f642833a44d29b4"
+    },
+    "version": "2026b"
+  }
+}

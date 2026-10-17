@@ -1,0 +1,9 @@
+{
+  "symbol": "BTCUSD", "venue": "Bitfinex public historical spot proxy",
+  "unit_value": 1.0, "quantity_step": 0.0001, "min_quantity": 0.0001,
+  "max_quantity": 100.0, "tick_size": 0.01,
+  "spread_bps": 10.0, "commission_bps": 20.0, "slippage_bps": 5.0,
+  "max_leverage": 1.0, "interval_minutes": 30,
+  "short_allowed": false, "execution_verified": false,
+  "risk_fraction": 0.0025, "initial_equity": 100000.0
+}

@@ -1,0 +1,32 @@
+{
+  "observed_on": "2026-10-16",
+  "primary_public_host_probes": [
+    {"symbol":"EURUSD","object":"2025/00/06/00h_ticks.bi5","result":"URLError timeout"},
+    {"symbol":"EURUSD","object":"2025/00/06/BID_candles_min_1.bi5","result":"URLError timeout"},
+    {"symbol":"GBPUSD","object":"2025/00/06/00h_ticks.bi5","result":"TimeoutError"},
+    {"symbol":"XAUUSD","object":"2018/00/03/01h_ticks.bi5","result":"TimeoutError"},
+    {"symbol":"XAUUSD","object":"2025/00/06/BID_candles_min_1.bi5","result":"HTTP 503"},
+    {"symbol":"EURUSD","object":"2026/08/16/09h_ticks.bi5","result":"URLError"},
+    {"symbol":"GBPUSD","object":"2026/08/16/09h_ticks.bi5","result":"URLError"}
+  ],
+  "probe_host":"https://datafeed.dukascopy.com/datafeed/",
+  "probe_months":"zero based; one bounded attempt per object, no successful capture",
+  "interpretation":"Failure from this environment, not proof provider-wide data absence.",
+  "mt5_file_only_audit":{
+    "known_journal_present":true,
+    "known_entry_deal_order_match":true,
+    "attached_sl_tp_match":true,
+    "known_exit_deal_order_match":true,
+    "exact_position_close_match":true,
+    "terminal_process_observed":false,
+    "current_connectivity_verified":false,
+    "current_account_identity_verified":false,
+    "current_flatness_verified":false,
+    "evidence_type":"SANITIZED_OPERATOR_OBSERVATION_NOT_PUBLISHED_RAW_AUDIT_CHAIN"
+  },
+  "broker_orders":0,
+  "terminal_started":false,
+  "credentials_accessed":false,
+  "paid_requests":0,
+  "futures_history_acquired":false
+}

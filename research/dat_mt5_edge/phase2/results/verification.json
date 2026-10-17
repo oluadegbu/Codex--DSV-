@@ -1,0 +1,20 @@
+{
+  "broker_credentials_accessed": false,
+  "broker_orders": 0,
+  "futures": "DATA_BLOCKED",
+  "gold": "QUARANTINED",
+  "local_tests": {
+    "failed": 0,
+    "phase1": 20,
+    "phase2": 17
+  },
+  "normalized_hashes_matched": true,
+  "offline_module_import_boundary": "PASS",
+  "primary_provenance": "UNVERIFIED",
+  "protocol": "PHASE2_FIXED_PILOT_V1",
+  "repeat_status": "BYTE_IDENTICAL_PASS",
+  "risk_accounting_test": "NORMAL_STOP_EQUALS_MINUS_ONE_R_IN_BOTH_DIRECTIONS",
+  "run_sha256": "7e60b6d5456783f3d74abd593ea29c5330998cd88848b75d814387f91ec3c181",
+  "source_files_published": false,
+  "terminal_started": false
+}
