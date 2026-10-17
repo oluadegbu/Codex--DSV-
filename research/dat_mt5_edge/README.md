@@ -50,3 +50,7 @@ Promotion rejects unverified execution, OOS coverage below 99%, fewer than 100 O
 The initial mapping is BTCUSD→BTCUSD, XAUUSD→XAUUSD.crp, NAS100→NAS100, SP500→SP500, based only on observed cache names. Every mapping, contract multiplier, tick value/size, volume limits, broker timezone, trade session/holiday calendar and bid/ask feed must be independently verified before use. No equity/metal session calendar or executable contract has been certified by this phase.
 
 Shortest path: obtain a quote/bar-only export from a separately approved terminal session; verify contracts, timestamps and exporter provenance; feed the existing offline strategy classes to simulated fills and an append-only SHADOW ledger; record data gaps and compare simulated fills with bid/ask quotes. No relay, DMB or DMEN execution engine is needed. This phase does not start MT5, register a task, enable an EA or connect a broker SDK. Terminal startup and every new DEMO order require separate approval.
+
+## Phase 3 certification review
+
+[Phase 3 report](phase3/REPORT.md) records the empty certified inventory, reproduced pilot metrics, current data-access blockers and bounded acquisition plan. Qualifying candidates: **NONE**. The old pilot is not new independent OOS evidence. No execution authority is granted.
