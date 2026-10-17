@@ -52,7 +52,8 @@ def main():
         from .windows_native import require_identity
         require_identity()  # Existing exact DirectiveCodex/non-admin/Medium gate.
     config = load_private_json(a.configuration)
-    policy = Policy(config['policy'], a.approved_policy_sha256)
+    retired=tuple(Policy(p,sha(p)) for p in config.get('retired_pre_dispatch_policies',[]))
+    policy = Policy(config['policy'], a.approved_policy_sha256, retired)
     if a.foreground_certification and (policy.body['template']!='codex_shadow_review_v1' or policy.body['max_tasks']!=1):
         raise PermissionError('Foreground cadence override requires one native certification effort')
     role = 'supervisor' if a.role == 'controller' else 'worker'
@@ -111,7 +112,9 @@ def main():
                     client_store = AtomicPeerStore(config['operations_client_database'])
                     client = OperationsClient(client_store, operations.identity, lambda packet: operations.handle(packet, int(time.time())))
                     worker = Worker(node, PaperOperationsBackend(operations, client))
-                if not store.db.execute("SELECT 1 FROM ddb_outbox WHERE id='initial-idle'").fetchone(): worker.idle(now)
+                idle_id='initial-idle-'+policy.approved_sha256[:12] if policy.retired else 'initial-idle'
+                if not store.db.execute('SELECT 1 FROM ddb_outbox WHERE id=?',(idle_id,)).fetchone():
+                    node.enqueue('REPORT',{'effort_id':idle_id,'directive_id':None,'task_id':None,'status':'IDLE','evidence':None},idle_id,now)
                 worker.poll(now); worker.execute_one(now)
                 node.enqueue('HEARTBEAT', {'state': 'BLOCKED' if store.db.execute("SELECT 1 FROM meta WHERE key='ddb_blocked'").fetchone() or store.db.execute("SELECT 1 FROM tasks WHERE state='NEEDS_HUMAN'").fetchone() else 'IDLE'}, 'heartbeat-'+str(now), now)
             node.flush(int(time.time()))

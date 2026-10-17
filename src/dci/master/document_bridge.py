@@ -40,6 +40,7 @@ def integer(value, low, high):
 class Policy:
     body: dict
     approved_sha256: str
+    retired: tuple = ()
 
     def __post_init__(self):
         exact(self.body, {'version', 'mode', 'policy_id', 'expires', 'max_tasks', 'template',
@@ -104,6 +105,13 @@ def validate_body(kind, body):
 
 def validate_document(doc, policy, now, historical=False):
     policy.check(now)
+    if type(doc) is dict and doc.get('policy_sha256') != policy.approved_sha256:
+        old = next((p for p in policy.retired if p.approved_sha256 == doc.get('policy_sha256')), None)
+        neutral = doc.get('kind') == 'HEARTBEAT' or (doc.get('kind') == 'REPORT' and type(doc.get('body')) is dict and doc['body'].get('status') == 'IDLE')
+        same = old is not None and {k:v for k,v in old.body.items() if k!='expires'} == {k:v for k,v in policy.body.items() if k!='expires'}
+        if not historical or not same or not neutral:
+            raise PermissionError('Retired authority cannot be renewed or executed')
+        return validate_document(doc, old, doc['issued_at'], historical=True)
     exact(doc, {'version', 'mode', 'id', 'role', 'sequence', 'previous', 'issued_at', 'expires_at',
                 'policy_sha256', 'kind', 'body', 'content_sha256', 'signature'})
     if len(canonical(doc).encode()) > LIMIT: raise ProtocolError('Document too large')
@@ -282,8 +290,10 @@ class DocumentNode:
                 if sha(streams[peer][row['seq']-1]) != row['digest']: raise PermissionError('Remote history substitution')
             for doc in streams[peer][len(seen):]:
                 # Expired history cannot introduce new authority/evidence.
-                validate_document(doc, self.policy, now, historical=doc['kind']=='HEARTBEAT')
-                handler(doc, now)
+                retired = doc['policy_sha256'] != self.policy.approved_sha256
+                validate_document(doc, self.policy, now, historical=retired or doc['kind']=='HEARTBEAT')
+                if not retired: handler(doc, now)
+                else: self.store.audit('ddb-'+self.role, 'retired_pre_dispatch_document', {'id':doc['id'], 'authority_applied':False}, now)
                 self.store.db.execute('INSERT INTO ddb_seen VALUES (?,?,?)', (peer, doc['sequence'], sha(doc)))
                 self.store.audit('ddb-'+self.role, 'document_received', {'id': doc['id'], 'head': head}, now)
         return len(streams[peer]) - len(seen)
@@ -441,3 +451,33 @@ class PaperOperationsBackend:
         self.client.recover(now)
         self.client.request('REVIEW', {'task_id': report['task_id'], 'scope_digest': job['scope_digest'],
                                     'result_digest': sha(result), 'verdict': 'ACCEPT'}, now)
+
+
+def renew_undispatched_policy(store, role, old, new, now):
+    """Explicit foreground migration only; preserve all streams/counters/evidence.
+
+    Same one-task native grant and signer pins; only expiry can change. No API or
+    mailbox invokes this automatically. Any possible dispatch makes it illegal.
+    """
+    new.check(now)
+    if old.body['expires'] > now or new.body['expires'] > now+3600 or new.body['template']!='codex_shadow_review_v1' or new.body['max_tasks']!=1:
+        raise PermissionError('Expired, never-dispatched one-effort grant only')
+    if {k:v for k,v in old.body.items() if k!='expires'} != {k:v for k,v in new.body.items() if k!='expires'} or old not in new.retired:
+        raise PermissionError('No change in task/signer/scope authority permitted')
+    with store.tx():
+        store.verify_audit()
+        tables={r[0] for r in store.db.execute("SELECT name FROM sqlite_master WHERE type='table'")}
+        for table in ('ddb_jobs','ddb_plan','ddb_native_runs'):
+            if table in tables and store.db.execute('SELECT count(*) FROM '+table).fetchone()[0]:
+                raise PermissionError('Dispatch/intent evidence exists; human reconciliation required')
+        if store.db.execute('SELECT 1 FROM ddb_outbox WHERE published IS NULL').fetchone():
+            raise PermissionError('Resolve unknown publication before policy migration')
+        for row in store.db.execute('SELECT body FROM ddb_outbox'):
+            doc=json.loads(row[0])
+            if doc['kind']!='HEARTBEAT' and not (doc['kind']=='REPORT' and doc['body']['status']=='IDLE'):
+                raise PermissionError('Only neutral pre-dispatch history can retire')
+        binding=store.db.execute("SELECT value FROM meta WHERE key='ddb_binding_v1'").fetchone()
+        if not binding or binding[0]!=sha({'role':role,'policy':old.approved_sha256}):
+            raise PermissionError('Exact previous role/policy binding required')
+        store.db.execute("UPDATE meta SET value=? WHERE key='ddb_binding_v1'",(sha({'role':role,'policy':new.approved_sha256}),))
+        store.audit('ddb-'+role,'explicit_undispatched_policy_renewal',{'old':old.approved_sha256,'new':new.approved_sha256,'native_executions':0,'budget_unchanged':True},now)
