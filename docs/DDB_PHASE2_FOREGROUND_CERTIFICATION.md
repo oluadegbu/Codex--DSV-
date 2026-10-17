@@ -86,3 +86,35 @@ subsequently approved and started. Existing keys/accounts, Windows installations
 PR#1/main, DAT/DPM/Pulse/DSV/OpenClaw and their schedules remain unchanged. Revocation
 of a future dedicated runtime credential belongs to its authorized owner and
 needs that credential's approved lifecycle, not production secret changes.
+
+## Network/auth correction and resumed pre-dispatch state
+
+This section supersedes the earlier credential-failure diagnosis. The explicitly
+approved non-root diagnostic reached the repository API and received **HTTP200**
+using existing authentication. Evidence:
+`docs/evidence/ddb-network-auth/READ_ONLY_DIAGNOSTIC.json`. The real standalone
+worker subsequently published its signed admission, idle report and heartbeat;
+its durable outbox contains the GitHub commit receipts. No credential was changed,
+exported, enrolled or rotated. Absence of a managed secret listing did not establish
+absence of working SDK authentication. The earlier gh status output was not a
+conclusive invalid-token result while execution-network access was blocked.
+
+On resume, all four neutral documents were published, with zero directives,
+zero native intents and no supervisor dispatch. The previous policy had expired.
+An explicit pre-dispatch migration keeps its old signed documents, policy keys,
+sequence numbers and audit; only expiry changes. It rejects any native intent,
+job/plan, pending unknown publication or expanded task/signer authority. Retired
+neutral history grants no work. Two targeted tests verify retention and refusal
+when an execution intent exists;21 DDB boundary tests pass. This is not a reset
+or an automatic renewal after task execution.
+
+The resumed foreground network-permission request was aborted by the platform
+interaction before an execution result. Journal inspection confirms that no new
+messages or native task started. **One remaining human action:** approve the
+platform's temporary network permission for the bounded foreground worker and
+controller invocations. The earlier read-only diagnostic permission does not
+bypass permission review for these different commands. No credential replacement,
+Administrator access, security change, paid infrastructure or unattended schedule
+is requested. Full native handoff/restart/replay certification remains NOT TESTED.
+
+Current durable status: `docs/evidence/ddb-network-auth/STATUS.json`.

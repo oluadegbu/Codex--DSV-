@@ -2,8 +2,8 @@
   "schema_version": 1,
   "project": "Directive Crypto Intelligence",
   "repository": "oluadegbu/Codex--DSV-",
-  "updated_at": "2026-10-16T03:42:15.150106+00:00",
-  "milestone": "ddb-phase2-native-preparation-runtime-github-authentication-blocked",
+  "updated_at": "2026-10-17T22:07:15.233654+00:00",
+  "milestone": "ddb-network-auth-verified-native-handoff-awaits-platform-execution-permission",
   "status": "LOCAL_SHADOW_PASS_UNATTENDED_AND_FULL_CERTIFICATION_BLOCKED",
   "mode": "SHADOW",
   "synthetic_only": true,
@@ -844,9 +844,12 @@
     "policy_sha256": "f0762f00d6ee75ed09e0520e04525918b3f63312f36595cf28174d5bca703ea5",
     "native_backend": "PREPARED_LINUX_ONLY_NOT_CERTIFIED",
     "genuine_native_document_executions": 0,
-    "runtime_auth": "BLOCKED_INVALID_GITHUB_CLI_AUTH_NO_READY_MANAGED_BINDING",
+    "runtime_auth": "EXISTING_AUTH_SUCCEEDED_IN_APPROVED_NETWORK_CONTEXT_NO_ROTATION_NEEDED",
     "request_0010": "OPTION1_BOUNDED_PREPARATION_APPROVED_CREDENTIAL_ACCESS_ACTION_NEEDED",
     "request_0009": "WITHHELD",
-    "unattended_activation": false
+    "unattended_activation": false,
+    "latest_network_auth_evidence": "docs/evidence/ddb-network-auth/",
+    "remaining_gate": "Temporary network permission for bounded foreground worker/controller execution; latest request aborted; zero native intents.",
+    "policy_renewal": "Explicit same-signer/same-budget zero-dispatch migration only, no history/counter reset"
   }
 }

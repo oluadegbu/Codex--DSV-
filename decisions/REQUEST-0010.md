@@ -93,3 +93,19 @@ Exact proposed policy/fingerprints, gates, evidence and rollback:
 `docs/evidence/ddb-phase2/PROPOSED_POLICY.json`.
 STATUS: FOREGROUND PREPARATION AUTHORIZED / RUNTIME AUTHENTICATION BLOCKED /
 UNATTENDED ACTIVATION WITHHELD.
+
+### Corrected network/auth gate after the approved diagnostic
+
+Existing worker-owned authentication received HTTP200 and published signed
+admission/idle/heartbeat documents after temporary network permission was granted.
+The prior invalid-token diagnosis is superseded; no credential replacement or
+new enrollment is required on that evidence. Exact evidence and sanitized GitHub
+publication receipts: docs/evidence/ddb-network-auth/.
+
+A resumed bounded foreground command's platform permission request was aborted;
+no new messages, directive or native intent was created. ONE REMAINING ACTION:
+approve temporary execution-network permission for the bounded foreground
+worker/controller commands, subject to platform controls. No automatic re-request
+or bypass is attempted. The read-only diagnostic authorization is not used to
+bypass a different command's review. REQUEST-0009/unattended activation remains
+WITHHELD. Native cycle certification is NOT TESTED.
