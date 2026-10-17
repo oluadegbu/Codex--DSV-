@@ -1,0 +1,18 @@
+{
+  "branch": "coordination/dmb-ddb-v1",
+  "commit": "e25c4a5b135ad98ca15045acc7b832beb7bf3328",
+  "tree": "f0fa5513b9e951d6a23ff6954793ce27ead190c8",
+  "blob_sha1": "133b928a676ba29572b88ef80b44b9ab6f28f624",
+  "content_sha256": "3fe551d57cf5aef1b83ff639b253651d88a2a8632d7f143ae199158303556338",
+  "files": [
+    "state/events/worker/00000001-phase2-preparation.json",
+    "state/heartbeat.json"
+  ],
+  "signature_policy_and_hash_chain": "PASS_READ_BACK_FROM_GITHUB",
+  "publication_identity": "Existing interactive GitHub connector selected installation 170722492",
+  "standalone_worker_authentication": "BLOCKED_NOT_CERTIFIED",
+  "native_executions": 0,
+  "directives_published": 0,
+  "state": "BLOCKED",
+  "rollback": "Leave immutable blocked heartbeat and history; no process/task/credential was activated."
+}

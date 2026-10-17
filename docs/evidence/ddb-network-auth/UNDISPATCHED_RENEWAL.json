@@ -1,0 +1,37 @@
+{
+  "policy": {
+    "version": 1,
+    "mode": "SHADOW",
+    "policy_id": "ddb-phase2-native-candidate",
+    "expires": 1792270346,
+    "max_tasks": 1,
+    "template": "codex_shadow_review_v1",
+    "report_max_age": 600,
+    "document_ttl": 900,
+    "worker_id": "cloud_codex_foreground",
+    "worker_key_id": "ddb-phase2-candidate",
+    "signers": {
+      "supervisor": "f4013b4f659ad91b506358ea5b53d2085473e067845142781d03463ac3494189",
+      "worker": "9dff6ae56dd961bcd53334b5f0a7c74a0427e5090c090fe8bd37bea6e739cd8e"
+    }
+  },
+  "policy_sha256": "475f03c638a719f30a4214a00cd95752d919761ff3062b85febf032f5441a54d",
+  "retired_policy": {
+    "version": 1,
+    "mode": "SHADOW",
+    "policy_id": "ddb-phase2-native-candidate",
+    "expires": 1792125472,
+    "max_tasks": 1,
+    "template": "codex_shadow_review_v1",
+    "report_max_age": 600,
+    "document_ttl": 900,
+    "worker_id": "cloud_codex_foreground",
+    "worker_key_id": "ddb-phase2-candidate",
+    "signers": {
+      "supervisor": "f4013b4f659ad91b506358ea5b53d2085473e067845142781d03463ac3494189",
+      "worker": "9dff6ae56dd961bcd53334b5f0a7c74a0427e5090c090fe8bd37bea6e739cd8e"
+    }
+  },
+  "migration": "explicit_zero_dispatch_only",
+  "reason": "User resumed approved bounded effort; prior grant expired before any directive or execution"
+}

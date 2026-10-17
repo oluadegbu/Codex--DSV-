@@ -2,8 +2,8 @@
   "schema_version": 1,
   "project": "Directive Crypto Intelligence",
   "repository": "oluadegbu/Codex--DSV-",
-  "updated_at": "2026-10-16T02:39:55.620726+00:00",
-  "milestone": "phase10-dsv-reuse-assessed-https-adapter-offline",
+  "updated_at": "2026-10-17T22:07:15.233654+00:00",
+  "milestone": "ddb-network-auth-verified-native-handoff-awaits-platform-execution-permission",
   "status": "LOCAL_SHADOW_PASS_UNATTENDED_AND_FULL_CERTIFICATION_BLOCKED",
   "mode": "SHADOW",
   "synthetic_only": true,
@@ -798,5 +798,58 @@
       "scope": "LOCAL_SHADOW_NOT_EXTERNAL_OR_NEW_WINDOWS_LIFECYCLE"
     },
     "publication_evidence": "docs/evidence/phase10-dsv-reuse/PUBLICATION_CI.json"
+  },
+  "ddb": {
+    "version": 1,
+    "status": "OFFLINE_PASS_ACTIVATION_BLOCKED",
+    "schemas": "schemas/ddb/",
+    "documentation": "docs/DMB_DOCUMENT_BRIDGE.md",
+    "evidence": "docs/evidence/ddb-m1/",
+    "tests": 15,
+    "real_execution": "Existing local Linux paper worker, verified receipt, crash-after-completion recovery with one execution and Operations review ACCEPT; not Codex or GitHub certification.",
+    "proposed_coordination_branch": "coordination/dmb-ddb-v1",
+    "coordination_branch_activated": false,
+    "cadence_seconds": {
+      "report_watcher": 180,
+      "supervisor": 300,
+      "worker": 300
+    },
+    "per_policy_task_cap": 10,
+    "enabled_template": "shadow_research",
+    "native_codex_ddb": "BLOCKED_DISABLED",
+    "production_keys_enrolled": false,
+    "github_document_exchange": "NOT_TESTED",
+    "persistent_scheduler": "WITHHELD",
+    "activation_request": "decisions/REQUEST-0010.md",
+    "prior_request_0009": "PRESERVED_WITHHELD",
+    "next_safe_action": "Review scoped pairing/GitHub credential/host policy; real bounded foreground GitHub exchange after access approval; no unattended activation.",
+    "publication": {
+      "draft_pr": 3,
+      "source_github_commit": "dae60c1b7dc1a20d48761cd2b1cbf444acc0a9ef",
+      "source_local_commit": "7497d95ef29f4fc80f2ccb74ed441c057cb09f50",
+      "identical_tree": "a2e4e4c172b91e414a619fe1350224d8ba3e56f8",
+      "ci_run": 38844529495,
+      "ci_job": 116791922110,
+      "tests": 209,
+      "conclusion": "success",
+      "evidence": "docs/evidence/ddb-m1/PUBLICATION_CI.json"
+    }
+  },
+  "ddb_phase2": {
+    "status": "BLOCKED \u2014 HUMAN AUTHORIZATION REQUIRED",
+    "report": "docs/DDB_PHASE2_FOREGROUND_CERTIFICATION.md",
+    "evidence": "docs/evidence/ddb-phase2/",
+    "coordination_branch": "coordination/dmb-ddb-v1",
+    "preparation_commit": "e25c4a5b135ad98ca15045acc7b832beb7bf3328",
+    "policy_sha256": "f0762f00d6ee75ed09e0520e04525918b3f63312f36595cf28174d5bca703ea5",
+    "native_backend": "PREPARED_LINUX_ONLY_NOT_CERTIFIED",
+    "genuine_native_document_executions": 0,
+    "runtime_auth": "EXISTING_AUTH_SUCCEEDED_IN_APPROVED_NETWORK_CONTEXT_NO_ROTATION_NEEDED",
+    "request_0010": "OPTION1_BOUNDED_PREPARATION_APPROVED_CREDENTIAL_ACCESS_ACTION_NEEDED",
+    "request_0009": "WITHHELD",
+    "unattended_activation": false,
+    "latest_network_auth_evidence": "docs/evidence/ddb-network-auth/",
+    "remaining_gate": "Temporary network permission for bounded foreground worker/controller execution; latest request aborted; zero native intents.",
+    "policy_renewal": "Explicit same-signer/same-budget zero-dispatch migration only, no history/counter reset"
   }
 }
