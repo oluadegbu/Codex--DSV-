@@ -1,0 +1,62 @@
+{
+  "certification": {
+    "active_utc_days": 1,
+    "blockers": [
+      "MISSING_OR_CHANGED_CALENDAR",
+      "MISSING_OR_CHANGED_CLOCK",
+      "MISSING_OR_CHANGED_CONTRACT",
+      "MISSING_OR_CHANGED_COSTS",
+      "MISSING_OR_CHANGED_LICENSE",
+      "MISSING_OR_CHANGED_NORMALIZATION",
+      "MISSING_OR_CHANGED_PROVENANCE",
+      "UNREVIEWED_EVIDENCE_BUNDLE"
+    ],
+    "bundle_sha256": "f97da03db2d63a18249e73181c850f71fdde190ca98d7a9527bce4227939bb5e",
+    "coverage": {
+      "expected": 1440,
+      "missing": 0,
+      "missing_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "observed_expected": 1440,
+      "outside": 0,
+      "ratio": 1
+    },
+    "data_sha256": "88a58a595622b7425cfa68262d487de5ef568e772e2b5ed19469115002974b5d",
+    "execution_authority": false,
+    "fresh_oos": false,
+    "quality": {
+      "first": 1780272000,
+      "last": 1780358340,
+      "max_observed_wall_clock_gap_minutes": 0,
+      "median_spread": "0.1",
+      "p95_spread": "4.0",
+      "rows": 1440,
+      "zero_volume": 0
+    },
+    "recent_within_120_days": false,
+    "research_ready": false,
+    "status": "QUARANTINED"
+  },
+  "decoded_sha256": "a9bc97bd3e2046d12f502f22c13291acc4c9dce49ce6b001c040447e9abc7f56",
+  "exchange_time_after_receive_count": 0,
+  "exchange_timestamp_backsteps": 0,
+  "first_receive_us": 1780272000792741,
+  "last_receive_us": 1780358399658848,
+  "max_observed_receive_lag_us": 4040936,
+  "normalization": "Original file order, UTC receive-time minute buckets; no sorting, filling or synthetic quotes",
+  "quality": {
+    "first": 1780272000,
+    "last": 1780358340,
+    "max_observed_wall_clock_gap_minutes": 0,
+    "median_spread": "0.1",
+    "p95_spread": "4.0",
+    "rows": 1440,
+    "zero_volume": 0
+  },
+  "raw_bytes": 11649384,
+  "raw_quote_rows": 862680,
+  "raw_sha256": "cc5fbee1ae52d3eb38381990048bbfbd51a2f7f5aade612df7fc58e6a41968f6",
+  "repeated_receive_timestamps": 8798,
+  "strategy_backtests": 0,
+  "url": "https://datasets.tardis.dev/v1/kraken/quotes/2026/06/01/XBT-USD.csv.gz",
+  "volume": "End-of-minute sum of best bid and ask available BTC quantities; not trade volume or tick count"
+}

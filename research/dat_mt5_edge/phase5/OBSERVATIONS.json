@@ -1,0 +1,22 @@
+{
+  "review_date_new_york":"2026-10-18",
+  "public_export_checks":{
+    "dukascopy_widget":{"url":"https://widgets.dukascopy.com/en/historical-data-export","http_status":200,"bytes":12342,"sha256":"de10282c2e8e7a2b2a1acf692de9ab0720d9a948ff3df6a52bfe95261fdbe0a4"},
+    "dukascopy_widget_config":{"public_url":"https://widgets.dukascopy.com/config.json","sha256":"260767a9f8cc80bd06eba23f9f4df23e16355bde09824a635fddeb215a34ad25","published_data_host":"https://jetta.dukascopy.com"},
+    "instrument_request":{"url":"https://jetta.dukascopy.com/instruments/EURUSD","http_status":202,"bytes":0,"content_type":"text/html; charset=UTF-8","interpretation":"No instrument metadata/data obtained; no bypass or authenticated retry attempted"}
+  },
+  "broker_export_inventory":{"scope":"Known terminal MQL5/Files and its Temp child, directory metadata only","plain_quote_exports_found":0,"cache_presence":"Phase 4 opaque caches remain uncertified; no terminal or credential access"},
+  "tardis_public_metadata":{
+    "url":"https://api.tardis.dev/v1/exchanges/kraken",
+    "sha256":"a6ba4932d08ada89ad02fe44341654244a486002cc1ba593089eb159cd9176a2",
+    "venue_available_since":"2019-06-04T00:00:00.000Z",
+    "exported_until":"2026-10-18T00:00:00.000Z",
+    "instrument_segments":[
+      {"id":"XBT-USD","type":"spot","from":"2019-06-04T00:00:00.000Z","to":"2026-07-10T00:00:00.000Z"},
+      {"id":"BTC-USD","type":"spot","from":"2026-07-10T00:00:00.000Z","to":"2026-10-18T00:00:00.000Z"}
+    ],
+    "caution":"Metadata lists potential archive bounds, not a downloaded or certified continuous series. Verify economic identity and definitions before joining segments."
+  },
+  "fxcm_documentation":{"pinned_commit":"3ffd9e3a105efab500126102fc5b207add1946a4","document":"https://github.com/fxcm/MarketData/blob/3ffd9e3a105efab500126102fc5b207add1946a4/TickData/README.md","terms":"Personal use, EULA link; indicative Active Trader lowest spreads; UTC. No license form submitted and no tick files acquired."},
+  "purchases":0,"paid_api_calls":0,"credential_enrollments":0,"broker_connections":0,"orders":0
+}

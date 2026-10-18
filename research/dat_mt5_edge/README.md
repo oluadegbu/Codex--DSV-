@@ -58,3 +58,7 @@ Shortest path: obtain a quote/bar-only export from a separately approved termina
 ## Phase 4 verified-data readiness
 
 [Phase 4 report](phase4/REPORT.md) adds source/cost comparison, recovery of three paired EURUSD 2022 canary days, deterministic evidence-bound certification and a passive quote-only consumer. No market dataset is certified, no new OOS result is claimed, and no terminal connectivity or execution is activated.
+
+## Phase 5 acquisition route
+
+[Phase 5 report](phase5/REPORT.md) ranks free and budget-limited routes, records a new 862,680-event free BTC/USD quote canary, and separates published prices from unquoted basket totals and authorization. Multi-year certification remains blocked; no spending, enrollment, terminal or execution authority is granted.
