@@ -1,0 +1,105 @@
+{
+  "normalized_sha256": "4a8a0433a5671302f57cbd0f69248da5e5ecf4acedb1cd48d63ea9b7d4f739ff",
+  "objects": [
+    {
+      "file": "EURUSD_2022-07-04_BID.bi5",
+      "record_integrity": "PASS",
+      "records": 1440,
+      "sha256": "cfa59a8996b45a3cbba28830ba2611fb3413db500f5803e67e43449c2c0b8de1"
+    },
+    {
+      "file": "EURUSD_2022-07-07_ASK.bi5",
+      "record_integrity": "PASS",
+      "records": 1440,
+      "sha256": "7466b21233a995bc35c0bf0f951d14a499b90e24f8f1915b2f274aba44715a20"
+    },
+    {
+      "file": "EURUSD_2022-07-07_BID.bi5",
+      "record_integrity": "PASS",
+      "records": 1440,
+      "sha256": "cd86977f34b02ff6759f54f6ddc41a4951d71747e109391302d6c2bf1d77fed1"
+    },
+    {
+      "file": "EURUSD_2022-07-11_ASK.bi5",
+      "record_integrity": "PASS",
+      "records": 1440,
+      "sha256": "c5d2735a59fbacdad74c55fecc722c8b704bb43da88d3252493b733df8e8e0f3"
+    },
+    {
+      "file": "EURUSD_2022-07-12_BID.bi5",
+      "record_integrity": "PASS",
+      "records": 1440,
+      "sha256": "997853eae7846d79477fb4aa752a5beaa0fc9a694812785293acff5d3aa40491"
+    },
+    {
+      "file": "EURUSD_2022-07-13_ASK.bi5",
+      "record_integrity": "PASS",
+      "records": 1440,
+      "sha256": "263be84b7f755d8517dca5ce02ff1e074749f0145d37a61c7842ec0c696112b3"
+    },
+    {
+      "file": "EURUSD_2022-07-13_BID.bi5",
+      "record_integrity": "PASS",
+      "records": 1440,
+      "sha256": "7bdced13ffb692b57ddb5d06372c3850eeb99effeec35950c7dbe2c76b788b81"
+    },
+    {
+      "file": "EURUSD_2022-07-14_ASK.bi5",
+      "record_integrity": "PASS",
+      "records": 1440,
+      "sha256": "ded1714f0438932e576b92135c0bdc195087d2778e9509aa09424af94cb59045"
+    },
+    {
+      "file": "EURUSD_2022-07-15_BID.bi5",
+      "record_integrity": "PASS",
+      "records": 1440,
+      "sha256": "76a72637a4ea54e7fc99d4f28d686103148480fe9c69fb8cb43d795a54334401"
+    },
+    {
+      "file": "EURUSD_2022-07-20_ASK.bi5",
+      "record_integrity": "PASS",
+      "records": 1440,
+      "sha256": "099bd71bef15ebf9524e43d06a253be01716d15a648337f1e1a4b5e8cfbceb4f"
+    },
+    {
+      "file": "EURUSD_2022-07-20_BID.bi5",
+      "record_integrity": "PASS",
+      "records": 1440,
+      "sha256": "956577c8c8167ad3af20ce36184f89f40575150197b6a9fa24c24956e78966e0"
+    }
+  ],
+  "original_objects_unchanged": true,
+  "paired_days": [
+    {
+      "day": "2022-07-07",
+      "paired_minutes": 1440,
+      "unpaired_minutes": 0
+    },
+    {
+      "day": "2022-07-13",
+      "paired_minutes": 1440,
+      "unpaired_minutes": 0
+    },
+    {
+      "day": "2022-07-20",
+      "paired_minutes": 1440,
+      "unpaired_minutes": 0
+    }
+  ],
+  "quality": {
+    "first": 1657152000,
+    "last": 1658361540,
+    "max_observed_wall_clock_gap_minutes": 8640,
+    "median_spread": "0.00004",
+    "p95_spread": "0.00009",
+    "rows": 4320,
+    "zero_volume": 19
+  },
+  "reasons": [
+    "ONLY_THREE_DAYS",
+    "NO_RECENT_COVERAGE",
+    "UNREVIEWED_METADATA_LICENSE_AND_COSTS",
+    "SOURCE_CAPTURE_NOT_INDEPENDENTLY_ATTESTED"
+  ],
+  "status": "QUARANTINED_CANARY_ONLY"
+}

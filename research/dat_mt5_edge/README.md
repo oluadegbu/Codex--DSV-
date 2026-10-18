@@ -54,3 +54,7 @@ Shortest path: obtain a quote/bar-only export from a separately approved termina
 ## Phase 3 certification review
 
 [Phase 3 report](phase3/REPORT.md) records the empty certified inventory, reproduced pilot metrics, current data-access blockers and bounded acquisition plan. Qualifying candidates: **NONE**. The old pilot is not new independent OOS evidence. No execution authority is granted.
+
+## Phase 4 verified-data readiness
+
+[Phase 4 report](phase4/REPORT.md) adds source/cost comparison, recovery of three paired EURUSD 2022 canary days, deterministic evidence-bound certification and a passive quote-only consumer. No market dataset is certified, no new OOS result is claimed, and no terminal connectivity or execution is activated.

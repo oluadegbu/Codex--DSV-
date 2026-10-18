@@ -1,0 +1,21 @@
+{
+  "edge/strategies.py": "f76da4563039a16a42d019751fc57f9886412bf29d227264454dcfee1832b3ab",
+  "phase2/results/phase2.json": "7e60b6d5456783f3d74abd593ea29c5330998cd88848b75d814387f91ec3c181",
+  "phase2/results/verification.json": "538435f863a2c66fd0391c1d8400d8cca47bf6082c9d2d4420bec836c43db0a2",
+  "phase2/source_lock.json": "e0c2e58e4fcb6839c6ab9f2db16c54d2bb1c12504b834eb85f633de758e83d5d",
+  "phase2/strategies.py": "313686cbec94a6b0780a10063f1840b67dc3402c80b01fdbf6e3c7577830e45f",
+  "phase2/trial_registry.json": "7883c9c992b7fb5a5159350b7655a16222599603efefe40f150dea88e64ebbea",
+  "phase3/ACQUISITION_PLAN.md": "aa240e62d4d93bb2657f08751c87c2efe7d79eaea61edca964dfcdae8e2edb32",
+  "phase3/EVIDENCE.json": "0e0cc589516600d91f5b2ee40f0c4d26e2e1dc4b94115d6c813f69ae49db901b",
+  "phase3/REPORT.md": "e0526a45f9ff447c633bce061ce2691212f98b9be9dd86bd67d3c0369e1a8186",
+  "phase3/__init__.py": "c10534ac39ca5b4bc919be643e19eeba5bfeeb6585b1c03e63ff7e368ecb71fb",
+  "phase3/results/certification.json": "42c4e654697cd2fcb8d722eedcf8c8377ae3c5b35d2fda9e531a331f4865dfd5",
+  "phase3/results/pilot_direction_session_metrics.csv": "75fc0b2cf9a157d6474b8c3aaef879d2fd159806444e0541f61dc892ea45a137",
+  "phase3/results/pilot_variant_metrics.csv": "4efa3c06b37de57478a039e1b819e5fb028ae62b0d6292f804b15699051bd19e",
+  "phase3/review.py": "305bb6d1550b072463e1f17dbf34e6b21887209bfe4387ab9930e3239187ef33",
+  "results/phase1.json": "076c9c9e7165aef9f07a61bf8a822001a08741e806cef2d0cf9ab8b3fc639b12",
+  "spec_bitfinex.json": "585493697e34ec2179ec9285b2186c7cc746b6cfc5459982d2699e8dd0b1f595",
+  "tests/test_research.py": "77cd2703800a9a7fad44434b3614f343365190d0234189c591bee3003e6efab0",
+  "tests_phase2/test_phase2.py": "57d28268133697e82cfb6ee5bfeee39310f1efd5778fc3f1fd8ef86ed0080536",
+  "tests_phase3/test_review.py": "615ffd37f0981da411be3bc7569792f6ad9d0cf30b465bc9ba4693aab048315d"
+}
