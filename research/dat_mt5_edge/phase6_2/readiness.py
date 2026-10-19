@@ -259,3 +259,54 @@ def sensitivity_grid(entry: Quote, exit: Quote, *, side: int, quantity: str,
 
 # Predeclared protocol only; frozen 2026-01-01 through 2026-09-30 remains SEALED.
 SEALED_2026_HOLDOUT_START = int(datetime(2026,1,1,tzinfo=timezone.utc).timestamp())
+
+
+def robustness_screen(rows: list[dict], *, min_segment_trades: int = 20,
+                      sessions: tuple[str, ...] = ('ASIA','LONDON','NEW_YORK'),
+                      regimes: tuple[str, ...] = ('TREND','RANGE','VOLATILE'),
+                      scenarios: tuple[str, ...] = ('baseline_1tick','spread_2x',
+                        'slippage_2ticks','commission_2x','financing_2x','combined_stress')) -> dict:
+    """Predeclared session/regime x full-cost-scenario screening, no edge certification.
+
+    Each hypothetical trade MUST be scored under all predeclared scenarios.
+    All net_r values are already after bid/ask, execution, commissions and funding.
+    Positive segments pass an exploratory screen only; dependence corrections,
+    untouched holdouts and independent calendar/contract review remain mandatory.
+    """
+    if type(min_segment_trades) is not int or min_segment_trades <= 0 or not all((sessions,regimes,scenarios)):
+        raise ValueError('invalid robustness protocol')
+    if any(len(set(xs)) != len(xs) for xs in (sessions,regimes,scenarios)):
+        raise ValueError('duplicate segment definition')
+    trade_map = {}
+    segment = {}
+    for r in rows:
+        if type(r) is not dict or not {'trade_id','session','regime','scenario','net_r'} <= set(r):
+            raise ValueError('invalid robustness row')
+        tid,sess,reg,scenario = r['trade_id'],r['session'],r['regime'],r['scenario']
+        if not isinstance(tid,str) or not tid or sess not in sessions or reg not in regimes or scenario not in scenarios:
+            raise ValueError('unregistered robustness dimension')
+        value=decimal(r['net_r'])
+        if (tid,scenario) in trade_map:
+            raise ValueError('duplicate stress result')
+        trade_map[tid,scenario]=(sess,reg,value)
+        segment.setdefault((scenario,'session',sess),[]).append(value)
+        segment.setdefault((scenario,'regime',reg),[]).append(value)
+    for tid in {key[0] for key in trade_map}:
+        values=[trade_map.get((tid,s)) for s in scenarios]
+        if any(x is None for x in values) or len({(x[0],x[1]) for x in values})!=1:
+            raise ValueError('incomplete or inconsistent scenario evaluation')
+    failures=[]; summary=[]
+    for scenario in scenarios:
+        for kind,names in (('session',sessions),('regime',regimes)):
+            for name in names:
+                group=segment.get((scenario,kind,name),[])
+                mean=sum(group,Decimal(0))/len(group) if group else None
+                if len(group)<min_segment_trades:
+                    failures.append('MIN_SAMPLE:'+scenario+':'+kind+':'+name)
+                if mean is None or mean<=0:
+                    failures.append('NONPOSITIVE_EXPECTANCY:'+scenario+':'+kind+':'+name)
+                summary.append({'scenario':scenario,'dimension':kind,'name':name,'count':len(group),
+                                'mean_net_r':str(mean) if mean is not None else None})
+    return {'exploratory_screen_pass':not failures,'edge_certified':False,
+            'execution_authority':False,'unique_trades':len({key[0] for key in trade_map}),
+            'failures':sorted(failures),'segments':summary}
