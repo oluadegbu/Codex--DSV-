@@ -1,0 +1,59 @@
+{
+  "review_date_new_york":"2026-10-19",
+  "tickstory":{
+    "official_eula":"https://tickstory.com/EULA/",
+    "current_eula_readable":true,
+    "page_revision_shown":"2026-02-28",
+    "relevant_sections":["1(a) Installation and Use","4 Copyright","7 Third-party Software and Market Data Integration"],
+    "finding":"Free edition limited to personal use; organizational intended-purpose use is defined as commercial; no general research exception established",
+    "disposition":"UNSUITABLE_FOR_THIS_DAT_PHASE_ABSENT_SEPARATE_VENDOR_GRANT",
+    "prior_phase6_findings_preserved":true,
+    "installer_downloaded_installed_or_run":false
+  },
+  "windows_read_only":{
+    "target":"DirectiveCodex",
+    "account_exists":true,
+    "account_enabled":true,
+    "interactive_session_found":true,
+    "session_active":true,
+    "session_disconnected":false,
+    "direct_local_administrators_member":false,
+    "target_execution_token_verified":false,
+    "connected_runner_elevated":true,
+    "online_device_count":1,
+    "start_process_exposed_parameters":["command","deviceId","shell","timeout_ms","verbose_timing"],
+    "user_or_session_identity_selector_exposed":false,
+    "supported_non_elevated_route_established":false,
+    "interpretation":"Active target session observed, but no verified user-scoped execution binding; group membership alone is not a process-token test",
+    "impersonation_policy_changes_or_identity_switch_attempted":false
+  },
+  "dukascopy":{
+    "historical_export":"https://www.dukascopy.com/swiss/english/marketwatch/historical/",
+    "official_terms":"https://www.dukascopy.com/swiss/english/legal-pages/terms-of-use/",
+    "terms_sections":["General 3 Restrictions on Use","General 4 License","General 5 Fees"],
+    "finding":"Free price is not sufficient permission: personal/noncommercial restriction, database restriction and written-consent condition for automated acquisition require scope clarification",
+    "separate_dat_grant_established":false,
+    "new_quote_downloads":0,
+    "cloud_policy_has_dukascopy_host_grant":false,
+    "bounded_cloud_public_page_probe":"URLError; no HTTP response/code obtained",
+    "network_workaround_attempted":false
+  },
+  "histdata":{
+    "official_use_invitation":"https://www.histdata.com/about-us/",
+    "schema_and_time":"https://www.histdata.com/f-a-q/",
+    "finding":"Explicit invitation for own/bought strategy testing; corporate use/retention/derived publication rights and original feed provenance not independently established",
+    "quote_format":"Generic ASCII ticks have bid and ask; M1 bid-only; fixed EST UTC-5 without DST; volume removed",
+    "catalog_click":"Public tick-data selection returned initial format chooser, not a verified year/month inventory",
+    "new_quote_downloads":0,
+    "ftp_sftp_registration":false
+  },
+  "local_export_scan":{"scopes":["workspace library-files","workspace shared","workspace scratch"],"new_candidate_market_files_found":0,"scope_is_exhaustive_disk_search":false},
+  "new_market_datasets_acquired":0,
+  "new_certified_datasets":0,
+  "paid_requests":0,
+  "cloud_chargeable_requests":0,
+  "credential_enrollments":0,
+  "new_installations":0,
+  "mt5_starts":0,
+  "broker_orders":0
+}

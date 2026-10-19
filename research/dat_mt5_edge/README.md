@@ -66,3 +66,7 @@ Shortest path: obtain a quote/bar-only export from a separately approved termina
 ## Phase 6 Tickstory Lite gate
 
 [Phase 6 feasibility report](phase6/REPORT.md) records the personal-use/EULA ambiguity and elevated Windows runner. No installer was downloaded or run; no CSV export or new certification is claimed. Resume only after readable permission evidence and an existing usable non-admin Windows context are established.
+
+## Phase 6.1 acquisition fallback
+
+[Phase 6.1 report](phase6_1/REPORT.md) resolves the readable Tickstory EULA, documents primary-data use restrictions, and confirms the active DirectiveCodex session without establishing a supported non-elevated runner. No new FX data is certified. Provider clarification drafts are prepared but unsent; prior evidence remains unchanged.

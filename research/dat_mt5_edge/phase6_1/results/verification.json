@@ -1,0 +1,15 @@
+{
+  "baseline_files_unchanged": 41,
+  "broker_orders": 0,
+  "directivecodex_session_observed_active": true,
+  "mt5_starts": 0,
+  "new_acquired_datasets": 0,
+  "new_certifications": "NOT_EVALUATED_NO_ADMISSIBLE_NEW_DATA",
+  "new_credentials": 0,
+  "new_strategy_backtests": 0,
+  "phase": "6.1",
+  "spending_usd": 0,
+  "supported_non_elevated_execution_route": false,
+  "tickstory": "UNSUITABLE_FOR_THIS_PHASE",
+  "windows_execution": "BLOCKED"
+}
