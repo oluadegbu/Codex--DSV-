@@ -6,7 +6,7 @@ from decimal import Decimal
 from pathlib import Path
 
 from phase6_2.readiness import (Fold,normalize_timestamp,validate_folds,validate_sealed_holdout,
-    research_gate, Contract, Quote, hypothetical_round_trip,sensitivity_grid,
+    research_gate, Contract, Quote, hypothetical_round_trip,sensitivity_grid, robustness_screen,
     SEALED_2026_HOLDOUT_START)
 from phase6_2.shadow import ShadowJournal
 
@@ -64,6 +64,30 @@ class FoldTests(unittest.TestCase):
           trades_by_fold={'f':[{'timestamp':60,'session':'ASIA','regime':'RANGE'}]},
           min_active_days=1,min_trades=1,min_fold_trades=1,min_segment_trades=1,evidence_certified=True)
         self.assertIn('MIN_SESSION:LONDON',r['failures']);self.assertIn('MIN_REGIME:TREND',r['failures'])
+
+
+class RobustnessTests(unittest.TestCase):
+    def test_empty_scenario_matrix_fails(self):
+        a=robustness_screen([])
+        self.assertFalse(a['exploratory_screen_pass']);self.assertFalse(a['edge_certified'])
+    def test_incomplete_scenarios_denied(self):
+        with self.assertRaises(ValueError):robustness_screen([
+            dict(trade_id='one',session='ASIA',regime='TREND',scenario='baseline_1tick',net_r='1')])
+    def test_complete_synthetic_matrix_still_not_edge(self):
+        scenarios=('baseline_1tick','spread_2x','slippage_2ticks','commission_2x','financing_2x','combined_stress')
+        rows=[dict(trade_id=f's{i}',session=('ASIA','LONDON','NEW_YORK')[i%3],
+                   regime=('TREND','RANGE','VOLATILE')[i%3],scenario=scenario,net_r='0.1')
+              for i in range(12) for scenario in scenarios]
+        a=robustness_screen(rows,min_segment_trades=4)
+        self.assertTrue(a['exploratory_screen_pass']);self.assertFalse(a['edge_certified'])
+    def test_stress_negative_segment_blocks(self):
+        scenarios=('baseline_1tick','spread_2x','slippage_2ticks','commission_2x','financing_2x','combined_stress')
+        rows=[dict(trade_id=f's{i}',session='ASIA',regime='TREND',scenario=scenario,
+                   net_r='-0.1' if scenario=='combined_stress' else '0.1')
+              for i in range(5) for scenario in scenarios]
+        a=robustness_screen(rows,min_segment_trades=2,sessions=('ASIA',),regimes=('TREND',))
+        self.assertFalse(a['exploratory_screen_pass'])
+        self.assertTrue(any('combined_stress' in f for f in a['failures']))
 
 
 class FillTests(unittest.TestCase):
