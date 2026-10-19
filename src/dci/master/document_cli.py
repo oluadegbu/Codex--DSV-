@@ -71,6 +71,7 @@ def main():
             private = load_private_json(config['document_signing_key_file'])
             node = DocumentNode(store, role, policy, Ed25519PrivateKey.from_private_bytes(bytes.fromhex(private['private_hex'])), transport)
             node.flush(now)  # Recover unknown publication before taking new work.
+            node.require_open()  # Never publish fresh admission while quarantined.
             if role == 'supervisor':
                 changed = False
                 if a.foreground_certification or node.due('watch', now):
@@ -118,6 +119,7 @@ def main():
                 worker.poll(now); worker.execute_one(now)
                 node.enqueue('HEARTBEAT', {'state': 'BLOCKED' if store.db.execute("SELECT 1 FROM meta WHERE key='ddb_blocked'").fetchone() or store.db.execute("SELECT 1 FROM tasks WHERE state='NEEDS_HUMAN'").fetchone() else 'IDLE'}, 'heartbeat-'+str(now), now)
             node.flush(int(time.time()))
+            node.require_open()  # A delivered failure report must still return BLOCKED.
             print(json.dumps({'mode': 'SHADOW', 'role': role, 'unattended_activated': False, 'audit_valid': True}))
         finally:
             if client_store is not None: client_store.close()

@@ -2,8 +2,8 @@
   "schema_version": 1,
   "project": "Directive Crypto Intelligence",
   "repository": "oluadegbu/Codex--DSV-",
-  "updated_at": "2026-10-17T22:07:15.233654+00:00",
-  "milestone": "ddb-network-auth-verified-native-handoff-awaits-platform-execution-permission",
+  "updated_at": "2026-10-19T01:14:10.603620+00:00",
+  "milestone": "ddb-single-foreground-attempt-failed-codex-readonly-initialization-quarantined",
   "status": "LOCAL_SHADOW_PASS_UNATTENDED_AND_FULL_CERTIFICATION_BLOCKED",
   "mode": "SHADOW",
   "synthetic_only": true,
@@ -851,5 +851,20 @@
     "latest_network_auth_evidence": "docs/evidence/ddb-network-auth/",
     "remaining_gate": "Temporary network permission for bounded foreground worker/controller execution; latest request aborted; zero native intents.",
     "policy_renewal": "Explicit same-signer/same-budget zero-dispatch migration only, no history/counter reset"
+  },
+  "ddb_single_foreground_attempt": {
+    "status": "FAILED \u2014 PRESERVED FAIL-CLOSED",
+    "evidence": "docs/evidence/ddb-single-foreground-20261019",
+    "policy_sha256": "dc13ce2631f917271f3eb1921e4d6605b12850f5bfc664dcc9e449e15df5d704",
+    "native_launch_intents": 1,
+    "native_completions": 0,
+    "reason": "Read-only filesystem OS error30 during Codex initialization; no model turn.",
+    "signed_directive_admitted": true,
+    "signed_failure_receipt_github_readback": true,
+    "both_audits_valid": true,
+    "quarantines_preserved": true,
+    "repeat_authorized": false,
+    "scheduler_activation": false,
+    "next_safe_action": "Identify the specific writable runtime initialization requirement using read-only evidence; prepare a narrowly scoped fix preserving credential and sandbox controls. A new native attempt requires separate approval; do not clear INTENT/quarantine."
   }
 }

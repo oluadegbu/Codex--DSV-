@@ -1,0 +1,30 @@
+{
+  "type": "DDB_EXPIRY_ONLY_RENEWAL",
+  "previous_policy_sha256": "475f03c638a719f30a4214a00cd95752d919761ff3062b85febf032f5441a54d",
+  "policy_sha256": "dc13ce2631f917271f3eb1921e4d6605b12850f5bfc664dcc9e449e15df5d704",
+  "verified_attempt_preflight_start_utc": "2026-10-19T01:06:29+00:00",
+  "expires_utc": "2026-10-19T02:06:29+00:00",
+  "policy": {
+    "version": 1,
+    "mode": "SHADOW",
+    "policy_id": "ddb-phase2-native-candidate",
+    "expires": 1792375589,
+    "max_tasks": 1,
+    "template": "codex_shadow_review_v1",
+    "report_max_age": 600,
+    "document_ttl": 900,
+    "worker_id": "cloud_codex_foreground",
+    "worker_key_id": "ddb-phase2-candidate",
+    "signers": {
+      "supervisor": "f4013b4f659ad91b506358ea5b53d2085473e067845142781d03463ac3494189",
+      "worker": "9dff6ae56dd961bcd53334b5f0a7c74a0427e5090c090fe8bd37bea6e739cd8e"
+    }
+  },
+  "scope_unchanged": true,
+  "max_native_tasks": 1,
+  "authorization": "User explicitly granted expiry-only renewal and one bounded foreground attempt",
+  "signatures": {
+    "supervisor": "e731e364fe6e5163b98d9dbd19ea9f0b9ceac6d339df900d6c2a2f42201284ea8b0a686001f35855d2bc40fe944f14944d16e94a310ab6be90412a0adb5fb30b",
+    "worker": "c2865f9e43cc6400bc1b9b741d62efebe64dfdd31f0d5f62cea4f8bfeb72094ca5148a6bfe32dfeab63bc206055d6a8786dea2a6b8e427fb7d0c326e99483503"
+  }
+}

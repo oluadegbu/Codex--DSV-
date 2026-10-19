@@ -109,3 +109,19 @@ worker/controller commands, subject to platform controls. No automatic re-reques
 or bypass is attempted. The read-only diagnostic authorization is not used to
 bypass a different command's review. REQUEST-0009/unattended activation remains
 WITHHELD. Native cycle certification is NOT TESTED.
+
+### Explicit expiry-only approval and single foreground attempt consumed
+
+The user approved a60-minute expiry-only renewal and exactly one bounded native
+attempt. Signed renewed policy SHA256:
+`dc13ce2631f917271f3eb1921e4d6605b12850f5bfc664dcc9e449e15df5d704`.
+The reviewed command ran once. GitHub signed directive/ACK/failure receipt and
+both audit chains pass. Native CLI initialization failed with read-only filesystem
+(OS error30), before any model-turn event. No successful research completion or
+model-capacity certification is claimed. Native INTENT and both quarantines remain.
+
+STATUS: FAILED — PRESERVED FAIL-CLOSED. This attempt's authority is consumed.
+No blind retry, model switch, automatic renewal or scheduler activation follows.
+Next safe action is read-only diagnosis/preparation of a scoped runtime fix;
+a new native attempt requires separate explicit approval and retained-state
+reconciliation. Full report: docs/DDB_SINGLE_FOREGROUND_RESULT_20261019.md.
