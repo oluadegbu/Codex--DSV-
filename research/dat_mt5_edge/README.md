@@ -70,3 +70,7 @@ Shortest path: obtain a quote/bar-only export from a separately approved termina
 ## Phase 6.1 acquisition fallback
 
 [Phase 6.1 report](phase6_1/REPORT.md) resolves the readable Tickstory EULA, documents primary-data use restrictions, and confirms the active DirectiveCodex session without establishing a supported non-elevated runner. No new FX data is certified. Provider clarification drafts are prepared but unsent; prior evidence remains unchanged.
+
+## Phase 6.2 parallel research readiness
+
+[Phase 6.2 report](phase6_2/REPORT.md) documents offline walk-forward/coverage/robustness screening, paired bid/ask cost sensitivity, a durable quote-only replay journal, and 32 synthetic software tests. All new files remain in `phase6_2/` and `tests_phase6_2/`; provider rights remain unresolved and the [provider draft](phase6_2/PERMISSION_REQUEST_DRAFT.md) has not been sent. No new data, edge certification, MT5 startup, account connection or trading authority is claimed.
