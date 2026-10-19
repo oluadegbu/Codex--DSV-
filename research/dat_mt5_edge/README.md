@@ -74,3 +74,7 @@ Shortest path: obtain a quote/bar-only export from a separately approved termina
 ## Phase 6.2 parallel research readiness
 
 [Phase 6.2 report](phase6_2/REPORT.md) documents offline walk-forward/coverage/robustness screening, paired bid/ask cost sensitivity, a durable quote-only replay journal, and 32 synthetic software tests. All new files remain in `phase6_2/` and `tests_phase6_2/`; provider rights remain unresolved and the [provider draft](phase6_2/PERMISSION_REQUEST_DRAFT.md) has not been sent. No new data, edge certification, MT5 startup, account connection or trading authority is claimed.
+
+## Phase 6.3 read-only VPS cache survey
+
+[Phase 6.3 report](phase6_3/REPORT.md) inventories 19 MT5 history/tick cache files from the already-authorized Windows VPS through **metadata-only** reads. It documents platform-supported HCC/TKC/ticks.dat semantics, per-instrument file sizes and modification dates, cross-server provenance warnings, legal/export gates and the gap to Phase 6.2 certification. No binary contents were read or decoded, no terminal or account opened, and no CSV was exported. History coverage, paired bid/ask and organizational reuse permission remain unverified; prior results and sealed holdouts are preserved.
