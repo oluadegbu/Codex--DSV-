@@ -1,0 +1,20 @@
+# REQUEST-0011: Restricted native worker host fallback
+
+CONTEXT
+Current Linux Codex startup is blocked by a second unlocalized read-only filesystem failure after a demonstrated supported SQLite-state relocation. Local remediation stops; no task retry or new path guesses are authorized by this decision.
+
+EVIDENCE
+See docs/DDB_STARTUP_HOST_DECISION_20261019.md and docs/evidence/ddb-startup-recovery-20261019/. Existing Windows genuine receipt SHA-256 eeb58f4dbdc2dd9fab35cf55e528575e713022621a70230bbd4dc46fa69853e6 proves non-admin Medium execution, not signed DDB delivery or OS isolation. Available platform status exposes no filesystem-denial telemetry. Exact remaining syscall/path is UNKNOWN.
+
+OPTIONS
+1. Wait for platform-supported sanitized filesystem-denial telemetry and a documented minimum-scope runtime configuration, keeping protected credentials and sandbox unchanged.
+2. Prepare the existing DirectiveCodex Windows host as the native worker fallback; authorize deployment/enrollment and a single bounded signed foreground certification only after reviewing exact host configuration, policy, source/binary pins and credential scope. No scheduler authorization is implied.
+
+RECOMMENDATION
+Option 2 for the execution architecture; retain Option 1 as a platform support request. Reuse existing Windows bridge security and durable DDB contracts. Do not run the Linux-only backend on Windows, transfer Linux keys/auth state, reset quarantines, or imply existing Windows receipt certifies the new route.
+
+IMPACT
+Approval gate, before any host deployment/enrollment/execution: review one consolidated Windows DDB preparation package identifying exact artifact/hash, DirectiveCodex scratch paths, dedicated signer/GitHub authentication ownership, policy fingerprint and one-task limits; approve only the necessary host/enrollment changes and fresh foreground attempt. No new paid host, ACL/firewall changes, production access or persistent process is proposed. No approval is required merely to review this report. REQUEST-0009 remains WITHHELD. Original task remains quarantined; use a fresh explicitly approved identity-bound task and preserve its predecessor evidence.
+
+BLOCKING: YES
+HARD_GATE: YES

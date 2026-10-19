@@ -2,8 +2,8 @@
   "schema_version": 1,
   "project": "Directive Crypto Intelligence",
   "repository": "oluadegbu/Codex--DSV-",
-  "updated_at": "2026-10-19T01:14:10.603620+00:00",
-  "milestone": "ddb-single-foreground-attempt-failed-codex-readonly-initialization-quarantined",
+  "updated_at": "2026-10-19T12:32:43.901195+00:00",
+  "milestone": "DDB native startup diagnostic escalation; restricted Windows fallback recommended",
   "status": "LOCAL_SHADOW_PASS_UNATTENDED_AND_FULL_CERTIFICATION_BLOCKED",
   "mode": "SHADOW",
   "synthetic_only": true,
@@ -866,5 +866,16 @@
     "repeat_authorized": false,
     "scheduler_activation": false,
     "next_safe_action": "Identify the specific writable runtime initialization requirement using read-only evidence; prepare a narrowly scoped fix preserving credential and sandbox controls. A new native attempt requires separate approval; do not clear INTENT/quarantine."
+  },
+  "ddb_startup_host_decision": {
+    "status": "BLOCKED_NO_FURTHER_LOCAL_REMEDIATION",
+    "report": "docs/DDB_STARTUP_HOST_DECISION_20261019.md",
+    "decision": "decisions/REQUEST-0011.md",
+    "sqlite_remediation": "VERIFIED_PARTIAL_ONLY_NOT_DEPLOYED",
+    "remaining_denial_path": "UNKNOWN_SUPPORTED_TELEMETRY_UNAVAILABLE",
+    "native_retries": 0,
+    "recommendation": "EXISTING_DIRECTIVECODEX_WINDOWS_HOST_SUBJECT_TO_REVIEW",
+    "deployment_authorized": false,
+    "scheduler_activation": false
   }
 }

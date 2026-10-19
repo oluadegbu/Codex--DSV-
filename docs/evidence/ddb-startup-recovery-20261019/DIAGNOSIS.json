@@ -1,0 +1,26 @@
+{
+  "status": "BLOCKED_PRESERVED_FAIL_CLOSED",
+  "timestamp": "2026-10-19T01:40:29.932015+00:00",
+  "uid": 1000,
+  "source_commit": "f95a612eb1130eb675d6c86dfba446cdb5c6d162",
+  "binary_sha256": "981ade7b03926534c654fd718ced3a9f378b7b2841271e29156f939462d176e9",
+  "protected_codex_home": "/run/codex-environment/codex-home",
+  "mount": "read-only",
+  "first_failure": "SQLite state initialization under protected Codex home",
+  "syscall_trace": "BLOCKED: PTRACE_TRACEME denied; no bypass attempted",
+  "exact_syscall_and_filename": "NOT ESTABLISHED",
+  "supported_partial_remediation": "-c sqlite_home=\"/workspace/dmb-startup-recovery/sqlite\"",
+  "partial_result": "SQLite files created under authorized scratch; a subsequent EROFS still prevents app-server startup",
+  "log_dir_override": "did not resolve subsequent EROFS",
+  "probe_scope": "app-server --stdio with closed stdin; no exec, thread, turn, or model request",
+  "quarantined_task_retried": false,
+  "home_or_codex_home_changed": false,
+  "credentials_read_or_copied": false,
+  "application_source_changed": false,
+  "stderr_hashes": {
+    "state-and-log.stderr": "1111ab6c68e0c1a07bfb071d5959101410636c7944eb1f421328783c981c260d",
+    "startup.stderr": "01c79a7d47475a07737aecab58d739206fd0dcf4a572f2efdab84f037f393c00",
+    "state-only.stderr": "711c2149b380382ff7aeb472cf79563364eb94cc8dd4549f09ef228e9f45a18b",
+    "baseline.stderr": "d488254ceed5747f8e141ec29f5aabcf83c787fc64cce5d81cd3958c45306678"
+  }
+}
