@@ -110,4 +110,4 @@ A broker/native GUI export being technically possible must **not** be conflated 
 
 **Priority 3, certification:** Run the existing Phase 4 evidence-bundle certification followed by Phase 6.2 coverage, cost and chronological walk-forward gates **only after receiving appropriately licensed CSV/tick data**. Keep 2026 sealed OOS untouched until new independent validation is authorized.
 
-**FINAL STATUS: METADATA SURVEY COMPLETE / 19 OBSERVED CACHE FILES / RECORD-LEVEL COVERAGE UNKNOWN / BID-ASK UNKNOWN / LICENSE UNRESOLVED / CERTIFIED DATASETS 0 / STRATEGY AND HOLDOuT RESULTS UNCHANGED / FORWARD SHADOW OFF / MT5 AND ORDERS OFF / DRAFT PR #2 UNMERGED.**
+**FINAL STATUS: METADATA SURVEY COMPLETE / 19 OBSERVED CACHE FILES / RECORD-LEVEL COVERAGE UNKNOWN / BID-ASK UNKNOWN / LICENSE UNRESOLVED / CERTIFIED DATASETS 0 / STRATEGY AND HOLDOUT RESULTS UNCHANGED / FORWARD SHADOW OFF / MT5 AND ORDERS OFF / DRAFT PR #2 UNMERGED.**
