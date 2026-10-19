@@ -62,3 +62,7 @@ Shortest path: obtain a quote/bar-only export from a separately approved termina
 ## Phase 5 acquisition route
 
 [Phase 5 report](phase5/REPORT.md) ranks free and budget-limited routes, records a new 862,680-event free BTC/USD quote canary, and separates published prices from unquoted basket totals and authorization. Multi-year certification remains blocked; no spending, enrollment, terminal or execution authority is granted.
+
+## Phase 6 Tickstory Lite gate
+
+[Phase 6 feasibility report](phase6/REPORT.md) records the personal-use/EULA ambiguity and elevated Windows runner. No installer was downloaded or run; no CSV export or new certification is claimed. Resume only after readable permission evidence and an existing usable non-admin Windows context are established.
