@@ -1,0 +1,156 @@
+{
+  "observed_date_utc": "2026-10-20",
+  "method": "Directory traversal and filesystem stat only; protected file contents and hashes not read",
+  "scope": "Exact history/ticks subtrees of four requested instrument families under the two named server folders; not whole-disk inventory",
+  "servers": [
+    {
+      "server_label": "Exness-MT5Real10",
+      "metadata_only": true,
+      "file_contents_opened": false,
+      "rows": [
+        {
+          "broker_symbol": "BTCUSDz",
+          "area": "history",
+          "name": "2026.hcc",
+          "bytes": 24479811,
+          "modified_utc": "2026-09-19T17:26:08.998432+00:00"
+        },
+        {
+          "broker_symbol": "BTCUSDz",
+          "area": "ticks",
+          "name": "ticks.dat",
+          "bytes": 123312,
+          "modified_utc": "2026-09-19T17:26:09.010429+00:00"
+        },
+        {
+          "broker_symbol": "EURUSD",
+          "area": "history",
+          "name": "2024.hcc",
+          "bytes": 14518323,
+          "modified_utc": "2026-08-29T21:04:25.911159+00:00"
+        },
+        {
+          "broker_symbol": "EURUSD",
+          "area": "history",
+          "name": "2026.hcc",
+          "bytes": 15144,
+          "modified_utc": "2026-08-29T21:09:09.195880+00:00"
+        },
+        {
+          "broker_symbol": "GBPUSD",
+          "area": "history",
+          "name": "2024.hcc",
+          "bytes": 16253196,
+          "modified_utc": "2026-08-29T21:04:25.950164+00:00"
+        },
+        {
+          "broker_symbol": "GBPUSD",
+          "area": "history",
+          "name": "2026.hcc",
+          "bytes": 15144,
+          "modified_utc": "2026-08-29T21:09:09.221780+00:00"
+        }
+      ],
+      "same_filesystem_identity_groups": []
+    },
+    {
+      "server_label": "VantageMarkets-Demo",
+      "metadata_only": true,
+      "file_contents_opened": false,
+      "rows": [
+        {
+          "broker_symbol": "BTCUSD",
+          "area": "history",
+          "name": "2026.hcc",
+          "bytes": 28638366,
+          "modified_utc": "2026-10-02T21:00:00.383611+00:00"
+        },
+        {
+          "broker_symbol": "BTCUSD",
+          "area": "ticks",
+          "name": "202609.tkc",
+          "bytes": 796555,
+          "modified_utc": "2026-09-19T17:32:19.324261+00:00"
+        },
+        {
+          "broker_symbol": "BTCUSD",
+          "area": "ticks",
+          "name": "ticks.dat",
+          "bytes": 123312,
+          "modified_utc": "2026-09-26T11:01:42.096679+00:00"
+        },
+        {
+          "broker_symbol": "BTCUSDz",
+          "area": "history",
+          "name": "2026.hcc",
+          "bytes": 15144,
+          "modified_utc": "2026-09-19T17:26:08.999422+00:00"
+        },
+        {
+          "broker_symbol": "EURUSD",
+          "area": "history",
+          "name": "2023.hcc",
+          "bytes": 9827739,
+          "modified_utc": "2026-08-29T21:04:24.510135+00:00"
+        },
+        {
+          "broker_symbol": "EURUSD",
+          "area": "history",
+          "name": "2024.hcc",
+          "bytes": 14518323,
+          "modified_utc": "2026-08-29T21:04:25.911159+00:00"
+        },
+        {
+          "broker_symbol": "EURUSD",
+          "area": "history",
+          "name": "2026.hcc",
+          "bytes": 15333,
+          "modified_utc": "2026-08-29T21:09:09.168741+00:00"
+        },
+        {
+          "broker_symbol": "EURUSD",
+          "area": "ticks",
+          "name": "ticks.dat",
+          "bytes": 123312,
+          "modified_utc": "2026-09-26T11:01:42.107353+00:00"
+        },
+        {
+          "broker_symbol": "GBPUSD",
+          "area": "history",
+          "name": "2023.hcc",
+          "bytes": 9913566,
+          "modified_utc": "2026-08-29T21:04:24.539109+00:00"
+        },
+        {
+          "broker_symbol": "GBPUSD",
+          "area": "history",
+          "name": "2024.hcc",
+          "bytes": 16253196,
+          "modified_utc": "2026-08-29T21:04:25.950164+00:00"
+        },
+        {
+          "broker_symbol": "GBPUSD",
+          "area": "history",
+          "name": "2026.hcc",
+          "bytes": 15333,
+          "modified_utc": "2026-08-29T21:09:09.196875+00:00"
+        },
+        {
+          "broker_symbol": "GBPUSD",
+          "area": "ticks",
+          "name": "ticks.dat",
+          "bytes": 123312,
+          "modified_utc": "2026-09-26T11:01:42.109411+00:00"
+        },
+        {
+          "broker_symbol": "XAUUSD.crp",
+          "area": "ticks",
+          "name": "ticks.dat",
+          "bytes": 123312,
+          "modified_utc": "2026-09-26T11:01:42.220310+00:00"
+        }
+      ],
+      "same_filesystem_identity_groups": []
+    }
+  ]
+}
