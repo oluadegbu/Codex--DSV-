@@ -18,3 +18,14 @@ Approval gate, before any host deployment/enrollment/execution: review one conso
 
 BLOCKING: YES
 HARD_GATE: YES
+
+## October 20 readiness assessment (supersedes any implication of a runnable package)
+Phase A permits read-only inspection and preparation, not enrollment or execution.
+Live observer metadata verifies the existing account and official executable hash;
+the observer is Administrator and DirectiveCodex is disconnected. No worker was
+launched. The existing DDB native backend remains Linux-only. The exact reviewed
+release/command/policy cannot yet be approved because the Windows adaptation is
+not built. See docs/DDB_WINDOWS_FOREGROUND_CERTIFICATION_PLAN.md and
+ deployment/ddb/windows-request-0011/PACKAGE_REVIEW.json. Null release/policy/command
+fields are deliberate blockers, never default values. Continue offline preparation;
+consolidate approval only after native release validation and exact pins are ready.

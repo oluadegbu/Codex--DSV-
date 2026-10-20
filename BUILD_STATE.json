@@ -2,7 +2,7 @@
   "schema_version": 1,
   "project": "Directive Crypto Intelligence",
   "repository": "oluadegbu/Codex--DSV-",
-  "updated_at": "2026-10-19T12:32:43.901195+00:00",
+  "updated_at": "2026-10-20T10:33:01.679631+00:00",
   "milestone": "DDB native startup diagnostic escalation; restricted Windows fallback recommended",
   "status": "LOCAL_SHADOW_PASS_UNATTENDED_AND_FULL_CERTIFICATION_BLOCKED",
   "mode": "SHADOW",
@@ -877,5 +877,17 @@
     "recommendation": "EXISTING_DIRECTIVECODEX_WINDOWS_HOST_SUBJECT_TO_REVIEW",
     "deployment_authorized": false,
     "scheduler_activation": false
+  },
+  "ddb_windows_readiness": {
+    "status": "PHASE_A_LIMITED_READ_ONLY_COMPLETE_PHASE_B_BLOCKED",
+    "report": "docs/DDB_WINDOWS_FOREGROUND_CERTIFICATION_PLAN.md",
+    "package_review": "deployment/ddb/windows-request-0011/PACKAGE_REVIEW.json",
+    "evidence": "docs/evidence/ddb-windows-readiness-20261020/READ_ONLY_HOST.json",
+    "observer": "Administrator metadata only, never worker execution",
+    "worker_session": "DirectiveCodex disconnected",
+    "native_backend": "LINUX_ONLY_WINDOWS_ADAPTATION_REQUIRED",
+    "credentials_enrolled": false,
+    "execution_authorized": false,
+    "unattended_authorized": false
   }
 }

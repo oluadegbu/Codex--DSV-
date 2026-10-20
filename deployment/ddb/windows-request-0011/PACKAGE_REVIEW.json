@@ -1,0 +1,59 @@
+{
+  "schema_version": 1,
+  "mode": "SHADOW",
+  "status": "REVIEW_ONLY_NOT_RUNNABLE",
+  "request": "REQUEST-0011",
+  "host": "WIN-HQAAFGGU1AM",
+  "identity": "WIN-HQAAFGGU1AM\\DirectiveCodex",
+  "integrity": "Medium",
+  "root": "C:\\Users\\DirectiveCodex\\AppData\\Local\\Directive\\DMB-DDB-cert-0011",
+  "children": [
+    "package",
+    "worker-clone",
+    "state",
+    "artifacts",
+    "fixtures"
+  ],
+  "source_reference": "78518208d46c5002bfd6b272279f15ae994445b4",
+  "inputs_sha256": {
+    "src/dci/master/document_native.py": "d5db86df2f79da8fdacb04871a9a2b15d56a2ff437fdfdffcb8cef835d87638a",
+    "src/dci/master/document_cli.py": "15c375eed5cbdac5c4d05c88e68cbd1abd2931132451452543b81f9e03969094",
+    "src/dci/master/document_bridge.py": "9f0279cebaf3d51bfefe359a5322d80acbbc7c3d7540e9528e27d87713c25b5f",
+    "src/dci/master/document_github.py": "a20908ef8e3cee15ec5923a06fec60abff21e494bd04e5637269be776e89ac81",
+    "src/dci/master/windows_native.py": "a408d8e3068d895bb0f339895ce555b896484ccf56325e3df0b5f681cc58631f",
+    "src/dci/master/windows_codex_locator.py": "dd47905e9ea736118190a392ea73dd509b2b0fbb5cadbbf6db96fea75d52c8db",
+    "tools/build_windows_package.py": "c505522b7560f5c13cecba711dddafc465a4aa985646dc62a23ebdd3779c46c2",
+    "packaging/windows-build-requirements.txt": "b5147fc83a67e7840aa3ce267060c1db4a5ce28d9286f0da7dfdbc8b08e30043"
+  },
+  "runnable_release": null,
+  "runnable_zip_sha256": null,
+  "approved_policy_sha256": null,
+  "execution_command": null,
+  "github_repository": "oluadegbu/Codex--DSV-",
+  "coordination_branch": "coordination/dmb-ddb-v1",
+  "github_permissions": {
+    "metadata": "read",
+    "contents": "read/write",
+    "scope": "repository only; branch restriction enforced by application, not permission grant"
+  },
+  "github_credential_enrollment_authorized": false,
+  "signer_enrollment_authorized": false,
+  "network_destinations_verified": false,
+  "max_native_research_tasks": 1,
+  "native_seconds": 20,
+  "overall_seconds": 420,
+  "task_scope": [
+    "src/dci/models.py",
+    "src/dci/scoring.py"
+  ],
+  "new_production_authority": false,
+  "scheduler_authorized": false,
+  "required_before_approval": [
+    "Windows DDB backend and DPAPI integration",
+    "native-built hash-pinned release",
+    "target identity token and dedicated credential ownership",
+    "signed policy and signer fingerprints",
+    "exact command and service destinations",
+    "controlled native fixture scopes"
+  ]
+}
