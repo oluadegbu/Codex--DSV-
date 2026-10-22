@@ -1,0 +1,39 @@
+{
+  "phase": "6.6",
+  "observed_date": "2026-10-22",
+  "source_status": "BLOCKED",
+  "source_host": "WIN-HQAAFGGU1AM",
+  "device_listing": {
+    "status": "Offline",
+    "last_seen_tool_relative": "16h ago",
+    "connected_alternate_devices_observed": 0
+  },
+  "restricted_execution": {
+    "current_vps_token": "NOT_VERIFIED_OFFLINE",
+    "historical_runner": "Administrator",
+    "supported_user_selector_exposed": false,
+    "cloud_uid": 1000,
+    "cloud_gid": 1000,
+    "cloud_vps_source_mount_verified": false
+  },
+  "source_files_read": 0,
+  "source_hashes_computed": 0,
+  "source_archive_decompressions": 0,
+  "actual_market_coverage": "UNKNOWN",
+  "remote_processing_started": 0,
+  "certified_datasets": 0,
+  "new_strategy_runs": 0,
+  "sealed_holdout_accessed": false,
+  "mt5_starts": 0,
+  "broker_connections": 0,
+  "orders": 0,
+  "synthetic_market_tests": 0,
+  "package_validation": {
+    "syntax": "PASS",
+    "cli_help": "PASS",
+    "vps_execution": "NOT_RUN",
+    "data_quality_validation": "NOT_RUN",
+    "security_containment": "REQUIRES_INDEPENDENT_RESTRICTED_RUNNER"
+  },
+  "prior_public_blobs": 99
+}
