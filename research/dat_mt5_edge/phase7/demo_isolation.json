@@ -1,0 +1,23 @@
+{
+  "purpose": "DESIGN_ONLY_NOT_A_BROKER_RUNTIME_CONFIG",
+  "offline_fixture_enabled": true,
+  "demo_routing_enabled": false,
+  "demo_account_allowlist": [],
+  "terminal_startup_authorized": false,
+  "broker_connection_authorized": false,
+  "credential_access_authorized": false,
+  "demo_order_authorized": false,
+  "live_trading_prohibited": true,
+  "implicit_account_fallback": false,
+  "shared_production_credentials_or_configuration": false,
+  "unattended_execution_authorized": false,
+  "future_required_identity_evidence": [
+    "exact dedicated demo account identity supplied privately by operator",
+    "exact broker server identity",
+    "broker-reported DEMO trade mode, never name inference",
+    "expected account currency and verified contract specifications",
+    "independent account/terminal isolation verification",
+    "separately reviewed adapter and account checks before every mutation",
+    "explicit bounded fresh approval bound to account, server, symbol, volume, stops and expiry"
+  ]
+}
