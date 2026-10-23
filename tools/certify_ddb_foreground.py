@@ -60,7 +60,7 @@ def main():
         for role in ('worker','supervisor','worker','supervisor','worker','supervisor'):
             remaining=deadline-time.monotonic()
             if remaining<=0:raise TimeoutError('Foreground deadline exhausted')
-            argv=[sys.executable,'-m','dci.master.document_cli','--workspace',str(ROOT),
+            argv=[sys.executable,'-B','-m','dci.master.document_cli','--workspace',str(ROOT),
                   '--configuration',str(configs[role]),'--approved-policy-sha256',args.approved_policy_sha256,
                   '--foreground-certification','controller' if role=='supervisor' else 'worker']
             env=dict(os.environ);env['PYTHONPATH']=str(ROOT/'src')
