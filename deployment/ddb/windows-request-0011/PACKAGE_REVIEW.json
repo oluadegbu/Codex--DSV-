@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "mode": "SHADOW",
-  "status": "ADAPTER_OFFLINE_PASS_NATIVE_RELEASE_APPROVAL_BLOCKED",
+  "status": "OFFLINE_PACKAGE_COMPLETE_NATIVE_EXECUTION_WITHHELD",
   "request": "REQUEST-0011",
   "host": "WIN-HQAAFGGU1AM",
   "identity": "WIN-HQAAFGGU1AM\\DirectiveCodex",
@@ -29,8 +29,8 @@
     "tools/build_windows_ddb_package.py": "dbf1cefd750ece82435ef74ae2a408e0466d3bbaf851277de471a52567e4b091",
     "tools/run_windows_ddb.py": "b6fec749b30aacb97eca4b374af0002cdc8c54884994b4308b6dd17cfc83e4cc"
   },
-  "runnable_release": null,
-  "runnable_zip_sha256": null,
+  "runnable_release": "DMB-DDB-0.4.0-ddb-review1-c7574b2757b4-windows-amd64.zip",
+  "runnable_zip_sha256": "06a5eded7bcfc3ad2cbecf9140e47b88f6a65848c6929847f1de7dd8281791e0",
   "approved_policy_sha256": null,
   "execution_command": null,
   "github_repository": "oluadegbu/Codex--DSV-",
@@ -53,15 +53,24 @@
   "new_production_authority": false,
   "scheduler_authorized": false,
   "required_before_approval": [
-    "Complete native-built Windows ZIP and exact hash",
-    "Native CI result and loopback regression permission",
-    "Fresh compiled branch creation approval",
-    "Actual public role signer fingerprints and signed policy hash",
-    "Dedicated DPAPI credential ownership/enrollment approval",
-    "Exact service endpoints and isolated non-admin executor",
-    "Native OS-denial and bounded fixture scope approval"
+    "Approve empty coordination/dmb-ddb-windows-0011 branch and dedicated role enrollment",
+    "Actual public signer fingerprints and signed policy hash",
+    "Dedicated repository credential ownership/expiry and DPAPI enrollment approval",
+    "Exact Codex service destinations and isolated non-admin session",
+    "Named native OS-denial/containment/cancellation fixture grants",
+    "Separate one-task foreground execution approval"
   ],
   "version": "0.4.0-ddb-review1",
   "original_quarantined_branch": "coordination/dmb-ddb-v1",
-  "implementation_report": "docs/DDB_WINDOWS_ADAPTER_CERTIFICATION.md"
+  "implementation_report": "docs/DDB_WINDOWS_ADAPTER_CERTIFICATION.md",
+  "native_package_manifest_sha256": "8aa986c9a02f05fe1cd30fb18b957aa4610dd180e3e2866f23241197c33e5b0f",
+  "package_source_commit": "c7574b2757b48f5e167ee8135c3c70913f5908b3",
+  "code_tree": "c78bcd31b498bdfea9499f688fca08dd6acaa988",
+  "artifact": {
+    "id": 12498015215,
+    "run": 39944383870,
+    "url": "https://github.com/oluadegbu/Codex--DSV-/actions/runs/39944383870/artifacts/12498015215",
+    "digest": "sha256:fd8e8d80085ee3ce5116e8f2558f9f4feaff839529440171b94c033464d87e6e",
+    "expires_at": "2027-01-21T11:11:49Z"
+  }
 }

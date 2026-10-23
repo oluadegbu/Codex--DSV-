@@ -2,7 +2,7 @@
   "schema_version": 1,
   "project": "Directive Crypto Intelligence",
   "repository": "oluadegbu/Codex--DSV-",
-  "updated_at": "2026-10-22T19:07:29.116925+00:00",
+  "updated_at": "2026-10-23T11:16:45.758439+00:00",
   "milestone": "DDB native startup diagnostic escalation; restricted Windows fallback recommended",
   "status": "LOCAL_SHADOW_PASS_UNATTENDED_AND_FULL_CERTIFICATION_BLOCKED",
   "mode": "SHADOW",
@@ -891,7 +891,7 @@
     "unattended_authorized": false
   },
   "ddb_windows_adapter": {
-    "status": "OFFLINE_CONTRACTS_PASS_NATIVE_CERTIFICATION_BLOCKED",
+    "status": "OFFLINE_PACKAGE_PASS_NATIVE_APPROVAL_BLOCKED",
     "version": "0.4.0-ddb-review1",
     "ddb_tests": 43,
     "report": "docs/DDB_WINDOWS_ADAPTER_CERTIFICATION.md",
@@ -900,8 +900,16 @@
     "signers_enrolled": false,
     "VPS_native_launch": false,
     "OS_isolation": "NOT TESTED",
-    "full_regression": "BLOCKED loopback bind permission",
-    "complete_Windows_package": "PENDING_NATIVE_CI",
+    "full_regression": "PASS GitHub CI; 238 tests, one skipped",
+    "complete_Windows_package": {
+      "filename": "DMB-DDB-0.4.0-ddb-review1-c7574b2757b4-windows-amd64.zip",
+      "sha256": "06a5eded7bcfc3ad2cbecf9140e47b88f6a65848c6929847f1de7dd8281791e0",
+      "bytes": 58475044,
+      "manifest_sha256": "8aa986c9a02f05fe1cd30fb18b957aa4610dd180e3e2866f23241197c33e5b0f",
+      "kind": "WINDOWS_FOREGROUND_REVIEW_PACKAGE",
+      "source_commit": "c7574b2757b48f5e167ee8135c3c70913f5908b3",
+      "base_zip_sha256": "38b395f3609900d1c5423fc9ed4f02413397db8728c2c27d66ae576308ead5f6"
+    },
     "scheduler": "WITHHELD",
     "source_release": {
       "filename": "DMB-DDB-0.4.0-ddb-review1-cc16d48000eb-source.zip",
@@ -914,6 +922,18 @@
     },
     "source_reproducibility": "PASS two identical builds",
     "native_denial_tests_skipped": 1,
-    "ddb_tests_passed": 43
+    "ddb_tests_passed": 43,
+    "native_CI": "PASS 44 tests, two skipped; two identical ZIP builds",
+    "publication": {
+      "recovered_commit": "d4a02cb36e43558a4f15834a4350368c54c7d5f8",
+      "code_commit": "f528274914cfe0ccb3743294d29ab6b6bf5e0b9a",
+      "local_code_commit": "ba4bbf61546b59dee1c0624581cf53023d1f58a9",
+      "identical_code_tree": "c78bcd31b498bdfea9499f688fca08dd6acaa988",
+      "PR": 3,
+      "draft": true,
+      "merged": false
+    },
+    "evidence": "docs/evidence/ddb-phase10-3-20261023/",
+    "native_approval": "docs/DDB_PHASE10_3_NATIVE_APPROVAL.md"
   }
 }

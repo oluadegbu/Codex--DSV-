@@ -1,0 +1,86 @@
+{
+  "publication": {
+    "recovered_commit": "d4a02cb36e43558a4f15834a4350368c54c7d5f8",
+    "code_commit": "f528274914cfe0ccb3743294d29ab6b6bf5e0b9a",
+    "local_code_commit": "ba4bbf61546b59dee1c0624581cf53023d1f58a9",
+    "identical_code_tree": "c78bcd31b498bdfea9499f688fca08dd6acaa988",
+    "PR": 3,
+    "draft": true,
+    "merged": false
+  },
+  "windows_release": {
+    "filename": "DMB-DDB-0.4.0-ddb-review1-c7574b2757b4-windows-amd64.zip",
+    "sha256": "06a5eded7bcfc3ad2cbecf9140e47b88f6a65848c6929847f1de7dd8281791e0",
+    "bytes": 58475044,
+    "manifest_sha256": "8aa986c9a02f05fe1cd30fb18b957aa4610dd180e3e2866f23241197c33e5b0f",
+    "kind": "WINDOWS_FOREGROUND_REVIEW_PACKAGE",
+    "source_commit": "c7574b2757b48f5e167ee8135c3c70913f5908b3",
+    "base_zip_sha256": "38b395f3609900d1c5423fc9ed4f02413397db8728c2c27d66ae576308ead5f6"
+  },
+  "artifact": {
+    "id": 12498015215,
+    "run": 39944383870,
+    "url": "https://github.com/oluadegbu/Codex--DSV-/actions/runs/39944383870/artifacts/12498015215",
+    "digest": "sha256:fd8e8d80085ee3ce5116e8f2558f9f4feaff839529440171b94c033464d87e6e",
+    "expires_at": "2027-01-21T11:11:49Z"
+  },
+  "CI": [
+    {
+      "id": 39944383870,
+      "name": "Windows DDB offline adapter and review package",
+      "status": "completed",
+      "conclusion": "success",
+      "head_sha": "f528274914cfe0ccb3743294d29ab6b6bf5e0b9a"
+    },
+    {
+      "id": 39944383888,
+      "name": "DCI deterministic checks",
+      "status": "completed",
+      "conclusion": "success",
+      "head_sha": "f528274914cfe0ccb3743294d29ab6b6bf5e0b9a"
+    },
+    {
+      "id": 39944383893,
+      "name": "DMB self-contained Windows shadow package",
+      "status": "completed",
+      "conclusion": "success",
+      "head_sha": "f528274914cfe0ccb3743294d29ab6b6bf5e0b9a"
+    },
+    {
+      "id": 39944377183,
+      "name": "DCI deterministic checks",
+      "status": "completed",
+      "conclusion": "success",
+      "head_sha": "f528274914cfe0ccb3743294d29ab6b6bf5e0b9a"
+    }
+  ],
+  "linux_summary": [
+    " test_100_cycles_zero_lost_or_duplicate_executions (test_bridge.BridgeTests.test_100_cycles_zero_lost_or_duplicate_executions) ... ok",
+    " test_100_synthetic_task_cycles_no_loss_duplicate_or_reexecution (test_master.MasterTests.test_100_synthetic_task_cycles_no_loss_duplicate_or_reexecution) ... ok",
+    " Ran 100 tests in 1.660s",
+    " test_subject_and_client_no_fallback (test_authorization_contract.AuthorizationContractTests.test_subject_and_client_no_fallback) ... ok",
+    " Ran 17 tests in 0.003s",
+    " Ran 9 tests in 1.486s",
+    " Ran 22 tests in 0.986s",
+    " Ran 13 tests in 0.009s",
+    " Ran 16 tests in 1.135s",
+    " Ran 17 tests in 0.085s",
+    " Ran 44 tests in 1.443s",
+    " {\"local_shadow_status\": \"PASS\", \"overall_status\": \"BLOCKED\", \"cycles\": 100, \"executions\": 100, \"total_worker_test_executions\": 1099, \"peak_concurrent_processes\": 3, \"overlap_proven\": true}"
+  ],
+  "windows_tests": {
+    "run": 39944383870,
+    "job": 120383320643,
+    "tests": 44,
+    "passed": 42,
+    "skipped": 2,
+    "scope": "Windows protocol and controlled subprocess fixtures; no native Codex or account isolation"
+  },
+  "native_windows_isolation": "NOT TESTED",
+  "branch_created": false,
+  "signers_enrolled": false,
+  "VPS_Codex_launched": false,
+  "unattended_authority": false,
+  "local_binary_reverification": "BLOCKED executor network; supported connector artifact download/reference succeeded; no bypass or credential access",
+  "recorded_at": "2026-10-23T11:16:45.758439+00:00"
+}

@@ -44,3 +44,19 @@ Readiness is BLOCKED, not production-ready. Consolidated approval must identify
 actual ZIP/source/policy hashes, branch creation, signer/credential ownership,
 exact destinations and one bounded command; no placeholder is authorization.
 No privilege, ACL, production, scheduler, main merge or VPS launch is approved.
+
+## Phase 10.3 publication/package gate CLOSED; native authority remains WITHHELD
+Draft PR #3 publication recovered at d4a02cb, code/CI fixes at f528274914cfe0ccb3743294d29ab6b6bf5e0b9a.
+Complete self-contained Windows review package and per-file manifest were built
+twice identically on Windows CI39944383870 (42 tests passed,two skipped).
+Linux CI39944383888 and legacy native package CI39944383893 PASS. The previously
+blocked loopback regression passes in CI. Package ZIP SHA256:
+06a5eded7bcfc3ad2cbecf9140e47b88f6a65848c6929847f1de7dd8281791e0.
+Source/tree/artifact records:docs/evidence/ddb-phase10-3-20261023/.
+Exact approval review:docs/DDB_PHASE10_3_NATIVE_APPROVAL.md. This supersedes only
+the earlier missing-adapter/package/CI blockers. It does not approve branch trust,
+keys/credentials, deployment, native launch, OS isolation or unattended scheduling.
+The two role keys' fingerprints/final signed policy cannot be supplied before
+separately approved enrollment. Review actual pins/destinations before a distinct
+one-task execution grant. Native cancellation beyond the completed research turn
+requires its own named bounded fixture authorization; no implicit second turn.

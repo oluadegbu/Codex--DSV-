@@ -68,3 +68,30 @@ This is review-only command shape, not an instruction to execute. First verify t
 No deployed state exists to roll back. Preserve all previous files, pairing, journals and Linux quarantine. For a subsequently approved foreground attempt, create STOP only in the new dedicated state root; driver cancels/drains only its owned job. Seal evidence and retain the entire new installation on any failure. Restart with an uncertain INTENT must stay blocked; never remove/reset it. Do not alter original coordination history, other services/schedules or production credentials. Revocation of a future dedicated credential needs its separately approved owner/lifecycle. No automated rollback deletes keys or branch history.
 
 Source review archive was built twice from local commit `cc16d48000eb4d1be5116f97711f92e25aa30394`; both ZIPs match SHA256 `8055d06d70f625851e237d549ff8cc4152329735097d0ce5085ee8133bbf7c47` (149727 bytes). Exact per-file/dependency manifest is attached in evidence. This archive is **not** the complete runnable Windows package. Native CI result remains pending.
+
+## Phase 10.3 completion — supersedes the pending CI/package verdict above
+
+Publication recovered in draft PR #3 at d4a02cb; reviewed code plus targeted CI
+fixes is f528274914cfe0ccb3743294d29ab6b6bf5e0b9a, tree
+c78bcd31b498bdfea9499f688fca08dd6acaa988 (identical local ba4bbf6).
+Linux workflow39944383888 PASS:238 tests with one native-Windows skip; original
+loopback TLS regression PASS,100 verifier cycles and1099 worker checks retained.
+Windows workflow39944383870 PASS:44 tests,42 passed/two skipped; complete Windows
+ZIP built twice with identical SHA256. Legacy package workflow39944383893 PASS.
+No native Codex, VPS deployment or OS isolation certification was performed.
+
+Complete package: DMB-DDB-0.4.0-ddb-review1-c7574b2757b4-windows-amd64.zip,
+58475044 bytes, SHA256
+06a5eded7bcfc3ad2cbecf9140e47b88f6a65848c6929847f1de7dd8281791e0.
+Manifest SHA256:8aa986c9a02f05fe1cd30fb18b957aa4610dd180e3e2866f23241197c33e5b0f.
+Source c7574b2757b48f5e167ee8135c3c70913f5908b3 is GitHub's PR merge-test commit,
+with the same verified code tree. This does not mean PR #3 was merged.
+Full per-file manifest/dependencies, RELEASE.json and checksums are in artifact
+12498015215, run39944383870. Artifact is a review download, not activation authority.
+The supported connector returned the artifact reference; independent local binary
+download was blocked by executor network policy, with no bypass attempted.
+
+Current verdict: OFFLINE PACKAGE PASS; NATIVE EXECUTION APPROVAL BLOCKED;
+OS ISOLATION NOT TESTED. Exact persistent data/security implications and remaining
+native gates:docs/DDB_PHASE10_3_NATIVE_APPROVAL.md. Public signer fingerprints,
+final policy hash, host endpoints and named native fixture grants remain pending.
