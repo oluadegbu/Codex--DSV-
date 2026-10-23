@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "recorded_at_utc": "2026-10-17T22:07:15.233654+00:00",
+  "status": "BLOCKED \u2014 HUMAN AUTHORIZATION REQUIRED",
+  "network_status": "PASS_HTTP_200_OBSERVED_IN_APPROVED_READ_ONLY_DIAGNOSTIC",
+  "auth_status": "EXISTING_CREDENTIAL_REPOSITORY_READ_AND_SIGNED_ADMISSION_PUBLICATION_PASSED",
+  "credential_error_claim": "SUPERSEDED: gh status failure was not conclusive while sandbox blocked network; no credential rotation/enrollment needed or performed.",
+  "runtime_messages": [
+    {
+      "sequence": 1,
+      "id": "phase2-preparation",
+      "github_commit": "e25c4a5b135ad98ca15045acc7b832beb7bf3328"
+    },
+    {
+      "sequence": 2,
+      "id": "native-admission-1792125217",
+      "github_commit": "d51bc41c4c6f233cf5b86d52d9d7ba51cd2bbfbf"
+    },
+    {
+      "sequence": 3,
+      "id": "initial-idle",
+      "github_commit": "d181d915980139e4d90779eda727a1bc5456a66d"
+    },
+    {
+      "sequence": 4,
+      "id": "heartbeat-1792125217",
+      "github_commit": "b6fb9b6ce4a87ea3085e7d885c37d08680e010f5"
+    }
+  ],
+  "native_execution_intents": 0,
+  "directives_received": 0,
+  "real_handoff_status": "NOT_EXECUTED",
+  "platform_permission_result": "Latest request to run bounded foreground worker with temporary network access was aborted before an execution result; journal inspection confirms no new messages or execution intent.",
+  "next_required_action": "Approve the platform temporary-network permission for the bounded foreground worker/controller commands (beyond the already-approved read-only diagnostic); no credential changes or scheduler activation requested.",
+  "offline_targeted_tests": 21,
+  "offline_tests_scope": "Protocol/pre-dispatch recovery only, not real native cycle certification",
+  "safety": {
+    "credentials_changed": false,
+    "schedulers_or_services_installed": false,
+    "main_merge": false,
+    "production_changes": false,
+    "prior_blocked_heartbeat_and_journals_preserved": true
+  }
+}

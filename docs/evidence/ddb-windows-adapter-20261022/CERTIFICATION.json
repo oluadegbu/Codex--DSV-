@@ -1,0 +1,46 @@
+{
+  "timestamp": "2026-10-22T19:08:44.165261+00:00",
+  "offline_contracts": "PASS",
+  "complete_offline_certification": "BLOCKED",
+  "native_windows_isolation": "NOT TESTED",
+  "VPS_Codex_launched": false,
+  "branch_created": false,
+  "keys_enrolled": false,
+  "readiness": "NOT READY pending native package/CI, exact policy/credentials and isolated foreground approval",
+  "results": {
+    "tests": {
+      "exit": 0,
+      "summary": "----------------------------------------------------------------------\nRan 100 tests in 1.761s\n\nOK"
+    },
+    "certification_tests": {
+      "exit": 0,
+      "summary": "----------------------------------------------------------------------\nRan 17 tests in 0.003s\n\nOK"
+    },
+    "control_plane_tests": {
+      "exit": 0,
+      "summary": "----------------------------------------------------------------------\nRan 9 tests in 1.657s\n\nOK"
+    },
+    "package_tests": {
+      "exit": 0,
+      "summary": "----------------------------------------------------------------------\nRan 13 tests in 0.008s\n\nOK"
+    },
+    "operations_tests": {
+      "exit": 0,
+      "summary": "----------------------------------------------------------------------\nRan 16 tests in 1.399s\n\nOK"
+    },
+    "phase10_tests": {
+      "exit": 0,
+      "summary": "----------------------------------------------------------------------\nRan 17 tests in 0.097s\n\nOK"
+    },
+    "ddb_tests": {
+      "exit": 0,
+      "summary": "----------------------------------------------------------------------\nRan 44 tests in 1.600s\n\nOK (skipped=1)"
+    },
+    "windows_bridge_tests": {
+      "status": "BLOCKED_FULL_SUITE",
+      "previous_tests": 22,
+      "previous_pass": 21,
+      "blocked": "real loopback TLS bind denied; temporary permission request aborted; not repeated"
+    }
+  }
+}

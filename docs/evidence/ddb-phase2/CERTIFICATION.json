@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "observed_at_utc": "2026-10-16T03:42:15.150106+00:00",
+  "status": "BLOCKED \u2014 HUMAN AUTHORIZATION REQUIRED",
+  "authorization": "REQUEST-0010 Option1: preparation and bounded non-persistent certification only",
+  "native_tasks_started": 0,
+  "directives_published": 0,
+  "host_candidates": {
+    "cloud": {
+      "uid": 1000,
+      "gid": 1000,
+      "groups": [
+        1000
+      ],
+      "cli_version": "codex-cli 0.159.0-alpha.3",
+      "cli_sha256": "981ade7b03926534c654fd718ced3a9f378b7b2841271e29156f939462d176e9",
+      "codex_auth": "Logged in using ChatGPT",
+      "readiness_not_execution": true
+    },
+    "windows": {
+      "executor": "WIN-HQAAFGGU1AM\\Administrator",
+      "administrator": true,
+      "worker_launch": "BLOCKED_NO_IMPERSONATION_ATTEMPT"
+    }
+  },
+  "github": {
+    "interactive_installation": 170722492,
+    "repository_selection": "selected",
+    "accessible_repository": "oluadegbu/Codex--DSV-",
+    "standalone_cli_status": "INVALID_TOKEN_ACCOUNT_FAILURE",
+    "token_values_exposed": false,
+    "runtime_spec_revision": "227",
+    "ready_github_runtime_bindings": 0,
+    "credentials_changed": false
+  },
+  "gates": {
+    "signed_documents_only_branch_preparation": "PASS",
+    "github_connector_readback_signature": "PASS",
+    "local_signer_preparation_and_ownership": "PASS",
+    "native_backend_implementation": "PREPARED_NOT_CERTIFIED",
+    "offline_boundary_tests": "PASS_19_NOT_NATIVE_CERTIFICATION",
+    "genuine_native_github_cycle": "NOT_TESTED_AUTH_BLOCKED",
+    "native_restart_no_duplicate": "NOT_TESTED",
+    "native_artifact_and_durable_completion": "NOT_TESTED",
+    "runtime_authentication": "BLOCKED",
+    "scheduler_activation": "WITHHELD"
+  },
+  "offline_test_command": "PYTHONPATH=src python -m unittest discover -s ddb_tests -v",
+  "offline_tests_run": 19,
+  "compileall": "PASS",
+  "required_human_action": "Attach/repair approved repo-selected GitHub runtime authentication on existing non-root cloud host; Metadata read and Contents read/write only; private supported mechanism, never chat.",
+  "safety": {
+    "new_services_or_tasks": false,
+    "batch_or_acl_changes": false,
+    "main_merge": false,
+    "production_changes": false,
+    "dat_dpm_pulse_secrets_accessed": false,
+    "model_task_started": false
+  }
+}

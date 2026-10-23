@@ -1,0 +1,8 @@
+{
+  "docs/evidence/ddb-single-foreground-20261019/CERTIFICATION.json": "f38a3fe3cf4f0929d636874f1f5c21ce989ca187334f5306c894716f5a70e4b2",
+  "docs/evidence/ddb-single-foreground-20261019/DRIVER_RESULT.json": "a9b259ced6350ddcd68c5d206b3ebf8ae89bc5d2581ea18168e6c415e4937476",
+  "docs/evidence/ddb-single-foreground-20261019/DURABLE_STATE.json": "06e867764a1297c53ba355631dfa5d5f556c399dac9ffadde863c5a4d42dcadb",
+  "docs/evidence/ddb-single-foreground-20261019/GITHUB_READBACK.json": "5be1d000adbae28b48bfe2ae1956afde1dc86441f4864b08b68990013a6cd5fb",
+  "docs/evidence/ddb-single-foreground-20261019/SANITIZED_NATIVE_FAILURE.json": "c1d9e06bde2f80a983ebc50db2b1e6cfdefaf404d35c336243247e29fd34d0b2",
+  "docs/evidence/ddb-single-foreground-20261019/SIGNED_POLICY_RENEWAL.json": "a1f34b48383c4514c9329592b9b4ab49ed46082629e76101029f6c95042e8ec1"
+}

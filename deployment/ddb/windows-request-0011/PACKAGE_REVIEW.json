@@ -1,0 +1,76 @@
+{
+  "schema_version": 1,
+  "mode": "SHADOW",
+  "status": "OFFLINE_PACKAGE_COMPLETE_NATIVE_EXECUTION_WITHHELD",
+  "request": "REQUEST-0011",
+  "host": "WIN-HQAAFGGU1AM",
+  "identity": "WIN-HQAAFGGU1AM\\DirectiveCodex",
+  "integrity": "Medium",
+  "root": "C:\\Users\\DirectiveCodex\\AppData\\Local\\Directive\\DMB-DDB-cert-0011",
+  "children": [
+    "package",
+    "worker-clone",
+    "state",
+    "artifacts",
+    "fixtures"
+  ],
+  "source_reference": "78518208d46c5002bfd6b272279f15ae994445b4",
+  "inputs_sha256": {
+    "src/dci/master/document_native.py": "37515d5bebda1ef2a941f49c394f0db234c4a653de157a3db3c441f8c14d867f",
+    "src/dci/master/document_cli.py": "5a9c35f93ad52f6d740a17f010ecc9abc9e0ce5ff3d23a7f10f3ea93ffacf8d0",
+    "src/dci/master/document_bridge.py": "9f0279cebaf3d51bfefe359a5322d80acbbc7c3d7540e9528e27d87713c25b5f",
+    "src/dci/master/document_github.py": "721be6993a509a4001ea663df6449625c99e121d1ecf04df1436895ec8753897",
+    "src/dci/master/windows_native.py": "a408d8e3068d895bb0f339895ce555b896484ccf56325e3df0b5f681cc58631f",
+    "src/dci/master/windows_codex_locator.py": "dd47905e9ea736118190a392ea73dd509b2b0fbb5cadbbf6db96fea75d52c8db",
+    "tools/build_windows_package.py": "c505522b7560f5c13cecba711dddafc465a4aa985646dc62a23ebdd3779c46c2",
+    "packaging/windows-build-requirements.txt": "b5147fc83a67e7840aa3ce267060c1db4a5ce28d9286f0da7dfdbc8b08e30043",
+    "src/dci/master/document_native_state.py": "aaeac6b8b47f61b75aff56feb24cc740b2dbecd65ec05543b49086254a4e4588",
+    "src/dci/master/document_windows.py": "38dfce1d26a64e3517d264172c7e9a51b570ac586edbcdffbd741e50562c4f1b",
+    "tools/build_windows_ddb_package.py": "dbf1cefd750ece82435ef74ae2a408e0466d3bbaf851277de471a52567e4b091",
+    "tools/run_windows_ddb.py": "b6fec749b30aacb97eca4b374af0002cdc8c54884994b4308b6dd17cfc83e4cc"
+  },
+  "runnable_release": "DMB-DDB-0.4.0-ddb-review1-c7574b2757b4-windows-amd64.zip",
+  "runnable_zip_sha256": "06a5eded7bcfc3ad2cbecf9140e47b88f6a65848c6929847f1de7dd8281791e0",
+  "approved_policy_sha256": null,
+  "execution_command": null,
+  "github_repository": "oluadegbu/Codex--DSV-",
+  "coordination_branch": "coordination/dmb-ddb-windows-0011",
+  "github_permissions": {
+    "metadata": "read",
+    "contents": "read/write",
+    "scope": "repository only; branch restriction enforced by application, not permission grant"
+  },
+  "github_credential_enrollment_authorized": false,
+  "signer_enrollment_authorized": false,
+  "network_destinations_verified": false,
+  "max_native_research_tasks": 1,
+  "native_seconds": 20,
+  "overall_seconds": 420,
+  "task_scope": [
+    "src/dci/models.py",
+    "src/dci/scoring.py"
+  ],
+  "new_production_authority": false,
+  "scheduler_authorized": false,
+  "required_before_approval": [
+    "Approve empty coordination/dmb-ddb-windows-0011 branch and dedicated role enrollment",
+    "Actual public signer fingerprints and signed policy hash",
+    "Dedicated repository credential ownership/expiry and DPAPI enrollment approval",
+    "Exact Codex service destinations and isolated non-admin session",
+    "Named native OS-denial/containment/cancellation fixture grants",
+    "Separate one-task foreground execution approval"
+  ],
+  "version": "0.4.0-ddb-review1",
+  "original_quarantined_branch": "coordination/dmb-ddb-v1",
+  "implementation_report": "docs/DDB_WINDOWS_ADAPTER_CERTIFICATION.md",
+  "native_package_manifest_sha256": "8aa986c9a02f05fe1cd30fb18b957aa4610dd180e3e2866f23241197c33e5b0f",
+  "package_source_commit": "c7574b2757b48f5e167ee8135c3c70913f5908b3",
+  "code_tree": "c78bcd31b498bdfea9499f688fca08dd6acaa988",
+  "artifact": {
+    "id": 12498015215,
+    "run": 39944383870,
+    "url": "https://github.com/oluadegbu/Codex--DSV-/actions/runs/39944383870/artifacts/12498015215",
+    "digest": "sha256:fd8e8d80085ee3ce5116e8f2558f9f4feaff839529440171b94c033464d87e6e",
+    "expires_at": "2027-01-21T11:11:49Z"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "filename": "DMB-DDB-0.4.0-ddb-review1-cc16d48000eb-source.zip",
+  "sha256": "8055d06d70f625851e237d549ff8cc4152329735097d0ce5085ee8133bbf7c47",
+  "bytes": 149727,
+  "manifest_sha256": "2888a9c2afe17f4bc9dee1c66a7320360ba75819e7e3f26034c38176bb56b5cc",
+  "kind": "SOURCE_REVIEW_ONLY",
+  "source_commit": "cc16d48000eb4d1be5116f97711f92e25aa30394",
+  "base_zip_sha256": null,
+  "reproducibility": "TWO_INDEPENDENT_BUILDS_IDENTICAL",
+  "native_Windows_package": false
+}

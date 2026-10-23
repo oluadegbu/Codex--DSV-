@@ -1,0 +1,48 @@
+name: Windows DDB offline adapter and review package
+on:
+  pull_request:
+    paths:
+      - 'src/dci/master/document*'
+      - 'src/dci/master/windows_worker.py'
+      - 'ddb_tests/**'
+      - 'tools/*windows_ddb*'
+      - 'deployment/ddb/**'
+      - '.github/workflows/windows-ddb-review.yml'
+permissions:
+  contents: read
+jobs:
+  offline-windows:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12.10'
+      - run: python -m pip install cryptography==46.0.2
+      - name: Windows protocol and controlled fixture tests (no Codex launch)
+        shell: pwsh
+        run: |
+          $env:PYTHONPATH='src;tools'
+          python -m unittest discover -s ddb_tests -v
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+      - name: Obtain existing hash-pinned runtime archive (no installation)
+        shell: python
+        run: |
+          import hashlib, pathlib, urllib.request
+          data=urllib.request.urlopen('https://github.com/oluadegbu/Codex--DSV-/releases/download/dmb-windows-v0.3.0-a46705985abd/DMB-Windows-0.3.0-a46705985abd-amd64.zip',timeout=60).read()
+          assert hashlib.sha256(data).hexdigest()=='38b395f3609900d1c5423fc9ed4f02413397db8728c2c27d66ae576308ead5f6'
+          pathlib.Path('base-runtime.zip').write_bytes(data)
+      - run: python tools/build_windows_ddb_package.py --base-zip base-runtime.zip --output artifacts/windows-ddb
+      - name: Rebuild identical inputs and verify complete ZIP reproducibility
+        shell: pwsh
+        run: |
+          python tools/build_windows_ddb_package.py --base-zip base-runtime.zip --output artifacts/windows-ddb-repeat
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          $first=Get-Content artifacts/windows-ddb/RELEASE.json -Raw | ConvertFrom-Json
+          $second=Get-Content artifacts/windows-ddb-repeat/RELEASE.json -Raw | ConvertFrom-Json
+          if ($first.sha256 -cne $second.sha256) { throw 'Windows package reproduction differs' }
+          Write-Output ('REPRODUCIBLE_SHA256='+$first.sha256)
+      - uses: actions/upload-artifact@v4
+        with:
+          name: windows-ddb-review-package
+          path: artifacts/windows-ddb/*

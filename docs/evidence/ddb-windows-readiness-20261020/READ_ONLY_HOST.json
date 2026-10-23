@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "observed_at": "2026-10-20T10:33:01.679631+00:00",
+  "device": "WIN-HQAAFGGU1AM",
+  "device_id": "c511976a-157b-46e4-987c-e88d9f6146bf",
+  "observer": "WIN-HQAAFGGU1AM\\Administrator",
+  "observer_integrity": "NOT MEASURED",
+  "worker_token": "NOT OBSERVED",
+  "account": {
+    "name": "DirectiveCodex",
+    "enabled": true,
+    "sid": "S-1-5-21-3675741470-1525898003-3877381073-1000",
+    "direct_admin_member": false,
+    "session_id": 3,
+    "session_state": "Disconnected"
+  },
+  "executable": {
+    "path": "C:\\Users\\DirectiveCodex\\AppData\\Local\\Programs\\OpenAI\\Codex\\bin\\codex.exe",
+    "sha256": "dd13bdb162a184fa04039488b234a8258ef9b76f84e926c505d5742b19249a6a",
+    "matches_pin": true,
+    "executed": false
+  },
+  "parent_acl_grant": "Inherited FullControl: DirectiveCodex, Administrators, SYSTEM",
+  "proposed_root_exists": false,
+  "initial_observer_command": "PowerShell parser failure; no Codex launch",
+  "corrected_observer_command": "Encoded read-only metadata command exited 0",
+  "credential_contents_accessed": false,
+  "worker_launched": false,
+  "credentials_enrolled": false,
+  "workspace_created": false,
+  "system_configuration_changed": false,
+  "historical_receipt_sha256": "eeb58f4dbdc2dd9fab35cf55e528575e713022621a70230bbd4dc46fa69853e6"
+}

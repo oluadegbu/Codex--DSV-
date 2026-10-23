@@ -1,0 +1,42 @@
+{
+  "reviewed_at": "2026-10-23T13:23:23.410398+00:00",
+  "reviewed_PR_head": "9206fc29b3cfda3569b98c70e33357747218a7aa",
+  "draft": true,
+  "merged": false,
+  "artifact_id": 12498015215,
+  "artifact_available": true,
+  "outer_artifact_sha256": "fd8e8d80085ee3ce5116e8f2558f9f4feaff839529440171b94c033464d87e6e",
+  "package": {
+    "filename": "DMB-DDB-0.4.0-ddb-review1-c7574b2757b4-windows-amd64.zip",
+    "sha256": "06a5eded7bcfc3ad2cbecf9140e47b88f6a65848c6929847f1de7dd8281791e0",
+    "bytes": 58475044,
+    "manifest_sha256": "8aa986c9a02f05fe1cd30fb18b957aa4610dd180e3e2866f23241197c33e5b0f",
+    "kind": "WINDOWS_FOREGROUND_REVIEW_PACKAGE",
+    "source_commit": "c7574b2757b48f5e167ee8135c3c70913f5908b3",
+    "base_zip_sha256": "38b395f3609900d1c5423fc9ed4f02413397db8728c2c27d66ae576308ead5f6"
+  },
+  "code_changed": false,
+  "new_tests_run": false,
+  "CI_skips": {
+    "Linux": [
+      "native Windows canary"
+    ],
+    "Windows": [
+      "Linux-only real paper-worker recovery",
+      "native non-admin canary authority unavailable"
+    ]
+  },
+  "native_certification": "NOT TESTED",
+  "recommendation": "GO_PREPARATION_REVIEW_NO_GO_NATIVE_EXECUTION",
+  "all_new_grants": "WITHHELD",
+  "required_concrete_inputs": [
+    "approved enrollment and actual public signer fingerprints",
+    "signed policy SHA256 and absolute validity window",
+    "clean worker clone commit/source pins",
+    "dedicated repository credential owner/expiry",
+    "exact service endpoints and host configuration scope",
+    "positive/negative native filesystem evidence",
+    "separate named containment/cancellation fixture authorization"
+  ],
+  "approval_document": "docs/DDB_PHASE10_4_APPROVAL_GATE.md"
+}
