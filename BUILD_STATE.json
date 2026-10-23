@@ -2,7 +2,7 @@
   "schema_version": 1,
   "project": "Directive Crypto Intelligence",
   "repository": "oluadegbu/Codex--DSV-",
-  "updated_at": "2026-10-23T11:16:45.758439+00:00",
+  "updated_at": "2026-10-23T13:23:23.410398+00:00",
   "milestone": "DDB native startup diagnostic escalation; restricted Windows fallback recommended",
   "status": "LOCAL_SHADOW_PASS_UNATTENDED_AND_FULL_CERTIFICATION_BLOCKED",
   "mode": "SHADOW",
@@ -935,5 +935,13 @@
     },
     "evidence": "docs/evidence/ddb-phase10-3-20261023/",
     "native_approval": "docs/DDB_PHASE10_3_NATIVE_APPROVAL.md"
+  },
+  "ddb_phase10_4": {
+    "status": "APPROVAL_REVIEW_READY_NATIVE_EXECUTION_NO_GO",
+    "report": "docs/DDB_PHASE10_4_APPROVAL_GATE.md",
+    "evidence": "docs/evidence/ddb-phase10-4-20261023/REVIEW.json",
+    "new_grants": "WITHHELD",
+    "native_certification": "NOT TESTED",
+    "worker_code_changed": false
   }
 }

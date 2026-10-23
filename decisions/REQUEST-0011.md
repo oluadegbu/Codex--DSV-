@@ -60,3 +60,17 @@ The two role keys' fingerprints/final signed policy cannot be supplied before
 separately approved enrollment. Review actual pins/destinations before a distinct
 one-task execution grant. Native cancellation beyond the completed research turn
 requires its own named bounded fixture authorization; no implicit second turn.
+
+## Phase 10.4 — decision-ready preparation matrix; native execution NO-GO
+Review docs/DDB_PHASE10_4_APPROVAL_GATE.md, including A0–A6 scope, expiry/budget,
+permissions and preservation-first rollback. Package hashes and current draft PR
+head were rechecked; worker code and historical evidence unchanged. Windows CI
+skips are specifically Linux-only paper recovery and native non-admin canary
+certification; neither is native isolation evidence. No new tests were required
+for this documentation-only review.
+Recommendation: GO for owner evaluation of branch/enrollment/deployment preparation
+(A1/A2/A3), all still WITHHELD; NO-GO native A4/A5 until actual signer/policy/source
+pins, dedicated credential lifetime, exact endpoints and native filesystem evidence
+are reviewed. No unnamed fixture or second model turn is implicitly authorized.
+Scheduling A6/REQUEST-0009 remains withheld. No branch, keys, credential, deployment
+or native process was created or activated during this phase.
