@@ -56,7 +56,7 @@ class WindowsAdapterTests(unittest.TestCase):
         with self.assertRaises(PermissionError): ReviewMachine('scratch',{'C:/production':'no'})
     def test_workspace_rejection(self):
         with tempfile.TemporaryDirectory() as d:
-            base=Path(d)
+            base=Path(d).resolve(strict=True)
             for child in ('worker-clone','state','package/app'): (base/child).mkdir(parents=True)
             pins={k:None for k in PIN_KEYS};pins.update(workspace=str(base/'worker-clone'),state_directory=str(base/'state'),git_executable=str(base/'package/runtime/git/cmd/git.exe'),files_sha256={f:'0'*64 for f in FILES})
             check_layout(pins,base/'package/app',base)
