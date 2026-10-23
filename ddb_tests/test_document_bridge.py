@@ -182,6 +182,7 @@ class DDBTests(unittest.TestCase):
         self.super.store.close();self.super=self.node('supervisor')
         with self.assertRaises(PermissionError):Supervisor(self.super).poll(self.now+602)
 
+    @unittest.skipUnless(os.name == 'posix', 'Existing paper worker is Linux-only; not Windows certification')
     def test_real_paper_artifact_and_crash_after_execution_recover_once(self):
         manifest=self.root/'workers.json'
         proc=subprocess.run([sys.executable,str(ROOT/'tools/prepare_shadow_research_worker.py'),'--destination',str(self.root/'paper-worker'),'--manifest',str(manifest)],capture_output=True,text=True,timeout=30)

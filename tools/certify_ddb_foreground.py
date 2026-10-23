@@ -32,7 +32,16 @@ def main():
     directory=Path(args.configuration_directory).resolve(strict=True)
     output=Path(args.output).resolve()
     if output.exists() or ROOT in output.parents:raise PermissionError('Fresh external evidence directory required')
-    configs={r:directory/(r+'-config-renewed.json') for r in ('worker','supervisor')}
+    if os.name == 'nt':
+        from dci.master.windows_native import require_identity, local_appdata
+        from dci.master.document_windows import NAMESPACE, reject_links
+        identity=require_identity(); base=local_appdata()/'Directive'/NAMESPACE
+        if directory != base/'state' or output.parent != base/'artifacts':
+            raise PermissionError('Only reviewed Windows state/evidence paths permitted')
+        reject_links(directory); reject_links(output)
+        configs={'worker':directory/'worker.dpapi','supervisor':directory/'controller.dpapi'}
+    else:
+        configs={r:directory/(r+'-config-renewed.json') for r in ('worker','supervisor')}
     values={r:load_private_json(path) for r,path in configs.items()}
     if values['worker']['policy']!=values['supervisor']['policy']:raise PermissionError('Exact paired policy required')
     config=values['worker'];policy=Policy(config['policy'],args.approved_policy_sha256,
@@ -69,11 +78,12 @@ def main():
             if len(runs)!=1 or runs[0]['state']!='REVIEWED' or len(plans)!=1 or plans[0]['completed']!=1:
                 raise PermissionError('One reviewed genuine execution and completed directive required')
             native=json.loads(runs[0]['evidence'])
-            if native.get('kind')!='NATIVE_CODEX' or native.get('turn_completed') is not True or native.get('exit_code')!=0 or native.get('uid')!=os.geteuid():
+            identity_valid = (native.get('kind')=='WINDOWS_NATIVE_CODEX' and native.get('identity')==identity) if os.name=='nt' else (native.get('kind')=='NATIVE_CODEX' and native.get('uid')==os.geteuid())
+            if not identity_valid or native.get('turn_completed') is not True or native.get('exit_code')!=0:
                 raise PermissionError('Paper/synthetic evidence cannot certify native task')
-            root=Path(config['native_pins']['workspace'])
+            root=base if os.name=='nt' else Path(config['native_pins']['workspace'])
             for name,checksum in native['files_sha256'].items():
-                if name not in {'stdout.log','stderr.log'}:raise PermissionError('Unexpected artifact path')
+                if name not in ({'stdout.log','stderr.log','review.json'} if os.name=='nt' else {'stdout.log','stderr.log'}):raise PermissionError('Unexpected artifact path')
                 if hashlib.sha256((root/'artifacts/ddb-native'/runs[0]['task']/name).read_bytes()).hexdigest()!=checksum:
                     raise PermissionError('Native artifact changed')
             row=worker.db.execute("SELECT body FROM ddb_outbox WHERE json_extract(body,'$.kind')='REPORT' AND json_extract(body,'$.body.status')='SUCCEEDED'").fetchone()
@@ -86,7 +96,7 @@ def main():
             try:validate_document(receipt,policy,receipt['expires_at'])
             except PermissionError:pass
             else:raise PermissionError('Expired receipt was accepted')
-            result.update(status='FOREGROUND_CERTIFIED_READY_FOR_SCHEDULER_REVIEW',native_receipt=native,
+            result.update(status='WINDOWS_DDB_SINGLE_HANDOFF_PASS_ADDITIONAL_GATES_BLOCKED' if os.name=='nt' else 'FOREGROUND_CERTIFIED_READY_FOR_SCHEDULER_REVIEW',native_receipt=native,
                           signed_completion=receipt,duplicate_executions=0,native_executions=1,
                           restarted_worker_without_reexecution=True,audit_valid=True,
                           altered_signature_rejected=True,expired_receipt_rejected=True)
@@ -97,7 +107,7 @@ def main():
     result['completed_at_utc']=datetime.now(timezone.utc).isoformat()
     (output/'CERTIFICATION.json').write_text(json.dumps(result,indent=2)+'\n')
     print(json.dumps({'status':result['status'],'evidence':str(output/'CERTIFICATION.json')}))
-    raise SystemExit(0 if result['status']=='FOREGROUND_CERTIFIED_READY_FOR_SCHEDULER_REVIEW' else 1)
+    raise SystemExit(0 if result['status'] in {'FOREGROUND_CERTIFIED_READY_FOR_SCHEDULER_REVIEW','WINDOWS_DDB_SINGLE_HANDOFF_PASS_ADDITIONAL_GATES_BLOCKED'} else 1)
 
 
 if __name__=='__main__':main()

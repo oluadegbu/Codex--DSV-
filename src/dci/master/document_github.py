@@ -18,6 +18,7 @@ from .windows_worker import NoRedirect
 
 
 class GitHubDocuments:
+    branch = BRANCH
     def __init__(self, repository, credential_provider, cache_store=None):
         if repository != 'oluadegbu/Codex--DSV-' or not callable(credential_provider):
             raise PermissionError('Explicit approved GitHub repository and private credential provider required')
@@ -54,7 +55,7 @@ class GitHubDocuments:
             raise ConnectionError('GitHub transport unavailable; pending state retained') from None
 
     def snapshot(self):
-        head = self.request('GET', '/git/ref/heads/'+quote(BRANCH, safe='/'))['object']['sha']
+        head = self.request('GET', '/git/ref/heads/'+quote(self.branch, safe='/'))['object']['sha']
         if not re.fullmatch('[0-9a-f]{40}', head): raise ProtocolError('Invalid branch head')
         commit = self.request('GET', '/git/commits/'+head)
         tree = commit['tree']['sha']
@@ -93,7 +94,7 @@ class GitHubDocuments:
             'tree': [{'path': p, 'mode': '100644', 'type': 'blob', 'content': value} for p, value in changes.items()]})['sha']
         commit = self.request('POST', '/git/commits', {'message': 'DDB atomic document publication', 'tree': tree, 'parents': [expected_head]})['sha']
         # A sibling publication makes this non-fast-forward. Never force a ref.
-        self.request('PATCH', '/git/refs/heads/'+BRANCH, {'sha': commit, 'force': False})
+        self.request('PATCH', '/git/refs/heads/'+self.branch, {'sha': commit, 'force': False})
         return commit
 
 
@@ -128,3 +129,12 @@ class GitHubCLIDocuments(GitHubDocuments):
             raise PermissionError('Existing GitHub CLI authentication/connectivity rejected; no credential details exported')
         if len(result.stdout)>2000000: raise ProtocolError('GitHub response limit')
         return json.loads(result.stdout,object_pairs_hook=unique_object)
+
+
+class WindowsGitHubDocuments(GitHubDocuments):
+    """Fresh reviewed namespace; never reinterpret quarantined Linux history.
+
+    Branch creation/enrollment is a separate approval gate. This transport never
+    creates the ref and accepts no arbitrary branch from a mailbox/configuration.
+    """
+    branch = 'coordination/dmb-ddb-windows-0011'

@@ -51,7 +51,21 @@ def main():
     if os.name == 'nt':
         from .windows_native import require_identity
         require_identity()  # Existing exact DirectiveCodex/non-admin/Medium gate.
+    if os.name == 'nt':
+        from .windows_native import local_appdata
+        from .document_windows import NAMESPACE, reject_links
+        approved = local_appdata()/'Directive'/NAMESPACE
+        config_path = Path(a.configuration)
+        if root != approved/'package/app' or config_path != approved/'state'/('worker.dpapi' if a.role == 'worker' else 'controller.dpapi'):
+            raise PermissionError('Only reviewed Windows DDB package/configuration paths allowed')
+        reject_links(config_path)
     config = load_private_json(a.configuration)
+    if os.name == 'nt':
+        if config.get('backend') != 'windows-native-codex-foreground' or config.get('github_auth') == 'cli':
+            raise PermissionError('Windows DDB requires reviewed native backend and DPAPI credential provider')
+        for key in ('document_signing_key_file', 'github_credential_file'):
+            path = Path(config[key]); reject_links(path)
+            if path.parent != approved/'state': raise PermissionError('Windows private inputs must remain in dedicated state')
     retired=tuple(Policy(p,sha(p)) for p in config.get('retired_pre_dispatch_policies',[]))
     policy = Policy(config['policy'], a.approved_policy_sha256, retired)
     if a.foreground_certification and (policy.body['template']!='codex_shadow_review_v1' or policy.body['max_tasks']!=1):
@@ -67,7 +81,13 @@ def main():
         store = AtomicPeerStore(database)
         client_store = None
         try:
-            transport = (GitHubCLIDocuments(config['repository'], store) if config.get('github_auth')=='cli' else GitHubDocuments(config['repository'], lambda: load_private_json(config['github_credential_file'])['token'], store))
+            if os.name == 'nt':
+                from .document_github import WindowsGitHubDocuments
+                if config.get('coordination_branch') != WindowsGitHubDocuments.branch:
+                    raise PermissionError('Separately approved fresh Windows branch required; Linux history retained')
+                transport = WindowsGitHubDocuments(config['repository'], lambda: load_private_json(config['github_credential_file'])['token'], store)
+            else:
+                transport = (GitHubCLIDocuments(config['repository'], store) if config.get('github_auth')=='cli' else GitHubDocuments(config['repository'], lambda: load_private_json(config['github_credential_file'])['token'], store))
             private = load_private_json(config['document_signing_key_file'])
             node = DocumentNode(store, role, policy, Ed25519PrivateKey.from_private_bytes(bytes.fromhex(private['private_hex'])), transport)
             node.flush(now)  # Recover unknown publication before taking new work.
@@ -84,7 +104,7 @@ def main():
                 if a.foreground_certification or node.due('supervisor', now, evidence=changed): Supervisor(node).poll(now)
             else:
                 if not a.foreground_certification and not node.due('worker', now): return
-                if config.get('backend') == 'native-codex-foreground':
+                if config.get('backend') in {'native-codex-foreground', 'windows-native-codex-foreground'}:
                     if policy.body['template']!='codex_shadow_review_v1' or policy.body['max_tasks']!=1:
                         raise PermissionError('One exact native foreground grant required')
                     # A real signed branch publication/re-read must establish
@@ -98,8 +118,11 @@ def main():
                     _, snapshot = transport.snapshot()
                     if snapshot.get('state/heartbeat.json') != canonical(json.loads(store.db.execute('SELECT body FROM ddb_outbox WHERE id=?',(admission_id,)).fetchone()[0])):
                         raise PermissionError('No verified native GitHub publication admission')
-                    from .document_native import NativeForegroundBackend
-                    worker = Worker(node, NativeForegroundBackend(store,config['native_pins'],root))
+                    if config['backend'] == 'windows-native-codex-foreground':
+                        from .document_windows import WindowsForegroundBackend as Backend
+                    else:
+                        from .document_native import NativeForegroundBackend as Backend
+                    worker = Worker(node, Backend(store,config['native_pins'],root))
                 else:
                     if os.name != 'posix' or config.get('backend') != 'paper' or policy.body['template']!='shadow_research':
                         raise PermissionError('Uncertified backend disabled')

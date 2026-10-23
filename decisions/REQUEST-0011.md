@@ -29,3 +29,18 @@ not built. See docs/DDB_WINDOWS_FOREGROUND_CERTIFICATION_PLAN.md and
  deployment/ddb/windows-request-0011/PACKAGE_REVIEW.json. Null release/policy/command
 fields are deliberate blockers, never default values. Continue offline preparation;
 consolidate approval only after native release validation and exact pins are ready.
+
+## Phase 10.2 offline adapter implementation (activation still WITHHELD)
+The Windows native adapter now shares portable native receipt state with Linux;
+see docs/DDB_WINDOWS_ADAPTER_CERTIFICATION.md. Existing Linux protocol/branch and
+quarantine are unchanged. Proposed fresh compiled Windows branch is exactly
+`coordination/dmb-ddb-windows-0011`; it has NOT been created/trusted. Two dedicated
+role signers, exact public fingerprints/one-task policy and dedicated DPAPI
+repository credential require review/enrollment approval; no enrollment occurred.
+The review package version is 0.4.0-ddb-review1. Source-only archive is not a
+Windows deployment ZIP. Native CI/full ZIP/hash, current isolated non-admin
+executor, actual service destinations and OS-denial evidence remain pending.
+Readiness is BLOCKED, not production-ready. Consolidated approval must identify
+actual ZIP/source/policy hashes, branch creation, signer/credential ownership,
+exact destinations and one bounded command; no placeholder is authorization.
+No privilege, ACL, production, scheduler, main merge or VPS launch is approved.

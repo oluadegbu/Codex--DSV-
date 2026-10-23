@@ -2,7 +2,7 @@
   "schema_version": 1,
   "project": "Directive Crypto Intelligence",
   "repository": "oluadegbu/Codex--DSV-",
-  "updated_at": "2026-10-20T10:33:01.679631+00:00",
+  "updated_at": "2026-10-22T19:07:29.116925+00:00",
   "milestone": "DDB native startup diagnostic escalation; restricted Windows fallback recommended",
   "status": "LOCAL_SHADOW_PASS_UNATTENDED_AND_FULL_CERTIFICATION_BLOCKED",
   "mode": "SHADOW",
@@ -889,5 +889,31 @@
     "credentials_enrolled": false,
     "execution_authorized": false,
     "unattended_authorized": false
+  },
+  "ddb_windows_adapter": {
+    "status": "OFFLINE_CONTRACTS_PASS_NATIVE_CERTIFICATION_BLOCKED",
+    "version": "0.4.0-ddb-review1",
+    "ddb_tests": 43,
+    "report": "docs/DDB_WINDOWS_ADAPTER_CERTIFICATION.md",
+    "proposed_branch": "coordination/dmb-ddb-windows-0011",
+    "branch_created": false,
+    "signers_enrolled": false,
+    "VPS_native_launch": false,
+    "OS_isolation": "NOT TESTED",
+    "full_regression": "BLOCKED loopback bind permission",
+    "complete_Windows_package": "PENDING_NATIVE_CI",
+    "scheduler": "WITHHELD",
+    "source_release": {
+      "filename": "DMB-DDB-0.4.0-ddb-review1-cc16d48000eb-source.zip",
+      "sha256": "8055d06d70f625851e237d549ff8cc4152329735097d0ce5085ee8133bbf7c47",
+      "bytes": 149727,
+      "manifest_sha256": "2888a9c2afe17f4bc9dee1c66a7320360ba75819e7e3f26034c38176bb56b5cc",
+      "kind": "SOURCE_REVIEW_ONLY",
+      "source_commit": "cc16d48000eb4d1be5116f97711f92e25aa30394",
+      "base_zip_sha256": null
+    },
+    "source_reproducibility": "PASS two identical builds",
+    "native_denial_tests_skipped": 1,
+    "ddb_tests_passed": 43
   }
 }

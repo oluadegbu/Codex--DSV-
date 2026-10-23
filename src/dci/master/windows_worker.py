@@ -202,6 +202,15 @@ class AppServerMachine:
         self.artifact, self.status = None, None
         self.cancel_requested, self.interrupt_sent, self.interrupt_acked, self.blocked = False, False, False, False
 
+    def task_input(self):
+        return PROMPT, OUTPUT_SCHEMA
+
+    def accept_artifact(self, text):
+        value = json.loads(text)
+        if value != EXPECTED_ARTIFACT:
+            raise ProtocolError("unexpected artifact; never upload arbitrary model text")
+        return value
+
     def initial(self):
         return {"id": 1, "method": "initialize", "params": {"clientInfo": {"name": "dmb-shadow-worker", "version": "1.0.0"}, "capabilities": {}}}
 
@@ -229,9 +238,10 @@ class AppServerMachine:
                 if result.get("cwd") != self.cwd or result.get("approvalPolicy") != "never" or result.get("sandbox", {}).get("type") != "readOnly" or result.get("sandbox", {}).get("networkAccess", False) is not False:
                     raise PermissionError("effective cwd/sandbox/approval policy differs")
                 self.thread_id = result["thread"]["id"]
+                prompt, schema = self.task_input()
                 return [{"id": 3, "method": "turn/start", "params": {"threadId": self.thread_id,
-                         "input": [{"type": "text", "text": PROMPT}], "cwd": self.cwd, "approvalPolicy": "never",
-                         "sandboxPolicy": {"type": "readOnly", "networkAccess": False}, "outputSchema": OUTPUT_SCHEMA}}]
+                         "input": [{"type": "text", "text": prompt}], "cwd": self.cwd, "approvalPolicy": "never",
+                         "sandboxPolicy": {"type": "readOnly", "networkAccess": False}, "outputSchema": schema}}]
             if event["id"] == 3:
                 turn = result["turn"]["id"]
                 if self.turn_id and self.turn_id != turn:
@@ -259,9 +269,7 @@ class AppServerMachine:
                     self.blocked = True
                     return self.interrupt()
                 if method == "item/completed" and item.get("type") == "agentMessage":
-                    self.artifact = json.loads(item["text"])
-                    if self.artifact != EXPECTED_ARTIFACT:
-                        raise ProtocolError("unexpected artifact; never upload arbitrary model text")
+                    self.artifact = self.accept_artifact(item["text"])
             if method == "turn/completed":
                 self.status = params["turn"]["status"]
         return []
