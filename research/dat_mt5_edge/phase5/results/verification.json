@@ -1,0 +1,13 @@
+{
+  "baseline_files_unchanged": 26,
+  "broker_connections": 0,
+  "certified_datasets": [],
+  "credential_enrollments": 0,
+  "decision": "CANARY_ACQUIRED_AND_QUARANTINED; FREE_FIRST_ROUTE_RECOMMENDED",
+  "new_free_quote_rows": 862680,
+  "new_strategy_backtests": 0,
+  "normalized_sample_hash_verified": true,
+  "normalized_sample_quality_verified": true,
+  "paired_minutes": 1440,
+  "spending_usd": 0
+}

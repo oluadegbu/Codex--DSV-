@@ -1,0 +1,41 @@
+{
+  "review_date_new_york":"2026-10-18",
+  "official_source":{
+    "download_page":"https://tickstory.com/download-tickstory/",
+    "lite_listed_price_usd":0,
+    "lite_license_label":"Personal use only",
+    "standard_license_label":"Personal & Commercial Use",
+    "linked_eula":"https://tickstory.com/EULA",
+    "eula_fetch_result":"HTTP 403 from web research tool; full current terms unavailable",
+    "changelog":"https://tickstory.com/changelog/",
+    "latest_advertised_product_release":"1.9.8.16",
+    "release_date":"2026-10-04",
+    "exact_lite_installer_version_verified":false,
+    "installer_origin_hash_signature_verified":false,
+    "installer_downloaded":false,
+    "terms_accepted":false
+  },
+  "environment_read_only_checks":{
+    "connected_windows_runner_elevated":true,
+    "connected_identity_builtin_administrator":true,
+    "usable_non_admin_windows_context_verified":false,
+    "installer_requires_elevation":"UNKNOWN_NOT_EXECUTED",
+    "local_research_environment":"Linux",
+    "local_effective_uid":1000,
+    "wine_available":false,
+    "wine64_available":false,
+    "account_credentials_accessed":false,
+    "accounts_or_security_policy_modified":false
+  },
+  "decision":"STOP_BEFORE_DOWNLOAD_INSTALLATION_OR_LICENSE_ACCEPTANCE",
+  "gates":["LITE_PERMISSION_FOR_INTENDED_DAT_USE_UNRESOLVED","NO_VERIFIED_USABLE_NON_ADMIN_WINDOWS_RUNNER"],
+  "new_tickstory_exports":0,
+  "new_certified_datasets":0,
+  "new_strategy_backtests":0,
+  "purchases":0,
+  "subscriptions_or_renewals":0,
+  "mt5_started":false,
+  "broker_account_accessed":false,
+  "orders":0,
+  "privileged_install_or_security_actions":0
+}

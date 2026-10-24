@@ -1,0 +1,15 @@
+{
+  "approval_received": false,
+  "approval_reference": "",
+  "session_nonce": "",
+  "valid_from_ms": 0,
+  "valid_until_ms": 0,
+  "investor_access_evidence": "",
+  "isolated_terminal_evidence": "",
+  "independent_review_evidence": "",
+  "collector_source_sha256": "",
+  "compiled_collector_sha256": "",
+  "terminal_binary_sha256": "",
+  "compilation_evidence": "",
+  "targets": []
+}

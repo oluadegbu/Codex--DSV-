@@ -1,0 +1,11 @@
+{
+  "reviewed_schema": false,
+  "relative_path": "REPLACE_WITH_VERIFIED_RELATIVE_CSV_OR_CSV_GZ_PATH",
+  "timestamp_convention": "UNVERIFIED_DO_NOT_ASSUME_UTC",
+  "timestamp_format": "%Y-%m-%d %H:%M:%S",
+  "encoding": "utf-8-sig",
+  "delimiter": ",",
+  "header": true,
+  "timeframe_seconds": 60,
+  "columns": {"timestamp": 0, "open": 1, "high": 2, "low": 3, "close": 4}
+}

@@ -1,0 +1,12 @@
+{
+  "baseline_files_verified_unchanged": 35,
+  "broker_orders": 0,
+  "certification": "NOT_EVALUATED_NO_EXPORT",
+  "decision": "STOP_BEFORE_DOWNLOAD_INSTALLATION_OR_LICENSE_ACCEPTANCE",
+  "new_exports": 0,
+  "new_strategy_backtests": 0,
+  "phase": "6",
+  "prior_test_evidence": "84 tests recorded in Phase 5; not rerun in Phase 6",
+  "spending_usd": 0,
+  "tickstory_installed": false
+}

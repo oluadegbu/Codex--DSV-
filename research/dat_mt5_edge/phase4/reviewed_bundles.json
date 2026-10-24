@@ -1,0 +1,5 @@
+{
+  "protocol": "PHASE4_EVIDENCE_REVIEW_V1",
+  "bundle_sha256": [],
+  "meaning": "No market-data evidence bundle is independently verified. Dataset flags cannot add entries. Changes require a documented provenance/license/decoder/calendar/contract/cost review, not broker authorization."
+}

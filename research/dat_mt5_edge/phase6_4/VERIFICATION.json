@@ -1,0 +1,43 @@
+{
+  "actual_market_coverage": "UNKNOWN",
+  "baseline_blobs_preserved": 91,
+  "baseline_commit": "dd345e7c643c2d209bd0ee7caa10b223d6cb0957",
+  "broker_connections_started": 0,
+  "certified_datasets": 0,
+  "cross_server_metadata_match_groups": [
+    {
+      "area": "history",
+      "bytes": 14518323,
+      "filename": "2024.hcc",
+      "filesystem_modified_utc": "2026-08-29T21:04:25.911159+00:00",
+      "servers": [
+        "Exness-MT5Real10",
+        "VantageMarkets-Demo"
+      ],
+      "symbol": "EURUSD"
+    },
+    {
+      "area": "history",
+      "bytes": 16253196,
+      "filename": "2024.hcc",
+      "filesystem_modified_utc": "2026-08-29T21:04:25.950164+00:00",
+      "servers": [
+        "Exness-MT5Real10",
+        "VantageMarkets-Demo"
+      ],
+      "symbol": "GBPUSD"
+    }
+  ],
+  "data_use_permission": "UNKNOWN",
+  "forward_shadow": "OFF",
+  "mt5_starts": 0,
+  "new_strategy_backtests": 0,
+  "observed_cache_files": 19,
+  "orders": 0,
+  "phase": "6.4",
+  "protected_cache_contents_read": false,
+  "protected_cache_hashes_read": false,
+  "provider_inquiries_sent": 0,
+  "quote_content_duplicate_status": "UNKNOWN",
+  "sealed_holdout_accessed": false
+}

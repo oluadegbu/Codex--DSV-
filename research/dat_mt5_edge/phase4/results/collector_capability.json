@@ -1,0 +1,10 @@
+{
+  "collector_sha256": "4493da61f36cd883d02ae1a09030e30a38a574ab735116740a8cadfd18889e45",
+  "imports": [
+    "decimal",
+    "json"
+  ],
+  "issues": [],
+  "pass": true,
+  "scope": "Pinned consumer source only; not proof of external exporter, Python host isolation or future broker connection."
+}

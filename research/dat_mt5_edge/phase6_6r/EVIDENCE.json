@@ -1,0 +1,53 @@
+{
+  "broker_logins": 0,
+  "certified_datasets": 0,
+  "directory_diagnostic": {
+    "error": "Timeout - no response from device",
+    "original_call_retried": false,
+    "status": "failed"
+  },
+  "holdout_accessed": false,
+  "identity_diagnostic": {
+    "audit_requested": false,
+    "command_scope": "identity/session/account-enabled/Python-path read-only diagnostics only",
+    "effective_identity": "UNKNOWN",
+    "execution_completion": "UNKNOWN",
+    "pid_returned": false,
+    "result": "MCP request timed out"
+  },
+  "mt5_starts": 0,
+  "new_strategy_runs": 0,
+  "orders": 0,
+  "package": {
+    "bytes": 10828,
+    "commit": "9eadc569f3084c1252460d17dd82e892f5799993",
+    "dependencies": "Python standard library; existing Windows Python >=3.10 required",
+    "git_blob": "cf98f7097dbfed503eada1e2d530802cb447dbd4",
+    "path": "research/dat_mt5_edge/phase6_6/inspect_data.py",
+    "published_matches_prepared_local": true,
+    "sha256": "f25f7539b3b0f7940766167ff06c182cea576c8e59a33627e1e49c0592d79961",
+    "vps_deployment": "NOT_VERIFIED"
+  },
+  "phase": "6.6R",
+  "public_redaction": "Device identifiers, remote call IDs and private source paths omitted",
+  "recorded_date": "2026-10-23",
+  "registry": {
+    "app_version": "0.2.52",
+    "last_seen_observations": [
+      "8m ago",
+      "10m ago"
+    ],
+    "status": "Online"
+  },
+  "restricted_worker": "NOT_VERIFIED",
+  "shadow": "OFF",
+  "source": {
+    "current_existence": "NOT_VERIFIED",
+    "data_files_inspected": 0,
+    "data_processing_requested": false,
+    "market_coverage": "UNKNOWN"
+  },
+  "source_audits_launched": 0,
+  "status": "BLOCKED",
+  "technically_verified_conditional": 0
+}

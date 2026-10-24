@@ -1,0 +1,6 @@
+__pycache__/
+*.pyc
+data/*.csv
+data/*.gz
+data/*.b64
+work/

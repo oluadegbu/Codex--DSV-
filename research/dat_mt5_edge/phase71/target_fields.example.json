@@ -1,0 +1,16 @@
+{
+  "login": 0,
+  "server": "VantageMarkets-Demo",
+  "company": "",
+  "currency": "",
+  "terminal_name": "",
+  "terminal_path": "",
+  "data_path": "",
+  "terminal_build": 0,
+  "symbols": {
+    "EURUSD": "",
+    "GBPUSD": "",
+    "XAUUSD": "",
+    "BTCUSD": ""
+  }
+}

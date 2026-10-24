@@ -1,0 +1,197 @@
+{
+  "baseline_files_verified": 19,
+  "baseline_unchanged": true,
+  "broker_connections": 0,
+  "broker_mutations": 0,
+  "certified_instruments": [],
+  "collector": "PASSIVE_BYTES_CONSUMER_ONLY",
+  "inventory": {
+    "BTCUSD": {
+      "blockers": [
+        "NO_BID_ASK",
+        "PREVIOUSLY_EVALUATED_2017_2018",
+        "STALE_HISTORY",
+        "UNVERIFIED_EXECUTABLE_COSTS"
+      ],
+      "research_ready": false,
+      "sha256": "0390982c2b8c4489a287a8a5259c6d56cce424e0c6daa7266661a0a2964b2c1c",
+      "status": "QUARANTINED_TRADE_CANDLE_PROXY"
+    },
+    "ES": {
+      "blockers": [
+        "NO_CERTIFIED_CONTRACT_AWARE_QUOTES"
+      ],
+      "research_ready": false,
+      "status": "NO_QUALIFIED_EXPORT"
+    },
+    "EURUSD": {
+      "active_utc_days": 0,
+      "available_rows": 91656,
+      "blockers": [
+        "CALENDAR_HASH_MISMATCH",
+        "INVALID_CALENDAR",
+        "MISSING_OR_CHANGED_CALENDAR",
+        "MISSING_OR_CHANGED_CLOCK",
+        "MISSING_OR_CHANGED_CONTRACT",
+        "MISSING_OR_CHANGED_COSTS",
+        "MISSING_OR_CHANGED_LICENSE",
+        "MISSING_OR_CHANGED_NORMALIZATION",
+        "MISSING_OR_CHANGED_PROVENANCE",
+        "STRUCTURE_OR_METADATA:'point_value'",
+        "UNREVIEWED_EVIDENCE_BUNDLE"
+      ],
+      "bundle_sha256": "07b1dfed201cb2cf1dfe32317edc2c0e3e7b000f66ec852ef8c2d1f07904cd71",
+      "coverage": null,
+      "data_sha256": "7dde8d0a170ef8d276c67d47ac8ccd316022b391ca46eb75c8f92ec6eb40bcf7",
+      "execution_authority": false,
+      "fresh_oos": false,
+      "quality": null,
+      "recent_within_120_days": false,
+      "research_ready": false,
+      "status": "QUARANTINED",
+      "structural_diagnostics": {
+        "first": 1514844000,
+        "last": 1533081540,
+        "max_observed_wall_clock_gap_minutes": 89280,
+        "median_spread": "0.00003",
+        "p95_spread": "0.00006",
+        "rows": 91656,
+        "zero_volume": 0
+      }
+    },
+    "EURUSD_RECOVERED_2022": {
+      "active_utc_days": 0,
+      "blockers": [
+        "CALENDAR_HASH_MISMATCH",
+        "INVALID_CALENDAR",
+        "MISSING_OR_CHANGED_CALENDAR",
+        "MISSING_OR_CHANGED_CLOCK",
+        "MISSING_OR_CHANGED_CONTRACT",
+        "MISSING_OR_CHANGED_COSTS",
+        "MISSING_OR_CHANGED_LICENSE",
+        "MISSING_OR_CHANGED_NORMALIZATION",
+        "MISSING_OR_CHANGED_PROVENANCE",
+        "STRUCTURE_OR_METADATA:'tick_size'",
+        "UNREVIEWED_EVIDENCE_BUNDLE"
+      ],
+      "bundle_sha256": "8b51f937ba65a11978b950da19f47404ca4c0b52a531282757b1bad37732f83d",
+      "coverage": null,
+      "data_sha256": "4a8a0433a5671302f57cbd0f69248da5e5ecf4acedb1cd48d63ea9b7d4f739ff",
+      "execution_authority": false,
+      "fresh_oos": false,
+      "quality": null,
+      "recent_within_120_days": false,
+      "research_ready": false,
+      "status": "QUARANTINED"
+    },
+    "GBPUSD": {
+      "active_utc_days": 0,
+      "available_rows": 58245,
+      "blockers": [
+        "CALENDAR_HASH_MISMATCH",
+        "INVALID_CALENDAR",
+        "MISSING_OR_CHANGED_CALENDAR",
+        "MISSING_OR_CHANGED_CLOCK",
+        "MISSING_OR_CHANGED_CONTRACT",
+        "MISSING_OR_CHANGED_COSTS",
+        "MISSING_OR_CHANGED_LICENSE",
+        "MISSING_OR_CHANGED_NORMALIZATION",
+        "MISSING_OR_CHANGED_PROVENANCE",
+        "STRUCTURE_OR_METADATA:'point_value'",
+        "UNREVIEWED_EVIDENCE_BUNDLE"
+      ],
+      "bundle_sha256": "028108d46ab9110f46296ae5c9d0ce47bc3edd9b4c9d9a61dbfd4a8e7dc6dd1a",
+      "coverage": null,
+      "data_sha256": "8f0cb64d64690fa546ecf5c267481d1282e63924d2dad03d62247236ff5ca403",
+      "execution_authority": false,
+      "fresh_oos": false,
+      "quality": null,
+      "recent_within_120_days": false,
+      "research_ready": false,
+      "status": "QUARANTINED",
+      "structural_diagnostics": {
+        "first": 1514844000,
+        "last": 1525132740,
+        "max_observed_wall_clock_gap_minutes": 86460,
+        "median_spread": "0.00008",
+        "p95_spread": "0.00016",
+        "rows": 58245,
+        "zero_volume": 0
+      }
+    },
+    "MES": {
+      "blockers": [
+        "NO_CERTIFIED_CONTRACT_AWARE_QUOTES"
+      ],
+      "research_ready": false,
+      "status": "NO_QUALIFIED_EXPORT"
+    },
+    "MNQ": {
+      "blockers": [
+        "NO_CERTIFIED_CONTRACT_AWARE_QUOTES"
+      ],
+      "research_ready": false,
+      "status": "NO_QUALIFIED_EXPORT"
+    },
+    "MYM": {
+      "blockers": [
+        "NO_CERTIFIED_CONTRACT_AWARE_QUOTES"
+      ],
+      "research_ready": false,
+      "status": "NO_QUALIFIED_EXPORT"
+    },
+    "NQ": {
+      "blockers": [
+        "NO_CERTIFIED_CONTRACT_AWARE_QUOTES"
+      ],
+      "research_ready": false,
+      "status": "NO_QUALIFIED_EXPORT"
+    },
+    "USDJPY": {
+      "blockers": [
+        "NO_CERTIFIED_CONTRACT_AWARE_QUOTES"
+      ],
+      "research_ready": false,
+      "status": "NO_QUALIFIED_EXPORT"
+    },
+    "XAUUSD": {
+      "active_utc_days": 0,
+      "available_rows": 55850,
+      "blockers": [
+        "CALENDAR_HASH_MISMATCH",
+        "INVALID_CALENDAR",
+        "MISSING_OR_CHANGED_CALENDAR",
+        "MISSING_OR_CHANGED_CLOCK",
+        "MISSING_OR_CHANGED_CONTRACT",
+        "MISSING_OR_CHANGED_COSTS",
+        "MISSING_OR_CHANGED_LICENSE",
+        "MISSING_OR_CHANGED_NORMALIZATION",
+        "MISSING_OR_CHANGED_PROVENANCE",
+        "STRUCTURE_OR_METADATA:'point_value'",
+        "UNREVIEWED_EVIDENCE_BUNDLE"
+      ],
+      "bundle_sha256": "74e111b9a0f80912bc388aeaf6117dbec4c6c72d6287d2bb14d113b1a94c64c5",
+      "coverage": null,
+      "data_sha256": "ae86bfe7c575edb92a939dac9e1267928267b61007bdaf16a0a25b55cca2ad2a",
+      "execution_authority": false,
+      "fresh_oos": false,
+      "quality": null,
+      "recent_within_120_days": false,
+      "research_ready": false,
+      "status": "QUARANTINED",
+      "structural_diagnostics": {
+        "failure": "off tick grid"
+      }
+    },
+    "YM": {
+      "blockers": [
+        "NO_CERTIFIED_CONTRACT_AWARE_QUOTES"
+      ],
+      "research_ready": false,
+      "status": "NO_QUALIFIED_EXPORT"
+    }
+  },
+  "new_edge_backtests": 0,
+  "protocol": "PHASE4_OFFLINE_REVIEW_V1",
+  "ranked_candidates": []
+}

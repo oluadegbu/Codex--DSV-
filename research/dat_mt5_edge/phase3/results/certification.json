@@ -1,0 +1,92 @@
+{
+  "certified_instruments": [],
+  "decision": "NONE",
+  "frozen_phase2_sha256": "7e60b6d5456783f3d74abd593ea29c5330998cd88848b75d814387f91ec3c181",
+  "inventory": {
+    "EURUSD": {
+      "blockers": [
+        "PRIMARY_QUOTES_NOT_CROSSVERIFIED",
+        "UTC_CONVERSION_CHAIN_UNPROVEN",
+        "NO_RECENT_HISTORY",
+        "COSTS_AND_UNITS_NOT_CERTIFIED",
+        "SESSION_CALENDAR_AND_GAP_REMEDIATION_INCOMPLETE"
+      ],
+      "certified": false,
+      "normalized_sha256": "7dde8d0a170ef8d276c67d47ac8ccd316022b391ca46eb75c8f92ec6eb40bcf7",
+      "pilot_session_coverage": {
+        "expected": 47520,
+        "observed": 46797,
+        "ratio": 0.9847853535353536
+      },
+      "quality": {
+        "first": 1514844000,
+        "last": 1533081540,
+        "median_spread": 2.999999999997449e-05,
+        "missing_wall_clock_minutes": 212304,
+        "p95_spread": 5.999999999994898e-05,
+        "rows": 91656,
+        "zero_volume": 0
+      }
+    },
+    "GBPUSD": {
+      "blockers": [
+        "PRIMARY_QUOTES_NOT_CROSSVERIFIED",
+        "UTC_CONVERSION_CHAIN_UNPROVEN",
+        "NO_RECENT_HISTORY",
+        "COSTS_AND_UNITS_NOT_CERTIFIED",
+        "SESSION_CALENDAR_AND_GAP_REMEDIATION_INCOMPLETE"
+      ],
+      "certified": false,
+      "normalized_sha256": "8f0cb64d64690fa546ecf5c267481d1282e63924d2dad03d62247236ff5ca403",
+      "pilot_session_coverage": {
+        "expected": 47520,
+        "observed": 30960,
+        "ratio": 0.6515151515151515
+      },
+      "quality": {
+        "first": 1514844000,
+        "last": 1525132740,
+        "median_spread": 8.000000000008001e-05,
+        "missing_wall_clock_minutes": 113235,
+        "p95_spread": 0.00015999999999993797,
+        "rows": 58245,
+        "zero_volume": 0
+      }
+    },
+    "XAUUSD": {
+      "blockers": [
+        "PRIMARY_QUOTES_NOT_CROSSVERIFIED",
+        "UTC_CONVERSION_CHAIN_UNPROVEN",
+        "NO_RECENT_HISTORY",
+        "COSTS_AND_UNITS_NOT_CERTIFIED",
+        "SESSION_CALENDAR_AND_GAP_REMEDIATION_INCOMPLETE",
+        "PRICE_SCALE_UNRESOLVED",
+        "VANTAGE_MAPPING_UNVERIFIED"
+      ],
+      "certified": false,
+      "normalized_sha256": "ae86bfe7c575edb92a939dac9e1267928267b61007bdaf16a0a25b55cca2ad2a",
+      "pilot_session_coverage": {
+        "expected": 47520,
+        "observed": 30959,
+        "ratio": 0.6514941077441078
+      },
+      "quality": {
+        "first": 1514847600,
+        "last": 1525132740,
+        "median_spread": 0.0022900000000003473,
+        "missing_wall_clock_minutes": 115570,
+        "p95_spread": 0.0027399999999992986,
+        "rows": 55850,
+        "zero_volume": 55833
+      }
+    }
+  },
+  "ledger_sha256": "bb3560923713a1b23a6076c9f365b5a6bce17a2a6c6089eb108c10830325ec7c",
+  "new_edge_backtests": 0,
+  "pilot_ledger_rows_verified": 2960,
+  "pilot_trials_revalidated": 142,
+  "protocol": "PHASE3_CERTIFICATION_REVIEW_V1",
+  "qualified_rankings": [],
+  "reason": "No certified data; frozen pilot also fails sample and stability gates.",
+  "review_date": "2026-10-16"
+}
