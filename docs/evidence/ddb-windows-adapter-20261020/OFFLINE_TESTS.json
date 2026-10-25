@@ -1,0 +1,37 @@
+{
+  "scope": "Offline regressions, not native Windows certification",
+  "results": {
+    "tests": {
+      "exit_code": 0,
+      "summary": "----------------------------------------------------------------------\nRan 100 tests in 1.740s\n\nOK\n"
+    },
+    "certification_tests": {
+      "exit_code": 0,
+      "summary": "----------------------------------------------------------------------\nRan 17 tests in 0.003s\n\nOK\n"
+    },
+    "control_plane_tests": {
+      "exit_code": 0,
+      "summary": "----------------------------------------------------------------------\nRan 9 tests in 1.472s\n\nOK\n"
+    },
+    "windows_bridge_tests": {
+      "exit_code": 1,
+      "summary": "orkspace/dci/windows_bridge_tests/test_bridge.py\", line 313, in test_real_tls_poll_dispatch_result_and_restart_fixture\n    self.assertTrue(ready.wait(5)); self.assertFalse(errors, errors)\n                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: [PermissionError(1, 'Operation not permitted')] is not false : [PermissionError(1, 'Operation not permitted')]\n\n----------------------------------------------------------------------\nRan 22 tests in 0.915s\n\nFAILED (failures=1)\n"
+    },
+    "package_tests": {
+      "exit_code": 0,
+      "summary": "----------------------------------------------------------------------\nRan 13 tests in 0.008s\n\nOK\n"
+    },
+    "operations_tests": {
+      "exit_code": 0,
+      "summary": "----------------------------------------------------------------------\nRan 16 tests in 1.223s\n\nOK\n"
+    },
+    "phase10_tests": {
+      "exit_code": 0,
+      "summary": "----------------------------------------------------------------------\nRan 17 tests in 0.092s\n\nOK\n"
+    },
+    "ddb_tests": {
+      "exit_code": 0,
+      "summary": "----------------------------------------------------------------------\nRan 38 tests in 0.963s\n\nOK\n"
+    }
+  }
+}

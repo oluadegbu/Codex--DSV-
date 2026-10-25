@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "source_local_commit": "7497d95ef29f4fc80f2ccb74ed441c057cb09f50",
+  "source_github_commit": "dae60c1b7dc1a20d48761cd2b1cbf444acc0a9ef",
+  "identical_tree": "a2e4e4c172b91e414a619fe1350224d8ba3e56f8",
+  "pr": {
+    "number": 3,
+    "url": "https://github.com/oluadegbu/Codex--DSV-/pull/3",
+    "draft": true,
+    "merged": false,
+    "base_branch": "codex/dmb-shadow-publication-20261012-fd92f06",
+    "base_sha": "67ae2dabda0797718b6c602cc3c3136ca876aa22",
+    "main_unchanged": "0af1f4208da6d5f799ec68d48aab5fb4800159d0"
+  },
+  "ci": {
+    "run_id": 38844529495,
+    "job_id": 116791922110,
+    "conclusion": "success",
+    "suite_counts": [
+      100,
+      17,
+      9,
+      22,
+      13,
+      16,
+      17,
+      15
+    ],
+    "total_tests": 209,
+    "ddb_tests": 15,
+    "cycles": 100,
+    "worker_test_executions": 1099,
+    "scope": "Local Linux tests and paper processes; GitHub transport fault injection, not authenticated standalone runtime delivery or native Codex DDB certification"
+  },
+  "runtime_coordination_branch_created": false,
+  "keys_enrolled": false,
+  "unattended_scheduler_activated": false,
+  "existing_windows_release_unchanged": true,
+  "request_0010": "WITHHELD",
+  "request_0009": "PRESERVED_WITHHELD",
+  "prior_complete_history_bundle": {
+    "path": "/workspace/dci-ddb-m1-4e08d8a.bundle",
+    "sha256": "aa72f1d9e89d9f948ef0a7bd8fbd2e1b39b0fb5ab24aee1d49a72ff1c2919756",
+    "verified": true
+  }
+}

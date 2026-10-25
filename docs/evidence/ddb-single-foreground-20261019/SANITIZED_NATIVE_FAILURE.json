@@ -1,0 +1,17 @@
+{
+  "classification": "NATIVE_CLI_STARTUP_FAILED_READ_ONLY_FILESYSTEM",
+  "os_error": 30,
+  "initialization_component": "Not yet isolated; do not infer a specific directory from sanitized evidence",
+  "stdout_bytes": 0,
+  "stderr_bytes": 197,
+  "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stderr_sha256": "8e3330eeb312ddb37b9da73c3ece4a8aa7e2ade4b7bb255573aa487bc89f0f58",
+  "model_turn_events": 0,
+  "model_capacity_tested": false,
+  "native_task_succeeded": false,
+  "prompt_sha256": "cbfa064cc4a33ec9bb02777a05b69da31d50f6b32a292c4f2323c2d922961a03",
+  "raw_logs_exported": false,
+  "retry_performed": false,
+  "model_switched": false,
+  "window_extended_after_attempt": false
+}

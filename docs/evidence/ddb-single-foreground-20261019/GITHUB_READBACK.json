@@ -1,0 +1,112 @@
+{
+  "branch": "coordination/dmb-ddb-v1",
+  "commit": "b4bc96b6c8244b72526b589085d1239960520f20",
+  "tree": "3e36e77f3c772f9de4dfd15fa49368152925f1c9",
+  "documents": [
+    {
+      "path": "directives/pending/d1-f24714f48bd39707.json",
+      "git_blob_sha1": "247e8dba67f91643270068f46396b879d2c42fef",
+      "sha256": "662b96657226da775f47368ae068f5343edd462a72f0f403ad9dae8aab8bcbdd",
+      "signature_valid": true,
+      "document": {
+        "body": {
+          "correlation_id": "ddb-corr-d1-f24714f48bd39707",
+          "directive_id": "d1-f24714f48bd39707",
+          "source_report": "f24714f48bd3970770c191f2dd769dde8f3f6e418427167dd92f9ecf905262b3",
+          "task_id": "ddb-task-d1-f24714f48bd39707",
+          "template": "codex_shadow_review_v1"
+        },
+        "content_sha256": "42749e87581aae54635b640ea839f98dde10e15862af766a2b453135633dc4bc",
+        "expires_at": 1792373124,
+        "id": "directive-d1-f24714f48bd39707",
+        "issued_at": 1792372224,
+        "kind": "DIRECTIVE",
+        "mode": "SHADOW",
+        "policy_sha256": "dc13ce2631f917271f3eb1921e4d6605b12850f5bfc664dcc9e449e15df5d704",
+        "previous": "0000000000000000000000000000000000000000000000000000000000000000",
+        "role": "supervisor",
+        "sequence": 1,
+        "signature": "ca78682e6d44763b21daef99afaf3785dcbe10010037909cd65dd07587418592709a8751047fec723ae2ee59160b7d99d16f3881a12f68e8bb3efa02386b8b0f",
+        "version": 1
+      }
+    },
+    {
+      "path": "reports/history/report-d1-f24714f48bd39707.json",
+      "git_blob_sha1": "fa6dd86743aa82b31275ce5a5b8e1d4e1c8efee4",
+      "sha256": "769563c5fda7f1fda5f90ac51711feee6d90237b2f20822d35b8c7d6d54f18f9",
+      "signature_valid": true,
+      "document": {
+        "body": {
+          "directive_id": "d1-f24714f48bd39707",
+          "effort_id": "effort-d1-f24714f48bd39707",
+          "evidence": {
+            "category": "EXECUTION_UNCERTAIN"
+          },
+          "status": "NEEDS_HUMAN",
+          "task_id": "ddb-task-d1-f24714f48bd39707"
+        },
+        "content_sha256": "7675ee76ed3d07f45f1ce9df88d78bb81473a525b7998c1d4bb353f5440c117e",
+        "expires_at": 1792373132,
+        "id": "report-d1-f24714f48bd39707",
+        "issued_at": 1792372232,
+        "kind": "REPORT",
+        "mode": "SHADOW",
+        "policy_sha256": "dc13ce2631f917271f3eb1921e4d6605b12850f5bfc664dcc9e449e15df5d704",
+        "previous": "5ef7df74c711eabfadd9db429e5af842d71aa3f0679291ccdc1ab7a1b31d92a3",
+        "role": "worker",
+        "sequence": 10,
+        "signature": "0a0916cd44cd27f96406b2913ad5c69c244b3f71b69c440c16fe9cc923da5ef7351d044d5a7e167264d9a6202ec182bb65fb8026e2eabd034cb7e258c7f6e40c",
+        "version": 1
+      }
+    },
+    {
+      "path": "state/acks/ack-d1-f24714f48bd39707.json",
+      "git_blob_sha1": "75d953657a4c95cb62f2bda9ccd44fe8bbf3267b",
+      "sha256": "5ef7df74c711eabfadd9db429e5af842d71aa3f0679291ccdc1ab7a1b31d92a3",
+      "signature_valid": true,
+      "document": {
+        "body": {
+          "directive_digest": "662b96657226da775f47368ae068f5343edd462a72f0f403ad9dae8aab8bcbdd",
+          "directive_id": "d1-f24714f48bd39707",
+          "state": "DURABLY_RECEIVED"
+        },
+        "content_sha256": "4f4303cb3c12a81390b7f48f1e9015027e914fccfc5673a334a66477ff77dd37",
+        "expires_at": 1792373132,
+        "id": "ack-d1-f24714f48bd39707",
+        "issued_at": 1792372232,
+        "kind": "ACK",
+        "mode": "SHADOW",
+        "policy_sha256": "dc13ce2631f917271f3eb1921e4d6605b12850f5bfc664dcc9e449e15df5d704",
+        "previous": "8e122dde2b73401a621e9665593c72f6307cf1a0311c316a84f9124100b9458a",
+        "role": "worker",
+        "sequence": 9,
+        "signature": "4c0811e7f826b43b39756ae439cc8cf97f8f50ef50320f7ebcf03db3a3c97377f55b404036268bafdbb7cdfda47d9fc138de2f647814411ba09f6ee0ca078605",
+        "version": 1
+      }
+    },
+    {
+      "path": "state/events/worker/00000001-phase2-preparation.json",
+      "git_blob_sha1": "133b928a676ba29572b88ef80b44b9ab6f28f624",
+      "sha256": "3fe551d57cf5aef1b83ff639b253651d88a2a8632d7f143ae199158303556338",
+      "signature_valid": true,
+      "document": {
+        "body": {
+          "state": "BLOCKED"
+        },
+        "content_sha256": "514968bbc9fc1cdb9839328b6c61409298b02af11a82d93520ca4605ae06235c",
+        "expires_at": 1792122772,
+        "id": "phase2-preparation",
+        "issued_at": 1792121872,
+        "kind": "HEARTBEAT",
+        "mode": "SHADOW",
+        "policy_sha256": "f0762f00d6ee75ed09e0520e04525918b3f63312f36595cf28174d5bca703ea5",
+        "previous": "0000000000000000000000000000000000000000000000000000000000000000",
+        "role": "worker",
+        "sequence": 1,
+        "signature": "5fe5e40462116b8be954afa7c5582e1d310374292c4476a712f7cb31808e6235f1a66cf88dfe4b809e2fdabbec18d21fceb41d21994694223cb4db76de2ff603",
+        "version": 1
+      }
+    }
+  ],
+  "original_blocked_heartbeat_unchanged": true
+}

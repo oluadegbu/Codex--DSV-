@@ -1,0 +1,40 @@
+{
+  "version": "0.4.0-ddb-review1",
+  "digest_scope": "Exact per-file runtime hashes are in the complete ZIP DDB_PACKAGE_MANIFEST.json; no inferred individual binary hashes",
+  "runtime_base_archive_sha256": "38b395f3609900d1c5423fc9ed4f02413397db8728c2c27d66ae576308ead5f6",
+  "full_ZIP_sha256": "06a5eded7bcfc3ad2cbecf9140e47b88f6a65848c6929847f1de7dd8281791e0",
+  "full_manifest_sha256": "8aa986c9a02f05fe1cd30fb18b957aa4610dd180e3e2866f23241197c33e5b0f",
+  "dependencies": [
+    {
+      "name": "CPython",
+      "version": "3.12.10",
+      "bundled": true
+    },
+    {
+      "name": "MinGit",
+      "version": "2.51.0.windows.1",
+      "bundled": true
+    },
+    {
+      "name": "cryptography",
+      "version": "46.0.2",
+      "bundled": true
+    },
+    {
+      "name": "cffi",
+      "version": "2.0.0",
+      "bundled": true
+    },
+    {
+      "name": "pycparser",
+      "version": "2.23",
+      "bundled": true
+    },
+    {
+      "name": "Codex CLI",
+      "version": "0.162.1",
+      "bundled": false,
+      "expected_official_executable_sha256": "dd13bdb162a184fa04039488b234a8258ef9b76f84e926c505d5742b19249a6a"
+    }
+  ]
+}

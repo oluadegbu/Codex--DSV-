@@ -1,0 +1,9 @@
+{
+  "filename": "DMB-DDB-0.4.0-ddb-review1-c7574b2757b4-windows-amd64.zip",
+  "sha256": "06a5eded7bcfc3ad2cbecf9140e47b88f6a65848c6929847f1de7dd8281791e0",
+  "bytes": 58475044,
+  "manifest_sha256": "8aa986c9a02f05fe1cd30fb18b957aa4610dd180e3e2866f23241197c33e5b0f",
+  "kind": "WINDOWS_FOREGROUND_REVIEW_PACKAGE",
+  "source_commit": "c7574b2757b48f5e167ee8135c3c70913f5908b3",
+  "base_zip_sha256": "38b395f3609900d1c5423fc9ed4f02413397db8728c2c27d66ae576308ead5f6"
+}

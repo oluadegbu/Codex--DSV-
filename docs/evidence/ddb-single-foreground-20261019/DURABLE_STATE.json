@@ -1,0 +1,59 @@
+{
+  "worker": {
+    "audit_valid": true,
+    "audit_records": 29,
+    "audit_head_sha256": "a5191063e5995a5a3d9cbe2b07b4a3b8df5a02b23ecbfc92ab9110141a9cf5c4",
+    "blocked": {
+      "approval_inferred": false,
+      "category": "EXECUTION_UNCERTAIN",
+      "notifications": "DISABLED"
+    },
+    "escalations": [
+      {
+        "id": "ddb-worker-dc13ce2631f917271f3e",
+        "category": "EXECUTION_UNCERTAIN",
+        "decision": null
+      }
+    ],
+    "native_runs": [
+      {
+        "task": "ddb-task-d1-f24714f48bd39707",
+        "scope": "bb07a0a9ae5ceacf79c6f045620b9a3fb2c3a9c1d669517de6d2996b670ff30a",
+        "state": "INTENT"
+      }
+    ],
+    "directives": [
+      {
+        "id": "d1-f24714f48bd39707",
+        "state": "REPORTED",
+        "digest": "662b96657226da775f47368ae068f5343edd462a72f0f403ad9dae8aab8bcbdd"
+      }
+    ],
+    "plans": []
+  },
+  "supervisor": {
+    "audit_valid": true,
+    "audit_records": 18,
+    "audit_head_sha256": "9b8b830b08159afc5c4907920e9928b01c411e0cf594cd882e741c64c6cddf21",
+    "blocked": {
+      "approval_inferred": false,
+      "category": "SUPERVISORY_EXCEPTION",
+      "notifications": "DISABLED"
+    },
+    "escalations": [
+      {
+        "id": "ddb-supervisor-dc13ce2631f917271f3e",
+        "category": "SUPERVISORY_EXCEPTION",
+        "decision": null
+      }
+    ],
+    "native_runs": [],
+    "directives": [],
+    "plans": [
+      {
+        "id": "d1-f24714f48bd39707",
+        "completed": 0
+      }
+    ]
+  }
+}

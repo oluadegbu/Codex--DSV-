@@ -1,0 +1,9 @@
+{
+  "status": "PASS_REVIEW_MANIFEST_ONLY",
+  "timestamp": "2026-10-20T10:33:15.248528+00:00",
+  "input_hashes_verified": 8,
+  "missing_release_execution_policy_rejected_for_activation": true,
+  "native_execution_tested": false,
+  "OS_isolation_tested": false,
+  "scope": "manifest consistency, no synthetic worker or certification substitution"
+}

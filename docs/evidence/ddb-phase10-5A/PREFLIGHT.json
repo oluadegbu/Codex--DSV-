@@ -1,0 +1,34 @@
+{
+  "timestamp": "2026-10-24T02:31:55.012541+00:00",
+  "reviewed_PR_head": "f0308c534fa695ea526dedfc790f098fad34590e",
+  "trust": {
+    "branch": "PROPOSED_NOT_CREATED",
+    "Windows_signer_fingerprints": null,
+    "Windows_signed_policy_sha256": null,
+    "clean_Windows_clone_pins": null,
+    "Windows_Codex_service_destinations": null,
+    "repo_API": "https://api.github.com/repos/oluadegbu/Codex--DSV-",
+    "old_Linux_policy": "EXPIRED_CONSUMED_NEVER_REUSE"
+  },
+  "decisions": {
+    "branch_creation": "CONDITIONAL_GO_FOR_APPROVAL_ONLY",
+    "dedicated_enrollment": "CONDITIONAL_GO_FOR_APPROVAL_ONLY",
+    "restricted_deployment": "CONDITIONAL_GO_FOR_APPROVAL_ONLY",
+    "Python_native_isolation_fixtures": "CONDITIONAL_GO_FOR_APPROVAL_ONLY_NOT_EXECUTED",
+    "Codex_research": "NO_GO_PROHIBITED",
+    "unattended": "NO_GO_WITHHELD"
+  },
+  "offline_checks": {
+    "syntax": "PASS",
+    "signed_receipt_contracts": 2,
+    "recovery_contracts": 3,
+    "policy_contracts": 5,
+    "scope": "Existing disposable fixture tests only; no native Windows API execution"
+  },
+  "native_new_harness": "UNRUN_NOT_CERTIFIED",
+  "worker_package_rebuilt": false,
+  "worker_code_changed": false,
+  "new_credentials_generated_or_read": false,
+  "VPS_actions": false,
+  "report": "docs/DDB_PHASE10_5A_PREFLIGHT.md"
+}

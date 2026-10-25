@@ -1,0 +1,8 @@
+{
+  "filename": "DDB-Preflight-10.5A-75c2f293c634.zip",
+  "sha256": "ff682dd000a7884f811887de387086dd70c1390da2568b319032175efe5d2bb9",
+  "bytes": 18683,
+  "manifest_sha256": "ab4b26fed62c80d68e0243f1b65e79e0d686ca880cd596de21d4543615c9ba22",
+  "source_commit": "75c2f293c634e5b5b6ac984b755dec325d5eae71",
+  "kind": "TEST_ADDON_NOT_WORKER"
+}
