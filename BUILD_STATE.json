@@ -2,7 +2,7 @@
   "schema_version": 1,
   "project": "Directive Crypto Intelligence",
   "repository": "oluadegbu/Codex--DSV-",
-  "updated_at": "2026-10-23T13:23:23.410398+00:00",
+  "updated_at": "2026-10-24T02:31:55.012541+00:00",
   "milestone": "DDB native startup diagnostic escalation; restricted Windows fallback recommended",
   "status": "LOCAL_SHADOW_PASS_UNATTENDED_AND_FULL_CERTIFICATION_BLOCKED",
   "mode": "SHADOW",
@@ -943,5 +943,24 @@
     "new_grants": "WITHHELD",
     "native_certification": "NOT TESTED",
     "worker_code_changed": false
+  },
+  "ddb_phase10_5A": {
+    "status": "REVIEW_READY_ALL_HOST_ACTIONS_WITHHELD",
+    "report": "docs/DDB_PHASE10_5A_PREFLIGHT.md",
+    "native_fixture_harness": "preflight/ddb-10.5A/",
+    "offline_contract_tests_passed": 10,
+    "native_tests": "NOT TESTED",
+    "research": "PROHIBITED",
+    "unattended": "WITHHELD",
+    "worker_package_unchanged": true,
+    "addon": {
+      "filename": "DDB-Preflight-10.5A-75c2f293c634.zip",
+      "sha256": "ff682dd000a7884f811887de387086dd70c1390da2568b319032175efe5d2bb9",
+      "bytes": 18683,
+      "manifest_sha256": "ab4b26fed62c80d68e0243f1b65e79e0d686ca880cd596de21d4543615c9ba22",
+      "source_commit": "75c2f293c634e5b5b6ac984b755dec325d5eae71",
+      "kind": "TEST_ADDON_NOT_WORKER"
+    },
+    "addon_reproduction": "PASS two identical builds"
   }
 }

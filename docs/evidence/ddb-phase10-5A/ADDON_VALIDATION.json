@@ -1,0 +1,36 @@
+{
+  "reproducible": true,
+  "source_commit": "75c2f293c634e5b5b6ac984b755dec325d5eae71",
+  "release": {
+    "filename": "DDB-Preflight-10.5A-75c2f293c634.zip",
+    "sha256": "ff682dd000a7884f811887de387086dd70c1390da2568b319032175efe5d2bb9",
+    "bytes": 18683,
+    "manifest_sha256": "ab4b26fed62c80d68e0243f1b65e79e0d686ca880cd596de21d4543615c9ba22",
+    "source_commit": "75c2f293c634e5b5b6ac984b755dec325d5eae71",
+    "kind": "TEST_ADDON_NOT_WORKER"
+  },
+  "results": {
+    "signed-receipts": {
+      "exit": 0,
+      "log": "test_signed_fixture_cycle_and_duplicate (test_windows_adapter.ReceiptContractTests.test_signed_fixture_cycle_and_duplicate) ... ok\ntest_signature_tampering_before_worker (test_windows_adapter.ReceiptContractTests.test_signature_tampering_before_worker) ... ok\n\n----------------------------------------------------------------------\nRan 2 tests in 0.028s\n\nOK\n"
+    },
+    "recovery": {
+      "exit": 0,
+      "log": "test_sealed_recovery_no_second_effect (test_windows_adapter.ReceiptContractTests.test_sealed_recovery_no_second_effect) ... ok\ntest_uncertain_intent_never_reruns (test_windows_adapter.ReceiptContractTests.test_uncertain_intent_never_reruns) ... ok\ntest_corrupt_audit_prevents_publication_and_execution (test_document_bridge.DDBTests.test_corrupt_audit_prevents_publication_and_execution) ... ok\n\n----------------------------------------------------------------------\nRan 3 tests in 0.015s\n\nOK\n"
+    },
+    "policy": {
+      "exit": 0,
+      "log": "test_stale_report_and_expired_directive_cannot_execute (test_document_bridge.DDBTests.test_stale_report_and_expired_directive_cannot_execute) ... ok\ntest_wrong_signature_and_worker_cannot_sign_directive (test_document_bridge.DDBTests.test_wrong_signature_and_worker_cannot_sign_directive) ... ok\ntest_stream_gap_mirror_tamper_and_rollback_are_rejected (test_document_bridge.DDBTests.test_stream_gap_mirror_tamper_and_rollback_are_rejected) ... ok\ntest_workspace_rejection (test_windows_adapter.WindowsAdapterTests.test_workspace_rejection) ... ok\ntest_tools_rejected (test_windows_adapter.WindowsAdapterTests.test_tools_rejected) ... ok\n\n----------------------------------------------------------------------\nRan 5 tests in 0.016s\n\nOK\n"
+    },
+    "non_Windows_gate": {
+      "exit": 1,
+      "result": {
+        "status": "BLOCKED_PRESERVED",
+        "category": "PermissionError"
+      },
+      "native_calls": false
+    }
+  },
+  "native_Windows_execution": false,
+  "worker_package_rebuilt": false
+}

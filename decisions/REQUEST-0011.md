@@ -74,3 +74,15 @@ pins, dedicated credential lifetime, exact endpoints and native filesystem evide
 are reviewed. No unnamed fixture or second model turn is implicitly authorized.
 Scheduling A6/REQUEST-0009 remains withheld. No branch, keys, credential, deployment
 or native process was created or activated during this phase.
+
+## Phase 10.5A — trust/preflight addon prepared, no runtime authority
+See docs/DDB_PHASE10_5A_PREFLIGHT.md and preflight/ddb-10.5A/. Verified worker
+release is unchanged and not rebuilt. Independent credential-free native Python
+identity/canary/Job fixture scripts are prepared but UNRUN, not Windows-certified.
+Ten existing disposable signed-receipt/recovery/policy contract tests pass offline.
+Conditional GO recommendations concern subsequent branch/enrollment/restricted
+package deployment/named Python fixture approvals only. Every grant remains
+WITHHELD. Native Codex research and unattended operation are PROHIBITED here.
+Windows signer fingerprints, signed policy hash, clean clone pins and actual Codex
+service endpoints are missing; responsible owners are named in the report.
+No operational key/token was generated, enrolled, read or rotated; no VPS or production action. Existing tests use only ephemeral synthetic fixture keys.

@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "kind": "TEST_ADDON_NOT_WORKER",
+  "source_commit": "75c2f293c634e5b5b6ac984b755dec325d5eae71",
+  "worker_package_sha256": "06a5eded7bcfc3ad2cbecf9140e47b88f6a65848c6929847f1de7dd8281791e0",
+  "contains_credentials": false,
+  "native_tests_executed": false,
+  "activation_authority": false,
+  "files": {
+    "README.md": "693b9c283efede4a95b13faf82b2483cfcd2533f6e4cfd966d18cf37f560c65b",
+    "contracts.py": "b69b24fb6dc0c34794edd0ff64823b4fbf0e234131a9482a28da9d47b97052d1",
+    "probe.py": "9c5efb46eb509ff59bba75cc2777d8794b304f39ba34ea6af9261c358c6aec1b",
+    "tests/test_document_bridge.py": "6be570dea4d7c10bfcba08051ccd584f54da4a79154cdbc719ae3c3dcc461933",
+    "tests/test_windows_adapter.py": "671e18304bb96c3e0e44d377b6f5ba3a68ba1f144fc1de460b9396a3679bf629",
+    "tests/test_windows_process_fixture.py": "b07bb9d02eab82fa4709bbd05970e601ab24c248767db92991119e8febda6604"
+  }
+}
